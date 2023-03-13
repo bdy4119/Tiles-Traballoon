@@ -1,0 +1,231 @@
+@charset "UTF-8";
+
+:root{
+	--body-background-color: #f5f6f7;
+	--font-color: white;
+	--border-gray-color : #dadada;
+	--green-color: rgb(136, 240, 215);
+	--green-border-color: rgb(136, 240, 215);
+}
+
+
+
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	/* background:var(--body-background-color); */
+	/* 배경 꽉차게 */
+	background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),
+					url('/images/maldives-g2060b9077_1920.jpg')
+					no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+
+
+.main-container{
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-top: 200px;
+}
+
+
+.main-container .main-wrap{
+	width:768px;
+
+}
+.main-container .main-wrap{
+	width: 96px;
+	height: 30px;
+	color: var(--font-color);
+	border: solid 1px var(--border-gray-color);
+}
+.main-container .main-wrap{
+	padding-top:55px;
+}
+.main-container .main-wrap
+{
+	width: 231px;
+	height: 44px;
+}
+
+.main-container .main-wrap header{
+	display:flex;
+	justify-content:flex-end;
+}
+
+.main-container .main-wrap header{
+	display:flex;	
+	flex-direction: column;
+	align-items: center;
+}
+.login-input-section-wrap{
+	padding-top: 60px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.login-input-wrap{
+	width: 465px;
+	height :48px;
+	border: solid 1px var(	--border-gray-color );
+	background: white;
+}
+.password-wrap{
+	margin-top: 13px;
+}
+.login-input-wrap input{
+	border: none;
+	width:430px;
+	margin-top: 10px;
+	font-size: 14px;
+	margin-left: 10px;
+	height:30px;
+}
+.login-button-wrap {
+	padding-top: 13px;
+}
+.login-button-wrap button{
+	width: 465px;
+	height :48px;
+	font-size: 18px;
+	background: var(--green-color);
+	color: white;
+	border: solid 1px var(--green-border-color);
+}
+.login-stay-sign-in{
+	width: 465px;
+	height: 52px;
+	
+	display: flex;
+	font-size: 15px;
+	color: white;
+	align-items: center;
+	justify-content: flex-start;
+	border-bottom: solid 1px var(--border-gray-color);
+}
+.login-stay-sign-in i{
+	font-size: 25px;
+	color: white;
+}
+.login-stay-sign-in span{
+	padding-left: 5px;
+	line-height: 25px;
+}
+
+.Easy-sgin-in-wrap{
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 40px;
+
+}
+.Easy-sgin-in-wrap h2{
+	font-size: 20px;
+}
+.Easy-sgin-in-wrap .sign-button-list
+{
+	padding-top:25px;
+	list-style: none;
+	width: 465px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.Easy-sgin-in-wrap .sign-button-list li{
+	padding-bottom: 10px;
+}
+.Easy-sgin-in-wrap .sign-button-list li button{
+	width: 465px;
+	height: 56px;
+	border: solid 1px var(--border-gray-color);
+	text-align: left;
+	background: white;
+}
+.Easy-sgin-in-wrap .sign-button-list li button i{
+	padding-left: 15px;
+	font-size: 20px;
+}
+
+
+
+.Easy-sgin-in-wrap .forget-msg{
+	color:var(--font-color);
+	font-size: 17px;
+	padding-top: 10px;
+
+}
+footer{
+   
+	padding-top: 95px;
+	padding-bottom: 15px;
+
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	width:768px;
+
+
+
+}
+.copyright-wrap{
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 15px;
+	color:white;
+
+
+}
+footer .copyright-wrap span img{
+	width: 18px;
+	
+	height: 11px;
+}
+footer .copyright-wrap span{
+	font-size: 13px;
+	line-height: 15px;
+}
+
+
+
+
+/* @media (max-width: 1000px) {	폭이 지정 숫자이하로 내려가면 적용됨
+	.main-container{
+	
+		margin-left: 200px;
+	}
+	
+	
+	.login-input-wrap input{
+		width:280px;
+	}
+
+	.login-input-wrap{
+		width: 300px;
+	}
+	
+	
+	.login-button-wrap button{
+		width: 300px;
+	}
+	
+	
+	.login-stay-sign-in{
+		width: 300px;
+		height: 52px;
+	}
+	
+
+} */
