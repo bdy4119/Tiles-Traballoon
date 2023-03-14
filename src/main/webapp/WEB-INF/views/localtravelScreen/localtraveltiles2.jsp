@@ -22,26 +22,26 @@
 	<div><tiles:insertAttribute name="weather"/></div>
 	
 	<div class="d-flex justify-content-center">
-		<div id="Rpic"> 서울 페이지로
-		<button type="button" onclick="location.href='localtravel2.do'">서울</button>
+		<div id="Rpic"> <!-- 서울 페이지로 -->
+		<button type="button" onclick="location.href='localtravel2.do'">서울/경기</button>
 		</div>
 		
 		
 		<div id="Rpic"> <!-- 경기 페이지로 -->
-		<button type="button" onclick="location.href='main.do'">경기</button>
+		<button type="button" onclick="location.href='main.do'">제주</button>
 		</div>
 		
 		<div id="Rpic"> <!-- 제주 페이지로 -->
-		<button type="button" onclick="location.href='main.do'">제주</button>
+		<button type="button" onclick="location.href='main.do'">강원</button>
 		</div>
 	</div>
 	<div class="d-flex justify-content-center">	
 		<div id="Rpic"> <!-- 충청 페이지로 -->
-		<button type="button" onclick="location.href='main.do'">충청</button>
+		<button type="button" onclick="location.href='main.do'">충북</button>
 		</div>
 		
 		<div id="Rpic"> <!-- 강원 페이지로 -->
-		<button type="button" onclick="location.href='main.do'">강원</button>
+		<button type="button" onclick="location.href='main.do'">충남</button>
 		</div>
 		
 		<div id="Rpic"> <!-- 경북 페이지로 -->

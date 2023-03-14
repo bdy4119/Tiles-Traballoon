@@ -21,12 +21,62 @@
 	<put-attribute name="content" value="/WEB-INF/views/content.jsp"/> -->
 	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 </definition>
-
-<definition name="localtravel2" template="/WEB-INF/views/localtravelScreen/localtraveltiles2.jsp">
+<!-- 경기 -->
+<definition name="gyeonggi" template="/WEB-INF/views/localtravelScreen/region/gyeonggi.jsp">
 	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
 	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
 	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 </definition>
+<!-- 제주 -->
+<definition name="jeju" template="/WEB-INF/views/localtravelScreen/region/jeju.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+</definition>
+<!-- 강원 -->
+<definition name="gangwon" template="/WEB-INF/views/localtravelScreen/region/gangwon.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+</definition>
+<!-- 충북 -->
+<definition name="chungbuk" template="/WEB-INF/views/localtravelScreen/region/chungbuk.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+</definition>
+<!-- 충남 -->
+<definition name="chungnam" template="/WEB-INF/views/localtravelScreen/region/chungnam.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+</definition>
+<!-- 경북 -->
+<definition name="gyeongbuk" template="/WEB-INF/views/localtravelScreen/region/gyeongbuk.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+</definition>
+<!-- 경남 -->
+<definition name="gyeongnam" template="/WEB-INF/views/localtravelScreen/region/gyeongnam.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+</definition>
+<!-- 전북 -->
+<definition name="jeonbuk" template="/WEB-INF/views/localtravelScreen/region/jeonbuk.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+</definition>
+<!-- 전남 -->
+<definition name="jeonnam" template="/WEB-INF/views/localtravelScreen/region/jeonnam.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+</definition>
+
+
 
 <!-- 숙소추천 -->
 <definition name="hotel" template="/WEB-INF/views/hotelScreen/hoteltiles.jsp">

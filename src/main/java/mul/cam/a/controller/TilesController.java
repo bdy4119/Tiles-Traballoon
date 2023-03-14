@@ -31,13 +31,49 @@ public class TilesController {
 		
         return "localtravel";
     }
-	@GetMapping(value = "localtravel2.do")
-	public String localtravel2()
+	@GetMapping(value = "gyeonggi.do")
+	public String gyeonggi()
 	/* (Model model, int seq) */ {
 		/*
 		 * LocalDto dto = service.getLocal(seq); model.addAttribute("localdto", dto);
 		 */
-		return "localtravel2";
+		return "gyeonggi";
+	}
+	
+	@GetMapping(value = "jeju.do")
+	public String jeju() {
+		return "jeju";
+	}
+	
+	@GetMapping(value = "gangwon.do")
+	public String gangwon() {
+		return "gangwon";
+	}
+	
+	@GetMapping(value = "chungbuk.do")
+	public String chungbuk() {
+		return "chungbuk";
+	}
+	@GetMapping(value = "chungnam.do")
+	public String chungnam() {
+		return "chungnam";
+	}
+	@GetMapping(value = "jeonbuk.do")
+	public String jeonbuk() {
+		return "jeonbuk";
+	}
+	@GetMapping(value = "jeonnam.do")
+	public String jeonnam() {
+		return "jeonnam";
+	}
+	@GetMapping(value = "gyeongbuk.do")
+	public String gyeongbuk() {
+		return "gyeongbuk";
+	}
+	
+	@GetMapping(value = "gyeongnam.do")
+	public String gyeongnam() {
+		return "gyeongnam";
 	}
 	/* 지역별 여행 - 재훈 */
 	
