@@ -43,12 +43,12 @@ public class TilesController {
 //        return "reviewPage";
 //    }
 	
-	@GetMapping("community.do")
-    public String community() {
-		System.out.println("TilesController community() " + new Date());
-		
-        return "community";
-    }
+//	@GetMapping("communitylist.do")
+//    public String community() {
+//		System.out.println("TilesController community() " + new Date());
+//
+//        return "communitylist";
+//    }
 	
 	@GetMapping("mypage.do")
     public String mypage() {
@@ -57,10 +57,10 @@ public class TilesController {
         return "mypage";
     }
 	
-	@GetMapping("login.do")
-    public String loginpage() {
-		System.out.println("TilesController login() " + new Date());
-		
-        return "login";
-    }
+//	@GetMapping("login.do")
+//    public String loginpage() {
+//		System.out.println("TilesController login() " + new Date());
+//
+//        return "login";
+//    }
 }

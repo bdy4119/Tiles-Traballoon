@@ -27,7 +27,6 @@
 <body>
 <%--container--%>
 <div class="container">
-    
 
         <%--헤더--%>
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -55,7 +54,5 @@
             </div>
         </header>
         <%--헤더--%>
-        
-        <%--공백--%>
-        <div class="b-example-divider"></div>
+
 </div>

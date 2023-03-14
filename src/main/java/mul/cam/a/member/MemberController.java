@@ -17,38 +17,38 @@ public class MemberController {
 	// service 접근(생성)
 	@Autowired
 	MemberService service;
-	
-//	@RequestMapping(value = "login.do", method = RequestMethod.GET)
-//	public String login() {
-//	//	System.out.println("MemberController login " + new Date());
-//		
-//		return "board/login";
-//	}
-	
+
+	@RequestMapping(value = "login.do", method = RequestMethod.GET)
+	public String login() {
+		//	System.out.println("MemberController login " + new Date());
+
+		return "login";
+	}
+
 	@RequestMapping(value = "regi.do", method = RequestMethod.GET)
 	public String regi() {
-	//	System.out.println("MemberController regi " + new Date());
-		
-		return "board/regi";
+		//	System.out.println("MemberController regi " + new Date());
+
+		return "regi";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "idcheck.do", method = RequestMethod.POST)
 	public String idcheck(String id) {
-	//	System.out.println("MemberController idcheck " + new Date());
-		
+		//	System.out.println("MemberController idcheck " + new Date());
+
 		boolean isS = service.idCheck(id);
 		if(isS == true) {	// id가 있음
 			return "NO";
 		}
-		
+
 		return "YES";	// id가 없음
 	}
-	
+
 	@RequestMapping(value = "regiAf.do", method = RequestMethod.POST)
 	public String regiAf(Model model, MemberDto dto) {
-	//	System.out.println("MemberController regiAf " + new Date());
-		
+		//	System.out.println("MemberController regiAf " + new Date());
+
 		boolean isS = service.addMember(dto);
 		String message = "";
 		if(isS) {
@@ -57,35 +57,35 @@ public class MemberController {
 			message = "MEMBER_ADD_NO";
 		}
 		model.addAttribute("message", message);
-		
-		return "board/message";
+
+		return "message";
 	}
-	
-	@RequestMapping(value = "loginAf.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "loginAf.do", method = RequestMethod.POST)
 	public String login(HttpServletRequest req, Model model, MemberDto dto) {
-	//	System.out.println("MemberController login " + new Date());
-		
+		//	System.out.println("MemberController login " + new Date());
+
 		MemberDto mem = service.login(dto);
 		String msg = "";
 		if(mem != null) {	// login 성공
 			req.getSession().setAttribute("login", mem);
-		//	req.getSession().setMaxInactiveInterval(60 * 2);
-			
+			//	req.getSession().setMaxInactiveInterval(60 * 2);
+
 			msg = "LOGIN_OK";
 		}else {				// login 실패
 			msg = "LOGIN_FAIL";
 		}
 		model.addAttribute("login", msg);
-		
-		return "board/message";
+
+		return "message";
 	}
-	
+
 	@RequestMapping(value = "sessionOut.do", method = RequestMethod.GET)
 	public String sessionOut(Model model) {
 		String sessionOut = "logout";
-		
-		model.addAttribute("sessionOut", sessionOut);		
-		return "board/message";
+
+		model.addAttribute("sessionOut", sessionOut);
+		return "message";
 	}
 }
 
