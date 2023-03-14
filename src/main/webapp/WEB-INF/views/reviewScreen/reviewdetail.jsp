@@ -1,3 +1,4 @@
+<%@page import="mul.cam.a.dto.MemberDto"%>
 <%@page import="mul.cam.a.dto.ReviewComment"%>
 <%@page import="mul.cam.a.dto.ReviewDto"%>
 <%@page import="java.util.List"%>
@@ -53,6 +54,7 @@
 
 <body>
 <%
+	MemberDto login = (MemberDto)session.getAttribute("login");
 	ReviewDto dto = (ReviewDto)request.getAttribute("dto");
 %>
 
@@ -82,6 +84,7 @@
         <hr>
         
 		<div class="main-img">
+			<!-- 이미지 db에서 받아서 하게 만들기 -->
  	       	<img alt="제주" src="images/jeju.jpg" class="main-img" width="100%" height="50%">
 		</div>
 		<div id="app" class="container">
@@ -118,9 +121,15 @@
 							<!-- <button type="button" class="btn btn-primary" onclick="answerBbs()">답글</button> -->
 							<button type="button" class="btn btn-primary" onclick="location.href='review.do'">글목록</button>
 							
-							<!-- 수정, 삭제는 로그인한 본인한테만 보이게 하기 -->
-							<button type="button" class="btn btn-primary" onclick="updateBbs()">수정</button>
-							<button type="button" class="btn btn-primary" onclick="deleteBbs()">삭제</button>
+							<!-- 수정, 삭제는 로그인한 본인한테만 보이게 -->
+							<%-- <%
+							if(dto.getId().equals(login.getId())) {
+							%> --%>
+							<button type="button" class="btn btn-primary" onclick="reviewUpdate(<%=dto.getSeq() %>)">수정</button>
+							<button type="button" class="btn btn-primary" onclick="reviewDelete(<%=dto.getSeq() %>)">삭제</button>
+							<%-- <%
+							}
+							%> --%>
 							
 						</td>
 					</tr>
@@ -134,14 +143,15 @@
 				location.href = "answer.do?seq=" + seq;
 			} */
 			
-			function updateBbs(seq) {
+			function reviewUpdate(seq) {
 				location.href = "reviewUpdate.do?seq=" + seq;
 			}
 			
+			
 			//진짜 지우는 게 아니라 업데이트로 지우기
 			//del변수를 1로 바꾸고 보이지 않게 바꾸기
-			function deleteBbs(seq) {
-				location.href = "reviewdeleteAf.do&seq=" + seq;
+			function reviewDelete(seq) {
+				location.href = "reviewDelete.do?seq=" + seq;
 			}
 		</script>
 		
@@ -170,7 +180,7 @@
 							<textarea rows="3" class="form-control" name="content"></textarea>
 						</td>
 						<td style="padding-left:30px">
-							<button type="button" onclick="reviewCommentWrite()" class="btn btn-primary btn-block p-4">등록</button>
+							<button type="button" id="reviewCommentWrite" class="btn btn-primary btn-block p-4">등록</button>
 						</td>
 					</tr>
 				</table>
@@ -188,44 +198,44 @@
 		</div>
 		
 		<script type="text/javascript">
-			function reviewCommentWrite(seq) {
-				location.href = "reviewCommentWrite.do?seq=" + <%=dto.getSeq()%>;
-			}
+			
 			
 			$(document).ready(function(){
-				
-				$.ajax({
-					url:"./reviewCommentList.do", //react에서는 경로표시 해줘야함
-					type:"get",
-					data:{"seq":<%=dto.getSeq() %>},
-					success:function(list) {
-					//	alert('success')
-					//	alert(JSON.stringify(list));
-						
-						
-						$("#tbody").html(""); //한번 비워줘야 새로고침해도 더 추가되지않음
-						
-						//밑에서 올려주기
-						//each문 == for문	  (인덱스 번호대로 오브젝트 하나씩 꺼내옴)
-						$.each(list, function(index, item){
-							let str = "<tr class='table-info'>"
-									+ 	"<td> 작성자 : " + item.id + "</td>"
-									+ 	"<td> 작성일 : " + item.wdate + "</td>"
-									+ "</tr>"
-									+ "<tr>"
-									+	"<td colspan='2'>" + item.content + "</td>"
-									+ "</tr>"
-							$("#tbody").append(str);
-						});
-					},
-					error:function() {
-						alert('error');
-					}
-				});
-				
+				$("#reviewwrite").click(function() {
+					$.ajax({
+						url:"reviewCommentList.do", //react에서는 경로표시 해줘야함
+						type:"get",
+						data:{"seq":<%=dto.getSeq() %>,
+								"content" : $("content").val()},
+						success:function(list) {
+						//	alert('success')
+						//	alert(JSON.stringify(list));
+							
+							
+							$("#tbody").html(""); //한번 비워줘야 새로고침해도 더 추가되지않음
+							
+							//밑에서 올려주기
+							//each문 == for문	  (인덱스 번호대로 오브젝트 하나씩 꺼내옴)
+							$.each(list, function(index, item){
+								let str = "<tr class='table-info'>"
+										+ 	"<td> 작성자 : " + item.id + "</td>"
+										+ 	"<td> 작성일 : " + item.wdate + "</td>"
+										+ "</tr>"
+										+ "<tr>"
+										+	"<td colspan='2'>" + item.content + "</td>"
+										+ "</tr>"
+								$("#tbody").append(str);
+							});
+						},
+						error:function() {
+							alert('error');
+						}
+					})
+				})
+					
 			});
-		</script>
 
+		</script>
     </main>
 
     <%--공백--%>

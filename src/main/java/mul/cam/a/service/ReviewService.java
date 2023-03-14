@@ -20,9 +20,14 @@ public interface ReviewService {
 	//readcount
 	int readcount(int seq);
 	
+	//글쓰기
+	boolean writeReviewAf(ReviewDto dto);
 	
-	//write
-	boolean writeReview(ReviewDto dto);
+	//글수정
+	boolean reviewUpdate(ReviewDto dto);
+	
+	//글삭제
+	boolean reviewDelete(int seq);
 	
 	//답글 수정/추가
 	boolean answerReview(ReviewDto dto);

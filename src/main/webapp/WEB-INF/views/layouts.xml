@@ -65,6 +65,12 @@
 	<put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewwrite.jsp"/>
 </definition>
 
+<definition name="reviewUpdate" extends="main">
+	<put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewUpdate.jsp"/>
+</definition>
+
+
+
 
 
 

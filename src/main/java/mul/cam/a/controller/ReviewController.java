@@ -78,21 +78,10 @@ public class ReviewController {
 	
 	
 	
-	//reviewUpdate
-	@PostMapping(value="reviewUpdate.do")
-	public String reviewUpdate(Model model, int seq) {
-		ReviewDto dto = service.getReview(seq);
-		model.addAttribute("dto", dto);
-		
-		return "reviewUpdate";
-	}
-	
-	
 	//reviewwriteAf
-	//로그인 되고 난 다음에는 post로 바꾸기
 	@PostMapping(value="reviewwriteAf.do")
-	public String writeReview(Model model, ReviewDto dto) {
-		boolean isS = service.writeReview(null);
+	public String writeReviewAf(Model model, ReviewDto dto) {
+		boolean isS = service.writeReviewAf(dto);
 		String reviewwrite = "REVIEW_ADD_OK";
 		if(isS == false) {
 			reviewwrite = "REVIEW_ADD_NO";
@@ -103,9 +92,51 @@ public class ReviewController {
 	
 	
 	
+	//reviewUpdate
+	@GetMapping(value="reviewUpdate.do")
+	public String reviewUpdate(Model model, int seq) {
+		ReviewDto dto = service.getReview(seq);
+		model.addAttribute("dto", dto);
+		
+		return "reviewUpdate";
+	}
+	
+	
+	//reviewDelete
+	@GetMapping(value="reviewDelete.do")
+	public String reviewDelete(Model model, int seq) {
+		boolean b = service.reviewDelete(seq);
+		String reviewDelete = "REVIEW_DELETE_YES";
+		if(b == false) {
+			reviewDelete = "REVIEW_DELETE_NO";
+		}
+		model.addAttribute("reviewDelete", reviewDelete);
+		return "redirect:/review.do";
+	}
+	
+	
+	
+	//reviewUpdateAf
+	@PostMapping(value="reviewUpdateAf.do")
+	public String reviewUpdateAf(Model model, ReviewDto dto) {
+		boolean isS = service.reviewUpdate(dto);
+		String reviewUpdate = "REVIEW_UPDATE_OK";
+		if(isS == false) {
+			reviewUpdate = "REVIEW_UPDATE_NO";
+		}
+		
+		model.addAttribute("reviewUpdate", reviewUpdate);
+		
+		return "redirect:/review.do";
+	}
+	
+	
+	
+	
+	
 	
 	//답글(사용할지 말지 고민중)
-	@PostMapping(value = "answer.do")
+	@PostMapping(value = "reviewAnswer.do")
 	public String answer(Model model, int seq, ReviewDto dto) {
 		dto.setSeq(seq);
 		

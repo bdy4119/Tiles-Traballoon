@@ -45,9 +45,23 @@ public class ReviewDaoImpl implements ReviewDao{
 	
 	//reviewwrite
 	@Override
-	public int writeReview(ReviewDto dto) {
+	public int writeReviewAf(ReviewDto dto) {
 		return session.insert(ns + "writeReview", dto);
 	}
+	
+	
+	//글수정
+	@Override
+	public int reviewUpdate(ReviewDto dto) {
+		return session.update(ns + "reviewUpdate", dto);
+	}
+	
+	//글삭제
+	@Override
+	public int reviewDelete(int seq) {
+		return session.update(ns + "reviewDelete", seq);
+	}
+	
 	
 	//답글 수정
 	@Override
@@ -71,7 +85,6 @@ public class ReviewDaoImpl implements ReviewDao{
 	public List<ReviewComment> commentList(int seq) {
 		return session.selectList(ns + "commentList", seq);
 	}
-
 
 	
 	
