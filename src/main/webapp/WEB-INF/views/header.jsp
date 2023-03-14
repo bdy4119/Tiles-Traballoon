@@ -48,7 +48,7 @@
                         <a class="btn btn-outline-primary me-2" href="login.do" role="button">Login</a>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-primary">Sign-up</button>
+                        <a class="btn btn-primary" href="regi.do" role="button">Sign-up</a>
                     </li>
                 </ul>
             </div>
