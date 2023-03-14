@@ -10,7 +10,23 @@
 </head>
 <body>
 
-<div align="center">
+<div class="localtravel-wrap"></div>
+	<div><tiles:insertAttribute name="header"/></div>
+	<div>
+		<div><tiles:insertAttribute name="content"/></div>
+		<div><tiles:insertAttribute name="content"/></div>
+		<div><tiles:insertAttribute name="content"/></div>
+		<div><tiles:insertAttribute name="content"/></div>
+		<div><tiles:insertAttribute name="content"/></div>
+		<div><tiles:insertAttribute name="content"/></div>
+		<div><tiles:insertAttribute name="content"/></div>
+		<div><tiles:insertAttribute name="content"/></div>
+		<div><tiles:insertAttribute name="content"/></div>
+		<div><tiles:insertAttribute name="footer"/></div>	
+	</div>
+
+
+<%-- <div align="center">
 
 <table style="width: 100%; height: 100%; border-color: gray;" >
 
@@ -21,11 +37,17 @@
 	</td>
 </tr>
 
+<tr align="center">
+	<td colspan="3" style="height: 10%">
+		<tiles:insertAttribute name="content"/>
+	</td>
+</tr>
+
 
 <tr class="d-flex justify-content-center">
-<%-- <td align="left" valign="top" style="background-color: rgb(204,204,204); width: 20%">
+<td align="left" valign="top" style="background-color: rgb(204,204,204); width: 20%">
 		<tiles:insertAttribute name="menu"/> 
-	</td>--%>
+	</td>
 	<td style="height: 400px">
 		<tiles:insertAttribute name="content"/>
 	</td>
@@ -37,15 +59,15 @@
 	<td style="height: 400px">
 		<tiles:insertAttribute name="content"/>
 	</td>
-<%-- 	<td align="center" style="width: 15%">
+	<td align="center" style="width: 15%">
 		<tiles:insertAttribute name="empty"/>
-	</td> --%>
+	</td>
 </tr>
 
 <tr class="d-flex justify-content-center">
-<%-- <td align="left" valign="top" style="background-color: rgb(204,204,204); width: 20%">
+<td align="left" valign="top" style="background-color: rgb(204,204,204); width: 20%">
 		<tiles:insertAttribute name="menu"/> 
-	</td>--%>
+	</td>
 	<td style="height: 400px">
 		<tiles:insertAttribute name="content"/>
 	</td>
@@ -57,15 +79,15 @@
 	<td style="height: 400px">
 		<tiles:insertAttribute name="content"/>
 	</td>
-<%-- 	<td align="center" style="width: 15%">
+	<td align="center" style="width: 15%">
 		<tiles:insertAttribute name="empty"/>
-	</td> --%>
+	</td>
 </tr>
 
 <tr class="d-flex justify-content-center">
-<%-- <td align="left" valign="top" style="background-color: rgb(204,204,204); width: 20%">
+<td align="left" valign="top" style="background-color: rgb(204,204,204); width: 20%">
 		<tiles:insertAttribute name="menu"/> 
-	</td>--%>
+	</td>
 	<td style="height: 400px">
 		<tiles:insertAttribute name="content"/>
 	</td>
@@ -77,9 +99,9 @@
 	<td style="height: 400px">
 		<tiles:insertAttribute name="content"/>
 	</td>
-<%-- 	<td align="center" style="width: 15%">
+	<td align="center" style="width: 15%">
 		<tiles:insertAttribute name="empty"/>
-	</td> --%>
+	</td>
 </tr>
 </div>
 <!-- footer -->
@@ -93,6 +115,6 @@
 </table>
 
 </div>
-
+ --%>
 </body>
 </html>
