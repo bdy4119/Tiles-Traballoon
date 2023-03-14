@@ -22,12 +22,24 @@ public class TilesController {
 	 * return "bbslist"; }
 	 */
 	
+	
+	
+	/* 지역별 여행 - 재훈 */
 	@GetMapping("localtravel.do")
     public String localtravel() {
 		System.out.println("TilesController localtravel() " + new Date());
 		
         return "localtravel";
     }
+	@GetMapping(value = "localtravel2.do")
+	public String localtravel2()
+	/* (Model model, int seq) */ {
+		/*
+		 * LocalDto dto = service.getLocal(seq); model.addAttribute("localdto", dto);
+		 */
+		return "localtravel2";
+	}
+	/* 지역별 여행 - 재훈 */
 	
 	@GetMapping("hotel.do")
     public String hotel() {
