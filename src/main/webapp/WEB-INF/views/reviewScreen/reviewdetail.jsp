@@ -133,6 +133,14 @@
 							
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<button type="button" class="btn btn-primary" onclick="returnPage(<%=dto.getSeq() %>)">이전글</button>
+						</td>
+						<td align="right">
+							<button type="button" class="btn btn-primary" onclick="nextPage(<%=dto.getSeq() %>)">다음글</button>
+						</td>
+					</tr>
 				</table>
 			</form>
 		</div>
@@ -153,6 +161,16 @@
 			function reviewDelete(seq) {
 				location.href = "reviewDelete.do?seq=" + seq;
 			}
+			
+			
+			//이전글
+			function returnPage(seq) {
+				location.href = "reviewdetail.do?seq=" + (seq-1);
+			}
+			//다음글
+			function nextPage(seq) {
+				location.href = "reviewdetail.do?seq=" + (seq+1);
+			}
 		</script>
 		
 		
@@ -165,7 +183,7 @@
 			ReviewComment comment = (ReviewComment)request.getAttribute("seq");
 		%>
 		<div id="app" class="container">
-			<form action="" method="post">
+			<form action="reviewCommentWrite.do" method="get">
 			<input type="hidden" name="seq" value="<%=dto.getSeq() %>">
 			<input type="hidden" name="id" value="<%=dto.getId() %>">
 			
@@ -180,7 +198,7 @@
 							<textarea rows="3" class="form-control" name="content"></textarea>
 						</td>
 						<td style="padding-left:30px">
-							<button type="button" id="reviewCommentWrite" class="btn btn-primary btn-block p-4">등록</button>
+							<button type="submit" class="btn btn-primary btn-block p-4">등록</button>
 						</td>
 					</tr>
 				</table>
@@ -201,12 +219,11 @@
 			
 			
 			$(document).ready(function(){
-				$("#reviewwrite").click(function() {
+				
 					$.ajax({
 						url:"reviewCommentList.do", //react에서는 경로표시 해줘야함
-						type:"get",
-						data:{"seq":<%=dto.getSeq() %>,
-								"content" : $("content").val()},
+						type:"GET",
+						data:{"seq":<%=dto.getSeq() %>},
 						success:function(list) {
 						//	alert('success')
 						//	alert(JSON.stringify(list));
@@ -230,7 +247,6 @@
 						error:function() {
 							alert('error');
 						}
-					})
 				})
 					
 			});

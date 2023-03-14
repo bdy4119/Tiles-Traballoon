@@ -154,7 +154,6 @@ public class ReviewController {
 	
 	
 	//댓글추가
-	//손보기,,,,
 	@GetMapping(value = "reviewCommentWrite.do")
 	public String commentWrite(ReviewComment comment) {
 		boolean isS = service.commentWrite(comment);
