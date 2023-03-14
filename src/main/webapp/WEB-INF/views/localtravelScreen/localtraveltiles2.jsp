@@ -17,38 +17,39 @@
 %>
 <%-- <%=dto.getSeq() %>
 <%=dto.getRegionname() %> --%>
-		
+<div class="container">		
 	<div><tiles:insertAttribute name="header"/></div>
 	<div><tiles:insertAttribute name="weather"/></div>
 	
-	<div class="d-flex justify-content-center">
-		<div id="Rpic"> <!-- 서울 페이지로 -->
-		<button type="button" onclick="location.href='localtravel2.do'">서울/경기</button>
+	<!-- 일단 막 만들어 뒀고 여기는 지역별 여행지 채울 곳 -->
+	<div><tiles:insertAttribute name="eachregion"/></div>
+	<!-- <div class="d-flex justify-content-center">
+		<div id="Rpic"> 서울 페이지로
+		<button type="button" onclick="location.href='gyeonggi.do'">서울/경기</button>
 		</div>
 		
 		
-		<div id="Rpic"> <!-- 경기 페이지로 -->
+		<div id="Rpic"> 경기 페이지로
 		<button type="button" onclick="location.href='main.do'">제주</button>
 		</div>
 		
-		<div id="Rpic"> <!-- 제주 페이지로 -->
+		<div id="Rpic"> 제주 페이지로
 		<button type="button" onclick="location.href='main.do'">강원</button>
 		</div>
 	</div>
 	<div class="d-flex justify-content-center">	
-		<div id="Rpic"> <!-- 충청 페이지로 -->
+		<div id="Rpic"> 충청 페이지로
 		<button type="button" onclick="location.href='main.do'">충북</button>
 		</div>
 		
-		<div id="Rpic"> <!-- 강원 페이지로 -->
+		<div id="Rpic"> 강원 페이지로
 		<button type="button" onclick="location.href='main.do'">충남</button>
 		</div>
 		
-		<div id="Rpic"> <!-- 경북 페이지로 -->
+		<div id="Rpic"> 경북 페이지로
 		<button type="button" onclick="location.href='main.do'">경북</button>
 		</div>
-	</div>	
-
+	</div>	 -->
 	
 	<div><tiles:insertAttribute name="footer"/></div>	
 	
@@ -56,9 +57,7 @@
 
 
  
-</table>
 
 </div>
-
 </body>
 </html>

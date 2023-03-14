@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TilesController {
 	
 	@GetMapping(value = "main.do")		
-	public String login() {			//layouts.xml의 definition 안 login을 뜻함
-		System.out.println("TilesController login() " + new Date());
+	public String main() {			//layouts.xml의 definition 안 main을 뜻함
+		System.out.println("TilesController main() " + new Date());
 		
 		return "main";
 	}
@@ -24,58 +24,7 @@ public class TilesController {
 	
 	
 	
-	/* 지역별 여행 - 재훈 */
-	@GetMapping("localtravel.do")
-    public String localtravel() {
-		System.out.println("TilesController localtravel() " + new Date());
-		
-        return "localtravel";
-    }
-	@GetMapping(value = "gyeonggi.do")
-	public String gyeonggi()
-	/* (Model model, int seq) */ {
-		/*
-		 * LocalDto dto = service.getLocal(seq); model.addAttribute("localdto", dto);
-		 */
-		return "gyeonggi";
-	}
 	
-	@GetMapping(value = "jeju.do")
-	public String jeju() {
-		return "jeju";
-	}
-	
-	@GetMapping(value = "gangwon.do")
-	public String gangwon() {
-		return "gangwon";
-	}
-	
-	@GetMapping(value = "chungbuk.do")
-	public String chungbuk() {
-		return "chungbuk";
-	}
-	@GetMapping(value = "chungnam.do")
-	public String chungnam() {
-		return "chungnam";
-	}
-	@GetMapping(value = "jeonbuk.do")
-	public String jeonbuk() {
-		return "jeonbuk";
-	}
-	@GetMapping(value = "jeonnam.do")
-	public String jeonnam() {
-		return "jeonnam";
-	}
-	@GetMapping(value = "gyeongbuk.do")
-	public String gyeongbuk() {
-		return "gyeongbuk";
-	}
-	
-	@GetMapping(value = "gyeongnam.do")
-	public String gyeongnam() {
-		return "gyeongnam";
-	}
-	/* 지역별 여행 - 재훈 */
 	
 	@GetMapping("hotel.do")
     public String hotel() {

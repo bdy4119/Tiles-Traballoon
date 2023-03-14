@@ -5,13 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
 
-<div align="center">
-<img src="images/메인2.jpg" width="800" height="400">
-</div>
-
+<h1>지역별 여행지 보여줄곳</h1>
 </body>
 </html>

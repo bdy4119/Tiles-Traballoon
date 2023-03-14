@@ -19,4 +19,4 @@ public class LocalDaoImpl implements LocalDao{
 	public LocalDto getLocal(int seq) {
 		return session.selectOne(ns + "getLocal", seq);
 	}
-}
+} 

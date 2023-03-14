@@ -5,13 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
-
-<div align="center">
-<img src="images/메인2.jpg" width="800" height="400">
-</div>
-
+<h1>장소관련 내용 게시판</h1>
 </body>
 </html>
