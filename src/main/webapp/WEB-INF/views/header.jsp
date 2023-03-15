@@ -26,7 +26,7 @@
 
 <body>
 <%--container--%>
-<div class="container">
+<div class="container-fluid">
     
 
         <%--헤더--%>
@@ -57,5 +57,5 @@
         <%--헤더--%>
         
         <%--공백--%>
-        <div class="b-example-divider"></div>
+<!--         <div class="b-example-divider"></div> -->
 </div>

@@ -14,6 +14,9 @@ public interface ReviewDao {
 	//페이지
 	int getAllReview(ReviewParam Param);
 	
+	//readcountOrder
+	ReviewDto readcountOrder(ReviewDto dto);
+	
 	//detail
 	ReviewDto getReview(int seq);
 	

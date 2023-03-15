@@ -13,6 +13,10 @@ public interface ReviewService {
 	
 	//페이지 넘버
 	int getAllReview(ReviewParam Param);
+	
+	//조회수순
+	ReviewDto readcountOrder(ReviewDto dto);
+	
 
 	//detail
 	ReviewDto getReview(int seq);

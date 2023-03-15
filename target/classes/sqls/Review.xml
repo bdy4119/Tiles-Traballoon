@@ -46,6 +46,17 @@
 	</select>
 	
 	
+	
+	<!-- 조회수순 -->
+	<select id="readcountOrder" parameterType="mul.cam.a.dto.ReviewDto"
+		resultType="mul.cam.a.dto.ReviewDto">
+		select seq, id, ref, step, depth, title, content, wdate, del, readcount
+		from review
+		order by readcount desc
+	</select>
+	
+	
+	
 	<!-- reviewdetail -->
 	<select id="getReview" parameterType="Integer" resultType="mul.cam.a.dto.ReviewDto">
 		select seq, id, ref, step, depth, title, content, wdate, del, readcount

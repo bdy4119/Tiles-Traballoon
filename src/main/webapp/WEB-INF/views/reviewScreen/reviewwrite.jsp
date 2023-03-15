@@ -40,34 +40,38 @@
 <div class="container">
     <main>    
     <%--내용--%>
+    <hr>
     <h1>글쓰기</h1>
-		<div align="center">
-		<form action="reviewwriteAf.do" id="frm" method="post">
-			<table border="1">
+    <hr>
+		<div align="center" class="form-group">
+		<form action="writeReviewAf.do" id="frm" method="post">
+			<table class="table table-striped">
 				<col width="200">
 				<col width="400">
 				<tr>
 					<th>id</th>
 					<td>
-						<%-- <%=login.getId() %> --%>
-						<input type="text" id="id" name="id"/>
+						<%--  나중에 로그인세션 넣기
+							<%=login.getId() %>
+						--%>
+						<input type="text" id="id" name="id" class="form-control"/>
 					</td>
 				</tr>
 				<tr>
 					<th>제목</th>
 					<td>
-						<input type="text" id="title" name="title" name="" size="50px">
+						<input type="text" id="title" name="title" name="" size="50px" class="form-control"/>
 					</td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea rows="20" cols="50px" id="content" name="content" placeholder="내용을 작성해주세요"></textarea>
+						<textarea rows="20" cols="50px" id="content" name="content" placeholder="내용을 작성해주세요" class="form-control col-sm-5"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">
-						<button type="submit" id="reviewwrite">글쓰기</button>
+						<button type="submit" id="reviewwrite" class="btn btn-secondary">글쓰기</button>
 					</td>
 				</tr>
 			</table>
@@ -90,7 +94,7 @@
 		$("#reviewwrite").click(function() {
 			$.ajax({
 				type:"POST",
-				url:"reviewwriteAf.do",
+				url:"writeReviewAf.do",
 				data: {
  					"id" : $("id").val(),
 					"title" : $("title").val(),

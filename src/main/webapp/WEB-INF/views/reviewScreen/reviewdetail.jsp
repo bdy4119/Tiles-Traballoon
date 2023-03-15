@@ -119,14 +119,14 @@
 					<tr>
 						<td colspan="2">
 							<!-- <button type="button" class="btn btn-primary" onclick="answerBbs()">답글</button> -->
-							<button type="button" class="btn btn-primary" onclick="location.href='review.do'">글목록</button>
+							<button type="button" class="btn btn-info" onclick="location.href='review.do'">글목록</button>
 							
 							<!-- 수정, 삭제는 로그인한 본인한테만 보이게 -->
 							<%-- <%
 							if(dto.getId().equals(login.getId())) {
 							%> --%>
-							<button type="button" class="btn btn-primary" onclick="reviewUpdate(<%=dto.getSeq() %>)">수정</button>
-							<button type="button" class="btn btn-primary" onclick="reviewDelete(<%=dto.getSeq() %>)">삭제</button>
+							<button type="button" class="btn btn-info" onclick="reviewUpdate(<%=dto.getSeq() %>)">수정</button>
+							<button type="button" class="btn btn-info" onclick="reviewDelete(<%=dto.getSeq() %>)">삭제</button>
 							<%-- <%
 							}
 							%> --%>
@@ -135,10 +135,10 @@
 					</tr>
 					<tr>
 						<td>
-							<button type="button" class="btn btn-primary" onclick="returnPage(<%=dto.getSeq() %>)">이전글</button>
+							<button type="button" class="btn btn-secondary" onclick="returnPage(<%=dto.getSeq() %>)">이전글</button>
 						</td>
 						<td align="right">
-							<button type="button" class="btn btn-primary" onclick="nextPage(<%=dto.getSeq() %>)">다음글</button>
+							<button type="button" class="btn btn-secondary" onclick="nextPage(<%=dto.getSeq() %>)">다음글</button>
 						</td>
 					</tr>
 				</table>
@@ -198,7 +198,7 @@
 							<textarea rows="3" class="form-control" name="content"></textarea>
 						</td>
 						<td style="padding-left:30px">
-							<button type="submit" class="btn btn-primary btn-block p-4">등록</button>
+							<button type="submit" class="btn btn-info" style="padding-bottom:30px; padding-top:30px;">등록</button>
 						</td>
 					</tr>
 				</table>
@@ -236,10 +236,10 @@
 							$.each(list, function(index, item){
 								let str = "<tr class='table-info'>"
 										+ 	"<td> 작성자 : " + item.id + "</td>"
-										+ 	"<td> 작성일 : " + item.wdate + "</td>"
+										+ 	"<td align='right' style='padding-right:20px'> 작성일 : " + item.wdate + "</td>"
 										+ "</tr>"
 										+ "<tr>"
-										+	"<td colspan='2'>" + item.content + "</td>"
+										+	"<td style='padding-left:20px; padding-bottom:3px;'>" + item.content + "</td>"
 										+ "</tr>"
 								$("#tbody").append(str);
 							});
@@ -250,6 +250,7 @@
 				})
 					
 			});
+			
 
 		</script>
     </main>

@@ -30,6 +30,15 @@ public class ReviewServiceImpl implements ReviewService{
 	public int getAllReview(ReviewParam Param) {
 		return dao.getAllReview(Param);
 	}
+	
+
+	//readcountOrder
+	@Override
+	public ReviewDto readcountOrder(ReviewDto dto) {
+		return dao.readcountOrder(dto);
+	}
+	
+	
 
 	//detail
 	@Override
@@ -90,7 +99,7 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewComment> commentList(int seq) {
 		return dao.commentList(seq);
 	}
-	
+
 	
 	
 	

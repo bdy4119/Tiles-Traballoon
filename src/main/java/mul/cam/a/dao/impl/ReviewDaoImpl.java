@@ -30,6 +30,13 @@ public class ReviewDaoImpl implements ReviewDao{
 	public int getAllReview(ReviewParam Param) {
 		return session.selectOne(ns + "getAllReview", Param);
 	}
+	
+	
+	//readcountOrder
+	@Override
+	public ReviewDto readcountOrder(ReviewDto dto) {
+		return session.selectOne(ns + "readcountOrder", dto);
+	}
 
 	
 	//reviewdetail
@@ -46,9 +53,8 @@ public class ReviewDaoImpl implements ReviewDao{
 	//reviewwrite
 	@Override
 	public int writeReviewAf(ReviewDto dto) {
-		return session.insert(ns + "writeReview", dto);
+		return session.insert(ns + "writeReviewAf", dto);
 	}
-	
 	
 	//글수정
 	@Override
@@ -85,6 +91,10 @@ public class ReviewDaoImpl implements ReviewDao{
 	public List<ReviewComment> commentList(int seq) {
 		return session.selectList(ns + "commentList", seq);
 	}
+
+
+
+
 
 	
 	

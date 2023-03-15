@@ -27,8 +27,8 @@
 	
 	<div class="container">
 	<%--공백--%>
-    <div class="b-example-divider"></div>
-
+<!--     <div class="b-example-divider"></div>
+ -->
     <%--푸터--%>
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <div class="col-md-4 d-flex align-items-center">
