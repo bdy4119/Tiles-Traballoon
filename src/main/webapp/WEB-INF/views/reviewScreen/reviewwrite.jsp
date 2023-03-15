@@ -1,3 +1,4 @@
+<%@page import="mul.cam.a.dto.MemberDto"%>
 <%@page import="mul.cam.a.dao.ReviewDao"%>
 <%@page import="mul.cam.a.dto.ReviewDto"%>
 <%@page import="java.util.List"%>
@@ -48,6 +49,7 @@
 				<tr>
 					<th>id</th>
 					<td>
+						<%-- <%=login.getId() %> --%>
 						<input type="text" id="id" name="id"/>
 					</td>
 				</tr>
@@ -83,6 +85,29 @@
 </div>
 <script type="text/javascript">
 
+	$(document).ready(function() {
+	
+		$("#reviewwrite").click(function() {
+			$.ajax({
+				type:"POST",
+				url:"reviewwriteAf.do",
+				data: {
+ 					"id" : $("id").val(),
+					"title" : $("title").val(),
+					"content" : $("content").val()},
+				success: function(str) {
+					if(str == "REVIEW_ADD_OK") {
+						alert("글이 등록되었습니다.");
+						location.href="review.do";
+					}
+				}, error: function() {
+					alert("글을 등록하지 못했습니다.");
+					location.href="review.do";
+				}
+			})
+		})
+		
+	});
 </script>
 <%--container--%>
 

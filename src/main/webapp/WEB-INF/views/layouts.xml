@@ -32,19 +32,6 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
 
-	<!-- 여행리뷰 -->
-    <definition name="review" extends="main">
-        <put-attribute name="content" value="/WEB-INF/views/reviewScreen/review.jsp"/>
-    </definition>
-
-    <definition name="reviewdetail" extends="main">
-        <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewdetail.jsp"/>
-    </definition>
-
-    <definition name="reviewwrite" extends="main">
-        <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewwrite.jsp"/>
-    </definition>
-
 
     <!-- 커뮤니티 -->
     <definition name="community" extends="main">
@@ -83,6 +70,23 @@
     </definition>
     <definition name="message" template="/WEB-INF/views/loginScreen/message.jsp">
     </definition>
+
+<!-- 여행리뷰 -->
+<definition name="review" extends="main">
+	<put-attribute name="content" value="/WEB-INF/views/reviewScreen/review.jsp"/>
+</definition>
+
+<definition name="reviewdetail" extends="main">
+	<put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewdetail.jsp"/>
+</definition>
+
+<definition name="reviewwrite" extends="main">
+	<put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewwrite.jsp"/>
+</definition>
+
+<definition name="reviewUpdate" extends="main">
+	<put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewUpdate.jsp"/>
+</definition>
 
 
 

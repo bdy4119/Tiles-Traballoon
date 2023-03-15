@@ -169,9 +169,8 @@
 										</font>
 									</td>
 									<%
-								}	
+								}
 								%>
-						
 								<td><%=dto.getId() %></td>
 								<td><%=dto.getWdate() %></td>
 								<td><%=dto.getReadcount() %></td>

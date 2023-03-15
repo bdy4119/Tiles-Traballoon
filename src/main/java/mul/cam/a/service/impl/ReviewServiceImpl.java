@@ -47,8 +47,24 @@ public class ReviewServiceImpl implements ReviewService{
 	
 	//reviewwrite
 	@Override
-	public boolean writeReview(ReviewDto dto) {
-		int n = dao.writeReview(dto);
+	public boolean writeReviewAf(ReviewDto dto) {
+		int n = dao.writeReviewAf(dto);
+		return n>0?true:false;
+	}
+	
+	
+	//글수정
+	@Override
+	public boolean reviewUpdate(ReviewDto dto) {
+		int n = dao.reviewUpdate(dto);
+		return n>0?true:false;
+	}
+	
+	
+	//글삭제
+	@Override
+	public boolean reviewDelete(int seq) {
+		int n = dao.reviewDelete(seq);
 		return n>0?true:false;
 	}
 
