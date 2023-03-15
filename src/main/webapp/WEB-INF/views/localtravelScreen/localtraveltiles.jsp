@@ -3,9 +3,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
-<%-- <%	
+<%	
 	LocalDto dto = (LocalDto)request.getAttribute("localdto");
-%> --%>
+%>
 
 <!DOCTYPE html>
 <html>
@@ -37,14 +37,6 @@
 		<!-- 검색버튼 넣을때 사용 
 		<table style="margin-left: auto; margin-right: auto; margin-top: 3px; margin-bottom: 3px">
 			<tr>
-				<td style="padding-left: 3px">
-					<select class="custom-select" id="choice" name="choice">
-						<option selected>검색</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
-						<option value="writer">작성자</option>
-					</select>
-				</td>
 				<td style="padding-left: 5px" class="align-middle">
 					<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" placeholder="검색어" value="<%--search --%>">
 				<td style="padding-left: 5px">
@@ -56,6 +48,7 @@
 		</table> 
 		-->
 	</div>
+	
 	
 	<div class="d-flex justify-content-center" align="center">
 	

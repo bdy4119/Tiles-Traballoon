@@ -4,7 +4,7 @@
 	
 <mapper namespace="Local.">
 
-<!-- dto안에 LocalDto에 있는거로 내보내(return)겠다 -->
+<!-- 디테일, dto안에 LocalDto에 있는거로 내보내(return)겠다 -->
 <select id="getLocal" parameterType="Integer" resultType="mul.cam.a.dto.LocalDto">
 	select seq, regionname, readcount
 	from region
