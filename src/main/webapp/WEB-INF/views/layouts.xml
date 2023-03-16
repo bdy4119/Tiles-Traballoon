@@ -13,7 +13,44 @@
         <!-- 	<put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/> -->
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
-
+    
+	<definition name="mypage" template="/WEB-INF/views/mypageScreen/mypagetiles.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/mypageScreen/mypageAf.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	
+    <definition name="mypageAf" extends="mypage">
+    	<put-attribute name="content" value="/WEB-INF/views/mypageScreen/mypageAf.jsp"/>
+	</definition>
+	
+	<definition name="wishlist" extends="mypage">
+	    <put-attribute name="content" value="/WEB-INF/views/mypageScreen/wishlist.jsp"/>
+	</definition>
+	
+	<definition name="order" extends="mypage">
+	    <put-attribute name="content" value="/WEB-INF/views/mypageScreen/order.jsp"/>
+	</definition>
+	
+	<definition name="reference" extends="mypage">
+	    <put-attribute name="content" value="/WEB-INF/views/mypageScreen/reference.jsp"/>
+	</definition>
+	
+	<definition name="leave" extends="mypage">
+	    <put-attribute name="content" value="/WEB-INF/views/mypageScreen/leave.jsp"/>
+	</definition>
+	
+	<definition name="writeme" extends="mypage">
+	    <put-attribute name="content" value="/WEB-INF/views/mypageScreen/writeme.jsp"/>
+	</definition>
+   <!--   <definition name="mypageAf" extends="mypage">
+		<put-attribute name="mypageAf" value="/WEB-INF/views/mypageScreen/mypageAf.jsp"/>
+	</definition>
+	
+    <definition name="wishlist" extends="mypage">
+        <put-attribute name="wishlist" value="/WEB-INF/views/mypageScreen/wishlist.jsp"/>
+    </definition> -->
+    
     <!-- 지역별 여행 -->
     <definition name="localtravel" template="/WEB-INF/views/localtravelScreen/localtraveltiles.jsp">
       <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
@@ -104,15 +141,10 @@
 
 
 
-
     <!-- 마이페이지 -->
-    <definition name="mypage" template="/WEB-INF/views/mypageScreen/mypagetiles.jsp">
-        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
-        <put-attribute name="content" value="/WEB-INF/views/content.jsp"/>
-        <!-- 	<put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/> -->
-        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
-    </definition>
+    
+    
+	<!-- 마이페이지 -->
 
 
     <!-- 로그인페이지 -->
