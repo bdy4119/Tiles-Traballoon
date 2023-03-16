@@ -26,7 +26,7 @@
 
 <body>
 <%--container--%>
-<div class="container">
+<div class="container-fluid" >
 
         <%--헤더--%>
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">

@@ -50,12 +50,12 @@ public class TilesController {
 //        return "communitylist";
 //    }
 	
-	@GetMapping("mypage.do")
-    public String mypage() {
-		System.out.println("TilesController mypage() " + new Date());
-		
-        return "mypage";
-    }
+//	@GetMapping("mypage.do")
+//    public String mypage() {
+//		System.out.println("TilesController mypage() " + new Date());
+//		
+//        return "mypage";
+//    }
 	
 //	@GetMapping("login.do")
 //    public String loginpage() {

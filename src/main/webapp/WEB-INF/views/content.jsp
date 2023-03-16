@@ -25,7 +25,6 @@
 </head>
 
 <body>
-<div class="container">
 
 <%--내용--%>
         <h1>Multi Campus</h1>
