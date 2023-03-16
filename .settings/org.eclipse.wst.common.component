@@ -12,9 +12,9 @@
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                         
-        
-        <property name="java-output-path" value="/TraballoonTiles/build/classes"/>
         <property name="context-root" value="TraballoonTiles"/>
+        <property name="java-output-path" value="/TraballoonTiles/build/classes"/>
+        
                     
     
     </wb-module>
