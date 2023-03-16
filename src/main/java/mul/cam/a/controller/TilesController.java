@@ -29,13 +29,12 @@ public class TilesController {
         return "localtravel";
     }
 	
-	@GetMapping("hotel.do")
-    public String hotel() {
-		System.out.println("TilesController hotel() " + new Date());
-		
-        return "hotel";
-    }
-	
+	/*
+	 * @GetMapping("hotel.do") public String hotel() {
+	 * System.out.println("TilesController hotel() " + new Date());
+	 * 
+	 * return "hotel"; }
+	 */
 //	@GetMapping("reviewPage.do")
 //    public String review() {
 //		System.out.println("TilesController reviewPage() " + new Date());
