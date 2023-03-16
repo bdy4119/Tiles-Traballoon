@@ -5,6 +5,7 @@
 
 <tiles-definitions>
 
+
     <!-- 맨처음 보이는 로그인 화면이라 main -->
     <definition name="main" template="/WEB-INF/views/mainscreentiles.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
@@ -32,17 +33,36 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
 
-	<!-- 여행리뷰 -->
+    <!-- 여행리뷰
+    <definition name="review" template="/WEB-INF/views/reviewScreen/reviewtiles.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+      <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+      <put-attribute name="review" value="/WEB-INF/views/reviewScreen/review.jsp"/>
+      <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+     -->
+    <!-- 
+                  위에 main  상속
+    <definition name="bbslist" extends="main">
+      <put-attribute name="content" value="/WEB-INF/views/bbs/bbslist.jsp"/>
+    </definition>
+     -->
+
     <definition name="review" extends="main">
-        <put-attribute name="content" value="/WEB-INF/views/reviewScreen/review.jsp"/>
+      <put-attribute name="content" value="/WEB-INF/views/reviewScreen/review.jsp"/>
     </definition>
 
     <definition name="reviewdetail" extends="main">
-        <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewdetail.jsp"/>
+      <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewdetail.jsp"/>
     </definition>
 
     <definition name="reviewwrite" extends="main">
-        <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewwrite.jsp"/>
+      <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewwrite.jsp"/>
+    </definition>
+
+    <definition name="reviewUpdate" extends="main">
+      <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewUpdate.jsp"/>
     </definition>
 
 
