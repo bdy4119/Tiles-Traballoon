@@ -21,14 +21,14 @@ public class AreaController {
 	AreaService service;
 	 
 	
-	@GetMapping(value = "localtravel.do")
-	public String localtravel(HttpServletRequest req, Model model) { 
-		System.out.println("AreaController localtravel() " + new Date());
-		
-		List<AreaDto> list = service.arealist();	//사진으로 뿌리기 
-		model.addAttribute("arealist", list);
-		return "localtravel";
-	}
+//	@GetMapping(value = "localtravel.do")
+//	public String localtravel(HttpServletRequest req, Model model) { 
+//		System.out.println("AreaController localtravel() " + new Date());
+//		
+//		List<AreaDto> list = service.arealist();	//사진으로 뿌리기 
+//		model.addAttribute("arealist", list);
+//		return "localtravel";
+//	}
 	
 	@GetMapping(value = "localtravel2.do")
 	public String localtravel2(Model model, int areacode) {/* areacode가지고 이동 */
