@@ -22,6 +22,9 @@ public class UploadImageCtr {
     @RequestMapping(value="/uploadImage.do", produces = "application/json; charset=utf8")
     @ResponseBody
     public String uploadImage(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest req)  {
+
+        String contPath = req.getContextPath();
+
         JsonObject jsonObject = new JsonObject();
 
         // 내부경로로 저장
@@ -41,7 +44,7 @@ public class UploadImageCtr {
         try {
             InputStream fileStream = multipartFile.getInputStream();
             FileUtils.copyInputStreamToFile(fileStream, targetFile);	  //파일 저장
-            jsonObject.addProperty("url", File.separator+"testImage"+File.separator+savedFileName);  // 파일이 저장된 경로를 "URL" 이라는 이름으로 파일 경로를 넣습니다.
+            jsonObject.addProperty("url", File.separator+"TraballoonTiles/testImage"+File.separator+savedFileName);  // 파일이 저장된 경로를 "URL" 이라는 이름으로 파일 경로를 넣습니다.
             jsonObject.addProperty("responseCode", "success");            // 문제가 없으면 "responseCode"라는 이름으로 "success" 값을 넣습니다.
 
         } catch (IOException e) {
@@ -51,6 +54,8 @@ public class UploadImageCtr {
         }
         String result = jsonObject.toString();         // Json 안에 있는 전체의 파일을 String 으로 변환 후 리턴 시킵니다.
 
+
+        System.out.println("context-path : " + contPath);
         System.out.println("upLoadImage result : "+result);
         return result;
     }

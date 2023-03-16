@@ -46,7 +46,7 @@
 	<!-- spring에서 처리할 수 없는 요청은 tomcat이 처리 -->
 	<mvc:default-servlet-handler/>
 
-	<mvc:resources location="testImage" mapping="/testImage/**" />
+	<mvc:resources location="testImage" mapping="testImage/**" />
 
     <!-- AbstractView안떠서 해봄 ->extends를 안했었음 ㅄ
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
