@@ -2,6 +2,7 @@ package mul.cam.a.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class ReviewController {
 	@GetMapping(value="review.do")
 	public String review(ReviewParam param, Model model) {
 		
+//		ReviewDto dto =service.getReview(seq);
 		// 글의 시작과 끝
 		int pn = param.getPageNumber();  // 0 1 2 3 4
 		int start = 1 + (pn * 10);	// 1  11
@@ -31,8 +33,8 @@ public class ReviewController {
 		
 		param.setStart(start);
 		param.setEnd(end);
-		
 		List<ReviewDto> list = service.review(param);
+	//	List<ReviewDto> orderList = service.orderChoice(param);
 		int len = service.getAllReview(param);
 		
 		int pageBbs = len / 10;		// 25 / 10 -> 2
@@ -41,20 +43,26 @@ public class ReviewController {
 		}
 		
 		if(param.getChoice() == null || param.getChoice().equals("")
-			|| param.getSearch() == null || param.getSearch().equals("")) {
+			|| param.getSearch() == null || param.getSearch().equals("")
+	//		|| param.getChoiceOrder() == null || param.getChoiceOrder().equals("")
+			) {
 			param.setChoice("검색");
 			param.setSearch("");
+	//		param.setChoiceOrder("");
 		}
 		
-		//					review라는 이름으로 list를 뷰에서 사용해라
+		                   //review라는 이름으로 list를 뷰에서 사용해라
+//		model.addAttribute("dto", dto);
 		model.addAttribute("review", list);	// 게시판 리스트
 		model.addAttribute("pageBbs", pageBbs);	// 총 페이지수
 		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
 		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
+//		model.addAttribute("choiceOrder", param.getChoiceOrder());	// order 카테고리
 		model.addAttribute("search", param.getSearch());	// 검색어	
 		
 		return "review";
 	}
+	
 
 	
 	//reviewdetail
@@ -72,14 +80,42 @@ public class ReviewController {
 	
 	//reviewwrite
 	@GetMapping("reviewwrite.do")
-	public String reviewwrite() {
+	public String reviewwrite(/* Model model, ReviewDto dto */) {
+		/*
+		 * String login = dto.getId(); model.addAttribute("dto", dto);
+		 */
+		
 		return "reviewwrite";
 	}
 	
 	
 	
+	//reviewwriteAf
+	@PostMapping(value="writeReviewAf.do")
+	public String writeReviewAf(Model model, ReviewDto dto) {
+		boolean isS = service.writeReviewAf(dto);
+		String writeReviewAf = "REVIEW_ADD_OK";
+		if(isS == false) {
+			writeReviewAf = "REVIEW_ADD_NO";
+		}
+		model.addAttribute("writeReviewAf", writeReviewAf);
+		return "redirect:/review.do";
+	}
+	
+	
+	//readcountOrder
+	@GetMapping(value="readcountOrder.do")
+	public String readcountOrder(ReviewDto dto, Model model) {
+		ReviewDto readcountOrder = service.readcountOrder(dto);
+		model.addAttribute("readcountOrder", readcountOrder);
+		
+		return "redirect:/review.do";
+	}
+	
+	
+	
 	//reviewUpdate
-	@PostMapping(value="reviewUpdate.do")
+	@GetMapping(value="reviewUpdate.do")
 	public String reviewUpdate(Model model, int seq) {
 		ReviewDto dto = service.getReview(seq);
 		model.addAttribute("dto", dto);
@@ -88,24 +124,41 @@ public class ReviewController {
 	}
 	
 	
-	//reviewwriteAf
-	//로그인 되고 난 다음에는 post로 바꾸기
-	@PostMapping(value="reviewwriteAf.do")
-	public String writeReview(Model model, ReviewDto dto) {
-		boolean isS = service.writeReview(null);
-		String reviewwrite = "REVIEW_ADD_OK";
-		if(isS == false) {
-			reviewwrite = "REVIEW_ADD_NO";
+	//reviewDelete
+	@GetMapping(value="reviewDelete.do")
+	public String reviewDelete(Model model, int seq) {
+		boolean b = service.reviewDelete(seq);
+		String reviewDelete = "REVIEW_DELETE_YES";
+		if(b == false) {
+			reviewDelete = "REVIEW_DELETE_NO";
 		}
-		model.addAttribute("reviewwrite", reviewwrite);
+		model.addAttribute("reviewDelete", reviewDelete);
+		return "redirect:/review.do";
+	}
+	
+	
+	
+	//reviewUpdateAf
+	@PostMapping(value="reviewUpdateAf.do")
+	public String reviewUpdateAf(Model model, ReviewDto dto) {
+		boolean isS = service.reviewUpdate(dto);
+		String reviewUpdate = "REVIEW_UPDATE_OK";
+		if(isS == false) {
+			reviewUpdate = "REVIEW_UPDATE_NO";
+		}
+		
+		model.addAttribute("reviewUpdate", reviewUpdate);
+		
 		return "redirect:/review.do";
 	}
 	
 	
 	
 	
+	
+	
 	//답글(사용할지 말지 고민중)
-	@PostMapping(value = "answer.do")
+	@GetMapping(value = "reviewAnswer.do")
 	public String answer(Model model, int seq, ReviewDto dto) {
 		dto.setSeq(seq);
 		
@@ -123,7 +176,6 @@ public class ReviewController {
 	
 	
 	//댓글추가
-	//손보기,,,,
 	@GetMapping(value = "reviewCommentWrite.do")
 	public String commentWrite(ReviewComment comment) {
 		boolean isS = service.commentWrite(comment);

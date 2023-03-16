@@ -26,13 +26,12 @@ public class TilesController {
 	
 	
 	
-	@GetMapping("hotel.do")
-    public String hotel() {
-		System.out.println("TilesController hotel() " + new Date());
-		
-        return "hotel";
-    }
-	
+	/*
+	 * @GetMapping("hotel.do") public String hotel() {
+	 * System.out.println("TilesController hotel() " + new Date());
+	 * 
+	 * return "hotel"; }
+	 */
 //	@GetMapping("reviewPage.do")
 //    public String review() {
 //		System.out.println("TilesController reviewPage() " + new Date());
@@ -40,12 +39,12 @@ public class TilesController {
 //        return "reviewPage";
 //    }
 	
-	@GetMapping("community.do")
-    public String community() {
-		System.out.println("TilesController community() " + new Date());
-		
-        return "community";
-    }
+//	@GetMapping("communitylist.do")
+//    public String community() {
+//		System.out.println("TilesController community() " + new Date());
+//
+//        return "communitylist";
+//    }
 	
 	@GetMapping("mypage.do")
     public String mypage() {
@@ -54,10 +53,10 @@ public class TilesController {
         return "mypage";
     }
 	
-	@GetMapping("login.do")
-    public String loginpage() {
-		System.out.println("TilesController login() " + new Date());
-		
-        return "login";
-    }
+//	@GetMapping("login.do")
+//    public String loginpage() {
+//		System.out.println("TilesController login() " + new Date());
+//
+//        return "login";
+//    }
 }
