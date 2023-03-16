@@ -30,20 +30,23 @@
         
         /* 메인 사진 */
         .main-wrap {
-			width: 100%;
-			margin: none;
 			position: relative;
+			vertical-align: middle;
+			width: 120%;
+			margin: none;
 		}
 		
 		.main-img img {
-			width: 100%;
+			display:block;
 			vertical-align: middle;
-			filter: brightness(50%); 
+			width: 120%;
+			margin-top: -3.0%;
+			filter: brightness(40%);
 		}
 		
 		.main-text {
-			text-align: center;
 			position: absolute;
+			text-align: center;
 			top: 50%;
 			left: 50%;
 			transform: translate( -50%, -50% );
@@ -69,6 +72,11 @@
         	border: solid 5px aqua;
         }
         
+        .container-fluid {
+        	padding-left: 20%;
+        	padding-rignt: 20%;
+        }
+        
         
         /* 화면 넓어졌을때 */
         @media (min-width: 1000px) {
@@ -77,6 +85,16 @@
         	margin: 10px;
         	width: 450px;
         	border: solid 5px aqua;
+		}
+        	
+        	
+        .main-img img {
+			display:block;
+			width: 100%;
+			vertical-align: middle;
+			margin-top: -1.4%;
+			filter: brightness(50%); 
+			 object-fit: cover;
         }
         
         
@@ -98,7 +116,7 @@
 
 <body>
 <%--container--%>
-<div class="container">
+<div class="container-fluid">
     <main>
         <%--공백--%>
 <!--         <div class="b-example-divider"></div> -->
@@ -116,7 +134,7 @@
 		//아래 for문이랑 사진링크 거는 부분 중복돼서 이름바꿈
         %>
         
-		<div class="main-wrap">
+		<div class="container-fluid" align="center">
 	        <div class="main-img">
 	        	<img src="images/reviewMainPhoto.jpg" class="img-fluid" alt="...">
 	        </div>        
