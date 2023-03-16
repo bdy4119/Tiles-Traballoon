@@ -98,6 +98,15 @@
         }
         
         
+        .main-text {
+			position: absolute;
+			text-align: center;
+			top: 50%;
+			left: 50%;
+			transform: translate( -50%, -50% );
+			font-size: 200px;
+		}
+        
 		  table {
 		    width: 1000px;
 		  }

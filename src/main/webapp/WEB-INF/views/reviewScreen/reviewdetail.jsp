@@ -83,10 +83,10 @@
         <h2>상세 리뷰</h2>
         <hr>
         
-		<div class="main-img">
-			<!-- 이미지 db에서 받아서 하게 만들기 -->
+		<!-- <div class="main-img">
+			이미지 db에서 받아서 하게 만들기
  	       	<img alt="제주" src="images/jeju.jpg" class="main-img" width="100%" height="50%">
-		</div>
+		</div> -->
 		<div id="app" class="container">
 			<form>
 				<table class="table table-striped">

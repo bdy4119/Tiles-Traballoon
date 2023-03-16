@@ -1,14 +1,26 @@
 package mul.cam.a.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.JsonObject;
 
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
@@ -101,8 +113,71 @@ public class ReviewController {
 		model.addAttribute("writeReviewAf", writeReviewAf);
 		return "redirect:/review.do";
 	}
+
 	
 	
+	
+
+	@ResponseBody
+	  @RequestMapping(value="uploadSummernoteImageFile.do", produces = "application/json; charset=utf8")
+//	@PostMapping(value="uploadSummernoteImageFile.do")
+	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile,
+											HttpServletRequest request) {
+		JsonObject jsonObj = new JsonObject();
+		
+		String contextPath = request.getContextPath();
+		
+		
+        //외부경로로 저장
+	//	String fileRoot = "C:\\Users\\PC\\Desktop\\_team_project\\_image";
+		
+		
+		//내부 경로 저장
+		String contextRoot = request.getServletContext().getRealPath("/images/reviewwrite");
+		
+		//separator : 슬래시 등으로 변환해주는 것
+		String fileRoot = contextPath + File.separator;
+
+		//오리지널 파일명
+		String originalFileName = multipartFile.getOriginalFilename();
+		
+		//파일 확장자
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+		
+		//저장될 파일명
+		//UUID : 파일이름 중복되지 않게 다른 이름으로 변경
+		String saveFileName = UUID.randomUUID() + extension;
+		
+		File targetFile = new File(fileRoot + saveFileName);
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			
+			//파일 저장
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);
+			
+			//contextroot + 저장할 내부 폴더명
+			jsonObj.addProperty("url", File.separator + "TraballoonTiles/images/reviewwrite" + File.separator + saveFileName);
+			
+							//  성공시 responseCode로 seccess값 넣어줌
+			jsonObj.addProperty("responseCode", "success");
+		
+		} catch(Exception e) {
+			//저장된 파일 삭제
+			FileUtils.deleteQuietly(targetFile);
+			
+			jsonObj.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		String a = jsonObj.toString();
+		
+//		model.addAttribute("a", a);
+//		return "redirect:/reviewwrite.do";
+		return a;
+	}
+
+	
+	
+	/*
 	//readcountOrder
 	@GetMapping(value="readcountOrder.do")
 	public String readcountOrder(ReviewDto dto, Model model) {
@@ -111,7 +186,7 @@ public class ReviewController {
 		
 		return "redirect:/review.do";
 	}
-	
+	*/
 	
 	
 	//reviewUpdate

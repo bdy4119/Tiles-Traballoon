@@ -15,9 +15,22 @@
     <%--BootStrap--%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
+    <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     
-
+   	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> 
+  	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+  	<script src=" https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+	
+	
+	<!-- 서머노트를 위해 추가해야할 부분 -->
+  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/summernote/summernote-lite.css">
+  	<script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.js"></script>
+  	<script src="${pageContext.request.contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
+  	<!--  -->
+  	
+  	
     <style>
         .b-example-divider {
             height: 3rem;
@@ -26,6 +39,11 @@
             border-width: 1px 0;
             box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
             
+        }
+        
+        table {
+        	padding-left: 100px;
+        	padding-right: 100px;
         }
     </style>
 
@@ -43,10 +61,10 @@
     <hr>
     <h1>글쓰기</h1>
     <hr>
-		<div align="center" class="form-group">
-		<form action="writeReviewAf.do" id="frm" method="post">
+		<div align="center">
+		<form action="writeReviewAf.do" id="frm" method="post" enctype="multipart/form-data">
 			<table class="table table-striped">
-				<col width="200">
+				<col width="150">
 				<col width="400">
 				<tr>
 					<th>id</th>
@@ -64,9 +82,8 @@
 					</td>
 				</tr>
 				<tr>
-					<th>내용</th>
-					<td>
-						<textarea rows="20" cols="50px" id="content" name="content" placeholder="내용을 작성해주세요" class="form-control col-sm-5"></textarea>
+					<td colspan="2">
+						<textarea rows="20" cols="50px" id="summernote" name="content" class="summernote"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -110,8 +127,93 @@
 				}
 			})
 		})
-		
 	});
+	
+	
+	$(document).ready(function() {
+
+		var toolbar = [
+			    // 글꼴 설정
+			    ['fontname', ['fontname']],
+			    // 글자 크기 설정
+			    ['fontsize', ['fontsize']],
+			    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+			    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+			    // 글자색
+			    ['color', ['forecolor','color']],
+			    // 표만들기
+			    ['table', ['table']],
+			    // 글머리 기호, 번호매기기, 문단정렬
+			    ['para', ['ul', 'ol', 'paragraph']],
+			    // 줄간격
+			    ['height', ['height']],
+			    // 그림첨부, 링크만들기, 동영상첨부
+			    ['insert',['picture','link','video']],
+			    // 코드보기, 확대해서보기, 도움말
+			    ['view', ['codeview','fullscreen', 'help']]
+			  ];
+
+		var setting = {
+	            height : 300,
+	            minHeight : null,
+	            maxHeight : null,
+	            focus : true,
+	            lang : 'ko-KR',
+	            toolbar : toolbar,
+	            callbacks : { //여기 부분이 이미지를 첨부하는 부분
+	            onImageUpload : function(files, editor, welEditable) {
+	           	 	for (var i = files.length - 1; i >= 0; i--) {
+	            		uploadSummernoteImageFile(files[i], this);
+	            		}
+	            	}
+	            }
+	         };
+
+	    $('#summernote').summernote(setting);
+	});
+	    
+	    
+	    
+	    function uploadSummernoteImageFile(file, el) {
+			data = new FormData();
+			data.append("file", file);
+			const directory = "productInfo";
+			
+			$.ajax({
+				data : data,
+				type : "POST",
+				url : "uploadSummernoteImageFile.do",
+				contentType : false,
+				enctype : 'multipart/form-data',
+				processData : false,
+				success : function(data) {
+					$(el).summernote('editor.insertImage', data.url);
+				}
+			});
+		}
+		
+		/*썸머노트 함수
+			//text 쓰기
+			$('#summernote').summernote('insertText', 써머노트에 쓸 텍스트);
+			
+			
+			//쓰기 비활성화
+			$('#summernote').summernote('disable');
+			
+			//쓰기 활성화
+			$('#summernote').summernote('enable');
+			
+			
+			//리셋
+			$('#summernote').summernote('reset');
+			
+			
+			//뒤로가기
+			$('#summernote').summernote('undo');
+			// 앞으로가기
+			$('#summernote').summernote('redo');
+		*/
+		
 </script>
 <%--container--%>
 
