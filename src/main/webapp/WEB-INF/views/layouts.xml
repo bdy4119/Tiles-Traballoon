@@ -64,6 +64,10 @@
     <definition name="communityanswer" template="/WEB-INF/views/communityScreen/communityanswer.jsp">
     </definition>
 
+<!--    <definition name="communitywrite" template="/WEB-INF/views/communityScreen/communitywrite.jsp">-->
+<!--    </definition>-->
+
+
 
 
     <!-- 마이페이지 -->
