@@ -32,7 +32,7 @@ public class LocalController {
 		/*
 		 * LocalDto dto = service.getLocal(seq); model.addAttribute("localdto", dto);
 		 */
-		return "gyeonggi";
+		return "gyeonggi.jsp";
 	}
 	
 	@GetMapping(value = "ggp1.do")
@@ -42,38 +42,38 @@ public class LocalController {
 	
 	@GetMapping(value = "jeju.do")
 	public String jeju() {
-		return "jeju";
+		return "jeju.jsp";
 	}
 	
 	@GetMapping(value = "gangwon.do")
 	public String gangwon() {
-		return "gangwon";
+		return "gangwon.jsp";
 	}
 	
 	@GetMapping(value = "chungbuk.do")
 	public String chungbuk() {
-		return "chungbuk";
+		return "chungbuk.jsp";
 	}
 	@GetMapping(value = "chungnam.do")
 	public String chungnam() {
-		return "chungnam";
+		return "chungnam.jsp";
 	}
 	@GetMapping(value = "jeonbuk.do")
 	public String jeonbuk() {
-		return "jeonbuk";
+		return "jeonbuk.jsp";
 	}
 	@GetMapping(value = "jeonnam.do")
 	public String jeonnam() {
-		return "jeonnam";
+		return "jeonnam.jsp";
 	}
 	@GetMapping(value = "gyeongbuk.do")
 	public String gyeongbuk() {
-		return "gyeongbuk";
+		return "gyeongbuk.jsp";
 	}
 	
 	@GetMapping(value = "gyeongnam.do")
 	public String gyeongnam() {
-		return "gyeongnam";
+		return "gyeongnam.jsp";
 	}
 	
 }

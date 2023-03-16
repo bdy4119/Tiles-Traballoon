@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>경기도 여행지1</h1>
+<h1>여행지 상세 페이지</h1>
 </body>
 </html>

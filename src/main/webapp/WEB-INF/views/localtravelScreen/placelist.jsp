@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>경북 페이지임</h1>
+<a href="place.do">여행지 리스트 뜰곳</a>
 </body>
 </html>

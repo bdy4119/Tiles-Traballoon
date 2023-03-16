@@ -15,74 +15,21 @@
 <!-- 지역별 여행 -->
 <definition name="localtravel" template="/WEB-INF/views/localtravelScreen/localtraveltiles.jsp">
 	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+	<put-attribute name="localmain" value="/WEB-INF/views/localtravelScreen/localmain.jsp"/>
 	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 </definition>
 
-<!-- 경기 -->
-<definition name="gyeonggi" template="/WEB-INF/views/localtravelScreen/localtraveltiles2.jsp">
+<definition name="localtravel2" template="/WEB-INF/views/localtravelScreen/localtraveltiles2.jsp">
 	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/gyeonggi/ggw.jsp"/>
-	<put-attribute name="eachregion" value="/WEB-INF/views/localtravelScreen/region/gyeonggi/gyeonggi.jsp"/>
+	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+	<put-attribute name="contents" value="/WEB-INF/views/localtravelScreen/placelist.jsp"/>
 	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 </definition>
 
-<definition name="ggp1" template="/WEB-INF/views/localtravelScreen/localtraveltiles3.jsp">
-	<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/gyeonggi/ggw.jsp"/>
-	<put-attribute name="placemenu" value="/WEB-INF/views/localtravelScreen/placemenu.jsp"/>
-	<put-attribute name="map" value="/WEB-INF/views/localtravelScreen/map.jsp"/>
-	<put-attribute name="placebbs" value="/WEB-INF/views/localtravelScreen/placebbs.jsp"/>
-	<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+<definition name="place" extends="localtravel2">
+	<put-attribute name="contents" value="/WEB-INF/views/localtravelScreen/placedetail.jsp"/>
 </definition>
 
-
-<!-- 제주 -->
-<definition name="jeju" extends="localtravel">
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/jeju/jjw.jsp"/>
-	<put-attribute name="eachregion" value="/WEB-INF/views/localtravelScreen/region/jeju/jeju.jsp"/>
-</definition>
-
-<!-- 강원 -->
-<definition name="gangwon" extends="localtravel">
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/gangwon/gww.jsp"/>
-	<put-attribute name="eachregion" value="/WEB-INF/views/localtravelScreen/region/gangwon/gangwon.jsp"/>
-</definition>
-
-<!-- 충북 -->
-<definition name="chungbuk" extends="localtravel">
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/chungbuk/cbw.jsp"/>
-	<put-attribute name="eachregion" value="/WEB-INF/views/localtravelScreen/region/chungbuk/chungbuk.jsp"/>
-</definition>
-
-<!-- 충남 -->
-<definition name="chungnam" extends="localtravel">
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/chungnam/cnw.jsp"/>
-	<put-attribute name="eachregion" value="/WEB-INF/views/localtravelScreen/region/chungnam/chungnam.jsp"/>
-</definition>
-
-<!-- 경북 -->
-<definition name="gyeongbuk" extends="localtravel">
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/gyeongbuk/gbw.jsp"/>
-	<put-attribute name="eachregion" value="/WEB-INF/views/localtravelScreen/region/gyeongbuk/gyeongbuk.jsp"/>
-</definition>
-
-<!-- 경남 -->
-<definition name="gyeongnam" extends="localtravel">
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/gyeongnam/gnw.jsp"/>
-	<put-attribute name="eachregion" value="/WEB-INF/views/localtravelScreen/region/gyeongnam/gyeongbuk.jsp"/>
-</definition>
-
-<!-- 전북 -->
-<definition name="jeonbuk" extends="localtravel">
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/jeonbuk/jbw.jsp"/>
-	<put-attribute name="eachregion" value="/WEB-INF/views/localtravelScreen/region/jeonbuk/jeonbuk.jsp"/>
-</definition>
-
-<!-- 전남 -->
-<definition name="jeonnam" extends="localtravel">
-	<put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/region/jeonnam/jnw.jsp"/>
-	<put-attribute name="eachregion" value="/WEB-INF/views/localtravelScreen/region/jeonnam/jeonnam.jsp"/>
-</definition>
 
 
 <!-- 숙소추천 -->
