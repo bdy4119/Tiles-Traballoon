@@ -20,7 +20,7 @@
     <header>
         <font color="white"><h1>Traballoon</h1></font>
     </header>
-    <form action="/loginAf.do" method="post" class="login-input-section-wrap">
+    <form action="loginAf.do" method="post" class="login-input-section-wrap">
         <div class="login-input-wrap">
             <input id="id" name="id" placeholder="Username" type="text"></input>
         </div>

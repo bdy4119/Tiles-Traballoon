@@ -19,7 +19,7 @@ body{
 	/* background:var(--body-background-color); */
 	/* 배경 꽉차게 */
 	background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),
-					url('/images/maldives-g2060b9077_1920.jpg')
+					url('TraballoonTiles/images/maldives-g2060b9077_1920.jpg')
 					no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;

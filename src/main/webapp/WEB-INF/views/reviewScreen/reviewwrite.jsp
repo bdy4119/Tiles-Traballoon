@@ -1,3 +1,4 @@
+<%@page import="mul.cam.a.dto.MemberDto"%>
 <%@page import="mul.cam.a.dao.ReviewDao"%>
 <%@page import="mul.cam.a.dto.ReviewDto"%>
 <%@page import="java.util.List"%>
@@ -39,33 +40,38 @@
 <div class="container">
     <main>    
     <%--내용--%>
+    <hr>
     <h1>글쓰기</h1>
-		<div align="center">
-		<form action="reviewwriteAf.do" id="frm" method="post">
-			<table border="1">
+    <hr>
+		<div align="center" class="form-group">
+		<form action="writeReviewAf.do" id="frm" method="post">
+			<table class="table table-striped">
 				<col width="200">
 				<col width="400">
 				<tr>
 					<th>id</th>
 					<td>
-						<input type="text" id="id" name="id"/>
+						<%--  나중에 로그인세션 넣기
+							<%=login.getId() %>
+						--%>
+						<input type="text" id="id" name="id" class="form-control"/>
 					</td>
 				</tr>
 				<tr>
 					<th>제목</th>
 					<td>
-						<input type="text" id="title" name="title" name="" size="50px">
+						<input type="text" id="title" name="title" name="" size="50px" class="form-control"/>
 					</td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea rows="20" cols="50px" id="content" name="content" placeholder="내용을 작성해주세요"></textarea>
+						<textarea rows="20" cols="50px" id="content" name="content" placeholder="내용을 작성해주세요" class="form-control col-sm-5"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">
-						<button type="submit" id="reviewwrite">글쓰기</button>
+						<button type="submit" id="reviewwrite" class="btn btn-secondary">글쓰기</button>
 					</td>
 				</tr>
 			</table>
@@ -83,6 +89,29 @@
 </div>
 <script type="text/javascript">
 
+	$(document).ready(function() {
+	
+		$("#reviewwrite").click(function() {
+			$.ajax({
+				type:"POST",
+				url:"writeReviewAf.do",
+				data: {
+ 					"id" : $("id").val(),
+					"title" : $("title").val(),
+					"content" : $("content").val()},
+				success: function(str) {
+					if(str == "REVIEW_ADD_OK") {
+						alert("글이 등록되었습니다.");
+						location.href="review.do";
+					}
+				}, error: function() {
+					alert("글을 등록하지 못했습니다.");
+					location.href="review.do";
+				}
+			})
+		})
+		
+	});
 </script>
 <%--container--%>
 
