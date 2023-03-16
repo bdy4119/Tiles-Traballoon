@@ -31,15 +31,15 @@
 		MemberDto login = (MemberDto)session.getAttribute("login"); 
 	
 	// 호텔이름 얻어오기
-	
+		String hotelname = (String)request.getAttribute("hotelname");
 	// 예약주소 얻어오기
-		
+		String hotelbook = (String)request.getAttribute("hotelbook");
 	// 사진 얻어오기
    		String photo = (String)request.getAttribute("photo");
 	// 지도 경도,위도 얻어오기
-	
+		String hotelmap = (String)request.getAttribute("hotelmap");
 	// 텍스트 얻어오기
-	
+		String hotelcontent = (String)request.getAttribute("hotelcontent");
    	%> 
    
 </head>
@@ -57,17 +57,19 @@
 
         <%--내용 start--%>
       
+<!-- 1. DB-> 호텔이름 연결 -->
   <div class="header">
-  	<h1>노보텔 앰배서더 서울 용산</h1>
+  	<h1><%=hotelname %></h1>
   </div>
   
-<!-- 1.  DB -> 예약할 주소 연결  -->  
+ 
+<!-- 2.  DB -> 예약할 주소 연결  -->  
     <br>
     <div class="button">
-        <button onclick="location.href='https://sdc-club.com/ko/index.php'">예약하기</button>
+        <button onclick="location.href='<%=hotelbook %>'">예약하기</button>
     </div> 
     
-<!-- 2.  DB -> 이미지 연결  -->   
+<!-- 3.  DB -> 이미지 연결  -->   
 
     <br><br>
    <div class="content">
@@ -76,18 +78,18 @@
         </div>
         
         
-<!-- 3.  DB -> 카카오맵 연결 -->
+<!-- 4.  DB -> 카카오맵 연결 -->
 		   <div id="map" style="width:100%;height:350px;"></div>
 <script>
     var container = document.getElementById('map');
     var options = {
-        center: new kakao.maps.LatLng(37.53194265302995, 126.96290776191967),
+        center: new kakao.maps.LatLng(<%=hotelmap %>),
         level: 5
     };
 
     var map = new kakao.maps.Map(container, options);
 
-    var markerPosition = new kakao.maps.LatLng(37.53194265302995, 126.96290776191967);
+    var markerPosition = new kakao.maps.LatLng(<%=hotelmap %>);
 
     var marker = new kakao.maps.Marker({
         position: markerPosition,
@@ -98,26 +100,11 @@
         
  <!--  카카오맵 끝 -->   
  
- <!-- 4.  DB -> 텍스트 연결 -->  
+ <!-- 5.  DB -> 텍스트 연결 -->  
 
         <div class="text">
             <pre>
-            	 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-           		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-            	 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-          		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-          		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-           		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-            	 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-          		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-          		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-           		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-            	 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-          		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-          		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-           		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-            	 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
-          		 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 호텔 상세 텍스트 
+            	<%=hotelcontent %>
             </pre>
         </div>
     </div>

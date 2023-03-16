@@ -108,7 +108,11 @@ public class HotelController {
 		  
 		  //Cannot invoke "mul.cam.a.dto.HotelDto.getSeq()" because "hoteldto" is null
 		  model.addAttribute("hoteldto", hoteldto);
+		  model.addAttribute("hotelname", hotelname);
+		  model.addAttribute("hotelbook", hotelbook);
 		  model.addAttribute("photo", photo);
+		  model.addAttribute("hotelmap", hotelmap);
+		  model.addAttribute("hotelcontent", hotelcontent);
 		  return "hoteldetail"; } 
 	  
 	  //댓글
