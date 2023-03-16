@@ -5,7 +5,6 @@
 
 <tiles-definitions>
 
-
     <!-- 맨처음 보이는 로그인 화면이라 main -->
     <definition name="main" template="/WEB-INF/views/mainscreentiles.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
@@ -17,11 +16,20 @@
 
     <!-- 지역별 여행 -->
     <definition name="localtravel" template="/WEB-INF/views/localtravelScreen/localtraveltiles.jsp">
-        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
-        <put-attribute name="content" value="/WEB-INF/views/content.jsp"/>
-        <!-- 	<put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/> -->
-        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+      <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+      <put-attribute name="localmain" value="/WEB-INF/views/localtravelScreen/localmain.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+
+    <definition name="localtravel2" template="/WEB-INF/views/localtravelScreen/localtraveltiles2.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+      <put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+      <put-attribute name="contents" value="/WEB-INF/views/localtravelScreen/placelist.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+
+    <definition name="place" extends="localtravel2">
+      <put-attribute name="contents" value="/WEB-INF/views/localtravelScreen/placedetail.jsp"/>
     </definition>
 
     <!-- 숙소추천 -->
@@ -114,7 +122,6 @@
     </definition>
     <definition name="message" template="/WEB-INF/views/loginScreen/message.jsp">
     </definition>
-
 
 
 </tiles-definitions>

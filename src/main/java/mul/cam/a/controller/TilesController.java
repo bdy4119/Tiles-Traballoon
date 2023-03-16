@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TilesController {
 	
 	@GetMapping(value = "main.do")		
-	public String login() {			//layouts.xml의 definition 안 login을 뜻함
-		System.out.println("TilesController login() " + new Date());
+	public String main() {			//layouts.xml의 definition 안 main을 뜻함
+		System.out.println("TilesController main() " + new Date());
 		
 		return "main";
 	}
@@ -22,12 +22,9 @@ public class TilesController {
 	 * return "bbslist"; }
 	 */
 	
-	@GetMapping("localtravel.do")
-    public String localtravel() {
-		System.out.println("TilesController localtravel() " + new Date());
-		
-        return "localtravel";
-    }
+	
+	
+	
 	
 	/*
 	 * @GetMapping("hotel.do") public String hotel() {
