@@ -29,45 +29,35 @@
 </head>
 
 <body>
-	<%--container--%>
-	<div class="container-fluid">
 
+<%--container--%>
+<div class="container">
 
-		<%--헤더--%>
-		<header
-			class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-			<a href="main.do"
-				class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-				<img src="images/logo.png">
-			</a>
+        <%--헤더--%>
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <a href="main.do" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img src="images/logo.png">
+            </a>
 
-			<ul
-				class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-				<li><a href="localtravel.do" class="nav-link px-2 link-dark">지역별
-						여행</a></li>
-				<li><a href="hotel.do" class="nav-link px-2 link-dark">숙소
-						추천</a></li>
-				<li><a href="review.do" class="nav-link px-2 link-dark">여행
-						리뷰</a></li>
-				<li><a href="community.do" class="nav-link px-2 link-dark">커뮤니티</a></li>
-			</ul>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="localtravel.do" class="nav-link px-2 link-dark">지역별 여행</a></li>
+                <li><a href="hotel.do" class="nav-link px-2 link-dark">숙소 추천</a></li>
+                <li><a href="review.do" class="nav-link px-2 link-dark">여행 리뷰</a></li>
+                <li><a href="community.do" class="nav-link px-2 link-dark">커뮤니티</a></li>
+            </ul>
 
-			<div class="col-md-3 text-end">
-				<ul
-					class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-					<li><a href="mypage.do" class="nav-link px-2 link-dark">마이페이지</a></li>
-					<li><a class="btn btn-outline-primary me-2" href="login.do"
-						role="button">Login</a></li>
-					<li>
-						<button type="button" class="btn btn-primary">Sign-up</button>
-					</li>
-				</ul>
-			</div>
-		</header>
-		<%--헤더--%>
+            <div class="col-md-3 text-end">
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="mypage.do" class="nav-link px-2 link-dark">마이페이지</a></li>
+                    <li>
+                        <a class="btn btn-outline-primary me-2" href="login.do" role="button">Login</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-primary" href="regi.do" role="button">Sign-up</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <%--헤더--%>
 
-		<%--공백--%>
-		<!--         <div class="b-example-divider"></div> -->
-	</div>
-</body>
-</html>
+</div>
