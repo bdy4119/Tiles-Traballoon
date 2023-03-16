@@ -6,15 +6,15 @@
 
 <!-- 1페이지(호텔 상세페이지) -->
 	<!-- 호텔list 모두 가져오기 + orderby정렬 -->
-											<!--  content, map, book 컬럼 추가해야됨 -->
+											
 	<select id = "hotellist" parameterType="String" resultType="mul.cam.a.dto.HotelDto">
 	
 	<!-- 서브쿼리 : hotels의 seq와 hotel_comment의 hotelseq가 동일한 댓글의 개수 반환 -->
 		select 
-			seq, hotel_name, readcount, thumbnail, wdate, 		
+			seq, hotel_name, readcount, thumbnail, wdate, content, map, book,
 		  	(SELECT COUNT(*) 
 		  	FROM hotel_comments B 
-		  	WHERE B.hotelseq = A.seq) as COMMENT_COUNT		
+		  	WHERE B.hotelseq = A.seq) AS COMMENT_COUNT		
 		from hotels A
 		<if test="orderBy != null">
 			<if test='"1".equals(orderBy)'>	 <!-- orderby 파라미터 1인 경우 조회수정렬 -->
@@ -44,9 +44,9 @@
 	  
 <!-- 2페이지(호텔 상세페이지) -->
 	<!-- seq 매개변수 값에 해당하는 게시글 조회 -->
-											<!--  content, map, book 컬럼 추가해야됨 -->
+											
 	<select id="getHotel" parameterType="Integer" resultType="mul.cam.a.dto.HotelDto">
-		select seq, hotel_name, readcount, thumbnail, wdate 
+		select seq, hotel_name, readcount, thumbnail, wdate, content, map, book
 		from hotels
 		where seq=#{seq}	<!--http://localhost:8090/hoteldetail.do?seq=1 ~18 을 찾기 위해  -->
 	</select> 
@@ -55,7 +55,7 @@
 <!-- HotelCommentDto 객체를 받아 DB의 hotel_comments 테이블에 댓글 정보 삽입 -->
 	<insert id="HotelcommentWrite" parameterType="mul.cam.a.dto.HotelCommentDto">
 	  INSERT INTO hotel_comments (id, hotelseq, content, wdate)
-	  VALUES (#{id},#{seq},#{content},now())
+	  VALUES (#{id},#{seq},#{content},now()) 
 	</insert>
 	
 

@@ -6,6 +6,7 @@ ul.hotel-menu-list {
     margin: 0;
     text-align: left;
     padding-top: 30px;
+    list-style-type: none;
 }
 
 ul.hotel-menu-list > li > a {
@@ -17,6 +18,7 @@ ul.hotel-menu-list > li > a {
     width: 100%;
     display: inline-block;
     line-height: 30px;
+   
 }
 
 ul.hotel-menu-list > li:hover {

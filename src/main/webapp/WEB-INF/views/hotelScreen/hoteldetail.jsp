@@ -21,7 +21,27 @@
             box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
         }
     </style>
-
+    
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6535dc6f68759c638b09e6bca23442d2"></script>
+	
+	<% //컨트롤러에서 받아오기
+	//HotelDto 얻어오기
+		HotelDto hoteldto = (HotelDto)request.getAttribute("hoteldto");
+	//login정보 얻어오기
+		MemberDto login = (MemberDto)session.getAttribute("login"); 
+	
+	// 호텔이름 얻어오기
+	
+	// 예약주소 얻어오기
+		
+	// 사진 얻어오기
+   		String photo = (String)request.getAttribute("photo");
+	// 지도 경도,위도 얻어오기
+	
+	// 텍스트 얻어오기
+	
+   	%> 
+   
 </head>
 
 <body>
@@ -48,11 +68,7 @@
     </div> 
     
 <!-- 2.  DB -> 이미지 연결  -->   
-   <% 
-   
-    String photo = (String)request.getAttribute("photo");
-   
-   %> 
+
     <br><br>
    <div class="content">
         <div class="image">
@@ -61,24 +77,22 @@
         
         
 <!-- 3.  DB -> 카카오맵 연결 -->
-    
-     <div id="map" style="width:400px;height:300px;"></div>
+		   <div id="map" style="width:100%;height:350px;"></div>
+<script>
+    var container = document.getElementById('map');
+    var options = {
+        center: new kakao.maps.LatLng(37.53194265302995, 126.96290776191967),
+        level: 5
+    };
 
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2e4deda43e78926c2d5c62ec8f0e232"></script>
-	<script>
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-	        center: new kakao.maps.LatLng(37.53194265302995, 126.96290776191967), // 지도의 중심좌표 
-	        level: 5, // 지도의 확대 레벨
-	        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-	    }; 
-	// 지도를 생성한다 
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-	// 지도에 마커를 생성하고 표시한다
-	var marker = new kakao.maps.Marker({
-	    position: new kakao.maps.LatLng(37.53194265302995, 126.96290776191967), // 마커의 좌표
-	    map: map // 마커를 표시할 지도 객체
-	});
+    var map = new kakao.maps.Map(container, options);
+
+    var markerPosition = new kakao.maps.LatLng(37.53194265302995, 126.96290776191967);
+
+    var marker = new kakao.maps.Marker({
+        position: markerPosition,
+        map: map
+    });
 </script>
         
         
@@ -119,19 +133,11 @@
 		
 		<!-- 댓글 달 때도 seq와 id는 넘겨받아야 함. -->
 		
-		<%
-		//HotelDto 얻어오기
-		HotelDto hoteldto = (HotelDto)request.getAttribute("hoteldto");
-		%>
+				
 		
-		<% 
-		//호텔 Seq 얻어오기 
-		
-		
-		%>
 		<form action="commentWriteAf.do" method="post">
 		<input type="hidden" name="hotelseq" value="<%=hoteldto.getSeq() %>">
-		<input type="hidden" name="id" value="">
+		<input type="hidden" name="id" value="<%=login.getId() %>">
 										<!--  위에서 session으로 넘겨받은 login 활용 -->
 		
 		

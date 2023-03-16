@@ -10,7 +10,7 @@ public class HotelCommentDto {
 	  private String content;
 	  private Timestamp wdate;
 
-	  public HotelCommentDto() {
+	public HotelCommentDto() {
 		}
 
 	public int getSeq() {

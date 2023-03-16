@@ -34,11 +34,7 @@
 			display: flex;
 }
 
-	ul {
-			list-style-type: none;
-			padding: 0;
-			margin: 0;
-}
+
 
 	.left-menu li {
 		display: inline-block;
@@ -58,7 +54,6 @@
 		padding: 5px;
 		text-align: center;
 		border: none;
-	 	border-radius: 30px;  
 		overflow: hidden;
 	}
 	
@@ -71,10 +66,10 @@
 </head>
 
 <body>
-
+<br>
 		<!-- 정렬하기 -->
-		<div class ="sortby">
-			<select onchange="location.href='/hotel.do?orderBy='+this.value;">
+		<div class ="sortby" style="text-align: right; margin-left: auto;">
+			<select onchange="location.href='/hotel.do?orderBy='+this.value;" style="display: inline-block; margin-right: 2cm;">
 			  <option value="">정렬</option>
 			  <option value="1">조회수순</option>
 			  <option value="2">후기순</option>
@@ -101,7 +96,7 @@
 
    			<td>
 				<a href="/hoteldetail.do?seq=<%=seq %>">
-					<img src=<%=thumbnail%> style="width:70%; height:150px; border-radius:10px;"> 
+					<img src=<%=thumbnail%> style="width:70%; height:200px; border-radius:10px;"> 
 				</a>
 			</td>	 
 		

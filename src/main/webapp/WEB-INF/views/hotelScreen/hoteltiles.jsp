@@ -42,7 +42,8 @@
 	<!-- header에 비행기 배경사진 + 제목, 부제목 넣기  -->
 	<tr>	
 			<!-- EL 표현식 : controller에서 보낸것. 아래 형태로 받을 수 있음(속성값 출력) -->
-		<td colspan="2" style="background-image:url('hotelimage/air.jpg'); height: 250px; background-size: 100% auto;background-position: center center;">
+		<td colspan="2" style="background-image:url('hotelimage/air.jpg'); height: 250px; background-size: 
+		100% auto; background-position: center center; border-radius : 30px;">
 			<h2 class="hotel-page-title">${pageTitle}</h2>		<!--  제목 -->
 			<p class="hotel-page-desc">${pageDescription}</p>	<!--  부제목 -->
 		</td>

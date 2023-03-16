@@ -5,10 +5,23 @@ import java.sql.Timestamp;
 public class HotelDto {
 	 private int seq;
 	 private int readCount;
-	 private String hotelName;
+	 private String hotel_name;
 	 private String thumbnail;
-	 private Timestamp createdAt;
-	 private Timestamp updatedAt;
+	 private Timestamp wdate;
+	 private String content;
+	 private String map;
+	 private String book;
+	 
+	  public HotelDto() {
+		}
+
+	public int getSeq() {
+		return seq;
+	}
+
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 
 	public int getReadCount() {
 		return readCount;
@@ -18,12 +31,12 @@ public class HotelDto {
 		this.readCount = readCount;
 	}
 
-	public String getHotelName() {
-		return hotelName;
+	public String getHotel_name() {
+		return hotel_name;
 	}
 
-	public void setHotelName(String hotelName) {
-		this.hotelName = hotelName;
+	public void setHotel_name(String hotel_name) {
+		this.hotel_name = hotel_name;
 	}
 
 	public String getThumbnail() {
@@ -34,28 +47,37 @@ public class HotelDto {
 		this.thumbnail = thumbnail;
 	}
 
-	public Timestamp getCreatedAt() {
-		return createdAt;
+	public Timestamp getWdate() {
+		return wdate;
 	}
 
-	public void setCreatedAt(Timestamp createdAt) {
-		this.createdAt = createdAt;
+	public void setWdate(Timestamp wdate) {
+		this.wdate = wdate;
 	}
 
-	public Timestamp getUpdatedAt() {
-		return updatedAt;
+	public String getContent() {
+		return content;
 	}
 
-	public void setUpdatedAt(Timestamp updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-
-	public int getSeq() {
-		return seq;
+	public String getMap() {
+		return map;
 	}
 
-	public void setSeq(int seq) {
-		this.seq = seq;
+	public void setMap(String map) {
+		this.map = map;
+	}
+
+	public String getBook() {
+		return book;
+	}
+
+	public void setBook(String book) {
+		this.book = book;
 	}
 }
+
+	

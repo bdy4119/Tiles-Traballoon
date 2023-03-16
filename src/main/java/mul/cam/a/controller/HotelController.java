@@ -100,7 +100,12 @@ public class HotelController {
 	  @GetMapping("hoteldetail.do") 
 	  public String hoteldetail(Model model, int seq) { 
 		  HotelDto hoteldto = service.getHotel(seq);	
+		  String hotelname = hoteldto.getHotel_name();
+		  String hotelbook = hoteldto.getBook();
 		  String photo = hoteldto.getThumbnail();
+		  String hotelmap = hoteldto.getMap();
+		  String hotelcontent = hoteldto.getContent();
+		  
 		  //Cannot invoke "mul.cam.a.dto.HotelDto.getSeq()" because "hoteldto" is null
 		  model.addAttribute("hoteldto", hoteldto);
 		  model.addAttribute("photo", photo);
@@ -116,10 +121,10 @@ public class HotelController {
 				System.out.println("댓글작성에 실패했습니다");
 			}
 			
-			//작성 성공해도 실패해도 bbsdetail페이지로 보내기 
-			//bbsdetail.do는 seq를 받는 controller이기 때문에 seq를 같이 보내준다.
+			//작성 성공해도 실패해도 hoteldetail페이지로 보내기 
+			//hoteldetail.do는 seq를 받는 controller이기 때문에 seq를 같이 보내준다.
 			return "redirect:/hoteldetail.do?seq=" + com.getHotelSeq();
-			// seq번호가 3일때 주소 =  :/bbsdetail.do?seq=3   
+	
 		}
 		
 		// 댓글을 화면에 뿌려주기
