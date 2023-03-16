@@ -30,6 +30,15 @@ public class ReviewServiceImpl implements ReviewService{
 	public int getAllReview(ReviewParam Param) {
 		return dao.getAllReview(Param);
 	}
+	
+
+	//readcountOrder
+	@Override
+	public ReviewDto readcountOrder(ReviewDto dto) {
+		return dao.readcountOrder(dto);
+	}
+	
+	
 
 	//detail
 	@Override
@@ -47,8 +56,24 @@ public class ReviewServiceImpl implements ReviewService{
 	
 	//reviewwrite
 	@Override
-	public boolean writeReview(ReviewDto dto) {
-		int n = dao.writeReview(dto);
+	public boolean writeReviewAf(ReviewDto dto) {
+		int n = dao.writeReviewAf(dto);
+		return n>0?true:false;
+	}
+	
+	
+	//글수정
+	@Override
+	public boolean reviewUpdate(ReviewDto dto) {
+		int n = dao.reviewUpdate(dto);
+		return n>0?true:false;
+	}
+	
+	
+	//글삭제
+	@Override
+	public boolean reviewDelete(int seq) {
+		int n = dao.reviewDelete(seq);
 		return n>0?true:false;
 	}
 
@@ -74,7 +99,7 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewComment> commentList(int seq) {
 		return dao.commentList(seq);
 	}
-	
+
 	
 	
 	
