@@ -51,9 +51,11 @@
 
 <body>
 
-<%
+ <%
+	MemberDto login = (MemberDto)session.getAttribute("login");
 	ReviewDto dto = (ReviewDto)request.getAttribute("dto");
 %>
+
 <%--container--%>
 <div class="container">
     <main>    
@@ -69,10 +71,8 @@
 				<tr>
 					<th>id</th>
 					<td>
-						<%--  나중에 로그인세션 넣기
-							<%=login.getId() %>
-						--%>
-						<input type="text" id="id" name="id" class="form-control"/>
+						<%=login.getId() %>
+						<input type="hidden" name="id" size="50px" value="<%=login.getId() %>" readonly="readonly">
 					</td>
 				</tr>
 				<tr>
@@ -113,7 +113,7 @@
 				type:"POST",
 				url:"writeReviewAf.do",
 				data: {
- 					"id" : $("id").val(),
+					"id" : $("id").val(),
 					"title" : $("title").val(),
 					"content" : $("content").val()},
 				success: function(str) {
@@ -181,7 +181,7 @@
 			
 			$.ajax({
 				data : data,
-				type : "POST",
+				type : "post",
 				url : "uploadSummernoteImageFile.do",
 				contentType : false,
 				enctype : 'multipart/form-data',

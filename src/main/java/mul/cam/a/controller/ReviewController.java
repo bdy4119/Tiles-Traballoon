@@ -16,12 +16,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
 
+import mul.cam.a.dto.MemberDto;
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
@@ -119,7 +121,7 @@ public class ReviewController {
 	
 
 	@ResponseBody
-	  @RequestMapping(value="uploadSummernoteImageFile.do", produces = "application/json; charset=utf8")
+	@RequestMapping(value="uploadSummernoteImageFile.do", produces = "application/json; charset=utf8", method = RequestMethod.POST)
 //	@PostMapping(value="uploadSummernoteImageFile.do")
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile,
 											HttpServletRequest request) {
@@ -133,10 +135,10 @@ public class ReviewController {
 		
 		
 		//내부 경로 저장
-		String contextRoot = request.getServletContext().getRealPath("/images/reviewwrite");
+		String contextRoot = request.getServletContext().getRealPath("/reviewImage");
 		
 		//separator : 슬래시 등으로 변환해주는 것
-		String fileRoot = contextPath + File.separator;
+		String fileRoot = contextRoot + File.separator;
 
 		//오리지널 파일명
 		String originalFileName = multipartFile.getOriginalFilename();
@@ -156,7 +158,7 @@ public class ReviewController {
 			FileUtils.copyInputStreamToFile(fileStream, targetFile);
 			
 			//contextroot + 저장할 내부 폴더명
-			jsonObj.addProperty("url", File.separator + "TraballoonTiles/images/reviewwrite" + File.separator + saveFileName);
+			jsonObj.addProperty("url", "/" + "TraballoonTiles/reviewImage" + "/" + saveFileName);
 			
 							//  성공시 responseCode로 seccess값 넣어줌
 			jsonObj.addProperty("responseCode", "success");
@@ -168,25 +170,132 @@ public class ReviewController {
 			jsonObj.addProperty("responseCode", "error");
 			e.printStackTrace();
 		}
-		String a = jsonObj.toString();
+		String uploadSummernoteImageFile = jsonObj.toString();
 		
 //		model.addAttribute("a", a);
 //		return "redirect:/reviewwrite.do";
-		return a;
+		System.out.println("context-path : " + contextPath);
+        System.out.println("upLoadImage uploadSummernoteImageFile : " + uploadSummernoteImageFile);
+		return uploadSummernoteImageFile;
 	}
 
 	
 	
-	/*
+	
 	//readcountOrder
 	@GetMapping(value="readcountOrder.do")
-	public String readcountOrder(ReviewDto dto, Model model) {
-		ReviewDto readcountOrder = service.readcountOrder(dto);
-		model.addAttribute("readcountOrder", readcountOrder);
+	public String readcountOrder(ReviewParam param, ReviewDto dto, Model model) {
+		int pn = param.getPageNumber();  // 0 1 2 3 4
+		int start = 1 + (pn * 10);	// 1  11
+		int end = (pn + 1) * 10;	// 10 20 
 		
-		return "redirect:/review.do";
+		param.setStart(start);
+		param.setEnd(end);
+		List<ReviewDto> readcountOrder = service.readcountOrder(dto);
+		
+		int len = service.getAllReview(param);
+		
+		int pageBbs = len / 10;		// 25 / 10 -> 2
+		if((len % 10) > 0) {
+			pageBbs = pageBbs + 1;
+		}
+		
+		if(param.getChoice() == null || param.getChoice().equals("")
+				|| param.getSearch() == null || param.getSearch().equals("")) {
+				param.setChoice("검색");
+				param.setSearch("");
+			}
+			
+			model.addAttribute("review", readcountOrder);	// 게시판 리스트
+			model.addAttribute("pageBbs", pageBbs);	// 총 페이지수
+			model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
+			model.addAttribute("choice", param.getChoice());	// 검색 카테고리
+			model.addAttribute("search", param.getSearch());	// 검색어
+			
+		return "review";
 	}
-	*/
+	
+	
+	
+	
+	
+	
+	
+	//wdateOrder
+	@GetMapping(value="wdateOrder.do")
+	public String wdateOrder(ReviewParam param, ReviewDto dto, Model model) {
+		int pn = param.getPageNumber();  // 0 1 2 3 4
+		int start = 1 + (pn * 10);	// 1  11
+		int end = (pn + 1) * 10;	// 10 20 
+		
+		param.setStart(start);
+		param.setEnd(end);
+		List<ReviewDto> wdateOrder = service.wdateOrder(dto);
+		
+		int len = service.getAllReview(param);
+		
+		int pageBbs = len / 10;		// 25 / 10 -> 2
+		if((len % 10) > 0) {
+			pageBbs = pageBbs + 1;
+		}
+		
+		if(param.getChoice() == null || param.getChoice().equals("")
+				|| param.getSearch() == null || param.getSearch().equals("")) {
+			param.setChoice("검색");
+			param.setSearch("");
+		}
+		
+		model.addAttribute("review", wdateOrder);	// 게시판 리스트
+		model.addAttribute("pageBbs", pageBbs);	// 총 페이지수
+		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
+		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
+		model.addAttribute("search", param.getSearch());	// 검색어	
+		
+		return "review";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//wdateOrder
+	@GetMapping(value="longdateOrder.do")
+	public String longdateOrder(ReviewParam param, ReviewDto dto, Model model) {
+		int pn = param.getPageNumber();  // 0 1 2 3 4
+		int start = 1 + (pn * 10);	// 1  11
+		int end = (pn + 1) * 10;	// 10 20 
+		
+		param.setStart(start);
+		param.setEnd(end);
+		List<ReviewDto> longdateOrder = service.wdateOrder(dto);
+		
+		int len = service.getAllReview(param);
+		
+		int pageBbs = len / 10;		// 25 / 10 -> 2
+		if((len % 10) > 0) {
+			pageBbs = pageBbs + 1;
+		}
+		
+		if(param.getChoice() == null || param.getChoice().equals("")
+				|| param.getSearch() == null || param.getSearch().equals("")) {
+			param.setChoice("검색");
+			param.setSearch("");
+		}
+		
+		model.addAttribute("review", longdateOrder);	// 게시판 리스트
+		model.addAttribute("pageBbs", pageBbs);	// 총 페이지수
+		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
+		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
+		model.addAttribute("search", param.getSearch());	// 검색어	
+		
+		return "review";
+	}
+	
 	
 	
 	//reviewUpdate
