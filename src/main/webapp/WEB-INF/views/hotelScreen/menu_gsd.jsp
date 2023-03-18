@@ -57,26 +57,8 @@
 		overflow: hidden;
 	}
 	
-	.paging-area {
-	    margin: 20px 0;
-	}
-	
-	.paging-area > * {
-	    border: 1px solid #999;
-	    padding: 6px 3px;
-	}
-	
-	.paging-area > a {
-	    text-decoration: none;
-	    color: black;
-	}
-	 .paging-area > a {
-	    transition: 0.3s;
-	}
-	
-	.paging-area > a:hover {
-	    background: #DDD;
-	}
+
+	 
 </style>
 
 
@@ -86,13 +68,13 @@
 <body>
 <br>
 		<!-- 정렬하기 -->
-		<div class ="sortby" style="text-align: right; margin-left: auto;">
-			<select id="orderBy" onchange="location.href='hotel.do?orderBy='+this.value;" style="display: inline-block; margin-right: 2cm;">
+<!-- 		<div class ="sortby" style="text-align: right; margin-left: auto;">
+			<select onchange="location.href='./hotel.do?orderBy='+this.value;" style="display: inline-block; margin-right: 2cm;">
 			  <option value="">정렬</option>
 			  <option value="1">조회수순</option>
 			  <option value="2">후기순</option>
 			</select>
-		</div>
+		</div> -->
 
 		<%
 		//DB의 thumbnail 뿌려주기(총 18개)
@@ -100,12 +82,11 @@
 		%>
 		<table>
 		<%
-		for(int i = 0; i< list.size(); i++){
-			HotelDto h = list.get(i);
-			String thumbnail = h.getThumbnail();
-			int seq = h.getSeq();
-		
-			if(i%3==0){ 	// 0, 1, 2  /  0, 1, 2
+		for(int i = 9; i< 12; i++){
+		    HotelDto h = list.get(i);
+		    String thumbnail = h.getThumbnail();
+		    int seq = h.getSeq();
+		    if(i%3==0){     // 0, 1, 2  /  0, 1, 2
 		%> 
 		<tr>
 		<% 	
@@ -113,7 +94,7 @@
 		%>
 
    			<td>
-				<a href="hoteldetail.do?seq=<%=seq %>">
+				<a href="./hoteldetail.do?seq=<%=seq %>">
 					<img src=<%=thumbnail%> style="width:70%; height:200px; border-radius:10px;"> 
 				</a>
 			</td>	 
@@ -133,43 +114,8 @@
 		}
 		%>
 		</table>
-
-	    <div class="container" style="margin-top: 50px;">
-	        <nav aria-label="Page navigation">
-	            <ul class="pagination" id="pagination" style="justify-content:center"></ul>
-	        </nav>
-	    </div>
-	    
-	    <script type="text/javascript">
-	    
-	    <%
-
-			int page2 = (int) request.getAttribute("page");
-			int totalCount = (int) request.getAttribute("totalCount");
-			String orderBy = request.getAttribute("orderBy").toString();
-			int countPage = 9; // 페이지 당 노출 개수 (10개 보여준다!)
-			int totalPage = totalCount / countPage;
-	    
-	    %>
-	    
-	    $('#pagination').twbsPagination({
-            startPage: <%=page2%>,
-            totalPages: <%=totalPage %>,
-            visiblePages: 9,
-            first: '<span srid-hidden="true">«</span>',
-            prev: "이전",
-            next: "다음",
-            last: '<span srid-hidden="true">»</span>',
-            initiateStartPageClick: false,   // onPageClick 자동실행되지 않도록
-            onPageClick: function (event, page) {
-                // alert(page);
-                location.href = "?page=" + page + "&orderBy=<%=orderBy%>";
-            }
-        });
-
-	    
-	    </script>
-</div>
+		
+			
 
 <%--BootStrap--%>
 <script

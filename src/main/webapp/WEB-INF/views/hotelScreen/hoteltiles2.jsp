@@ -53,10 +53,10 @@
 	
 	
 <!-- menu : hotelmenu.jsp 에 적용됨-->
-	<tr>
+<%-- 	<tr>
 	<td align="left" valign="top" style="width: 20%;border-right: 1px solid #ccc;padding: 0 20px;">
 			<tiles:insertAttribute name="menu"/>
-	</td>
+	</td> --%>
 	
 <!-- content : hotel.jsp, hoteldetail.jsp에 적용됨-->
 		<td style="height: 400px; width: 80%;">
