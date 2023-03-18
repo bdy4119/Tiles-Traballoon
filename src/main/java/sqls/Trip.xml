@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Trip">
+
+    <select id="triplist" parameterType="String" resultType="mul.cam.a.dto.TripDto">
+        select *
+        from trip
+        where city=#{city}
+    </select>
+
+    <select id="getTrip" parameterType="Integer" resultType="mul.cam.a.dto.TripDto">
+        select *
+        from trip
+        where seq=#{seq}
+    </select>
+
+
+
+</mapper>
