@@ -49,8 +49,7 @@ public class ReviewServiceImpl implements ReviewService{
 	//longdateOrder
 	@Override
 	public List<ReviewDto> longdateOrder(ReviewDto dto) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.longdateOrder(dto);
 	}
 	
 	
@@ -62,7 +61,7 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.getReview(seq);
 	}
 	
-	
+	//readcount
 	@Override
 	public int readcount(int seq) {
 		int readcount = dao.readcount(seq);

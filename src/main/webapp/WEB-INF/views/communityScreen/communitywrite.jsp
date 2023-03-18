@@ -80,27 +80,44 @@
 
 </head>
 <body>
-<div class="container">
-        <img src="pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
-    <br>
-    <br>
-    <form action="communitywriteAf.do" id="frm" method="post" type="submit" enctype="multipart/form-data">
-        <div class="form-group">
-            <label>아이디</label>
-            <input type="text" class="form-control" name="id" value="<%=login.getId() %>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="title">제목</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
-        </div>
-        <label>내용</label>
-        <textarea id="content" name="content"></textarea>
-        <div class="d-flex justify-content-center mt-4">
-            <button id="frmbtn" type="submit" class="btn btn-secondary">작성완료</button>
-        </div>
-    </form>
-    <br>
+
+
+<div id="app" class="container">
+
+<form action="communitywriteAf.do" id="frm" method="post" type="submit" enctype="multipart/form-data">
+
+<table>
+<col width="100px"><col width="500px">
+
+<tr>
+	<th>아이디</th>
+	<td>
+		<%=login.getId() %>
+		<input type="hidden" name="id" value="<%=login.getId() %>">
+	</td>
+</tr>
+<tr>
+	<th>제목</th>
+	<td>
+		<input type="text" id="title" name="title" size="50px" placeholder="제목기입">
+	</td>
+</tr>
+<tr>	
+	<td colspan="2">
+		<textarea id="content" name="content"></textarea>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" align="right">
+		<button type="button" class="saveBtn" value="글쓰기">글쓰기</button>
+	</td>
+</tr>
+
+</table>
+</form>
 </div>
+
+<%--수정 필요함 (alert창 닫으면 자동으로 제출됨)--%>
 
 <script type="text/javascript">
     $(document).ready(function () {

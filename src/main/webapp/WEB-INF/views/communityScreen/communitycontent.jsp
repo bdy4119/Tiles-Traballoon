@@ -95,83 +95,85 @@
 %>
 
 <div class="container">
-    <img src="pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
-    <div class="board-header">
-        <div class="board-sort">
-            <select class="custom-select" id="sort" name="sort">
-                <option selected>최신순</option>
-                <option value="oldsort">오래된순</option>
-                <option value="reviewsort">조회순</option>
-                <option value="commentsort">댓글순</option>
-            </select>
-        </div>
-        <div class="search-container">
-            <select class="custom-select" id="choice" name="choice">
-                <option selected>검색</option>
-                <option value="title">제목</option>
-                <option value="content">내용</option>
-                <option value="writer">작성자</option>
-            </select>
-            <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()"
-                   placeholder="검색어"
-                   value="<%=search %>">
-            <button type="button" class="btn btn-secondary" onclick="searchBtn()">검색</button>
-        </div>
-    </div>
+<div align="center">
+    <img src="images/community.png" class="img-fluid">
+    
+    <table style="margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 3px">
+        <tr>
+        	<td>
+			    <!-- 원하는 순서로 보기 -->
+				<button type="button" value="wdate" onclick="location.href='comWdateOrder.do'" class="btn btn-info">최신순</button>
+				<button type="button" value="longdate" onclick="location.href='comLongdateOrder.do'" class="btn btn-info">오래된순</button>
+				<button type="button" value="readcount" onclick="location.href='comReadcountOrder.do'" class="btn btn-info">조회수순</button>
+				<!-- 원하는 순서로 보기 END-->
+        	</td>
+            <td style="padding-left: 3px">
+                <select class="custom-select" id="choice" name="choice">
+                    <option selected>검색</option>
+                    <option value="title">제목</option>
+                    <option value="content">내용</option>
+                    <option value="writer">작성자</option>
+                </select>
+            </td>
+            <td style="padding-left: 5px" class="align-middle">
+                <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()"
+                       placeholder="검색어" value="<%=search %>">
+            <td style="padding-left: 5px">
+			<span>
+				<button type="button" class="btn btn-primary" onclick="searchBtn()">검색</button>
+			</span>
+            </td>
+        </tr>
+    </table>
 
-    <div class="table-responsive">
-        <table class="table" style="border-collapse: collapse;">
-            <thead style="background-color: #f8f9fa;">
-            <tr>
-                <th scope="col" style="width: 8%; text-align: center;">번호</th>
-                <th scope="col" style="width: 60%">제목</th>
-                <th scope="col" style="width: 16%; text-align: center;">조회수</th>
-                <th scope="col" style="width: 16%; text-align: center;">작성자명</th>
-            </tr>
-            </thead>
-            <tbody>
+    <br>
 
-            <%
-                if (list == null || list.size() == 0) {
-            %>
-            <tr>
-                <td colspan="4">작성된 글이 없습니다</td>
-            </tr>
-            <%
-            } else {
+    <table class="table table-hover table-sm" style="width: 1000px">
+        <col width="70">
+        <col width="600">
+        <col width="100">
+        <col width="150">
+        <thead>
+        <tr class="bg-primary" style="color: white;">
+            <th>번호</th>
+            <th>제목</th>
+            <th>조회수</th>
+            <th>작성자</th>
+        </tr>
+        </thead>
+        <tbody>
 
-                for (int i = 0; i < list.size(); i++) {
-                    CommunityDto dto = list.get(i);
-            %>
-            <tr>
-                <th style="text-align: center;"><%=i + 1 + (pageNumber * 10) %>
-                </th>
+        <%
+            if (list == null || list.size() == 0) {
+        %>
+        <tr>
+            <td colspan="4">작성된 글이 없습니다</td>
+        </tr>
+        <%
+        } else {
 
-                <td>
-                    <%
-                        if (dto.getDel() == 0) {
-                    %>
-                    <%=Utility.arrow(dto.getDepth()) %>
-                    <a href="communitydetail.do?seq=<%=dto.getSeq() %>">
-                        <%=dto.getTitle() %>
-                    </a>
-                    <%
-                    } else if (dto.getDel() == 1) {
-                    %>
-                    <%=Utility.arrow(dto.getDepth()) %>
-                    <font color="#ff0000">*** 이 글은 작성자에 의해서 삭제되었습니다 ***</font>
-                    <%
-                        }
-                    %>
-                </td>
+            for (int i = 0; i < list.size(); i++) {
+                CommunityDto dto = list.get(i);
+        %>
+        <tr>
+            <th><%=i + 1 + (pageNumber * 10) %>
+            </th>
 
-                <td style="text-align: center;"><%=dto.getReadcount() %>
-                </td>
-                <td style="text-align: center;"><%=dto.getId() %>
-                </td>
+            <td style="text-align: left;">
+                <%
+                    if (dto.getDel() == 0) {
+                %>
+                <%=Utility.arrow(dto.getDepth()) %>
+                <a href="communitydetail.do?seq=<%=dto.getSeq() %>">
+                    <%=dto.getTitle() %>
+                </a>
+                <%
+                } else if (dto.getDel() == 1) {
+                %>
+                <%=Utility.arrow(dto.getDepth()) %>
+                <font color="#ff0000">*** 이 글은 작성자에 의해서 삭제되었습니다 ***</font>
+                <%
 
-            </tr>
-            <%
                     }
                 }
             %>

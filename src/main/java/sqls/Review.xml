@@ -111,7 +111,7 @@
 	</delete>
 	
 	
-	<!-- 조회수 -->
+	<!-- 조회수 증가 -->
 	<update id="readcount" parameterType="Integer">
 		update review
 		set readcount=readcount+1
