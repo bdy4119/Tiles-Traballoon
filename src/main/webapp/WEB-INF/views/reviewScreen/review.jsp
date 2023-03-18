@@ -14,18 +14,88 @@
     <%--BootStrap--%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-          
+    
+    
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	  
     <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
-    <title>SemiProject</title>
-    
 
-    
+    <title>SemiProject</title>
 
     <style>
-    	
-    	
+    	/* 디자인 통일 */
+    	 .board-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-top: 40px; /* 상단 간격 조정 */
+        }
+        .board-sort {
+            display: flex;
+            align-items: center;
+            padding-bottom: 15px;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .custom-select {
+            width: 100px;
+            margin-right: 10px;
+        }
+        .form-control {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .btn-secondary {
+            width: 70px;
+        }
+        a {
+            color: #666; /* 적용할 색상 */
+            text-decoration: none; /* 밑줄 제거 */
+        }
+        td, th {
+            color: #666;
+        }
+        table {
+            font-size: 14px;
+        }
+        .pagination a, .pagination span {
+            color: #666; /* 글씨 색상 */
+            background-color: #fff; /* 버튼 색상 */
+            /* 버튼 테두리 색상 */
+        }
+        .pagination a:hover, .pagination span:hover {
+            color: #666; /* 호버 시 글씨 색상 */
+            background-color: #eceef0; /* 호버 시 버튼 색상 */
+            /* 호버 시 버튼 테두리 색상 */
+        }
+        .pagination .page-item.active .page-link {
+            color: #666;
+            background-color: #eceef0;
+            border-color: #dee2e6;
+        }
+        .pagination-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0px 50px;
+        }
+        .write-button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .button-wrapper .btn {
+            width: 70px;
+        }
+		/* 디자인 통일 end */
+    
+    
+    
+    
         .b-example-divider {
             height: 3rem;
             background-color: rgba(0, 0, 0, .1);
@@ -36,35 +106,17 @@
         }
         
         
+        
+        
+        
         #bright {
         	filter: brightness(80%); 
+        	
+        	padding-bottom: -50px;
         }
         
         
-        /* 메인 사진 */
-        .main-wrap {
-			position: relative;
-			vertical-align: middle;
-			width: 120%;
-			margin: none;
-		}
-		
-		.main-img img {
-			display:block;
-			vertical-align: middle;
-			width: 120%;
-			margin-top: -3.0%;
-			filter: brightness(40%);
-		}
-		
-		.main-text {
-			position: absolute;
-			text-align: center;
-			top: 50%;
-			left: 50%;
-			transform: translate( -50%, -50% );
-		}
-        /* 메인 사진 */
+       
         
         
         
@@ -91,93 +143,129 @@
         }
         
         
+        /* 슬라이드 사진 높이 조정 */
+		.carousel-inner {
+		     width: 100%;
+		     height: 300px;
+		 }
+		 
+		 
+		 /* 슬라이드 폰트 위치 */
+		 .carousel-caption {
+
+		    position: absolute;		
+		    right: 50%;		
+		    bottom: 210px;		
+		    left: 15%;
+		    z-index: 10;		
+		    padding-top: 20px;		
+		    padding-bottom: 20px;		
+		    color: #fff;	
+		    text-align: center;		
+		    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+		
+		}
+		
+		
+        
         /* 화면 넓어졌을때 */
         @media (min-width: 1000px) {
+        /* 슬라이드 사진 높이 조정 */
+			.carousel-inner {
+		            width: 100%;
+		            height: 500px;
+		        }
+			 
+			 /* 슬라이드 폰트 위치 */
+			 .carousel-caption {
+	
+			    position: absolute;		
+			    right: 50%;		
+			    bottom: 450px;		
+			    left: 15%;
+			    z-index: 10;		
+			    padding-top: 20px;		
+			    padding-bottom: 20px;
+			    padding-right: 50px;	
+			    color: #fff;	
+			    text-align: center;		
+			    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+			
+			}
         
-        .travel-photo {
-        	margin: 10px;
-        	width: 450px;
-        	border: solid 5px aqua;
-		}
+        	h1{
+        		font-family: sans-serif;
+        		font-size: 60px;
+        		padding-bottom: 10px;
+        	}
         	
+        	p {
+        		font-size: 20px;
+        		padding-bottom: 30px;
+        	}
         	
-        .main-img img {
-			display:block;
-			width: 100%;
-			vertical-align: middle;
-			margin-top: -1.4%;
-			filter: brightness(50%); 
-			 object-fit: cover;
-        }
-        
-        
-        .main-text {
-			position: absolute;
-			text-align: center;
-			top: 50%;
-			left: 50%;
-			transform: translate( -50%, -50% );
-			font-size: 200px;
-		}
-        
-		  table {
-		    width: 1000px;
-		  }
-		  
-		  .order {
-		  	margin-left: 147px;
-		  }
-		  
-		  .class {
-		  	margin-right: 147px;
-		  }
+	        .travel-photo {
+	        	margin: 10px;
+	        	width: 450px;
+	        	border: solid 5px aqua;
+			}
+	        	
+	        	
+	        .main-img img {
+				display:block;
+				width: 100%;
+				vertical-align: middle;
+				margin-top: -1.4%;
+				filter: brightness(50%); 
+				 object-fit: cover;
+	        }
+	        
+	        
+	        .main-text {
+				position: absolute;
+				text-align: center;
+				top: 50%;
+				left: 50%;
+				transform: translate( -50%, -50% );
+				font-size: 200px;
+			}
+	        
+			  table {
+			    width: 1000px;
+			  }
+			  
+			  .order {
+			  	margin-left: 147px;
+			  }
+			  
+			  .class {
+			  	margin-right: 147px;
+			  }
 		}
     </style>
 
 </head>
 
 <body>
-<%--container--%>
-<div class="container-fluid">
-    <main>
-        <%--공백--%>
-<!--         <div class="b-example-divider"></div> -->
+    <%
+    MemberDto login = (MemberDto)session.getAttribute("login");
 
-        <%--내용--%>
-        <%
-        MemberDto login = (MemberDto)session.getAttribute("login");
+    List<ReviewDto> list = (List<ReviewDto>)request.getAttribute("review");
+        
+    int pageBbs = (Integer)request.getAttribute("pageBbs");
+	int pageNumber = (Integer)request.getAttribute("pageNumber");
+	String choice = (String)request.getAttribute("choice");
+	String search = (String)request.getAttribute("search");
+    %>
+    
+    
+ 
 
-        List<ReviewDto> list = (List<ReviewDto>)request.getAttribute("review");
-        
-        int pageBbs = (Integer)request.getAttribute("pageBbs");
-		int pageNumber = (Integer)request.getAttribute("pageNumber");
-		String choice = (String)request.getAttribute("choice");
-		String search = (String)request.getAttribute("search");
-        %>
-        
-        <!-- 상단 사진 -->
-		<!-- <div class="container-fluid" align="center">
-	        <div class="main-img">
-	        	<img src="images/reviewMainPhoto.jpg" class="img-fluid" alt="...">
-	        </div>        
-	        <div class="main-text">
-	        	<hr style="color:white;">
-		        <h1 style="color:white; font-size: 50px; font-style: italic;">여행지 리뷰</h1>
-		        <hr style="color:white;">
-	        </div>
-		</div>     --> 
-		<br>   
-		<br>   
-		<br>   
-		<br>   
-	
-        <!-- 상단 사진 -->
+<div class="container">
+<!-- <img src="images/reviewmain2.JPG" class="img-fluid" alt="Responsive image"> -->
 		
-		
-	
-		
-		<!-- 사진 슬라이드  -->
-		<div class="container" style="margin-top: -80px; margin-bottom: 40px;">
+	<!-- 사진 슬라이드  -->
+		<div class="container">
 		<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
 		  <div class="carousel-indicators">
 		    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -186,30 +274,30 @@
 		  </div>
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		    	<a href="reviewdetail.do?seq=3">
-			      <img src="images/review/3.jpg" class="d-block w-100" alt="..." id="bright">
-		    	</a>
+		    	<a href="reviewdetail.do?seq=4">
+			      <img src="images/review/4.jpg" class="d-block w-100" alt="..." id="bright">
+		      </a>
 		      <div class="carousel-caption d-none d-md-block">
-		        <h1>강원도 철원 다녀옴!</h1>
-		        <p>철원 고석정 꽃밭</p>
+		        <h1 id="size">여수밤바다~</h1>
+		        <p id="size">장범준 노래 생각나는 여수 밤바다 Gamsung..</p>
 		      </div>
 		    </div>
 		    <div class="carousel-item">
 		    	<a href="reviewdetail.do?seq=1">
-			      <img src="images/review/1.jpg" class="d-block w-100" alt="..." id="bright">
+			      <img src="images/review/1.jpg" class="d-block w-100"  alt="..." id="bright">
 		    	</a>
 		      <div class="carousel-caption d-none d-md-block">
-		        <h1>제주여행기</h1>
-		        <p>여행 가격은?</p>
+		        <h1 id="size">제주여행기</h1>
+		        <p id="size">여행 가격은?</p>
 		      </div>
 		    </div>
 		    <div class="carousel-item">
-		      <a href="reviewdetail.do?seq=4">
-			      <img src="images/review/4.jpg" class="d-block w-100" alt="..." id="bright">
-		      </a>
+		      <a href="reviewdetail.do?seq=3">
+			      <img src="images/review/3.jpg" class="d-block w-100" alt="..." id="bright">
+		    	</a>
 		      <div class="carousel-caption d-none d-md-block">
-		        <h1>여수밤바다~</h1>
-		        <p>장범준 노래 생각나는 여수 밤바다 Gamsung..</p>
+		        <h1 id="size">강원도 철원 다녀옴!</h1>
+		        <p id="size">철원 고석정 꽃밭</p>
 		      </div>
 		    </div>
 		  </div>
@@ -226,75 +314,56 @@
 		<!-- 사진 슬라이드 end -->
 
 	
-		
-						
-		<br>
-		<br>
-		<br>
-		<!-- 원하는 순서로 보기 -->
-		<div style="float: left;">
-			<button type="button" value="wdate" onclick="location.href='wdateOrder.do'" class="btn btn-info">최신순</button>
-			<button type="button" value="longdate" onclick="location.href='longdateOrder.do'" class="btn btn-info">오래된순</button>
-			<button type="button" value="readcount" onclick="location.href='readcountOrder.do'" class="btn btn-info">조회수순</button>
-		</div>
-		<!-- 원하는 순서로 보기 END-->
-		
-		
-		<!-- 검색 -->
-		<div style="float: right;" class="form-grouup row">
-			<div class="col">
-				<select id="choice" class="form-select" aria-label="Default select example">
-					<option value="">검색</option>
-					<option value="title">제목</option>
-					<option value="content">내용</option>
-					<option value="writer">작성자</option>
-				</select>
-			</div>
-			
-			<div class="col">
-				<input type="text" id="search" value="" class="form-control"/>
-			</div>
-			
-			<div class="col">
-				<button type="button" onclick="searchBtn()" class="btn btn-secondary">검색</button>
-			</div>
-			
-		</div>
-		<!-- 검색 끝 -->
+	<div class="board-header">
+        <div class="board-sort" style="margin-bottom: -13px;">
+			<!-- 원하는 순서로 보기 -->
+			<button type="button" value="wdate" onclick="location.href='wdateOrder.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">최신순</button>
+			<button type="button" value="longdate" onclick="location.href='longdateOrder.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">옛날순</button>
+			<button type="button" value="readcount" onclick="location.href='readcountOrder.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">조회수</button>
+			<!-- 원하는 순서로 보기 END-->
+        </div>
+
+		 <div class="search-container">
+			<!-- 검색 -->
+			<select id="choice" class="custom-select" aria-label="Default select example">
+				<option selected>검색</option>
+				<option value="title">제목</option>
+				<option value="content">내용</option>
+				<option value="writer">작성자</option>
+			</select>
+			<input type="text" id="search"value="<%=search %>" class="form-control"/>
+			<button type="button" onclick="searchBtn()" class="btn btn-secondary">검색</button>
+			<!-- 검색 끝 -->
+		 </div>
+     </div>
 
 		
-		<br>
-		<div align="center">
-		<br>
-			<table class="table">
-				<col width="70">
-				<col width="450">
-				<col width="120">
-				<col width="200">
-				<col width="150">
-				<thead class="table-dark">
-					<tr align="center">
-						<th>번호</th>
-						<th>제목</th>
-						<th>ID</th>
-						<th>작성일</th>
-						<th>조회수</th>
-					</tr>
-				</thead>
-				<tbody align="center">
+	<div class="table-responsive">
+		
+		<table class="table" style="border-collapse: collapse;">
+			<thead style="background-color: #f8f9fa;">
+		       <tr>
+		          <th scope="col" style="width: 8%; text-align: center;">번호</th>
+		          <th scope="col" style="width: 50%">제목</th>
+		          <th scope="col" style="width: 16%; text-align: center;">조회수</th>
+		          <th scope="col" style="width: 16%; text-align: center;">작성일</th>
+		          <th scope="col" style="width: 16%; text-align: center;">작성자</th>
+		       </tr>
+		     </thead>
+		     <tbody>
+				<%
+					if(list == null || list.size() == 0) {
+					%>
+						<tr>
+							<td colspan="4">작성된 글이 없습니다.</td>
+						</tr>
 					<%
-						if(list == null || list.size() == 0) {
-							%>
+					} else {
+						for(int i=0; i<list.size(); i++) {
+							ReviewDto dto = list.get(i);
+						%>
 							<tr>
-								<td colspan="4">작성된 글이 없습니다.</td>
-							</tr>
-							<%
-						} else {
-							for(int i=0; i<list.size(); i++) {
-								ReviewDto dto = list.get(i);
-							%>
-							<tr>
-								<th><%=i+1+(pageNumber*10) %></th>
+								<th style="text-align: center;"><%=i+1+(pageNumber*10) %></th>
 								<%
 								if(dto.getDel() == 0) {
 								%>
@@ -310,15 +379,15 @@
 									<td>
 										<%=Utility.arrow(dto.getDepth()) %>
 										<font color="#ff0000">
-											*** 이 글은 작성자에 의해 삭제된 게시글입니다 ***
+											*** 이 글은 작성자에 의해서 삭제되었습니다 ***
 										</font>
 									</td>
 									<%
 								}
 								%>
-								<td><%=dto.getId() %></td>
-								<td><%=dto.getWdate() %></td>
-								<td><%=dto.getReadcount() %></td>
+								<td style="text-align: center;"><%=dto.getReadcount() %></td>
+								<td style="text-align: center;"><%=dto.getWdate() %></td>
+								<td style="text-align: center;"><%=dto.getId() %></td>
 							</tr>
 							<%
 							}
@@ -326,27 +395,24 @@
 						%>
 				</tbody>
 			</table>
-				
-			<br>
-			<br>
-			<div class="container">
-				<nav aria-label="Page navigation">
-					<ul class="pagination" id="pagination" style="justify-content:center"></ul>
-				</nav>
-			</div>
-	 		<a href="reviewwrite.do">
-				<button type="button" style="float:right;" class="btn btn-secondary">글쓰기</button>
-	 		</a>
-	 			
-		    <br>
-		    <br>
-		    <br>
-		</div>
+	</div>
 		
-    </main>
+	<div class="pagination-container">
+		<div class="container">
+			<nav aria-label="Page navigation">
+				<ul class="pagination" id="pagination"></ul>
+			</nav>
+		</div>
+		<div class="write-button-container">
+		    <div class="button-wrapper" style="margin-right: -50px;">
+		         <a href="reviewwrite.do" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">
+		         	글쓰기
+		         </a>
+		    </div>
+		</div>
+	</div>
+		
 	<script type="text/javascript">	
-	
-	
 		//검색
 		let search = "<%=search %>";
 		console.log("search= " + search);
@@ -420,11 +486,9 @@
         
 
 
-    <%--공백--%>
-<!--     <div class="b-example-divider"></div> -->
 
 </div>
-<%--container--%>
+
 
 <%--BootStrap--%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -432,6 +496,7 @@
         crossorigin="anonymous">
 </script>
 <%--BootStrap--%>
+
 
 </body>
 </html>

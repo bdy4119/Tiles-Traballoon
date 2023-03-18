@@ -68,33 +68,10 @@
 							
 
 
-			<!-- 댓글 정보 출력을 위한 템플릿 코드 -->
-			<div class="card mt-3">
-				<div class="card-header">
-					댓글 (commentList.size())
-				</div>
-				<div class="card-body">
-					<ul class="list-unstyled">
-						<li>
-							<div>comment.getWriter()</div>
-							<div>comment.getWdate()</div>
-							<div>comment.getContent()</div>
-						</li>
-						<li>
-							<div>comment.getWriter()</div>
-							<div>comment.getWdate()</div>
-							<div>comment.getContent()</div>
-						</li>
-						<li>
-							<div>comment.getWriter()</div>
-							<div>comment.getWdate()</div>
-							<div>comment.getContent()</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<br>
 
+			<br>
+			<br>
+			<br>
 			<form action="communitycommentWriteAf.do" method="post">
 			<!-- 	<input type="hidden" name="board_id" value="글번호"> -->
 				<input type="hidden" name="seq" value="<%=dto.getSeq() %>">
@@ -108,29 +85,25 @@
 			
 			
 			<!-- 댓글 정보 출력을 위한 템플릿 코드 -->
-			<div class="card mt-3">
-				<div class="card-header">
-					댓글 (commentList.size())
-				</div>
-				<div class="card-body">
-					<ul class="list-unstyled">
-						<li>
-							<div>comment.getWriter()</div>
-							<div>comment.getWdate()</div>
-							<div>comment.getContent()</div>
-						</li>
-						<li>
-							<div>comment.getWriter()</div>
-							<div>comment.getWdate()</div>
-							<div>comment.getContent()</div>
-						</li>
-						<li>
-							<div>comment.getWriter()</div>
-							<div>comment.getWdate()</div>
-							<div>comment.getContent()</div>
-						</li>
-					</ul>
-				</div>
+			<div id="li">
+			<!--<div class="card mt-3">
+				 	<div class="card-header">
+						작성자:
+					</div>
+					<div class="card-body">
+						<ul class="list-unstyled">
+							<li>
+								<div>comment.getWdate()</div>
+								<div>comment.getContent()</div>
+							</li>
+						</ul>
+					</div>
+				</div>-->
+			</div>
+			
+				<br>
+				<br>
+				<br>
 				<script type="text/javascript">
 					$(document).ready(function(){
 						$.ajax({
@@ -141,17 +114,23 @@
 								// alert('success');
 								// alert(JSON.stringify(list));
 								
-								$("#tbody").html("");
+								$("#li").html("");
 								
 								$.each(list, function(index, item){
-									let str = "<tr class='table-info'>" 
-											+	"<td>작성자:" + item.id + "</td>"
-											+	"<td>작성일:" + item.wdate + "</td>"
-											+ "</tr>"
-											+ "<tr>"
-											+	"<td colspan='2'>" + item.content + "</td>"
-											+ "</tr>";
-									$("#tbody").append(str);
+									let str = 	"<div class='card mt-3'>"
+											+		"<div class='card-header'>" + item.id + "</div>"
+											+			"<div class='card-body'>"
+											+				"<ul class='list-unstyled'>"
+											+ 					"<li>" 
+											+						"<div>" + item.content + "</div>"
+											+						"<br>"
+											+						"<div>작성일: " + item.wdate + "</div>"
+											+ 					"</li>"
+											+				"</ul>"
+											+			"</div>"
+											+	"</div>"
+									$("#li").append(str);
+									
 								});
 							},
 							error:function(){
@@ -165,7 +144,7 @@
 
 		</div>
 	</div>
-</div>
+
 
 
 <!-- 댓글 정보 출력을 위한 템플릿 코드 -->
@@ -315,14 +294,3 @@
 <br>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

@@ -11,20 +11,11 @@ System.out.println(dto.toString());
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+ <meta charset="UTF-8">
+    <title>community write</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<%--서머노트
-	:혹시 다른 거 지웠다가 영권님이 추가시켜놓으신 것들 지워질까봐
-	 일단 안지우고 영권님 글쓰기에서 써머노트 부분만 가져왔습니다ㅠㅠ 
-	 겹치는 거 빼고 적용하시면 될 것 같아요 영권님ㅠㅠ
-	 
+    <%--서머노트--%>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
@@ -90,58 +81,30 @@ System.out.println(dto.toString());
             });
         }
     </script>
-<!-- 써머노트 end -->
---%>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-<style type="text/css">
-th{
-	background-color: #007bff;
-	color: white;
-	text-align: center;
-	vertical-align: middle;
-}
-</style>
 </head>
 <body>
 
-<img src="images/friendship.png" class="img-fluid">
-
-<div id="app" class="container">
-
-<form action="communityupdateAf.do" id="frm" method="get">
-<input type="hidden" name="seq" value="<%=dto.getSeq() %>" >
-
-<table class="table table-sm">
-<col width="100px"><col width="500px">
-
-<tr>
-	<th>아이디</th>
-	<td>		
-		<%=dto.getId() %>
-		<input type="hidden" id="id" name="id" value="<%=dto.getId() %>">		
-	</td>
-</tr>
-<tr>
-	<th class="align-middle">제목</th>
-	<td>
-		<input type="text" id="title" name="title" size="50px" class="form-control form-control-lg" value='<%=dto.getTitle() %>'>
-	</td>
-</tr>
-<tr>	
-	<td colspan="2">
-		<textarea rows="18" id="content" name="content" class="form-control"><%=dto.getContent()  %></textarea>
-	</td>
-</tr>
-<tr>
-	<td colspan="2" align="right" style="padding-top: 20px">
-		<button type="button" class="btn btn-primary">글수정 완료</button>
-	</td>
-</tr>
-
-</table>
-</form>
+<div class="container">
+        <img src="images/friendship.png" class="img-fluid" alt="Responsive image">
+    <br>
+    <br>
+    <form action="communityupdateAf.do" id="frm" method="get" type="submit" enctype="multipart/form-data">
+    <input type="hidden" name="seq" value="<%=dto.getSeq() %>" >
+        <div class="form-group">
+            <label>아이디</label>
+            <input type="text" class="form-control" name="id" value="<%=dto.getId() %>" readonly>
+        </div>
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" id="title" name="title" value='<%=dto.getTitle() %>'>
+        </div>
+        <label>내용</label>
+        <textarea id="content" name="content"><%=dto.getContent() %></textarea>
+        <div class="d-flex justify-content-center mt-4">
+            <button id="frmbtn" type="submit" class="btn btn-secondary">글수정 완료</button>
+        </div>
+    </form>
+    <br>
 </div>
 
 
@@ -164,3 +127,4 @@ $(document).ready(function() {
 
 </body>
 </html>
+

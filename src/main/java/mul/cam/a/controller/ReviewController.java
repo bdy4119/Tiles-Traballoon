@@ -272,7 +272,7 @@ public class ReviewController {
 		
 		param.setStart(start);
 		param.setEnd(end);
-		List<ReviewDto> longdateOrder = service.wdateOrder(dto);
+		List<ReviewDto> longdateOrder = service.longdateOrder(dto);
 		
 		int len = service.getAllReview(param);
 		

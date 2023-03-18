@@ -28,80 +28,36 @@
   	<script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.js"></script>
   	<script src="${pageContext.request.contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
   	<!--  -->
-  	
-  	
-    <style>
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-            
-        }
-        
-        table {
-        	padding-left: 100px;
-        	padding-right: 100px;
-        }
-    </style>
 
 </head>
 
 <body>
 
- <%
+<%
 	MemberDto login = (MemberDto)session.getAttribute("login");
 	ReviewDto dto = (ReviewDto)request.getAttribute("dto");
 %>
 
-<%--container--%>
 <div class="container">
-    <main>    
-    <%--내용--%>
-    <hr>
-    <h1>글쓰기</h1>
-    <hr>
-		<div align="center">
-		<form action="writeReviewAf.do" id="frm" method="post" enctype="multipart/form-data">
-			<table class="table table-striped">
-				<col width="150">
-				<col width="400">
-				<tr>
-					<th>id</th>
-					<td>
-						<%=login.getId() %>
-						<input type="hidden" name="id" size="50px" value="<%=login.getId() %>" readonly="readonly">
-					</td>
-				</tr>
-				<tr>
-					<th>제목</th>
-					<td>
-						<input type="text" id="title" name="title" name="" size="50px" class="form-control"/>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<textarea rows="20" cols="50px" id="summernote" name="content" class="summernote"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="right">
-						<button type="submit" id="reviewwrite" class="btn btn-secondary">글쓰기</button>
-					</td>
-				</tr>
-			</table>
-		</form>
-		</div>
-		
-		
-		<script type="text/javascript">
-			
-		</script>
-    </main>
-    <%--내용--%>
-    
-
+    <img src="images/beach.jpg" class="img-fluid" alt="Responsive image">
+    <br>
+    <br>
+    <form action="writeReviewAf.do" id="frm" method="post" type="submit" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>아이디</label>
+            <input type="text" class="form-control" name="id" value="<%=login.getId() %>" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
+        </div>
+        <label>내용</label>
+        <textarea id="summernote" name="content" class="summernote"></textarea>
+        <div class="d-flex justify-content-center mt-4">
+            <button id="reviewwrite" type="submit" class="btn btn-secondary">작성완료</button>
+        </div>
+    </form>
+    <br>
 </div>
 <script type="text/javascript">
 
@@ -214,14 +170,6 @@
 		*/
 		
 </script>
-<%--container--%>
-
-<%--BootStrap--%>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous">
-</script> -->
-<%--BootStrap--%>
 
 </body>
 </html>
