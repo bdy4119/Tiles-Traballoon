@@ -58,6 +58,28 @@ if(communityupdate != null && !communityupdate.equals("")){
 }
 
 
+//글삭제
+String communitydelete = (String)request.getAttribute("communitydelete");
+if(communitydelete != null && !communitydelete.equals("")){
+	if(communitydelete.equals("COMMUNITY_DELETE_OK")){
+		%>
+		<script type="text/javascript">
+		alert("성공적으로 삭제되었습니다");
+		location.href = "community.do";
+		</script>
+		<%
+	}
+	else{
+		%>
+		<script type="text/javascript">
+		alert("삭제되지 않았습니다.");
+		location.href = "community.do";
+		</script>
+		<%
+	}
+}
+
+
 
 
 
@@ -81,16 +103,20 @@ if(answer != null && !answer.equals("")){
 	}
 }
 
+//원래있던 delete 주석처리 해놨습니닷
+//주석처리가 잘 안되서,,따로 했어요ㅠㅠ
+/*
 String communitydelete = (String)request.getAttribute("communitydelete");
 if(communitydelete != null && !communitydelete.equals("")){
 	if(communitydelete.equals("COMMUNITY_DELETE_OK")){
-		%>
-		<script type="text/javascript">
+*/
+	%>
+<%-- 		<script type="text/javascript">
 		alert("성공적으로 삭제되었습니다");
 		location.href = "community?param=communitylist";
 		</script>
 		<%
-	}
+	} 
 	else{
 		%>
 		<script type="text/javascript">
@@ -100,8 +126,7 @@ if(communitydelete != null && !communitydelete.equals("")){
 		<%
 	}	
 }
-
-
+--%>
 
 %>
 </body> 

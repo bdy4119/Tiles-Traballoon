@@ -27,6 +27,19 @@ public class CommunityDaoImpl implements CommunityDao {
 	public int getAllCommunity(CommunityParam community) {		
 		return session.selectOne(ns + "getAllCommunity", community);
 	}
+	
+	
+	//조회수 증가
+	@Override
+	public int comReadcount(int seq) {
+		return session.update(ns + "comReadcount", seq);
+	}
+	
+	//조회수순 정렬
+	@Override
+	public List<CommunityDto> comReadcountOrder(CommunityDto dto) {
+		return session.selectList(ns + "comReadcountOrder", dto);
+	}
 
 	@Override
 	public int writeCommunity(CommunityDto dto) {		
@@ -41,6 +54,12 @@ public class CommunityDaoImpl implements CommunityDao {
 	@Override
 	public int updateCommunity(CommunityDto dto) {	
 		return session.update(ns + "updateCommunity", dto);
+	}
+	
+	//글삭제
+	@Override
+	public int communitydelete(int seq) {
+		return session.update(ns + "communitydelete", seq);
 	}
 
 	@Override
@@ -62,7 +81,7 @@ public class CommunityDaoImpl implements CommunityDao {
 	public List<CommunityComment> commentList(int seq) {		
 		return session.selectList(ns + "commentList", seq);
 	}
-	
+
 }
 
 

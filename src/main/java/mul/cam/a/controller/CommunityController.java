@@ -52,7 +52,45 @@ public class CommunityController {
 
 		return "community";
 	}
+	
+	
+	//조회수순 정렬
+	@GetMapping(value = "comReadcountOrder.do")
+	public String community(CommunityParam param, CommunityDto dto , Model model) {
+		
+		// 글의 시작과 끝
+		int pn = param.getPageNumber();  // 0 1 2 3 4
+		int start = 1 + (pn * 10);	// 1  11
+		int end = (pn + 1) * 10;	// 10 20
+		
+		param.setStart(start);
+		param.setEnd(end);
+		
+		List<CommunityDto> comReadcountOrder = service.comReadcountOrder(dto);
+		int len = service.getAllCommunity(param);
+		
+		int pageCommunity = len / 10;		// 25 / 10 -> 2
+		if((len % 10) > 0) {
+			pageCommunity = pageCommunity + 1;
+		}
+		
+		if(param.getChoice() == null || param.getChoice().equals("")
+				|| param.getSearch() == null || param.getSearch().equals("")) {
+			param.setChoice("검색");
+			param.setSearch("");
+		}
+		
+		model.addAttribute("communitylist", comReadcountOrder);	// 게시판 리스트
+		model.addAttribute("pageCommunity", pageCommunity);	// 총 페이지수
+		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
+		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
+		model.addAttribute("search", param.getSearch());	// 검색어
+		
+		return "community";
+	}
 
+	
+	
 	@GetMapping(value = "communitywrite.do")
 	public String communitywrite() {
 		return "communitywrite";
@@ -77,7 +115,10 @@ public class CommunityController {
 	@GetMapping(value = "communitydetail.do")
 	public String communitydetail(Model model, int seq) {
 		CommunityDto dto = service.getCommunity(seq);
+		int comReadcount = service.comReadcount(seq);
+		
 		model.addAttribute("communitydto", dto);
+		model.addAttribute("readcount", comReadcount);
 		
 		return "communitydetail";
 	}
@@ -89,6 +130,20 @@ public class CommunityController {
 		
 		return "communityupdate";
 	}
+	
+	
+	//글삭제
+	@GetMapping(value="communitydelete.do")
+	public String communitydelete(Model model, int seq) {
+		boolean b = service.communitydelete(seq);
+		String communitydelete = "COMMUNITY_DELETE_OK";
+		if(b == false) {
+			communitydelete = "COMMUNITY_DELETE_NO";
+		}
+		model.addAttribute("communitydelete", communitydelete);
+		return "communitymessage";
+	}
+	
 	
 	@GetMapping(value = "communityupdateAf.do")
 	public String communityupdateAf(Model model, CommunityDto dto) {

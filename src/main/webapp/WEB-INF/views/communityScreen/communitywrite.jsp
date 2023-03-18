@@ -124,16 +124,14 @@ th{
 	</td>
 </tr>
 <tr>
-	<td colspan="2" align="right" style="padding-top: 20px">
-		<button type="button" class="saveBtn"  value="글쓰기"></button>
+	<td colspan="2" align="right">
+		<button type="button" class="saveBtn" value="글쓰기">글쓰기</button>
 	</td>
 </tr>
 
 </table>
 </form>
 </div>
-
-<button type="button" class="saveBtn"  value="글쓰기"></button>
 
 <%--수정 필요함 (alert창 닫으면 자동으로 제출됨)--%>
 <script type="text/javascript">

@@ -43,8 +43,16 @@
 <div class="container">
 <div align="center">
     <img src="images/community.png" class="img-fluid">
+    
     <table style="margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 3px">
         <tr>
+        	<td>
+			    <!-- 원하는 순서로 보기 -->
+				<button type="button" value="wdate" onclick="location.href='comWdateOrder.do'" class="btn btn-info">최신순</button>
+				<button type="button" value="longdate" onclick="location.href='comLongdateOrder.do'" class="btn btn-info">오래된순</button>
+				<button type="button" value="readcount" onclick="location.href='comReadcountOrder.do'" class="btn btn-info">조회수순</button>
+				<!-- 원하는 순서로 보기 END-->
+        	</td>
             <td style="padding-left: 3px">
                 <select class="custom-select" id="choice" name="choice">
                     <option selected>검색</option>

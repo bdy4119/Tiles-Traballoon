@@ -25,6 +25,20 @@ public class CommunityServiceImpl implements CommunityService {
 	public int getAllCommunity(CommunityParam community) {		
 		return dao.getAllCommunity(community);
 	}
+	
+	//조회수 증가
+	@Override
+	public int comReadcount(int seq) {
+		return dao.comReadcount(seq);
+	}	
+	
+	
+	//조회수순 정렬
+	@Override
+	public List<CommunityDto> comReadcountOrder(CommunityDto dto) {
+		return dao.comReadcountOrder(dto);
+	}
+	
 
 	@Override
 	public boolean writeCommunity(CommunityDto dto) {
@@ -40,6 +54,13 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public boolean updateCommunity(CommunityDto dto) {
 		int n = dao.updateCommunity(dto); 
+		return n>0?true:false;
+	}
+	
+	//글삭제
+	@Override
+	public boolean communitydelete(int seq) {
+		int n = dao.communitydelete(seq);
 		return n>0?true:false;
 	}
 
@@ -59,8 +80,6 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public List<CommunityComment> commentList(int seq) {		
 		return dao.commentList(seq);
-	}	
-		
-	
+	}
 }
 

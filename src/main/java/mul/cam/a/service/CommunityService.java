@@ -11,11 +11,20 @@ public interface CommunityService {
 	List<CommunityDto> communitylist(CommunityParam community);	
 	int getAllCommunity(CommunityParam community);
 	
+	//조회수 증가
+	int comReadcount(int seq);
+	
+	//조회수순 정렬
+	List<CommunityDto> comReadcountOrder(CommunityDto dto);	
+	
 	boolean writeCommunity(CommunityDto dto);
 	
 	CommunityDto getCommunity(int seq);
 	
 	boolean updateCommunity(CommunityDto dto);
+	
+	//글삭제
+	boolean communitydelete(int seq);
 	
 	boolean answerCommunity(CommunityDto dto);
 	

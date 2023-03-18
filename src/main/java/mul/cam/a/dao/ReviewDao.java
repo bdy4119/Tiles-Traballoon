@@ -29,7 +29,7 @@ public interface ReviewDao {
 	ReviewDto getReview(int seq);
 	
 	
-	//조회수
+	//조회수 wm
 	int readcount(int seq);
 	
 	
