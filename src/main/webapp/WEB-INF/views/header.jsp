@@ -48,7 +48,7 @@
 
             <div class="col-md-3 text-end">
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="mypage.do" class="nav-link px-2 link-dark">마이페이지</a></li>
+                    <li><a href="mypageAf.do" class="nav-link px-2 link-dark">마이페이지</a></li>
                     <li>
                         <a class="btn btn-outline-primary me-2" href="login.do" role="button">Login</a>
                     </li>

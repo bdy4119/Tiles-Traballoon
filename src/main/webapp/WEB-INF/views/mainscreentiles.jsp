@@ -15,6 +15,7 @@
 </head>
 <body>
 
+<div class="container-fluid">
 <div align="center">
 
 <table style="width: 100%; height: 100%; border-color: gray;" >
@@ -50,6 +51,6 @@
 </table>
 
 </div>
-
+</div>
 </body>
 </html>

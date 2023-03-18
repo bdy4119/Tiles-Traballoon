@@ -18,8 +18,13 @@
 	 -->	
 	 <!-- jsp파일들 들어가있던 경로 -->  	
 	
+				
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<!-- 접두사 -->
 		<property name="prefix" value="/WEB-INF/views/" />
+					<!-- 접두사와 접미사에 무슨이름 .jsp 를 넣겠다 -->
+					<!-- views 안의 모든 jsp는 불러낼수있다 -->
+					<!-- 접미사 -->
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="2"></property>
 	</bean>
