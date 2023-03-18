@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mul.cam.a.dao.MypageDao;
+import mul.cam.a.dto.MemberDto;
 import mul.cam.a.dto.MypageDto;
 import mul.cam.a.service.MypageService;
 
@@ -17,5 +18,10 @@ public class MypageServiceImpl implements MypageService{
 	
 	public List<MypageDto> allMember() {
 		return dao.allMember();
+	}
+	
+	@Override
+	public MypageDto info(MypageDto dto) {
+		return dao.info(dto);
 	}
 }

@@ -39,6 +39,7 @@
 </head>
 
 <body>
+
 <div class="container">
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
@@ -58,6 +59,7 @@
                     </svg>
                 </a>
                 <a class="btn btn-sm btn-outline-secondary" href="login.do">Login</a>
+
             </div>
         </div>
     </header>
