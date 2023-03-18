@@ -17,9 +17,11 @@ public class MemberDaoImpl implements MemberDao {
 	
 	String ns = "Member.";
 	
+	// interface에서 상속받은 daoimpl에서 dao에서 제시한 함수를 가지고있어야한다 
+	// 
 	@Override
 	public List<MemberDto> allMember() {						
-		return session.selectList(ns + "allMember");
+		return session.selectList(ns + "allMember");	// sql세션의 세션이다 . session list = 
 	}
 
 	@Override
@@ -29,7 +31,7 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public int addMember(MemberDto dto) {		
-		return session.insert(ns + "addmember", dto);
+		return session.insert(ns + "addmember", dto);		
 	}
 
 	@Override
@@ -38,8 +40,15 @@ public class MemberDaoImpl implements MemberDao {
 		return mem;
 	}
 
+	@Override
+	public int deleteMember(String id) {
+		 return session.delete(ns + "deleteMember", id);
+	}
 	
-	
+	@Override
+	public int updateMember(MemberDto dto) {
+		return session.update(ns + "updateMember", dto);
+	}
 	
 	
 }

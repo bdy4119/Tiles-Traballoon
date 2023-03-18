@@ -119,25 +119,7 @@ if(answer != null && !answer.equals("")){
 	}	
 }
 
-String bbsdelete = (String)request.getAttribute("bbsdelete");
-if(bbsdelete != null && !bbsdelete.equals("")){
-	if(bbsdelete.equals("BBS_DELETE_OK")){
-		%>
-		<script type="text/javascript">
-		alert("성공적으로 삭제되었습니다");
-		location.href = "bbs?param=bbslist";
-		</script>
-		<%
-	}
-	else{
-		%>
-		<script type="text/javascript">
-		alert("삭제되지 않았습니다");		
-		location.href = "bbs?param=bbslist";
-		</script>
-		<%
-	}	
-}
+
 
 
 

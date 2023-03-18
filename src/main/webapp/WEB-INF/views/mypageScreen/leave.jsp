@@ -1,23 +1,27 @@
+<%@page import="mul.cam.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+	MemberDto login = (MemberDto)session.getAttribute("login");
+	String id = login.getId();
+
+%>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">
 	<div align="center">
+	
     	<img src="images/community.png" class="img-fluid">
 		<main class="col-10 py-md-3 pl-md-5 bd-content" role="main">
 
@@ -89,7 +93,6 @@
 	</div>
 	<div class="gap-3 hidden-xs-down"></div>
 	<div class="gap-1 hidden-sm-up"></div>
-	<section>
 		<div class="container">
 			<div class="card none-border">
 				<div class="mb-3">
@@ -99,39 +102,36 @@
 				</div>
 			</div>
 		</div>
-	</section>
+
 
 	<div class="gap-3 hidden-xs-down"></div>
 	<div class="gap-1 hidden-sm-up"></div>
 	<div class="container">
-		<div class="move-btn-wrap" align="center" id="deleteBtn">
-			<button type="button" class="btn btn-outline-secondary" style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 1.1rem;">탈퇴하기</button>
+		<div class="move-btn-wrap" align="center">
+			<div class="form-group">
+	
+    </div> <!-- form-group// -->      
 			<button type="button" class="btn btn-outline-secondary" style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 2.2rem; --bs-btn-font-size: 1.1rem;">취소</button>
 		</div>
+		<form action="deleteMember.do" method="post" id="frm">
+			<input type="hidden" name="id" id="id1" value="<%=login.getId()%>">
+        	<button type="button" id="delBtn" class="btn btn-primary btn-block"> 삭제  </button>
+    	</form>
 	</div>
-	
-	
-	
-	
+<p><%=login.getId() %></p>
+
 <script type="text/javascript">
-$("#deleteBtn").click(function () {
-	$.ajax({
-		url:"http://localhost:3306/mydb/bbsdelete",
-		type:"post",
-		data:{ "seq":seq },
-		success:function(msg){
-			if(msg == "YES"){
-				alert('삭제되었습니다');
-				location.href = "mypageAf.jsp";
-			}else{
-				alert('삭제되지 않았습니다');
-			}		
-		},
-		error:function(){
-			alert('error');
-		}
-	});	
+
+$("#delBtn").click(function(){
+	var id = $("#id1").val();		// getter
+	alert(id);
+	
+	$("#id1").val('<%=login.getId()%>');
+	
+	$("#frm").submit();
 });
 </script>
+	
+
 </body>
 </html>

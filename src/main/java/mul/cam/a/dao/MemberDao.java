@@ -13,4 +13,12 @@ public interface MemberDao {
 	int addMember(MemberDto dto);
 	
 	MemberDto login(MemberDto dto);
+	
+	int deleteMember(String id);
+	
+	int updateMember(MemberDto dto);
+	
+	// 추가 삭제 수정은 반환값이 숫자다
+	// selectone 은 하나반환 selectlist 는 여러개  ->> 해당 하는 자료형 
 }
+
