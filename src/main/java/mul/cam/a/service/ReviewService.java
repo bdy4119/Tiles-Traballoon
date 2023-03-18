@@ -14,8 +14,15 @@ public interface ReviewService {
 	//페이지 넘버
 	int getAllReview(ReviewParam Param);
 	
-	//조회수순
-	ReviewDto readcountOrder(ReviewDto dto);
+	//readcountOrder
+	List<ReviewDto> readcountOrder(ReviewDto dto);
+	
+	//wdateOrder
+	List<ReviewDto> wdateOrder(ReviewDto dto);
+	
+	
+	//longdateOrder
+	List<ReviewDto> longdateOrder(ReviewDto dto);
 	
 
 	//detail
