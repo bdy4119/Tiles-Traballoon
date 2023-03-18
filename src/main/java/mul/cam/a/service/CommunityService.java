@@ -17,6 +17,12 @@ public interface CommunityService {
 	//조회수순 정렬
 	List<CommunityDto> comReadcountOrder(CommunityDto dto);	
 	
+	//최신순 정렬
+	List<CommunityDto> comWdateOrder(CommunityDto dto);	
+	
+	//오래된순 정렬
+	List<CommunityDto> comLongdateOrder(CommunityDto dto);	
+	
 	boolean writeCommunity(CommunityDto dto);
 	
 	CommunityDto getCommunity(int seq);

@@ -46,6 +46,42 @@
 	 </if>
 </select>
 
+
+<!-- 조회수 증가 -->
+<update id="comReadcount" parameterType="Integer">
+	update community
+	set readcount=readcount+1
+	where seq=#{seq}
+</update>
+
+
+<!-- 조회수순 정렬 -->
+<select id="comReadcountOrder" parameterType="mul.cam.a.dto.CommunityDto"
+	resultType="mul.cam.a.dto.CommunityDto">
+	select *
+	from community
+	order by readcount desc
+</select>
+	
+	
+<!-- 최신순 정렬 -->
+<select id="comWdateOrder" parameterType="mul.cam.a.dto.CommunityDto"
+	resultType="mul.cam.a.dto.CommunityDto">
+	select *
+	from community
+	order by wdate desc
+</select>
+	
+	
+<!-- 오래된순 정렬 -->
+<select id="comLongdateOrder" parameterType="mul.cam.a.dto.CommunityDto"
+	resultType="mul.cam.a.dto.CommunityDto">
+	select *
+	from community
+	order by wdate asc
+</select>
+
+
 <insert id="writeCommunity" parameterType="mul.cam.a.dto.CommunityDto">
 	insert into community(id, ref, step, depth, title, content, wdate, del, readcount)
 	values(#{id}, (select ifnull(max(ref), 0)+1 from community b), 0, 0, 
@@ -63,6 +99,17 @@
 	set title=#{title}, content=#{content}, wdate=now()
 	where seq=#{seq}
 </update>
+
+
+<!-- 글삭제 -->
+<!-- reviewDelete -->
+<delete id="communitydelete" parameterType="Integer">
+	update community
+	set del=1
+	where seq=#{seq}
+</delete>
+	
+	
 
 <!-- 답글 -->
 <!-- 수정 -->

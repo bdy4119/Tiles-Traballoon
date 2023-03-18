@@ -9,82 +9,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <%--Pagination--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"--%>
+    <%--          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">--%>
+
     <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
-
-    <style>
-        .board-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            margin-top: 40px; /* 상단 간격 조정 */
-        }
-        .board-sort {
-            display: flex;
-            align-items: center;
-            padding-bottom: 15px;
-        }
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
-        .custom-select {
-            width: 100px;
-            margin-right: 10px;
-        }
-        .form-control {
-            flex: 1;
-            margin-right: 10px;
-        }
-        .btn-secondary {
-            width: 70px;
-        }
-        a {
-            color: #666; /* 적용할 색상 */
-            text-decoration: none; /* 밑줄 제거 */
-        }
-        td, th {
-            color: #666;
-        }
-        table {
-            font-size: 14px;
-        }
-        .pagination a, .pagination span {
-            color: #666; /* 글씨 색상 */
-            background-color: #fff; /* 버튼 색상 */
-            /* 버튼 테두리 색상 */
-        }
-        .pagination a:hover, .pagination span:hover {
-            color: #666; /* 호버 시 글씨 색상 */
-            background-color: #eceef0; /* 호버 시 버튼 색상 */
-            /* 호버 시 버튼 테두리 색상 */
-        }
-        .pagination .page-item.active .page-link {
-            color: #666;
-            background-color: #eceef0;
-            border-color: #dee2e6;
-        }
-        .pagination-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin: 0px 50px;
-        }
-        .write-button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        .button-wrapper .btn {
-            width: 70px;
+    <style type="text/css">
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle !important;
         }
     </style>
 
 </head>
 <body>
+
 
 <%
     List<CommunityDto> list = (List<CommunityDto>) request.getAttribute("communitylist");
@@ -93,7 +40,6 @@
     String choice = (String) request.getAttribute("choice");
     String search = (String) request.getAttribute("search");
 %>
-
 <div class="container">
 <div align="center">
     <img src="images/community.png" class="img-fluid">
@@ -173,26 +119,33 @@
                 <%=Utility.arrow(dto.getDepth()) %>
                 <font color="#ff0000">*** 이 글은 작성자에 의해서 삭제되었습니다 ***</font>
                 <%
-
                     }
+                %>
+            </td>
+
+            <td><%=dto.getReadcount() %>
+            </td>
+            <td><%=dto.getId() %>
+            </td>
+        </tr>
+        <%
                 }
-            %>
-            </tbody>
-        </table>
+            }
+        %>
+
+        </tbody>
+    </table>
+
+    <br>
+
+    <div class="container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination" id="pagination" style="justify-content:center"></ul>
+        </nav>
     </div>
 
-    <div class="pagination-container">
-        <div class="container">
-            <nav aria-label="Page navigation">
-                <ul class="pagination" id="pagination"></ul>
-            </nav>
-        </div>
-        <div class="write-button-container">
-            <div class="button-wrapper">
-                <a href="communitywrite.do" class="btn btn-secondary">글쓰기</a>
-            </div>
-        </div>
-    </div>
+    <br>
+    <a href="communitywrite.do">글쓰기</a>
 
     <script type="text/javascript">
 
@@ -233,11 +186,12 @@
                 location.href = "community.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page - 1);
             }
         });
+
     </script>
+
 </div>
-
+</div>
 </body>
-
 </html>
 
 

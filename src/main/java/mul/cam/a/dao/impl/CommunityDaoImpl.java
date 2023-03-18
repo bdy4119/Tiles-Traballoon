@@ -40,6 +40,19 @@ public class CommunityDaoImpl implements CommunityDao {
 	public List<CommunityDto> comReadcountOrder(CommunityDto dto) {
 		return session.selectList(ns + "comReadcountOrder", dto);
 	}
+	
+	//최신순
+	@Override
+	public List<CommunityDto> comWdateOrder(CommunityDto dto) {
+		return session.selectList(ns + "comWdateOrder", dto);
+	}
+
+	//오래된순
+	@Override
+	public List<CommunityDto> comLongdateOrder(CommunityDto dto) {
+		return session.selectList(ns + "comLongdateOrder", dto);
+	}
+
 
 	@Override
 	public int writeCommunity(CommunityDto dto) {		
@@ -81,6 +94,7 @@ public class CommunityDaoImpl implements CommunityDao {
 	public List<CommunityComment> commentList(int seq) {		
 		return session.selectList(ns + "commentList", seq);
 	}
+
 
 }
 

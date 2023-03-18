@@ -56,7 +56,7 @@ public class CommunityController {
 	
 	//조회수순 정렬
 	@GetMapping(value = "comReadcountOrder.do")
-	public String community(CommunityParam param, CommunityDto dto , Model model) {
+	public String comReadcountOrder(CommunityParam param, CommunityDto dto , Model model) {
 		
 		// 글의 시작과 끝
 		int pn = param.getPageNumber();  // 0 1 2 3 4
@@ -89,6 +89,83 @@ public class CommunityController {
 		return "community";
 	}
 
+	
+	
+	
+	
+	//최신순 정렬
+	@GetMapping(value = "comWdateOrder.do")
+	public String comWdateOrder(CommunityParam param, CommunityDto dto , Model model) {
+		
+		// 글의 시작과 끝
+		int pn = param.getPageNumber();  // 0 1 2 3 4
+		int start = 1 + (pn * 10);	// 1  11
+		int end = (pn + 1) * 10;	// 10 20
+		
+		param.setStart(start);
+		param.setEnd(end);
+		
+		List<CommunityDto> comWdateOrder = service.comWdateOrder(dto);
+		int len = service.getAllCommunity(param);
+		
+		int pageCommunity = len / 10;		// 25 / 10 -> 2
+		if((len % 10) > 0) {
+			pageCommunity = pageCommunity + 1;
+		}
+		
+		if(param.getChoice() == null || param.getChoice().equals("")
+				|| param.getSearch() == null || param.getSearch().equals("")) {
+			param.setChoice("검색");
+			param.setSearch("");
+		}
+		
+		model.addAttribute("communitylist", comWdateOrder);	// 게시판 리스트
+		model.addAttribute("pageCommunity", pageCommunity);	// 총 페이지수
+		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
+		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
+		model.addAttribute("search", param.getSearch());	// 검색어
+		
+		return "community";
+	}
+	
+	
+	
+	
+	//오래된순 정렬
+	@GetMapping(value = "comLongdateOrder.do")
+	public String comLongdateOrder(CommunityParam param, CommunityDto dto , Model model) {
+		
+		// 글의 시작과 끝
+		int pn = param.getPageNumber();  // 0 1 2 3 4
+		int start = 1 + (pn * 10);	// 1  11
+		int end = (pn + 1) * 10;	// 10 20
+		
+		param.setStart(start);
+		param.setEnd(end);
+		
+		List<CommunityDto> comLongdateOrder = service.comLongdateOrder(dto);
+		int len = service.getAllCommunity(param);
+		
+		int pageCommunity = len / 10;		// 25 / 10 -> 2
+		if((len % 10) > 0) {
+			pageCommunity = pageCommunity + 1;
+		}
+		
+		if(param.getChoice() == null || param.getChoice().equals("")
+				|| param.getSearch() == null || param.getSearch().equals("")) {
+			param.setChoice("검색");
+			param.setSearch("");
+		}
+		
+		model.addAttribute("communitylist", comLongdateOrder);	// 게시판 리스트
+		model.addAttribute("pageCommunity", pageCommunity);	// 총 페이지수
+		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
+		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
+		model.addAttribute("search", param.getSearch());	// 검색어
+		
+		return "community";
+	}
+	
 	
 	
 	@GetMapping(value = "communitywrite.do")

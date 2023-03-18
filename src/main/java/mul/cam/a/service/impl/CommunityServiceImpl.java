@@ -39,6 +39,17 @@ public class CommunityServiceImpl implements CommunityService {
 		return dao.comReadcountOrder(dto);
 	}
 	
+	//최신순
+	@Override
+	public List<CommunityDto> comWdateOrder(CommunityDto dto) {
+		return dao.comWdateOrder(dto);
+	}
+	
+	//오래된순
+	@Override
+	public List<CommunityDto> comLongdateOrder(CommunityDto dto) {
+		return dao.comLongdateOrder(dto);
+	}
 
 	@Override
 	public boolean writeCommunity(CommunityDto dto) {
