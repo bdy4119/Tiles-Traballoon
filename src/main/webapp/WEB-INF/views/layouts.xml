@@ -76,13 +76,39 @@
         <put-attribute name="content" value="/WEB-INF/views/hotelScreen/hotel.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
-    
-    <definition name="hoteldetail" template="/WEB-INF/views/hotelScreen/hoteltiles.jsp">
+
+<!-- 1. hoteldetail 페이지에서는 메뉴가 안 보이게 만드는 방법 -->
+    <definition name="hoteldetail" template="/WEB-INF/views/hotelScreen/hoteltiles2.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-        <put-attribute name="menu" value="/WEB-INF/views/hotelScreen/hotelmenu.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/hotelScreen/hotelmenu.jsp"/> 
         <put-attribute name="content" value="/WEB-INF/views/hotelScreen/hoteldetail.jsp"/> 
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>       
+<!-- 2. hoteldetail 페이지에도 메뉴가 보이게 만드는 방법.
+	<definition name="hoteldetail" extends="hotel">
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/hoteldetail.jsp"/>     
     </definition>
+-->     
+    </definition> 
+    <definition name="menu_sudo" extends="hotel">
+     	<put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_sudo.jsp"/> 
+    </definition>
+    <definition name="menu_gwd" extends="hotel">
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_gwd.jsp"/> 
+    </definition>
+    <definition name="menu_ccd" extends="hotel">
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_ccd.jsp"/>        
+    </definition>    
+    <definition name="menu_gsd" extends="hotel">
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_gsd.jsp"/>     
+    </definition>   
+    <definition name="menu_jld" extends="hotel">
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_jld.jsp"/>       
+    </definition>
+    <definition name="menu_jeju" extends="hotel">
+		<put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_jeju.jsp"/> 
+    </definition>
+    
+    
     
 
     <!-- 여행리뷰

@@ -57,8 +57,26 @@
 		overflow: hidden;
 	}
 	
-
-	 
+	.paging-area {
+	    margin: 20px 0;
+	}
+	
+	.paging-area > * {
+	    border: 1px solid #999;
+	    padding: 6px 3px;
+	}
+	
+	.paging-area > a {
+	    text-decoration: none;
+	    color: black;
+	}
+	 .paging-area > a {
+	    transition: 0.3s;
+	}
+	
+	.paging-area > a:hover {
+	    background: #DDD;
+	}
 </style>
 
 
@@ -69,7 +87,7 @@
 <br>
 		<!-- 정렬하기 -->
 		<div class ="sortby" style="text-align: right; margin-left: auto;">
-			<select onchange="location.href='/hotel.do?orderBy='+this.value;" style="display: inline-block; margin-right: 2cm;">
+			<select id="orderBy" onchange="location.href='hotel.do?orderBy='+this.value;" style="display: inline-block; margin-right: 2cm;">
 			  <option value="">정렬</option>
 			  <option value="1">조회수순</option>
 			  <option value="2">후기순</option>
@@ -95,7 +113,7 @@
 		%>
 
    			<td>
-				<a href="/hoteldetail.do?seq=<%=seq %>">
+				<a href="hoteldetail.do?seq=<%=seq %>">
 					<img src=<%=thumbnail%> style="width:70%; height:200px; border-radius:10px;"> 
 				</a>
 			</td>	 
@@ -115,66 +133,43 @@
 		}
 		%>
 		</table>
-		
-				<%--페이징처리
-				 <a href="<%= "hoteldetail.do?seq=" + dto.getSeq()%>"><%= dto.getTitle() %></a>  --%>
-			 		<%
-						int page2 = (int) request.getAttribute("page");
-						int totalCount = (int) request.getAttribute("totalCount");
-						int countList = 10; // 노출될 페이지 개수 ( << < ( 11 12 13 14 15 16 17 18 19 20 ) > >> )
-						int countPage = 10; // 페이지 당 노출 개수 (10개 보여준다!)
-						int totalPage = totalCount / countList;
-						
-						if (totalCount % countList > 0) {
-						    totalPage++;
-						}
-						
-						if (totalPage < page2) {
-						    page2 = totalPage;
-						}
-						int startPage = ((page2 - 1) / 10) * 10 + 1;
-						int endPage = startPage + countPage - 1;
-						
-						if (endPage > totalPage) {
-						    endPage = totalPage;
-						}
-						
-						if (startPage > 1) {
-						    %>
-						    <a href="?page=1">처음</a>
-						    <%
-						}
-						
-						if (page2 > 1) {
-						    %>
-						    <a href="?page=<%=page2 - 1%>">이전</a>
-						    <%
-						}
-						
-						for (int iCount = startPage; iCount <= endPage; iCount++) {
-						    if (iCount == page2) {
-						        %>
-						        <b><%=iCount%></b>
-						        <%
-						    } else {
-						        %>
-						        <span><%=iCount%></span>
-						        <%
-						    }
-						}
-						
-						if (page2 < totalPage) {
-						    %>
-						    <a href="?page=<%=page2 + 1%>">다음</a>
-						    <%
-						}
-						
-						if (endPage < totalPage) {
-						    %>
-						    <a href="?page=<%=totalPage%>">끝</a>
-						    <%
-						}
-%>
+
+	    <div class="container" style="margin-top: 50px;">
+	        <nav aria-label="Page navigation">
+	            <ul class="pagination" id="pagination" style="justify-content:center"></ul>
+	        </nav>
+	    </div>
+	    
+	    <script type="text/javascript">
+	    
+	    <%
+
+			int page2 = (int) request.getAttribute("page");
+			int totalCount = (int) request.getAttribute("totalCount");
+			String orderBy = request.getAttribute("orderBy").toString();
+			int countPage = 9; // 페이지 당 노출 개수 (10개 보여준다!)
+			int totalPage = totalCount / countPage;
+	    
+	    %>
+	    
+	    $('#pagination').twbsPagination({
+            startPage: <%=page2%>,
+            totalPages: <%=totalPage %>,
+            visiblePages: 9,
+            first: '<span srid-hidden="true">«</span>',
+            prev: "이전",
+            next: "다음",
+            last: '<span srid-hidden="true">»</span>',
+            initiateStartPageClick: false,   // onPageClick 자동실행되지 않도록
+            onPageClick: function (event, page) {
+                // alert(page);
+                location.href = "?page=" + page + "&orderBy=<%=orderBy%>";
+            }
+        });
+
+	    
+	    </script>
+</div>
 
 <%--BootStrap--%>
 <script

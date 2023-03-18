@@ -44,19 +44,21 @@
 			<!-- EL 표현식 : controller에서 보낸것. 아래 형태로 받을 수 있음(속성값 출력) -->
 		<td colspan="2" style="background-image:url('hotelimage/air.jpg'); height: 250px; background-size: 
 		100% auto; background-position: center center; border-radius : 30px;">
-			<h2 class="hotel-page-title">${pageTitle}</h2>		<!--  제목 -->
-			<p class="hotel-page-desc">${pageDescription}</p>	<!--  부제목 -->
+		<a href="./hotel.do" style="text-decoration:none;">
+			<h2 class="hotel-page-title" >${pageTitle}</h2></a>		<!--  제목 -->
+			<p class="hotel-page-desc" >${pageDescription}</p>	<!--  부제목 -->
+			
 		</td>
 	</tr>
 	
 	
-<!-- menu : hotelmenu.jsp를 불러옴-->
+<!-- menu : hotelmenu.jsp 에 적용됨-->
 	<tr>
 	<td align="left" valign="top" style="width: 20%;border-right: 1px solid #ccc;padding: 0 20px;">
 			<tiles:insertAttribute name="menu"/>
 	</td>
 	
-<!-- content : hotel.jsp 를 불러옴-->
+<!-- content : hotel.jsp, hoteldetail.jsp에 적용됨-->
 		<td style="height: 400px; width: 80%;">
 			<tiles:insertAttribute name="content"/>
 		</td>

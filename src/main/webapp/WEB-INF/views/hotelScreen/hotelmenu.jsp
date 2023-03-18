@@ -26,18 +26,12 @@ ul.hotel-menu-list > li:hover {
 }
 </style>
 
-<!-- 메뉴 링크 수정할 부분 -->
+<!-- 메뉴 -->
 <ul class="hotel-menu-list">
-	<li><a href="menu_seoul.do"
-		data-img="hotelimage/seoul/seoul1.jpg">수도권</a></li>
-	<li><a href="menu_gwd.do"
-		data-img="hotelimage/gangwon/gangwon1.jpg">강원도</a></li>
-	<li><a href="menu_ccd.do"
-		data-img="hotelimage/chungcheong/chungcheong1.jpg">충청도</a></li>
-	<li><a href="menu_gsd.do"
-		data-img="hotelimage/gyeongsang/gyeongsang1.jpg">경상도</a></li>
-	<li><a href="menu_jld.do"
-		data-img="hotelimage/jeolla/jeolla1.jpg">전라도</a></li>
-	<li><a href="menu_jeju.do"
-		data-img="hotelimage/jeju/jeju1.jpg">제주도</a></li>
+	<li><a href="./menu_sudo.do">수도권</a></li>
+	<li><a href="./menu_gwd.do">강원도</a></li>
+	<li><a href="./menu_ccd.do">충청도</a></li>
+	<li><a href="./menu_gsd.do">경상도</a></li>
+	<li><a href="./menu_jld.do">전라도</a></li>
+	<li><a href="./menu_jeju.do">제주도</a></li>
 </ul>

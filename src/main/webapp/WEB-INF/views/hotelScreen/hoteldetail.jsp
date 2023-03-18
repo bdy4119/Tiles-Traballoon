@@ -1,6 +1,8 @@
 <%@page import="mul.cam.a.dto.MemberDto"%>
 <%@page import="mul.cam.a.dto.HotelDto"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,13 +24,20 @@
         }
     </style>
     
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6535dc6f68759c638b09e6bca23442d2"></script>
+	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=6535dc6f68759c638b09e6bca23442d2"></script>
 	
 	<% //컨트롤러에서 받아오기
 	//HotelDto 얻어오기
 		HotelDto hoteldto = (HotelDto)request.getAttribute("hoteldto");
 	//login정보 얻어오기
-		MemberDto login = (MemberDto)session.getAttribute("login"); 
+		Object loginObject = session.getAttribute("login");
+		MemberDto login = new MemberDto();
+		boolean isLogin = false;
+		if (loginObject != null) {
+			login = (MemberDto)session.getAttribute("login");	// 
+			isLogin = true;
+		} 
+		request.setAttribute("isLogin", isLogin);
 	
 	// 호텔이름 얻어오기
 		String hotelname = (String)request.getAttribute("hotelname");
@@ -37,6 +46,7 @@
 	// 사진 얻어오기
    		String photo = (String)request.getAttribute("photo");
 	// 지도 경도,위도 얻어오기
+		// String hotelmap = (String)request.getAttribute("hotelmap");
 		String hotelmap = (String)request.getAttribute("hotelmap");
 	// 텍스트 얻어오기
 		String hotelcontent = (String)request.getAttribute("hotelcontent");
@@ -103,9 +113,7 @@
  <!-- 5.  DB -> 텍스트 연결 -->  
 
         <div class="text">
-            <pre>
-            	<%=hotelcontent %>
-            </pre>
+            <pre><%=hotelcontent %></pre>
         </div>
     </div>
     
@@ -122,8 +130,8 @@
 		
 				
 		
-		<form action="commentWriteAf.do" method="post">
-		<input type="hidden" name="hotelseq" value="<%=hoteldto.getSeq() %>">
+		<form action="HotelcommentWriteAf.do" method="post">
+		<input type="hidden" name="hotelSeq" value="<%=hoteldto.getSeq() %>">
 		<input type="hidden" name="id" value="<%=login.getId() %>">
 										<!--  위에서 session으로 넘겨받은 login 활용 -->
 		
@@ -136,7 +144,7 @@
 		</tr>
 		<tr>
 			<td>
-				<textarea rows="3" class="form-control" name="content"></textarea>
+				<textarea rows="3" class="form-control" name="content" onclick="checkLogin()"></textarea>
 			</td> 
 			<td style="padding-left: 30px">
 				<button type="submit" class="btn btn-primary btn-block p-4">완료</button>
@@ -176,7 +184,7 @@
 					$.each(list, function(index, item){ //리스트에서 하나씩 꺼낸다
 						let str = "<tr class='table-info'>" 	//부트스트랩
 								+	"<td>작성자:" + item.id + "</td>"
-								+	"<td>작성일:" + new Date(item.wdate) + "</td>"
+								+	"<td>작성일:" + getFormattedDate(new Date(item.wdate)) + "</td>"
 								+ "</tr>"
 								+ "<tr>"
 								+	"<td colspan='2'>" + item.content + "</td>"
@@ -188,7 +196,23 @@
 					alert('error');	
 				}		
 			});	
-		});
+		}); 
+		function getFormattedDate(d){
+		    function pad(n) { return n<10 ? "0"+n : n }
+		    return d.getFullYear()+"-"+
+		    pad(d.getMonth()+1)+"-"+
+		    pad(d.getDate())+" "+
+		    pad(d.getHours())+":"+
+		    pad(d.getMinutes());
+		}
+		// 로그인 검사 함수 (현재 오류남)
+ 		function checkLogin() {
+			// alert('checkLogin()');
+			let id = "<%=isLogin%>";
+			if(id == 'false'){
+				window.location.href = 'login.do';
+			}
+		}
 		</script>
       	
       	     
