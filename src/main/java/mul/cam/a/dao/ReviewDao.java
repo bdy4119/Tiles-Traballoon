@@ -15,7 +15,15 @@ public interface ReviewDao {
 	int getAllReview(ReviewParam Param);
 	
 	//readcountOrder
-	ReviewDto readcountOrder(ReviewDto dto);
+	List<ReviewDto> readcountOrder(ReviewDto dto);
+	
+	
+	//readcountOrder
+	List<ReviewDto> wdateOrder(ReviewDto dto);
+	
+	//readcountOrder
+	List<ReviewDto> longdateOrder(ReviewDto dto);
+	
 	
 	//detail
 	ReviewDto getReview(int seq);
@@ -23,6 +31,7 @@ public interface ReviewDao {
 	
 	//조회수
 	int readcount(int seq);
+	
 	
 	//글추가
 	int writeReviewAf(ReviewDto dto);
@@ -41,5 +50,7 @@ public interface ReviewDao {
 	//댓글
 	int commentWrite(ReviewComment comment);
 	List<ReviewComment> commentList(int seq);
+	
+	
 	
 }

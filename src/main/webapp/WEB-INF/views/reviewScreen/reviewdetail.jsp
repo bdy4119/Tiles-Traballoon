@@ -83,10 +83,10 @@
         <h2>상세 리뷰</h2>
         <hr>
         
-		<div class="main-img">
-			<!-- 이미지 db에서 받아서 하게 만들기 -->
+		<!-- <div class="main-img">
+			이미지 db에서 받아서 하게 만들기
  	       	<img alt="제주" src="images/jeju.jpg" class="main-img" width="100%" height="50%">
-		</div>
+		</div> -->
 		<div id="app" class="container">
 			<form>
 				<table class="table table-striped">
@@ -113,7 +113,18 @@
 					<tr>
 						<th>내용</th>
 						<td colspan="2" style="background-color:white;">
-							<pre style="font-size: 20px;font-family:고딕, arial;background-color:white"><%=dto.getContent() %></pre>
+							<%
+							for(int i=1; i<=dto.getSeq(); i++) {
+								if(dto.getSeq() == i){
+							%>
+								<img src="images/review/<%=i%>.jpg" class="d-block w-100">
+							<%
+								}
+							}
+							%>
+							<pre style="font-size: 20px;font-family:고딕, arial;background-color:white">
+								<%=dto.getContent() %>
+							</pre>
 						</td>
 					</tr>
 					<tr>
@@ -122,14 +133,14 @@
 							<button type="button" class="btn btn-info" onclick="location.href='review.do'">글목록</button>
 							
 							<!-- 수정, 삭제는 로그인한 본인한테만 보이게 -->
-							<%-- <%
+							<%
 							if(dto.getId().equals(login.getId())) {
-							%> --%>
+							%>
 							<button type="button" class="btn btn-info" onclick="reviewUpdate(<%=dto.getSeq() %>)">수정</button>
 							<button type="button" class="btn btn-info" onclick="reviewDelete(<%=dto.getSeq() %>)">삭제</button>
-							<%-- <%
+							<%
 							}
-							%> --%>
+							%>
 							
 						</td>
 					</tr>

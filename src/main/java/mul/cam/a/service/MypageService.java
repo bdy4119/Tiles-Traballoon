@@ -8,4 +8,6 @@ import mul.cam.a.dto.MypageDto;
 public interface MypageService {
 
 	List<MypageDto> allMember();
+	
+	MypageDto info(MypageDto dto);
 }

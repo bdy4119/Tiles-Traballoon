@@ -34,10 +34,23 @@ public class ReviewDaoImpl implements ReviewDao{
 	
 	//readcountOrder
 	@Override
-	public ReviewDto readcountOrder(ReviewDto dto) {
-		return session.selectOne(ns + "readcountOrder", dto);
+	public List<ReviewDto> readcountOrder(ReviewDto dto) {
+		return session.selectList(ns + "readcountOrder", dto);
 	}
 
+	
+	//wdateOrder
+	@Override
+	public List<ReviewDto> wdateOrder(ReviewDto dto) {
+		return session.selectList(ns + "wdateOrder", dto);
+	}
+	
+	//longdateOrder
+	@Override
+	public List<ReviewDto> longdateOrder(ReviewDto dto) {
+		return session.selectList(ns + "longdateOrder", dto);
+	}
+	
 	
 	//reviewdetail
 	@Override
@@ -91,7 +104,6 @@ public class ReviewDaoImpl implements ReviewDao{
 	public List<ReviewComment> commentList(int seq) {
 		return session.selectList(ns + "commentList", seq);
 	}
-
 
 
 

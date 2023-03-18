@@ -12,7 +12,7 @@
 
 </head>
 <body>
-
+<div class="container-fluid">
 <div align="center">
 
 <table style="width: 1000px; height: 600px;" >
@@ -47,7 +47,7 @@
 </table>
 
 </div>
-
+</div>
 </body>
 </html>
 

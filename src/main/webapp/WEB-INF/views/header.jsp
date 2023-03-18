@@ -1,63 +1,80 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<!doctype html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SemiProject</title>
 
-<%--BootStrap--%>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-	crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900" rel="stylesheet">
 
-<style>
-.b-example-divider {
-	height: 3rem;
-	background-color: rgba(0, 0, 0, .1);
-	border: solid rgba(0, 0, 0, .15);
-	border-width: 1px 0;
-	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em
-		rgba(0, 0, 0, .15);
-}
-</style>
+    <style>
+        .blog-header {
+            line-height: 1;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .blog-header-logo {
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-size: 2.25rem;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
 
 </head>
 
 <body>
 
-<%--container--%>
-<div class="container-fluid" >
-
-        <%--헤더--%>
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a href="main.do" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                <img src="images/logo.png">
-            </a>
-
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="localtravel.do" class="nav-link px-2 link-dark">지역별 여행</a></li>
-                <li><a href="hotel.do" class="nav-link px-2 link-dark">숙소 추천</a></li>
-                <li><a href="review.do" class="nav-link px-2 link-dark">여행 리뷰</a></li>
-                <li><a href="community.do" class="nav-link px-2 link-dark">커뮤니티</a></li>
-            </ul>
-
-            <div class="col-md-3 text-end">
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="mypage.do" class="nav-link px-2 link-dark">마이페이지</a></li>
-                    <li>
-                        <a class="btn btn-outline-primary me-2" href="login.do" role="button">Login</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-primary" href="regi.do" role="button">Sign-up</a>
-                    </li>
-                </ul>
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1">
+                <a class="text-muted"></a>
             </div>
-        </header>
-        <%--헤더--%>
+            <div class="col-4 text-center">
+                <a class="blog-header-logo text-dark" href="main.do">Traballoon</a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                <a class="text-muted" href="#" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+                         viewBox="0 0 24 24" focusable="false"><title>Search</title>
+                        <circle cx="10.5" cy="10.5" r="7.5"/>
+                        <path d="M21 21l-5.2-5.2"/>
+                    </svg>
+                </a>
+                <a class="btn btn-sm btn-outline-secondary" href="login.do">Login</a>
 
+            </div>
+        </div>
+    </header>
+
+    <div class="d-flex justify-content-center">
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+                <a href="trip.do" class="p-2 text-muted" style="margin-right: 50px;">지역별 여행</a>
+                <a href="hotel.do" class="p-2 text-muted" style="margin-right: 50px;">숙소 추천</a>
+                <a href="review.do" class="p-2 text-muted" style="margin-right: 50px;">여행 리뷰</a>
+                <a href="community.do" class="p-2 text-muted" style="margin-right: 50px;">커뮤니티</a>
+                <a href="mypage.do" class="p-2 text-muted" style="margin-right: 50px;">마이페이지</a>
+            </nav>
+        </div>
+    </div>
 </div>
+</body>
+</html>

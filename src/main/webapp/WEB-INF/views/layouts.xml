@@ -8,9 +8,7 @@
     <!-- 맨처음 보이는 로그인 화면이라 main -->
     <definition name="main" template="/WEB-INF/views/mainscreentiles.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-        <!-- 	<put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/> -->
         <put-attribute name="content" value="/WEB-INF/views/content.jsp"/>
-        <!-- 	<put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/> -->
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
     
@@ -43,13 +41,6 @@
 	<definition name="writeme" extends="mypage">
 	    <put-attribute name="content" value="/WEB-INF/views/mypageScreen/writeme.jsp"/>
 	</definition>
-   <!--   <definition name="mypageAf" extends="mypage">
-		<put-attribute name="mypageAf" value="/WEB-INF/views/mypageScreen/mypageAf.jsp"/>
-	</definition>
-	
-    <definition name="wishlist" extends="mypage">
-        <put-attribute name="wishlist" value="/WEB-INF/views/mypageScreen/wishlist.jsp"/>
-    </definition> -->
     
     <!-- 지역별 여행 -->
     <definition name="localtravel" template="/WEB-INF/views/localtravelScreen/localtraveltiles.jsp">
@@ -107,25 +98,7 @@
     <definition name="menu_jeju" extends="hotel">
 		<put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_jeju.jsp"/> 
     </definition>
-    
-    
-    
 
-    <!-- 여행리뷰
-    <definition name="review" template="/WEB-INF/views/reviewScreen/reviewtiles.jsp">
-      <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-      <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
-      <put-attribute name="review" value="/WEB-INF/views/reviewScreen/review.jsp"/>
-      <put-attribute name="empty" value="/WEB-INF/views/empty.jsp"/>
-      <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
-    </definition>
-     -->
-    <!-- 
-                  위에 main  상속
-    <definition name="bbslist" extends="main">
-      <put-attribute name="content" value="/WEB-INF/views/bbs/bbslist.jsp"/>
-    </definition>
-     -->
 
     <definition name="review" extends="main">
       <put-attribute name="content" value="/WEB-INF/views/reviewScreen/review.jsp"/>
@@ -145,6 +118,12 @@
 
  
     <!-- 커뮤니티 -->
+    <definition name="communitymain" template="/WEB-INF/views/communityScreen/communitytiles.jsp">
+    <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+    <put-attribute name="content" value="/WEB-INF/views/content.jsp"/>
+    <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+
     <definition name="community" extends="main">
         <put-attribute name="content" value="/WEB-INF/views/communityScreen/communitycontent.jsp"/>
     </definition>
@@ -154,18 +133,24 @@
     <definition name="communityupdate" extends="main">
         <put-attribute name="content" value="/WEB-INF/views/communityScreen/communityupdate.jsp"/>
     </definition>
-    <definition name="communitywrite" extends="main">
+    <definition name="communitywrite" extends="communitymain">
         <put-attribute name="content" value="/WEB-INF/views/communityScreen/communitywrite.jsp"/>
     </definition>
+
     <definition name="communitymessage" template="/WEB-INF/views/communityScreen/communitymessage.jsp">
     </definition>
     <definition name="communityanswer" template="/WEB-INF/views/communityScreen/communityanswer.jsp">
     </definition>
 
-<!--    <definition name="communitywrite" template="/WEB-INF/views/communityScreen/communitywrite.jsp">-->
-<!--    </definition>-->
-
-
+    <!--trip-->
+    <definition name="trip" template="/WEB-INF/views/tripScreen/tripscreentiles.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripmain.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    <definition name="triplist" extends="trip">
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/triplist.jsp"/>
+    </definition>
 
     <!-- 마이페이지 -->
     
