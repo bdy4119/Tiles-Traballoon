@@ -122,18 +122,18 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        $('frmbtn').click(function () {
-
-            if ($("#title").val().trim() == "") {
-                alert("제목을 기입해 주십시오");
-                return;
-            } else if ($("#content").val().trim() == "") {
-                alert("내용을 기입해 주십시오");
-                return;
-            } else {
-                $("#frm").submit();
-            }
-        });
+    	$('.saveBtn').click(function() {
+    		
+    		if($("#title").val().trim() == "" ){
+    			alert("제목을 기입해 주십시오");
+    			return;
+    		}else if($("#content").val().trim() == "" ){
+    			alert("내용을 기입해 주십시오");
+    			return;
+    		}else{
+    			$("#frm").submit();
+    		}
+    	});	
     });
 </script>
 

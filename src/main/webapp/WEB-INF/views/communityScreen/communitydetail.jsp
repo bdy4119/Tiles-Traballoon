@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
 
 <%
+	MemberDto login = (MemberDto)session.getAttribute("login");
 	CommunityDto dto = (CommunityDto)request.getAttribute("communitydto");
 %>
 
@@ -45,11 +46,26 @@
 				</div>
 			</div>
 			<br>
-
+			<!-- 수정, 삭제는 로그인한 본인한테만 보이게 -->
+			<%
+			if(dto.getId().equals(login.getId())) {
+			%>
 			<div class="d-flex justify-content-end">
-				<button type="submit" class="btn btn-secondary mr-3">수정</button>
-				<button type="submit" class="btn btn-secondary">삭제</button>
+				<button type="submit" class="btn btn-secondary mr-3" onclick="updateCommunity(<%=dto.getSeq() %>)">수정</button>
+				<button type="submit" class="btn btn-secondary" onclick="deleteCommunity(<%=dto.getSeq() %>)">삭제</button>
+			<%
+			}
+			%>
 			</div>
+			<script type="text/javascript">
+				function updateCommunity( seq ) {
+					location.href = "communityupdate.do?seq=" + seq;
+				}
+				function deleteCommunity( seq ) {
+					location.href = "communitydelete.do?seq=" + seq;  // update del=1
+				}
+			</script>
+							
 
 
 			<!-- 댓글 정보 출력을 위한 템플릿 코드 -->
@@ -79,13 +95,73 @@
 			</div>
 			<br>
 
-			<form action="comment_write.do" method="post">
-				<input type="hidden" name="board_id" value="글번호">
+			<form action="communitycommentWriteAf.do" method="post">
+			<!-- 	<input type="hidden" name="board_id" value="글번호"> -->
+				<input type="hidden" name="seq" value="<%=dto.getSeq() %>">
+				<input type="hidden" name="id" value="<%=login.getId() %>">
 				<div class="form-group">
 					<textarea class="form-control" id="comment_content" name="content" rows="3"></textarea>
 				</div>
 				<button type="submit" class="btn btn-secondary">댓글 등록</button>
 			</form>
+			
+			
+			
+			<!-- 댓글 정보 출력을 위한 템플릿 코드 -->
+			<div class="card mt-3">
+				<div class="card-header">
+					댓글 (commentList.size())
+				</div>
+				<div class="card-body">
+					<ul class="list-unstyled">
+						<li>
+							<div>comment.getWriter()</div>
+							<div>comment.getWdate()</div>
+							<div>comment.getContent()</div>
+						</li>
+						<li>
+							<div>comment.getWriter()</div>
+							<div>comment.getWdate()</div>
+							<div>comment.getContent()</div>
+						</li>
+						<li>
+							<div>comment.getWriter()</div>
+							<div>comment.getWdate()</div>
+							<div>comment.getContent()</div>
+						</li>
+					</ul>
+				</div>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$.ajax({
+							url:"./communitycommentList.do",
+							type:"get",
+							data:{ "seq":<%=dto.getSeq() %> },
+							success:function(list){
+								// alert('success');
+								// alert(JSON.stringify(list));
+								
+								$("#tbody").html("");
+								
+								$.each(list, function(index, item){
+									let str = "<tr class='table-info'>" 
+											+	"<td>작성자:" + item.id + "</td>"
+											+	"<td>작성일:" + item.wdate + "</td>"
+											+ "</tr>"
+											+ "<tr>"
+											+	"<td colspan='2'>" + item.content + "</td>"
+											+ "</tr>";
+									$("#tbody").append(str);
+								});
+							},
+							error:function(){
+								alert('error');	
+							}		
+						});	
+					});
+				</script>
+			</div>
+			<br>
 
 		</div>
 	</div>
