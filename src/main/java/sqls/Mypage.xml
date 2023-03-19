@@ -9,13 +9,55 @@
 	from member
 </select>
 
-<select id="writeMe" parameterType="mul.cam.a.dto.MypageDto"
+<select id="allWriteme" parameterType="mul.cam.a.dto.MypageDto"
 	resultType="mul.cam.a.dto.MypageDto">
 	select *
-	from member
-	where seq={#seq}
+	from mypage
+	where seq={#seq}, id={#id}
 </select>
 
+<select id="mypageCommunityAf" parameterType="mul.cam.a.dto.MypageParam"
+	resultType="mul.cam.a.dto.MypageDto">
+
+	select seq, id, nickname, ref, step, depth, title, content, wdate, del, readcount
+	from
+		(select row_number()over(order by ref desc, step asc) as rnum,
+			seq, id, nickname, ref, step, depth, title, content, wdate, del, readcount
+		 from mypageCommunityAf
+		 where 1=1 
+		 <if test="choice != null and choice != '' and search != null and search != '' ">
+		 	<if test="choice == 'title'">
+		 		and title like concat('%', #{search}, '%') and del=0
+		 	</if>
+		 	<if test="choice == 'content'">
+		 		and content like concat('%', #{search}, '%') and del=0
+		 	</if>
+		 	<if test="choice == 'writer'">
+		 		and id=#{search} and del=0
+		 	</if>
+		 </if>		 
+		 order by ref desc, step asc) a
+	where rnum between ${start} and ${end}
+</select>
+
+ 
+<!-- 글의 총수 -->
+<select id="getAllmypageCommunity" parameterType="mul.cam.a.dto.MypageParam" resultType="java.lang.Integer">
+	
+	select ifnull(count(*), 0)
+	from community
+	<if test="choice != null and choice != '' and search != null and search != '' ">
+	 	<if test="choice == 'title'">
+	 		where title like concat('%', #{search}, '%') and del=0
+	 	</if>
+	 	<if test="choice == 'content'">
+	 		where content like concat('%', #{search}, '%') and del=0
+	 	</if>
+	 	<if test="choice == 'writer'">
+	 		where id=#{search} and del=0
+	 	</if>
+	 </if>
+</select>
 
 
 </mapper>

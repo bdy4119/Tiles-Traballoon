@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mul.cam.a.dao.MypageDao;
+import mul.cam.a.dto.CommunityDto;
+import mul.cam.a.dto.CommunityParam;
 import mul.cam.a.dto.MemberDto;
 import mul.cam.a.dto.MypageDto;
+import mul.cam.a.dto.MypageParam;
+import mul.cam.a.dto.ReviewDto;
+import mul.cam.a.dto.ReviewParam;
 
 @Repository
 public class MypageDaoImpl implements MypageDao{
@@ -17,6 +22,15 @@ public class MypageDaoImpl implements MypageDao{
 	SqlSession session;
 	
 	String ns = "mypage.";
+	
+	@Override
+	public List<MypageDto> mypageCommunitylist(MypageParam community) {
+			return session.selectList(ns + "communitylist", community);
+	}
+	@Override
+	public int getAllmypageCommunity(MypageParam community) {		
+		return session.selectOne(ns + "getAllCommunity", community);
+	}
 	
 	@Override
 	public List<MypageDto> allMember() {
@@ -32,4 +46,8 @@ public class MypageDaoImpl implements MypageDao{
 		return info;
 	}
 	
+	@Override
+	public List<MypageDto> allWriteme(){
+		return session.selectList(ns + "allWriteme"); 
+	}
 }

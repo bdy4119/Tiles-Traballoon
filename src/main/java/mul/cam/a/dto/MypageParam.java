@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 public class MypageParam implements Serializable{
 	
-	private String choice;	
-	private String search;	
-	private int pageNumber; 
-	private int start;
+	private String choice;	// 검색목록 	
+	private String search;	// 검색어	
+	
+	private int pageNumber; // 페이지 번호
+	
+	private int start;		// 페이지 시작과 끝
 	private int end;
 	
 	public MypageParam() {

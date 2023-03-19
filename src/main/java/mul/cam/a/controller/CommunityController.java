@@ -52,7 +52,7 @@ public class CommunityController {
 
 		return "community";
 	}
-
+	
 	@GetMapping(value = "communitywrite.do")
 	public String communitywrite() {
 		return "communitywrite";
