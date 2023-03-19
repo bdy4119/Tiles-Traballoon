@@ -69,8 +69,9 @@ public class CommunityController {
 		}
 		model.addAttribute("communitywrite", communitywrite);
 
-		return "redirect:/community.do";
+		System.out.println("Image upload success : " + dto.getContent());
 
+		return "redirect:/community.do";
 	}
 	
 	@GetMapping(value = "communitydetail.do")

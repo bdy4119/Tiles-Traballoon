@@ -3,9 +3,12 @@ package mul.cam.a.dto;
 import java.io.Serializable;
 
 public class ReviewParam implements Serializable{
-
+	
+	private String choiceOrder; //
+	
 	private String choice;	// 검색목록선택
 	private String search;	// 검색어
+	
 	private int pageNumber; // 페이지번호
 	
 	private int start;		//페이지 시작번호
@@ -19,13 +22,23 @@ public class ReviewParam implements Serializable{
 
 	
 	//매개변수 있는 생성자
-	public ReviewParam(String choice, String search, int pageNumber, int start, int end) {
+	public ReviewParam(String choiceOrder, String choice, String search, int pageNumber, int start, int end) {
 		super();
+		this.choiceOrder = choiceOrder;
 		this.choice = choice;
 		this.search = search;
 		this.pageNumber = pageNumber;
 		this.start = start;
 		this.end = end;
+	}
+	
+
+	public String getChoiceOrder() {
+		return choiceOrder;
+	}
+
+	public void setChoiceOrder(String choiceOrder) {
+		this.choiceOrder = choiceOrder;
 	}
 
 
@@ -81,10 +94,11 @@ public class ReviewParam implements Serializable{
 
 	@Override
 	public String toString() {
-		return "ReviewParam [choice=" + choice + ", search=" + search + ", pageNumber=" + pageNumber + ", start="
-				+ start + ", end=" + end + "]";
+		return "ReviewParam [choiceOrder=" + choiceOrder + ", choice=" + choice + ", search=" + search + ", pageNumber="
+				+ pageNumber + ", start=" + start + ", end=" + end + "]";
 	}
-	
+
+
 	
 	
 	

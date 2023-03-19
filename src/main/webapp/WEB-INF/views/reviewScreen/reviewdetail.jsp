@@ -1,3 +1,4 @@
+<%@page import="mul.cam.a.dto.MemberDto"%>
 <%@page import="mul.cam.a.dto.ReviewComment"%>
 <%@page import="mul.cam.a.dto.ReviewDto"%>
 <%@page import="java.util.List"%>
@@ -53,6 +54,7 @@
 
 <body>
 <%
+	MemberDto login = (MemberDto)session.getAttribute("login");
 	ReviewDto dto = (ReviewDto)request.getAttribute("dto");
 %>
 
@@ -81,9 +83,10 @@
         <h2>상세 리뷰</h2>
         <hr>
         
-		<div class="main-img">
+		<!-- <div class="main-img">
+			이미지 db에서 받아서 하게 만들기
  	       	<img alt="제주" src="images/jeju.jpg" class="main-img" width="100%" height="50%">
-		</div>
+		</div> -->
 		<div id="app" class="container">
 			<form>
 				<table class="table table-striped">
@@ -110,18 +113,43 @@
 					<tr>
 						<th>내용</th>
 						<td colspan="2" style="background-color:white;">
-							<pre style="font-size: 20px;font-family:고딕, arial;background-color:white"><%=dto.getContent() %></pre>
+							<%
+							for(int i=1; i<=dto.getSeq(); i++) {
+								if(dto.getSeq() == i){
+							%>
+								<img src="images/review/<%=i%>.jpg" class="d-block w-100">
+							<%
+								}
+							}
+							%>
+							<pre style="font-size: 20px;font-family:고딕, arial;background-color:white">
+								<%=dto.getContent() %>
+							</pre>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<!-- <button type="button" class="btn btn-primary" onclick="answerBbs()">답글</button> -->
-							<button type="button" class="btn btn-primary" onclick="location.href='review.do'">글목록</button>
+							<button type="button" class="btn btn-info" onclick="location.href='review.do'">글목록</button>
 							
-							<!-- 수정, 삭제는 로그인한 본인한테만 보이게 하기 -->
-							<button type="button" class="btn btn-primary" onclick="updateBbs()">수정</button>
-							<button type="button" class="btn btn-primary" onclick="deleteBbs()">삭제</button>
+							<!-- 수정, 삭제는 로그인한 본인한테만 보이게 -->
+							<%
+							if(dto.getId().equals(login.getId())) {
+							%>
+							<button type="button" class="btn btn-info" onclick="reviewUpdate(<%=dto.getSeq() %>)">수정</button>
+							<button type="button" class="btn btn-info" onclick="reviewDelete(<%=dto.getSeq() %>)">삭제</button>
+							<%
+							}
+							%>
 							
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button type="button" class="btn btn-secondary" onclick="returnPage(<%=dto.getSeq() %>)">이전글</button>
+						</td>
+						<td align="right">
+							<button type="button" class="btn btn-secondary" onclick="nextPage(<%=dto.getSeq() %>)">다음글</button>
 						</td>
 					</tr>
 				</table>
@@ -134,14 +162,25 @@
 				location.href = "answer.do?seq=" + seq;
 			} */
 			
-			function updateBbs(seq) {
+			function reviewUpdate(seq) {
 				location.href = "reviewUpdate.do?seq=" + seq;
 			}
 			
+			
 			//진짜 지우는 게 아니라 업데이트로 지우기
 			//del변수를 1로 바꾸고 보이지 않게 바꾸기
-			function deleteBbs(seq) {
-				location.href = "reviewdeleteAf.do&seq=" + seq;
+			function reviewDelete(seq) {
+				location.href = "reviewDelete.do?seq=" + seq;
+			}
+			
+			
+			//이전글
+			function returnPage(seq) {
+				location.href = "reviewdetail.do?seq=" + (seq-1);
+			}
+			//다음글
+			function nextPage(seq) {
+				location.href = "reviewdetail.do?seq=" + (seq+1);
 			}
 		</script>
 		
@@ -155,7 +194,7 @@
 			ReviewComment comment = (ReviewComment)request.getAttribute("seq");
 		%>
 		<div id="app" class="container">
-			<form action="" method="post">
+			<form action="reviewCommentWrite.do" method="get">
 			<input type="hidden" name="seq" value="<%=dto.getSeq() %>">
 			<input type="hidden" name="id" value="<%=dto.getId() %>">
 			
@@ -170,7 +209,7 @@
 							<textarea rows="3" class="form-control" name="content"></textarea>
 						</td>
 						<td style="padding-left:30px">
-							<button type="button" onclick="reviewCommentWrite()" class="btn btn-primary btn-block p-4">등록</button>
+							<button type="submit" class="btn btn-info" style="padding-bottom:30px; padding-top:30px;">등록</button>
 						</td>
 					</tr>
 				</table>
@@ -188,44 +227,43 @@
 		</div>
 		
 		<script type="text/javascript">
-			function reviewCommentWrite(seq) {
-				location.href = "reviewCommentWrite.do?seq=" + <%=dto.getSeq()%>;
-			}
+			
 			
 			$(document).ready(function(){
 				
-				$.ajax({
-					url:"./reviewCommentList.do", //react에서는 경로표시 해줘야함
-					type:"get",
-					data:{"seq":<%=dto.getSeq() %>},
-					success:function(list) {
-					//	alert('success')
-					//	alert(JSON.stringify(list));
-						
-						
-						$("#tbody").html(""); //한번 비워줘야 새로고침해도 더 추가되지않음
-						
-						//밑에서 올려주기
-						//each문 == for문	  (인덱스 번호대로 오브젝트 하나씩 꺼내옴)
-						$.each(list, function(index, item){
-							let str = "<tr class='table-info'>"
-									+ 	"<td> 작성자 : " + item.id + "</td>"
-									+ 	"<td> 작성일 : " + item.wdate + "</td>"
-									+ "</tr>"
-									+ "<tr>"
-									+	"<td colspan='2'>" + item.content + "</td>"
-									+ "</tr>"
-							$("#tbody").append(str);
-						});
-					},
-					error:function() {
-						alert('error');
-					}
-				});
-				
+					$.ajax({
+						url:"reviewCommentList.do", //react에서는 경로표시 해줘야함
+						type:"GET",
+						data:{"seq":<%=dto.getSeq() %>},
+						success:function(list) {
+						//	alert('success')
+						//	alert(JSON.stringify(list));
+							
+							
+							$("#tbody").html(""); //한번 비워줘야 새로고침해도 더 추가되지않음
+							
+							//밑에서 올려주기
+							//each문 == for문	  (인덱스 번호대로 오브젝트 하나씩 꺼내옴)
+							$.each(list, function(index, item){
+								let str = "<tr class='table-info'>"
+										+ 	"<td> 작성자 : " + item.id + "</td>"
+										+ 	"<td align='right' style='padding-right:20px'> 작성일 : " + item.wdate + "</td>"
+										+ "</tr>"
+										+ "<tr>"
+										+	"<td style='padding-left:20px; padding-bottom:3px;'>" + item.content + "</td>"
+										+ "</tr>"
+								$("#tbody").append(str);
+							});
+						},
+						error:function() {
+							alert('error');
+						}
+				})
+					
 			});
-		</script>
+			
 
+		</script>
     </main>
 
     <%--공백--%>

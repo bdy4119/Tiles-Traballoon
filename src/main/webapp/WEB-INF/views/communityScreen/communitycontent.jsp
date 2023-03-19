@@ -9,29 +9,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-    <%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"--%>
-    <%--          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">--%>
-
+    <%--Pagination--%>
     <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
-    <style type="text/css">
-        .table th, .table td {
-            text-align: center;
-            vertical-align: middle !important;
+
+    <style>
+        .board-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-top: 40px; /* 상단 간격 조정 */
+        }
+        .board-sort {
+            display: flex;
+            align-items: center;
+            padding-bottom: 15px;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .custom-select {
+            width: 100px;
+            margin-right: 10px;
+        }
+        .form-control {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .btn-secondary {
+            width: 70px;
+        }
+        a {
+            color: #666; /* 적용할 색상 */
+            text-decoration: none; /* 밑줄 제거 */
+        }
+        td, th {
+            color: #666;
+        }
+        table {
+            font-size: 14px;
+        }
+        .pagination a, .pagination span {
+            color: #666; /* 글씨 색상 */
+            background-color: #fff; /* 버튼 색상 */
+            /* 버튼 테두리 색상 */
+        }
+        .pagination a:hover, .pagination span:hover {
+            color: #666; /* 호버 시 글씨 색상 */
+            background-color: #eceef0; /* 호버 시 버튼 색상 */
+            /* 호버 시 버튼 테두리 색상 */
+        }
+        .pagination .page-item.active .page-link {
+            color: #666;
+            background-color: #eceef0;
+            border-color: #dee2e6;
+        }
+        .pagination-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 0px 50px;
+        }
+        .write-button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .button-wrapper .btn {
+            width: 70px;
         }
     </style>
 
 </head>
 <body>
-
 
 <%
     List<CommunityDto> list = (List<CommunityDto>) request.getAttribute("communitylist");
@@ -40,104 +93,104 @@
     String choice = (String) request.getAttribute("choice");
     String search = (String) request.getAttribute("search");
 %>
+
 <div class="container">
-<div align="center">
-    <img src="images/community.png" class="img-fluid">
-    <table style="margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 3px">
-        <tr>
-            <td style="padding-left: 3px">
-                <select class="custom-select" id="choice" name="choice">
-                    <option selected>검색</option>
-                    <option value="title">제목</option>
-                    <option value="content">내용</option>
-                    <option value="writer">작성자</option>
-                </select>
-            </td>
-            <td style="padding-left: 5px" class="align-middle">
-                <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()"
-                       placeholder="검색어" value="<%=search %>">
-            <td style="padding-left: 5px">
-			<span>
-				<button type="button" class="btn btn-primary" onclick="searchBtn()">검색</button>
-			</span>
-            </td>
-        </tr>
-    </table>
-
-    <br>
-
-    <table class="table table-hover table-sm" style="width: 1000px">
-        <col width="70">
-        <col width="600">
-        <col width="100">
-        <col width="150">
-        <thead>
-        <tr class="bg-primary" style="color: white;">
-            <th>번호</th>
-            <th>제목</th>
-            <th>조회수</th>
-            <th>작성자</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <%
-            if (list == null || list.size() == 0) {
-        %>
-        <tr>
-            <td colspan="4">작성된 글이 없습니다</td>
-        </tr>
-        <%
-        } else {
-
-            for (int i = 0; i < list.size(); i++) {
-                CommunityDto dto = list.get(i);
-        %>
-        <tr>
-            <th><%=i + 1 + (pageNumber * 10) %>
-            </th>
-
-            <td style="text-align: left;">
-                <%
-                    if (dto.getDel() == 0) {
-                %>
-                <%=Utility.arrow(dto.getDepth()) %>
-                <a href="communitydetail.do?seq=<%=dto.getSeq() %>">
-                    <%=dto.getTitle() %>
-                </a>
-                <%
-                } else if (dto.getDel() == 1) {
-                %>
-                <%=Utility.arrow(dto.getDepth()) %>
-                <font color="#ff0000">*** 이 글은 작성자에 의해서 삭제되었습니다 ***</font>
-                <%
-                    }
-                %>
-            </td>
-
-            <td><%=dto.getReadcount() %>
-            </td>
-            <td><%=dto.getId() %>
-            </td>
-        </tr>
-        <%
-                }
-            }
-        %>
-
-        </tbody>
-    </table>
-
-    <br>
-
-    <div class="container">
-        <nav aria-label="Page navigation">
-            <ul class="pagination" id="pagination" style="justify-content:center"></ul>
-        </nav>
+    <img src="pageimage/mainImage/image01.jpg" class="img-fluid" alt="Responsive image">
+    <div class="board-header">
+        <div class="board-sort">
+            <select class="custom-select" id="sort" name="sort">
+                <option selected>최신순</option>
+                <option value="oldsort">오래된순</option>
+                <option value="reviewsort">조회순</option>
+                <option value="commentsort">댓글순</option>
+            </select>
+        </div>
+        <div class="search-container">
+            <select class="custom-select" id="choice" name="choice">
+                <option selected>검색</option>
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+                <option value="writer">작성자</option>
+            </select>
+            <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()"
+                   placeholder="검색어"
+                   value="<%=search %>">
+            <button type="button" class="btn btn-secondary" onclick="searchBtn()">검색</button>
+        </div>
     </div>
 
-    <br>
-    <a href="communitywrite.do">글쓰기</a>
+    <div class="table-responsive">
+        <table class="table" style="border-collapse: collapse;">
+            <thead style="background-color: #f8f9fa;">
+            <tr>
+                <th scope="col" style="width: 8%; text-align: center;">번호</th>
+                <th scope="col" style="width: 60%">제목</th>
+                <th scope="col" style="width: 16%; text-align: center;">조회수</th>
+                <th scope="col" style="width: 16%; text-align: center;">작성자명</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <%
+                if (list == null || list.size() == 0) {
+            %>
+            <tr>
+                <td colspan="4">작성된 글이 없습니다</td>
+            </tr>
+            <%
+            } else {
+
+                for (int i = 0; i < list.size(); i++) {
+                    CommunityDto dto = list.get(i);
+            %>
+            <tr>
+                <th style="text-align: center;"><%=i + 1 + (pageNumber * 10) %>
+                </th>
+
+                <td>
+                    <%
+                        if (dto.getDel() == 0) {
+                    %>
+                    <%=Utility.arrow(dto.getDepth()) %>
+                    <a href="communitydetail.do?seq=<%=dto.getSeq() %>">
+                        <%=dto.getTitle() %>
+                    </a>
+                    <%
+                    } else if (dto.getDel() == 1) {
+                    %>
+                    <%=Utility.arrow(dto.getDepth()) %>
+                    <font color="#ff0000">*** 이 글은 작성자에 의해서 삭제되었습니다 ***</font>
+                    <%
+                        }
+                    %>
+                </td>
+
+                <td style="text-align: center;"><%=dto.getReadcount() %>
+                </td>
+                <td style="text-align: center;"><%=dto.getId() %>
+                </td>
+
+            </tr>
+            <%
+                    }
+                }
+            %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination-container">
+        <div class="container">
+            <nav aria-label="Page navigation">
+                <ul class="pagination" id="pagination"></ul>
+            </nav>
+        </div>
+        <div class="write-button-container">
+            <div class="button-wrapper">
+                <a href="communitywrite.do" class="btn btn-secondary">글쓰기</a>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript">
 
@@ -178,12 +231,11 @@
                 location.href = "community.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page - 1);
             }
         });
-
     </script>
+</div>
 
-</div>
-</div>
 </body>
+
 </html>
 
 

@@ -13,6 +13,17 @@ public interface ReviewService {
 	
 	//페이지 넘버
 	int getAllReview(ReviewParam Param);
+	
+	//readcountOrder
+	List<ReviewDto> readcountOrder(ReviewDto dto);
+	
+	//wdateOrder
+	List<ReviewDto> wdateOrder(ReviewDto dto);
+	
+	
+	//longdateOrder
+	List<ReviewDto> longdateOrder(ReviewDto dto);
+	
 
 	//detail
 	ReviewDto getReview(int seq);
@@ -20,9 +31,14 @@ public interface ReviewService {
 	//readcount
 	int readcount(int seq);
 	
+	//글쓰기
+	boolean writeReviewAf(ReviewDto dto);
 	
-	//write
-	boolean writeReview(ReviewDto dto);
+	//글수정
+	boolean reviewUpdate(ReviewDto dto);
+	
+	//글삭제
+	boolean reviewDelete(int seq);
 	
 	//답글 수정/추가
 	boolean answerReview(ReviewDto dto);

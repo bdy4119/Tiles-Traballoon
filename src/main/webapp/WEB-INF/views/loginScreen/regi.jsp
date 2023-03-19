@@ -45,6 +45,20 @@
     </div> <!-- form-group// -->
     
     <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="nickname" class="form-control" placeholder="NickName" type="text">
+    </div> <!-- form-group// -->
+    
+  	 <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="address" class="form-control" placeholder="address" type="text">
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
@@ -60,8 +74,9 @@
 		    <option value="1">+032</option>
 		    <option value="2">+041</option>
 		    <option value="3">+053</option>
+		    <option value="4">+010</option>
 		</select>
-    	<input name="" class="form-control" placeholder="Phone number" type="text">
+    	<input name="phonenumber" class="form-control" placeholder="Phone number" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
@@ -122,6 +137,8 @@ $(document).ready(function() {
 	});
 });
 </script>
+
+
 
 </body>
 </html>
