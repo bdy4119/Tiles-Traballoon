@@ -6,7 +6,6 @@
 	MemberDto login = (MemberDto)session.getAttribute("login");
 	MemberDto dto = (MemberDto)session.getAttribute("dto");
 	// 로그인 -> 세션에 로그인정보 저장 -> 로그인이후에 페이지변환 -> responsebody무쓸모
-	
 %>
 
 <!DOCTYPE html>
@@ -15,109 +14,33 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<style type="text/css">
-      .b-example-divider {
-            height: 1px;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 0.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-        .container {
-	display: block;
-	height: 50em;
-}
-
-.container2 {
-	/* display: block; */
-	width: auto;
-	height: 100em;
-	align: center;
-	align-items: center;
-	align-content: center;
-}
-</style>
 </head>
 <body>
-<div class="container-fluid">
-	<div align="center">
-    	<img src="images/community.png" class="img-fluid">
-		<main class="col-10 py-md-3 pl-md-5 bd-content" role="main">
-
-			<div id="mypage-nav" class="hidden-md-down">
-				<div class="row row-0 top">
-					<div class="col-4 active">
-							<a href="mypageAf.do"> 
-						<div align="center">
-								<img src="images/211731_contact_icon.png"> <span
-								class="txt-h4 ls-04">마이 페이지</span>
-						</div>
-						</a>
-					</div>
-
-					<div class="col-4 ">
-						<a href="wishlist.do">
-							<div align="center">
-								<img src="images/211754_heart_icon.png"> <span
-									class="txt-h4 ls-04">위시리스트</span>
-							</div>
-						</a>
-					</div>
-
-					<div class="col-4 ">
-						<a href="writeme.do">
-							<div align="center">
-								<img src="images/9165605_pencil_write_icon (1).png"> 
-								<span class="txt-h4 ls-04">내가 쓴 글</span>
-						</a>
-					</div>
-				</div>
-				<div class="row row-0 bottom ">
-					<div class="col-4 ">
-						<a href="reference.do">
-							<div align="center">
-								<img
-									src="images/5355695_chat_comment_email_letter_mail_icon.png">
-								<span class="txt-h4 ls-04">문의하기</span>
-						</a>
-					</div>
-				</div>
-				<div class="col-4 ">
-					<a href="leave.do">
-						<div align="center">
-							<img src="images/211835_trash_icon.png"> <span
-								class="txt-h4 ls-04">회원탈퇴</span>
-						</div>
-					</a>
-				</div>
-			</div>
-		</main>
-	</div>
 	<div class="container border border-2">
 		<!-- <div class="container2"> -->
 			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-2 col-form-label">이름</label>
 				<div class="col-sm-10">
 					<input type="text" readonly class="form-control-plaintext"
-						id="name" value="<%=session.getAttribute("name") %>">	
+						id="name" value="<%=login.getName()%>">	
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-sm-2 col-form-label">별명</label>
 				<div class="col-sm-5">
-					<input type=text class="form-control" id="nickname" value="<%= session.getAttribute("nickname")%>">
+					<input type=text class="form-control" id="nickname" value="<%=login.getNickname()%>">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-sm-2 col-form-label">이메일</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="email" value="<%= session.getAttribute("email") %>">
+					<input type="text" class="form-control" id="email" value="<%=login.getEmail()%>">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
 				<div class="col-sm-5">
-					<input type="password" class="form-control" id="pwd" value="<%= session.getAttribute("pwd") %>">
+					<input type="password" class="form-control" id="pwd" value="<%=login.getPwd()%>">
 				</div>
 			</div>
 			<div class="mb-3 row">
@@ -150,7 +73,7 @@
 				<button type="button" id="clBtn">a버튼</button>	
 			</form>
 		</div>
-	</div><%-- nickname = #{nickname}, email=#{email}, pwd=#{pwd}, phonenumber=#{phonenumber}, address=#{address} --%>
+	
 
 
 <script type="text/javascript">
