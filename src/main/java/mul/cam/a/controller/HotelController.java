@@ -34,24 +34,25 @@ public class HotelController {
 	public String hotel(@RequestParam(name="page", defaultValue="1") int page,	//페이징
 			@RequestParam(name="orderBy", defaultValue = "") String orderBy,	//정렬
 			HttpServletRequest req, Model model) {
+		
+		
 		HotelPagingDto pagingDto = new HotelPagingDto();		//페이징
 		pagingDto.setOrderBy(orderBy);
 		pagingDto.setPageNo(page);
-		pagingDto.setViewCount(99);
+		pagingDto.setViewCount(9);		//DB에서 갖고올 개수
 		pagingDto.setLimit((page - 1) * pagingDto.getViewCount());	
 		
 		List<HotelDto> list = service.hotellist(pagingDto); 	// 페이징 된 list
 		model.addAttribute("hotellist", list);					// 사진 뿌리기 위해 보냄
 		model.addAttribute("orderBy", orderBy);					// 정렬
-		model.addAttribute("pageTitle", "Hotel Traballoon");	// 배경사진 제목 보내기
-		model.addAttribute("pageDescription", "당신의 아름다운 하루를 즐겨보세요");	//배경사진 부제목 보내기
+		model.addAttribute("pageTitle", "Hotel Traballoon");	// header로 배경사진 제목 보내기
+		model.addAttribute("pageDescription", "당신의 아름다운 하루를 즐겨보세요");	//header배경사진 부제목 보내기
 		
 		int totalCount = service.getHotelTotalCount();	//hotels 테이블 총 개수 얻어오기
 		model.addAttribute("page", page);				// 페이징
 		model.addAttribute("totalCount", totalCount);	// 페이징
 
 		return "hotel";
-
 	}
 
 	 //2. 메뉴(사이드바)에서 사진 뿌리기
@@ -60,6 +61,7 @@ public class HotelController {
 				@RequestParam(name="orderBy", defaultValue = "") String orderBy,
 		                   HttpServletRequest req, Model model) {
 			
+			//menu에서는 정렬, 페이징 기능 쓰지 않지만, 사용하는 함수가 hotellist 하나라 써뒀습니다. 
 			HotelPagingDto pagingDto = new HotelPagingDto();		//페이징
 			pagingDto.setOrderBy(orderBy);
 			pagingDto.setPageNo(page);
@@ -72,9 +74,6 @@ public class HotelController {
 			model.addAttribute("pageTitle", "Hotel Traballoon");	// 배경사진 제목 보내기
 			model.addAttribute("pageDescription", "당신의 아름다운 하루를 즐겨보세요");	//배경사진 부제목 보내기
 			
-			int totalCount = service.getHotelTotalCount();	//hotels 테이블 총 개수 얻어오기
-			model.addAttribute("page", page);				// 페이징
-			model.addAttribute("totalCount", totalCount);	// 페이징
 	
 		    String uri = req.getRequestURI();
 		    String menu = uri.substring(uri.lastIndexOf('/') + 1);
@@ -109,6 +108,7 @@ public class HotelController {
 		  String photo = hoteldto.getThumbnail();
 		  String hotelmap = hoteldto.getMap();
 		  String hotelcontent = hoteldto.getContent();
+		  int reacount = hoteldto.getReadCount();
 		  model.addAttribute("pageTitle", "Hotel Traballoon");				// 배경사진 제목 보내기
 		  model.addAttribute("pageDescription", "당신의 아름다운 하루를 즐겨보세요");	//배경사진 부제목 보내기
 		  

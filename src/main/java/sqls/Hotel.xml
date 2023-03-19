@@ -34,7 +34,7 @@
 		  where seq = #{seq}
 	</update>
 
-	<!-- 글의 총수 가져오기 -->
+	<!-- 데이터 총수 가져오기 -->
 	<select id="getHotelTotalCount" resultType="int">
 		SELECT COUNT(*) FROM hotels
 	</select>	

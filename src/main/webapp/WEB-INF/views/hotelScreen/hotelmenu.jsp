@@ -1,4 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 
 <style>
 ul.hotel-menu-list {
@@ -26,7 +30,6 @@ ul.hotel-menu-list > li:hover {
 }
 </style>
 
-<!-- 메뉴 -->
 <ul class="hotel-menu-list">
 	<li><a href="./menu_sudo.do">수도권</a></li>
 	<li><a href="./menu_gwd.do">강원도</a></li>
@@ -34,4 +37,4 @@ ul.hotel-menu-list > li:hover {
 	<li><a href="./menu_gsd.do">경상도</a></li>
 	<li><a href="./menu_jld.do">전라도</a></li>
 	<li><a href="./menu_jeju.do">제주도</a></li>
-</ul>
+</ul>   --%>

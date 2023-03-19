@@ -13,7 +13,7 @@
         .blog-header-logo {
             font-family: "Playfair Display", Georgia, "Times New Roman", serif;
             font-size: 2.25rem;
-        }
+        }b 
 
         .nav-scroller {
             position: relative;

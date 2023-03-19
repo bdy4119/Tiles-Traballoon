@@ -33,6 +33,7 @@
 	<table style="width: 100%; height: 100%; border-color: gray;" >
 	
 <!-- header -->
+
 	<tr align="center">
 		<td colspan="3" style="height: 10%">
 			<tiles:insertAttribute name="header"/>
@@ -40,16 +41,19 @@
 	</tr>
 	
 	<!-- header에 비행기 배경사진 + 제목, 부제목 넣기  -->
+<table style="width:100%">
 	<tr>	
 			<!-- EL 표현식 : controller에서 보낸것. 아래 형태로 받을 수 있음(속성값 출력) -->
-		<td colspan="2" style="background-image:url('hotelimage/air.jpg'); height: 250px; background-size: 
-		100% auto; background-position: center center; border-radius : 30px;">
+		<td colspan="2" style="background-image:url('hotelimage/airback2.png'); height: 300px; background-size: 
+		100% auto; background-position: center center;">
 		<a href="./hotel.do" style="text-decoration:none;">
-			<h2 class="hotel-page-title" >${pageTitle}</h2></a>		<!--  제목 -->
-			<p class="hotel-page-desc" >${pageDescription}</p>	<!--  부제목 -->
+<%-- 			<h2 class="hotel-page-title" >${pageTitle}</h2></a>		<!--  제목 -->
+			<p class="hotel-page-desc" >${pageDescription}</p>	<!--  부제목 --> --%>
 			
 		</td>
 	</tr>
+</table>	
+
 	
 	
 <!-- menu : hotelmenu.jsp 에 적용됨-->
@@ -67,7 +71,7 @@
 	<%-- 	<td align="center" style="width: 15%">
 			<tiles:insertAttribute name="empty"/>
 		</td> --%>
-	</tr>
+
 
 
 <!-- footer -->

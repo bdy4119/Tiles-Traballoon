@@ -1,7 +1,7 @@
 <%@page import="mul.cam.a.dto.MemberDto"%>
 <%@page import="mul.cam.a.dto.HotelDto"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!doctype html>
 <html lang="en">
@@ -9,35 +9,63 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SemiProject</title>
+    
 
     <%--BootStrap--%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <style>
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
+	
+	<link rel="stylesheet" type="text/css" href="./hoteldetail_font.css">
+	
+    <style type="text/css">
+    
+    /* 지도 가운데 정렬 */
+     #map {
+ 	 margin: 0 auto !important;
+	}
+	/* 줄바꿈 선 */
+	.border-top-gray {
+  	border-top: 1px solid #dcdcdc;
+	} 
+	/* 줄간격 */   
+	.text pre {
+ 	line-height: 3;
+	}
+	/* 버튼 왼쪽 정렬 시키기 */
+	.btn-group {
+	  display: flex;
+	  justify-content: flex-start;
+	}
+	
+	/* 버튼 크기 유지시키기 */
+	.btn-group .btn {
+	  flex-grow: 0;
+	}
+	 .cover {
+ 	 margin: 0 auto !important;
+	}
+
+	       
+
     </style>
     
 	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=6535dc6f68759c638b09e6bca23442d2"></script>
 	
-	<% //컨트롤러에서 받아오기
+	<% 
+	//컨트롤러에서 받아오기
 	//HotelDto 얻어오기
 		HotelDto hoteldto = (HotelDto)request.getAttribute("hoteldto");
 	//login정보 얻어오기
 		Object loginObject = session.getAttribute("login");
-		MemberDto login = new MemberDto();
-		boolean isLogin = false;
-		if (loginObject != null) {
-			login = (MemberDto)session.getAttribute("login");	// 
-			isLogin = true;
+		//login이 null일 경우 오류나므로 login 변수를 null이 아닌 MemberDto인스턴스로 초기화
+		MemberDto login = new MemberDto(); 
+		boolean isLogin = false;	//isLogin 의 초기값은 false
+		if (loginObject != null) {	//로그인이 되고나서야
+			login = (MemberDto)session.getAttribute("login");	// 로그인 값을 얻어올 수 있다.
+			isLogin = true;	//로그인이 되면 isLogin은 true로 바뀐다.
 		} 
-		request.setAttribute("isLogin", isLogin);
+		request.setAttribute("isLogin", isLogin);	//jsp에서 사용 가능하도록 isLogin 값 request객체에 저장
 	
 	// 호텔이름 얻어오기
 		String hotelname = (String)request.getAttribute("hotelname");
@@ -50,35 +78,81 @@
 		String hotelmap = (String)request.getAttribute("hotelmap");
 	// 텍스트 얻어오기
 		String hotelcontent = (String)request.getAttribute("hotelcontent");
+	// 조회수 얻어오기
+		String readcount = (String)request.getAttribute("readcount");
    	%> 
    
 </head>
 
 <body>
 
+<br>
+<div class="nav-container">
+<!-- <div class="nav-container" style="display: flex; justify-content: center;"> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light";>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="./hotel.do">menu</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+    		data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+      <!--   <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="./menu_sudo.do">수도권</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./menu_gwd.do">강원도</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./menu_ccd.do">충청도</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./menu_gsd.do">경상도</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./menu_jld.do">전라도</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./menu_jeju.do">제주도</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
 
 <%--container--%>
-<div class="container">
-    <main>
 
-  
-        <%--공백--%>
-<!--         <div class="b-example-divider"></div>    -->
 
-        <%--내용 start--%>
-      
-<!-- 1. DB-> 호텔이름 연결 -->
+<!-- 1.  DB -> 예약할 주소 연결  -->  
+    <br><br>
+<div class="btn-group">
+    <!-- <a href="./hotel.do" class="btn btn-secondary active" aria-current="page">목록으로</a>  -->
+    <a href="<%=hotelbook %>" class="btn btn-secondary">예약</a>
+    <a href="#app" class="btn btn-light">후기</a>
+</div> 
+	
+
+
+
+<div class="detail-container" style="width: 80%; margin: 0 auto; text-align: center; color: gray;"> 
+    
+  <!--   <main> -->
+   
+<!-- 2. DB-> 호텔이름 연결 -->
+
+<br><br>
   <div class="header">
   	<h1><%=hotelname %></h1>
   </div>
   
- 
-<!-- 2.  DB -> 예약할 주소 연결  -->  
-    <br>
-    <div class="button">
-        <button onclick="location.href='<%=hotelbook %>'">예약하기</button>
-    </div> 
-    
+
 <!-- 3.  DB -> 이미지 연결  -->   
 
     <br><br>
@@ -86,15 +160,31 @@
         <div class="image">
             <img src=<%=photo%> style="width:50%;"> 
         </div>
-        
-        
-<!-- 4.  DB -> 카카오맵 연결 -->
-		   <div id="map" style="width:100%;height:350px;"></div>
+ <!-- 4.  DB -> 텍스트 연결 -->  
+<br><br>
+        <div class="text">
+            <pre><%=hotelcontent %></pre>
+        </div>
+    </div>        
+     
+     <br>
+    <!--  <div style="border-top: 1px solid #dcdcdc; width: 600px; margin: 0 auto;"></div> -->
+    <div class="border-top-gray" style="width: 600px; margin: 0 auto;"></div>
+<!-- 5.  DB -> 카카오맵 연결 -->
+<br><br>
+	<div style="width: 60%; margin: 0 auto;">
+		<div class = "mapimage" style="text-align: left; ">
+		<img src="./hotelimage/map.png"> 
+		<br> 
+	 	</div>
+	 </div>
+
+	<div id="map" style="width:550px;height:400px;"></div>
 <script>
     var container = document.getElementById('map');
     var options = {
         center: new kakao.maps.LatLng(<%=hotelmap %>),
-        level: 5
+        level: 3
     };
 
     var map = new kakao.maps.Map(container, options);
@@ -105,98 +195,99 @@
         position: markerPosition,
         map: map
     });
+     
 </script>
-        
-        
- <!--  카카오맵 끝 -->   
- 
- <!-- 5.  DB -> 텍스트 연결 -->  
-
-        <div class="text">
-            <pre><%=hotelcontent %></pre>
-        </div>
-    </div>
-    
- 
+	<br><br>
+	 <div class="border-top-gray" style="width: 62%; margin: 0 auto;"></div>
 
    
-      	<!-- 댓글 공간 댓글버튼, 댓글 수정 버튼 필요-->
-      	
-      	<!--  댓글 태그 시작 -->
-		<div id="app" class="container"> <!--  부트스트랩 쓸 때 적용하는 코드 -->
+<!--  6. 공통 기능 : 품질보장 -->
+<br><br>
+	<div style="width: 60%; margin: 0 auto;">
+		<div class = "cover" style="text-align: left; ">
+		<img src="./hotelimage/cover.png"> 
+		<br>
+	     <pre>  	모든 예약에는 호텔이 예약을 취소하거나 숙소 정보가 정확하지 않은 경우 또는 
+    	체크인에 문제가 있는 상황에 대비한 무료 보호 프로그램이 포함됩니다.</pre>     
+	 	</div>
+	 </div>
+	 
+	 
+ </div> 
+ 
+  	 <!--  공백 추가하기 -->
+	<div style="height: 100px;"></div> 
+	
+    <!--  댓글 태그 시작 -->
+	<div id="app" class="container"> <!--  부트스트랩 쓸 때 적용하는 코드 -->
 		
-		
-		<!-- 댓글 달 때도 seq와 id는 넘겨받아야 함. -->
-		
-				
-		
-		<form action="HotelcommentWriteAf.do" method="post">
-		<input type="hidden" name="hotelSeq" value="<%=hoteldto.getSeq() %>">
-		<input type="hidden" name="id" value="<%=login.getId() %>">
+	<form action="HotelcommentWriteAf.do" method="post">
+	<input type="hidden" name="hotelSeq" value="<%=hoteldto.getSeq() %>">
+	<input type="hidden" name="id" value="<%=login.getId() %>">
 										<!--  위에서 session으로 넘겨받은 login 활용 -->
+	<table>
+	<col width="1500px"><col width="150px">
+	<tr>
+		<td>후기</td>
+		<td style="padding-left: 30px">올리기</td>
+	</tr>
+	<tr>
+		<td>
+			<textarea rows="3" class="form-control" name="content" onclick="checkLogin()"></textarea>
+		</td> 
+		<td style="padding-left: 30px">
+			<button type="submit" class="btn btn-secondary btn-block p-4">등록</button>
+		</td>
+	</tr>
+	</table>
+	</form>
 		
+	<br><br>
 		
-		<table>
-		<col width="1500px"><col width="150px">
-		<tr>
-			<td>후기</td>
-			<td style="padding-left: 30px">올리기</td>
-		</tr>
-		<tr>
-			<td>
-				<textarea rows="3" class="form-control" name="content" onclick="checkLogin()"></textarea>
-			</td> 
-			<td style="padding-left: 30px">
-				<button type="submit" class="btn btn-primary btn-block p-4">완료</button>
-			</td>
-		</tr>
-		</table>
-		</form>
-		
-		<br><br>
-		
-		<!--  ajax로 댓글 뿌리기 -->
-		<table class="table table-sm">
+	<!--  ajax로 댓글 뿌리기 -->
+			
+	<table class="table-hover table table-sm">
 		<col width="500"><col width="500">
-		<tbody id="tbody">
-		</tbody>
-		</table>
+		<tbody id="tbody"> </tbody>
+	</table>
 		
-		</div>
+	</div>
 		
-	</main>
+<!-- 	</main> -->
 		
-		<!-- 댓글 뿌릴 때 무조건 댓글 읽어오게 만들기 -->
-		<script type="text/javascript">
-		$(document).ready(function(){
-			$.ajax({
-				url:"./HotelcommentList.do",
-				type:"get",
-				data:{ "seq":<%=hoteldto.getSeq() %> },         
+		
+	<!-- 댓글 뿌릴 때 무조건 댓글 읽어오게 만들기 -->
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url:"./HotelcommentList.do",
+			type:"get",
+			data:{ "seq":<%=hoteldto.getSeq() %> },         
 				
-				success:function(list){
-					// alert('success');
-					// alert(JSON.stringify(list));
+			success:function(list){
+				// alert('success');
+				// alert(JSON.stringify(list));
 					
-					$("#tbody").html("");	//먼저 비워놔야함. 안그러면 새로고침할 때마다 추가됨.
+				$("#tbody").html("");	//먼저 비워놔야함. 안그러면 새로고침할 때마다 추가됨.
 					
-					// $.each : for문과 동일
-					$.each(list, function(index, item){ //리스트에서 하나씩 꺼낸다
-						let str = "<tr class='table-info'>" 	//부트스트랩
-								+	"<td>작성자:" + item.id + "</td>"
-								+	"<td>작성일:" + getFormattedDate(new Date(item.wdate)) + "</td>"
-								+ "</tr>"
-								+ "<tr>"
-								+	"<td colspan='2'>" + item.content + "</td>"
-								+ "</tr>";
-						$("#tbody").append(str);
-					});
-				},
-				error:function(){
-					alert('error');	
-				}		
-			});	
-		}); 
+				// $.each : for문과 동일
+				$.each(list, function(index, item){ //리스트에서 하나씩 꺼낸다
+					let str = "<tr class='table-light'>" 	//부트스트랩
+							+	"<td>작성자:" + item.id + "</td>"
+							+	"<td>작성일:" + getFormattedDate(new Date(item.wdate)) + "</td>"
+							+ "</tr>"
+							+ "<tr>"
+							+	"<td colspan='2'>" + item.content + "</td>"
+							+ "</tr>";
+					$("#tbody").append(str);
+				});
+			},
+			error:function(){
+				alert('error');	
+			}		
+		});	
+	}); 
 		function getFormattedDate(d){
 		    function pad(n) { return n<10 ? "0"+n : n }
 		    return d.getFullYear()+"-"+
@@ -205,18 +296,17 @@
 		    pad(d.getHours())+":"+
 		    pad(d.getMinutes());
 		}
-		// 로그인 검사 함수 (현재 오류남)
+		// 비로그인일 때 로그인 페이지로 보내기
  		function checkLogin() {
 			// alert('checkLogin()');
-			let id = "<%=isLogin%>";
+			let id = "<%=isLogin %>";
 			if(id == 'false'){
 				window.location.href = 'login.do';
 			}
 		}
 		</script>
       	
-      	     
-        
+   
         <%--내용 end--%>
 
 
@@ -225,14 +315,5 @@
 
 
 </div>
-<%--container--%>
-
-<%--BootStrap--%>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous">
-</script>
-<%--BootStrap--%>
-
 </body>
 </html>
