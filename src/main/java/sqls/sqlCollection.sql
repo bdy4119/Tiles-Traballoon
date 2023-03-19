@@ -407,3 +407,82 @@ INSERT INTO hotel_comments (hotelseq, content)
 VALUES (2, '호텔B 첫 후기');
 
 --하나 DB-------------------------------------------------------------------------------------------
+
+
+-- 동민 DB-------------------------------------------------------------------------------------------
+drop table member;
+
+create table member
+(
+    id    varchar(20) primary key not null,
+    nickname varchar(20) not null,
+    pwd   varchar(50) not null,
+    name  varchar(20) not null,
+    email varchar(50) unique,
+    address varchar(40) not null,
+    phonenumber varchar(20) not null,
+    auth  int
+);
+delete from member
+where address = '남원시';
+
+select * from member;
+use travel;
+create table trip
+(
+    seq       int auto_increment primary key,
+    city      varchar(50)   not null,
+    spot      varchar(50)    not null,
+    title     varchar(200)  not null,
+    content   text not null,
+    wdate     timestamp     not null,
+    readcount decimal(8)    not null
+);
+alter table community
+add foreign key(id) references mypage(id);
+
+alter table review
+add foreign key(id) references mypage(id);
+
+-- db에서 데이터 뿌리기리한 쿼리
+insert into mypage
+values (1, 'abc', '제목', '내용', now(), 0, 0);
+select *
+from mypage;
+create table mypage
+(
+	seq int auto_increment primary key,
+    id varchar (20),
+    nickname varchar(50),
+	title varchar (200),
+	content varchar (4000),
+	wdate timestamp not null,
+	del decimal (1),
+	readcount decimal (8)
+);
+insert into member(id, nickname, pwd, name, email, address, phonenumber, auth)
+values ('ssd', 'Rld', '123', 'jon', 'jon@gmail.com', '서울시', '01022', 3);
+
+select *
+from community, member
+where (member.id = community.id);
+
+create table mypagecommunityAf
+(
+    seq       int auto_increment primary key,
+    id        varchar(50)   not null,
+    nickname varchar(50)	not null,
+    ref       decimal(8)    not null,
+    step      decimal(8)    not null,
+    depth     decimal(8)    not null,
+
+    title     varchar(200)  not null,
+    content   varchar(4000) not null,
+    wdate     timestamp     not null,
+
+    del       decimal(1)    not null,
+    readcount decimal(8)    not null
+);
+insert into mypagecommunity
+VALUES (2, 'abc','길떵이', 1, 0, 0, 1, 'abc', 'abc', CURRENT_TIMESTAMP, 0, 0);
+-- 동민 DB-------------------------------------------------------------------------------------------
