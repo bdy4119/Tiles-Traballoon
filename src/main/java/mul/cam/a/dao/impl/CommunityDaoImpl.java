@@ -19,8 +19,8 @@ public class CommunityDaoImpl implements CommunityDao {
 	String ns = "Community.";
 
 	@Override
-	public List<CommunityDto> communitylist(CommunityParam community) {		
-		return session.selectList(ns + "communitylist", community);
+	public List<CommunityDto> communitylist(CommunityParam community) {
+			return session.selectList(ns + "communitylist", community);
 	}
 
 	@Override

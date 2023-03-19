@@ -34,9 +34,25 @@ public class ReviewServiceImpl implements ReviewService{
 
 	//readcountOrder
 	@Override
-	public ReviewDto readcountOrder(ReviewDto dto) {
+	public List<ReviewDto> readcountOrder(ReviewDto dto) {
 		return dao.readcountOrder(dto);
 	}
+	
+	
+	//wdateOrder
+	@Override
+	public List<ReviewDto> wdateOrder(ReviewDto dto) {
+		return dao.wdateOrder(dto);
+	}
+	
+	
+	//longdateOrder
+	@Override
+	public List<ReviewDto> longdateOrder(ReviewDto dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 
@@ -99,8 +115,6 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewComment> commentList(int seq) {
 		return dao.commentList(seq);
 	}
-
-	
 	
 	
 	
