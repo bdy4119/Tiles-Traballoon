@@ -1,0 +1,13 @@
+@charset "EUC-KR";
+
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Montserrat:wght@100&family=Nabla&family=Noto+Sans+KR:wght@100;900&family=Noto+Sans+Lepcha&family=Nunito:wght@200&display=swap');
+
+	/* ±Û¾¾Ã¼ º¯°æ */
+	.header h1 {
+ 	 font-family: 'Gamja Flower', cursive;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Nabla', cursive;
+font-family: 'Noto Sans KR', sans-serif;
+font-family: 'Noto Sans Lepcha', sans-serif;
+font-family: 'Nunito', sans-serif;
+	}

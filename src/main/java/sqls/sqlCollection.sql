@@ -372,10 +372,12 @@ create table hotels
 (
     seq        int auto_increment primary key,
     hotel_name varchar(50)   not null,
-    read_count decimal(8)    not null default 0,
+    readcount  decimal(8)    not null default 0,
     thumbnail  varchar(1000) not null,
-    created_at timestamp     not null default now(),
-    updated_at timestamp
+    wdate	   timestamp    not null default now(),
+    content	   varchar(1000) not null,
+    map		   varchar(100)	not null,
+    book	   varchar(100)	not null	
 );
 
 INSERT INTO hotels (read_count, hotel_name, thumbnail)
@@ -391,14 +393,15 @@ FROM hotel_comments;
 
 create table hotel_comments
 (
-    id         varchar(50),
     seq        int auto_increment primary key,
+    id         varchar(50),
     hotelseq   int,
     content    varchar(1000) not null,
-    created_at timestamp     not null default now(),
-    updated_at timestamp,
-    foreign key (hotelseq) references hotels (seq)
+    wdate timestamp     not null default now(),
+    foreign key (hotelseq) references hotels (seq),
+    foreign key (id) references member (id)
 );
+
 
 INSERT INTO hotel_comments (hotelseq, content)
 VALUES (1, '호텔A 첫 후기');
