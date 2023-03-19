@@ -14,10 +14,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	<style type="text/css">
-		
-	</style>
+
 </head>
 
 <body>
@@ -36,10 +35,9 @@
 					<div class="card-header">
 						<h4><%=dto.getTitle()%></h4>
 						<div class="small text-muted">
-							작성자:
-							<%=dto.getId()%>, 작성일:
-							<%=dto.getWdate()%>, 조회수:
-							<%=dto.getReadcount()%>
+							작성자: <%=dto.getId()%>,
+							작성일: <%=dto.getWdate()%>,
+							조회수: <%=dto.getReadcount()%>
 						</div>
 					</div>
 					<div class="card-body">
@@ -70,7 +68,7 @@
 					}
 					%>
 				</div>
-				<script type="text/javascript">
+			<script type="text/javascript">
 				function reviewUpdate( seq ) {
 					location.href = "reviewUpdate.do?seq=" + seq;
 				}
@@ -95,10 +93,10 @@
 				</form>
 
 
-
-				<!-- 댓글 정보 출력을 위한 템플릿 코드 -->
-				<div id="li">
-					<!--<div class="card mt-3">
+			
+			<!-- 댓글 정보 출력을 위한 템플릿 코드 -->
+			<div id="li">
+			<!--<div class="card mt-3">
 				 	<div class="card-header">
 						작성자:
 					</div>
@@ -111,57 +109,50 @@
 						</ul>
 					</div>
 				</div>-->
-				</div>
+			</div>
+			
 				<br>
 				<br>
 				<br>
 				<script type="text/javascript">
-			
-			
-			$(document).ready(function(){
-				
-					$.ajax({
-						url:"reviewCommentList.do", //react에서는 경로표시 해줘야함
-						type:"GET",
-						data:{"seq":<%=dto.getSeq()%>},
-						success:function(list) {
-						//	alert('success')
-						//	alert(JSON.stringify(list));
-							
-							
-							$("#li").html("");
-							
-							$.each(list, function(index, item){
-								let str = 	"<div class='card mt-3'>"
-										+		"<div class='card-header'>" + item.id + "</div>"
-										+			"<div class='card-body'>"
-										+				"<ul class='list-unstyled'>"
-										+ 					"<li>" 
-										+						"<div>" + item.content + "</div>"
-										+						"<br>"
-										+						"<div>작성일: " + item.wdate + "</div>"
-										+ 					"</li>"
-										+				"</ul>"
-										+			"</div>"
-										+	"</div>"
-								$("#li").append(str);
+					$(document).ready(function(){
+						$.ajax({
+							url:"./communitycommentList.do",
+							type:"get",
+							data:{ "seq":<%=dto.getSeq() %> },
+							success:function(list){
+								// alert('success');
+								// alert(JSON.stringify(list));
 								
-							});
-						},
-						error:function() {
-							alert('error');
-						}
-				})
-					
-			});
-			
-
-			</script>
+								$("#li").html("");
+								
+								$.each(list, function(index, item){
+									let str = 	"<div class='card mt-3'>"
+											+		"<div class='card-header'>" + item.id + "</div>"
+											+			"<div class='card-body'>"
+											+				"<ul class='list-unstyled'>"
+											+ 					"<li>" 
+											+						"<div>" + item.content + "</div>"
+											+						"<br>"
+											+						"<div>작성일: " + item.wdate + "</div>"
+											+ 					"</li>"
+											+				"</ul>"
+											+			"</div>"
+											+	"</div>"
+									$("#li").append(str);
+									
+								});
+							},
+							error:function(){
+								alert('error');	
+							}		
+						});	
+					});
+				</script>
 			</div>
 			<br>
 
 		</div>
 	</div>
-
 </body>
 </html>

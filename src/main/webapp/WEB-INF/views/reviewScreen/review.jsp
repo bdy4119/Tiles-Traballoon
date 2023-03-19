@@ -320,6 +320,7 @@
 			<button type="button" value="wdate" onclick="location.href='wdateOrder.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">최신순</button>
 			<button type="button" value="longdate" onclick="location.href='longdateOrder.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">옛날순</button>
 			<button type="button" value="readcount" onclick="location.href='readcountOrder.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">조회수</button>
+			<button type="button" value="reviewCommunityList" onclick="location.href='reviewCommunityList.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">커뮤니티 글 가져오기</button>
 			<!-- 원하는 순서로 보기 END-->
         </div>
 

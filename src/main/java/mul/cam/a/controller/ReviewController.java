@@ -23,10 +23,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
 
+import mul.cam.a.dto.CommunityDto;
+import mul.cam.a.dto.CommunityParam;
 import mul.cam.a.dto.MemberDto;
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
+import mul.cam.a.service.CommunityService;
 import mul.cam.a.service.ReviewService;
 
 @Controller
@@ -34,7 +37,7 @@ public class ReviewController {
 
 	@Autowired
 	ReviewService service;
-	
+	CommunityService Comservice;
 	
 	@GetMapping(value="review.do")
 	public String review(ReviewParam param, Model model) {
@@ -65,6 +68,50 @@ public class ReviewController {
 	//		param.setChoiceOrder("");
 		}
 		
+        //review라는 이름으로 list를 뷰에서 사용해라
+		//model.addAttribute("dto", dto);
+		model.addAttribute("review", list);	// 게시판 리스트
+		model.addAttribute("pageBbs", pageBbs);	// 총 페이지수
+		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
+		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
+		//model.addAttribute("choiceOrder", param.getChoiceOrder());	// order 카테고리
+		model.addAttribute("search", param.getSearch());	// 검색어	
+		
+		return "review";
+		}
+		
+		
+/*	
+		//다른 곳 글 가져오기 테스트
+		@GetMapping(value="reviewCommunityList.do")
+		public String reviewCommunityList(CommunityDto dto ,CommunityParam param, Model model) {
+			
+//		ReviewDto dto =service.getReview(seq);
+			// 글의 시작과 끝
+			int pn = param.getPageNumber();  // 0 1 2 3 4
+			int start = 1 + (pn * 10);	// 1  11
+			int end = (pn + 1) * 10;	// 10 20 
+			
+			param.setStart(start);
+			param.setEnd(end);
+			List<CommunityDto> list = service.reviewCommunityList(dto);
+			//	List<ReviewDto> orderList = service.orderChoice(param);
+			int len = Comservice.getAllCommunity(param);
+			
+			int pageBbs = len / 10;		// 25 / 10 -> 2
+			if((len % 10) > 0) {
+				pageBbs = pageBbs + 1;
+			}
+			
+			if(param.getChoice() == null || param.getChoice().equals("")
+					|| param.getSearch() == null || param.getSearch().equals("")
+					//		|| param.getChoiceOrder() == null || param.getChoiceOrder().equals("")
+					) {
+				param.setChoice("검색");
+				param.setSearch("");
+				//		param.setChoiceOrder("");
+			}
+		
 		                   //review라는 이름으로 list를 뷰에서 사용해라
 //		model.addAttribute("dto", dto);
 		model.addAttribute("review", list);	// 게시판 리스트
@@ -77,7 +124,7 @@ public class ReviewController {
 		return "review";
 	}
 	
-
+*/
 	
 	//reviewdetail
 	@GetMapping("reviewdetail.do")

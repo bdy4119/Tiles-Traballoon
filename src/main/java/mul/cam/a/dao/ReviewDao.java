@@ -2,6 +2,7 @@ package mul.cam.a.dao;
 
 import java.util.List;
 
+import mul.cam.a.dto.CommunityDto;
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
@@ -52,5 +53,7 @@ public interface ReviewDao {
 	List<ReviewComment> commentList(int seq);
 	
 	
+	//커뮤니티 글 가져와보기
+//	List<CommunityDto> reviewCommunityList(CommunityDto dto);
 	
 }

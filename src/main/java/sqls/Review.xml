@@ -55,7 +55,6 @@
 		order by readcount desc
 	</select>
 	
-	
 	<!-- 최신순 -->
 	<select id="wdateOrder" parameterType="mul.cam.a.dto.ReviewDto"
 		resultType="mul.cam.a.dto.ReviewDto">
@@ -157,6 +156,12 @@
 	</select>
 	
 	
-	
+	<!-- 불러오기 테스트 -->
+	<!-- <select id="reviewCommunityList" parameterType="mul.cam.a.dto.CommunityDto"
+		resultType="mul.cam.a.dto.CommunityDto">
+		select *
+		from community
+		where id in (select id from member)
+	</select> -->
 	
 </mapper>
