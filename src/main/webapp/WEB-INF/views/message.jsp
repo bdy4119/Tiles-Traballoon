@@ -69,8 +69,8 @@ String sessionOut = (String)request.getAttribute("sessionOut");
 if(sessionOut != null && !sessionOut.equals("")){
 	%>
 		<script type="text/javascript">
-		alert("로그인 해 주십시오");
-		location.href = "login.do";
+		alert("로그아웃 되었습니다");
+		location.href = "main.do";
 		</script>
 	<%
 }
@@ -95,10 +95,6 @@ if(bbsupdate != null && !bbsupdate.equals("")){
 	}	
 }
 
-
-
-
-
 String answer = (String)request.getAttribute("answer");
 if(answer != null && !answer.equals("")){
 	if(answer.equals("BBS_ANSWER_OK")){
@@ -118,29 +114,6 @@ if(answer != null && !answer.equals("")){
 		<%
 	}	
 }
-
-String bbsdelete = (String)request.getAttribute("bbsdelete");
-if(bbsdelete != null && !bbsdelete.equals("")){
-	if(bbsdelete.equals("BBS_DELETE_OK")){
-		%>
-		<script type="text/javascript">
-		alert("성공적으로 삭제되었습니다");
-		location.href = "bbs?param=bbslist";
-		</script>
-		<%
-	}
-	else{
-		%>
-		<script type="text/javascript">
-		alert("삭제되지 않았습니다");		
-		location.href = "bbs?param=bbslist";
-		</script>
-		<%
-	}	
-}
-
-
-
 %>
 </body> 
 </html> 

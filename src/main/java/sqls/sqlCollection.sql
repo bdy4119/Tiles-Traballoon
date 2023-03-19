@@ -9,17 +9,28 @@ create database travel;
 --travel database 사용
 use travel;
 
---영권 DB-------------------------------------------------------------------------------------------
+--동민 DB-------------------------------------------------------------------------------------------
+
 create table member
 (
     id    varchar(50) primary key,
+    nickname varchar(20) not null,
     pwd   varchar(50) not null,
-    name  varchar(50) not null,
+    name  varchar(20) not null,
     email varchar(50) unique,
+    adress varchar(40) not null,
+    phonenumber varchar(20) not null,
     auth  int
 );
 
-delete table community;
+insert into member
+values('admin','admin','123','admin','admin@naver.com','admin','123','3');
+insert into member
+values('abc','abc','123','abc','abc@naver.com','abc','123','3');
+
+--동민 DB-------------------------------------------------------------------------------------------
+--영권 DB-------------------------------------------------------------------------------------------
+drop table community;
 
 create table community
 (
@@ -37,18 +48,28 @@ create table community
     readcount decimal(8)    not null
 );
 
+insert into community
+VALUES (1, 'abc', 1, 0, 0, 1, 'abc', 'abc', CURRENT_TIMESTAMP, 0, 0);
+
+drop table trip;
+
 create table trip
 (
     seq       int auto_increment primary key,
+    id        varchar(50),
     city      varchar(50)   not null,
     spot      varchar(50)    not null,
     title     varchar(200)  not null,
+    image     text not null,
     content   text not null,
     wdate     timestamp     not null,
     readcount decimal(8)    not null
 );
 
-delete table communitycomment;
+insert into trip
+VALUES (1, 'admin', 'seoul', '광화문', '광화문제목','광화문이미지', '광화문내용', CURRENT_TIMESTAMP, 1);
+
+drop table communitycomment;
 
 create table communitycomment
 (
@@ -58,19 +79,8 @@ create table communitycomment
     wdate   timestamp     not null
 );
 
-insert into member
-values ('abc', 123, '홍길동', 'abc@naver.com', 3);
-
-insert into community
-VALUES (1, 'abc', 1, 0, 0, 1, 'abc', 'abc', CURRENT_TIMESTAMP, 0, 0);
-
 insert into communitycomment
 VALUES (1, 'abc', 'abc', CURRENT_TIMESTAMP);
-
-insert into trip
-VALUES (1, 'seoul', '광화문', '광화문제목', '광화문내용', CURRENT_TIMESTAMP, 1);
-insert into trip
-VALUES (2, 'seoul', '남산타워', '남산타워제목', '남산타워내용', CURRENT_TIMESTAMP, 1);
 
 --영권 DB-------------------------------------------------------------------------------------------
 

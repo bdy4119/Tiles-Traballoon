@@ -20,6 +20,12 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
+
+    public List<TripDto> tripAllList() {
+        return dao.tripAllList();
+    }
+
+    @Override
     public boolean writeTrip(TripDto dto) {
         int n = dao.writeTrip(dto);
         return n>0?true:false;

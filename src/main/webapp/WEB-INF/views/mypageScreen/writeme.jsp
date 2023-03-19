@@ -69,6 +69,17 @@
 		</main>
 	</div>
 </div>
+<div class="container">
+            <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+                <a class="nav-link font-nt" href="communityScreen/community.do">커뮤니티</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link font-nt" href="communityScreen/community.do">여행 리뷰</a>
+            </li>
+        </ul>
+
+        <div class="gap-1"></div>
 <table class="table table-dark table-sm">
 	<thead>
 		<tr>

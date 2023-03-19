@@ -127,6 +127,15 @@
     <definition name="triplist" extends="trip">
         <put-attribute name="content" value="/WEB-INF/views/tripScreen/triplist.jsp"/>
     </definition>
+    <definition name="tripadminlist" extends="trip">
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripadminlist.jsp"/>
+    </definition>
+    <definition name="tripwrite" extends="trip">
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripwrite.jsp"/>
+    </definition>
+    <definition name="tripdetail" extends="trip">
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripdetail.jsp"/>
+    </definition>
 
     <!-- 마이페이지 -->
     

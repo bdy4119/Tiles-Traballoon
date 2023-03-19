@@ -17,6 +17,8 @@
 
 <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 <style type="text/css">
 .divider:after,
 .divider:before {
@@ -130,7 +132,7 @@ function account() {
 	location.href = "regi.do";
 }
 
-let user_id = $.cookie("user_id");
+/* let user_id = $.cookie("user_id"); */
 
 if(user_id != null){	// 저장한 id가 있음
 	$("#id").val(user_id);

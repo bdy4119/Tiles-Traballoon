@@ -27,15 +27,6 @@ if(communitywrite != null && !communitywrite.equals("")){
 	}
 }
 
-String sessionOut = (String)request.getAttribute("sessionOut");
-if(sessionOut != null && !sessionOut.equals("")){
-	%>
-		<script type="text/javascript">
-		alert("로그인 해 주십시오");
-		location.href = "login.do";
-		</script>
-	<%
-}
 
 String communityupdate = (String)request.getAttribute("communityupdate");
 if(communityupdate != null && !communityupdate.equals("")){

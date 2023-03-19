@@ -22,6 +22,11 @@ public class TripDaoImpl implements TripDao {
 	}
 
 	@Override
+	public List<TripDto> tripAllList() {
+		return session.selectList(ns + "tripAllList");
+	}
+
+	@Override
 	public int writeTrip(TripDto dto) {		
 		return session.insert(ns + "writeTrip", dto);
 	}

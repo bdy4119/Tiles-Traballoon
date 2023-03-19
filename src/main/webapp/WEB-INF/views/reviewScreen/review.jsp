@@ -130,6 +130,11 @@
         	border: solid 5px aqua;
         }
         
+        .container-fluid {
+        	padding-left: 20%;
+        	padding-rignt: 20%;
+        }
+        
         
         .travel-photo {
         	margin: 10px;
