@@ -2,6 +2,7 @@ package mul.cam.a.service;
 
 import java.util.List;
 
+import mul.cam.a.dto.CommunityDto;
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
@@ -46,5 +47,10 @@ public interface ReviewService {
 	//댓글 추가/뿌리기
 	boolean commentWrite(ReviewComment comment);
 	List<ReviewComment> commentList(int seq);
+	
+	
+	
+	//커뮤니티 글 가져오기 테스트
+//	List<CommunityDto> reviewCommunityList(CommunityDto dto);
 	
 }

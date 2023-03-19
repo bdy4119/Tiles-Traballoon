@@ -1,26 +1,24 @@
-<%@page import="mul.cam.a.dto.MemberDto"%>
-<%@page import="mul.cam.a.dto.CommunityDto"%>
+<%@page import="mul.cam.a.dto.MemberDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+         pageEncoding="UTF-8" %>
 <%
-CommunityDto dto = (CommunityDto)request.getAttribute("dto");
-System.out.println(dto.toString());
-%>    
-    
-<!DOCTYPE html>
+    MemberDto login = (MemberDto) session.getAttribute("login");
+%>
 <html>
 <head>
- <meta charset="UTF-8">
-    <title>community write</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
 
     <%--서머노트--%>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
@@ -49,7 +47,7 @@ System.out.println(dto.toString());
             ];
             var setting = {
                 height: "100%",
-                minHeight: 800,
+                minHeight: 500,
                 focus: true,
                 toolbar: toolbar,
                 callbacks: {
@@ -62,6 +60,7 @@ System.out.println(dto.toString());
                 }
             };
             $('#content').summernote(setting);
+            $('#image').summernote(setting);
         });
 
         function uploadImageFile(file, el) {
@@ -80,51 +79,68 @@ System.out.println(dto.toString());
                 }
             });
         }
+
     </script>
 </head>
 <body>
 
 <div class="container">
-        <img src="images/friendship.png" class="img-fluid" alt="Responsive image">
     <br>
-    <br>
-    <form action="communityupdateAf.do" id="frm" method="get" type="submit" enctype="multipart/form-data">
-    <input type="hidden" name="seq" value="<%=dto.getSeq() %>" >
+    <form action="tripwriteAf.do" id="frm" method="post" type="submit" enctype="multipart/form-data">
         <div class="form-group">
             <label>아이디</label>
-            <input type="text" class="form-control" name="id" value="<%=dto.getId() %>" readonly>
+            <input type="text" class="form-control" name="id" value="<%=login.getId() %>" readonly>
         </div>
         <div class="form-group">
-            <label for="title">제목</label>
-            <input type="text" class="form-control" id="title" name="title" value='<%=dto.getTitle() %>'>
+            <label for="title">도시</label>
+            <select class="form-control" name="city" id="city">
+                <option value="seoul">서울</option>
+                <option value="gyeonggi">경기</option>
+                <option value="gangwon">강원</option>
+                <option value="chungcheong">충청</option>
+                <option value="jeolla">전라</option>
+                <option value="gyeongsang">경상</option>
+                <option value="jeju">제주</option>
+                <option value="incheon">인천</option>
+            </select>
         </div>
+        <div class="form-group">
+            <label for="title">관광지</label>
+            <input type="text" class="form-control" id="spot" name="spot" placeholder="관광지를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="title">관광지 제목</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="관광지의 한줄소개를 입력하세요">
+        </div>
+        <label>대표 이미지</label>
+        <textarea id="image" name="image"></textarea>
+        <br>
         <label>내용</label>
-        <textarea id="content" name="content"><%=dto.getContent() %></textarea>
+        <textarea id="content" name="content"></textarea>
         <div class="d-flex justify-content-center mt-4">
-            <button id="frmbtn" type="submit" class="btn btn-secondary">글수정 완료</button>
+            <button id="frmbtn" type="submit" class="btn btn-secondary">작성완료</button>
         </div>
     </form>
     <br>
 </div>
 
-
 <script type="text/javascript">
-$(document).ready(function() {	
-	$("button").click(function() {		
-		if($("#title").val().trim() == "" ){
-			alert("제목을 기입해 주십시오");
-			return;
-		}else if($("#content").val().trim() == "" ){
-			alert("내용을 기입해 주십시오");
-			return;
-		}else{
-			$("#frm").submit();
-		}		
-	});	
-});
-</script>
+    $(document).ready(function () {
 
+        $('frmbtn').click(function () {
+
+            if ($("#title").val().trim() == "") {
+                alert("제목을 기입해 주십시오");
+                return;
+            } else if ($("#content").val().trim() == "") {
+                alert("내용을 기입해 주십시오");
+                return;
+            } else {
+                $("#frm").submit();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
-

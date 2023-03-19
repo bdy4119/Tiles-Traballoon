@@ -50,6 +50,15 @@
             color: #333;
         }
 
+        .card-body {
+            overflow: hidden;
+            height: auto;
+        }
+
+        .card-body img {
+            max-width: 100%;
+        }
+
 
     </style>
 </head>
@@ -121,12 +130,13 @@
                     dto = list.get(i);
             %>
             <hr>
-            <a href="tripcity.do?name=seoul">
+            <a href="tripdetail.do?seq=<%=dto.getSeq() %>">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-4">
-                            <img class="card-img-top" src="https://via.placeholder.com/500x500.png?text=Image+1"
-                                 alt="Card image cap">
+                            <div class="card-body">
+                                <%=dto.getImage() %>
+                            </div>
                         </div>
                         <div class="col-8">
                             <div class="card-body">
