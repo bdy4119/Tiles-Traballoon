@@ -40,7 +40,8 @@ public class HotelController {
 		pagingDto.setOrderBy(orderBy);
 		pagingDto.setPageNo(page);
 		pagingDto.setViewCount(9);		//DB에서 갖고올 개수
-		pagingDto.setLimit((page - 1) * pagingDto.getViewCount());	
+		pagingDto.setLimit((page - 1) * pagingDto.getViewCount());
+
 		
 		List<HotelDto> list = service.hotellist(pagingDto); 	// 페이징 된 list
 		model.addAttribute("hotellist", list);					// 사진 뿌리기 위해 보냄
@@ -108,7 +109,8 @@ public class HotelController {
 		  String photo = hoteldto.getThumbnail();
 		  String hotelmap = hoteldto.getMap();
 		  String hotelcontent = hoteldto.getContent();
-		  int reacount = hoteldto.getReadCount();
+		  String brief = hoteldto.getBrief();
+		  int readcount = hoteldto.getReadCount();
 		  model.addAttribute("pageTitle", "Hotel Traballoon");				// 배경사진 제목 보내기
 		  model.addAttribute("pageDescription", "당신의 아름다운 하루를 즐겨보세요");	//배경사진 부제목 보내기
 		  
@@ -120,6 +122,9 @@ public class HotelController {
 		  model.addAttribute("photo", photo);
 		  model.addAttribute("hotelmap", hotelmap);
 		  model.addAttribute("hotelcontent", hotelcontent);
+		  model.addAttribute("brief", brief);
+		  model.addAttribute("readcount", readcount);
+		  
 		  return "hoteldetail"; 
 		  } 
 	  
