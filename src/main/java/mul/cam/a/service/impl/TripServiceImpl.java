@@ -20,6 +20,7 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
+
     public List<TripDto> tripAllList() {
         return dao.tripAllList();
     }

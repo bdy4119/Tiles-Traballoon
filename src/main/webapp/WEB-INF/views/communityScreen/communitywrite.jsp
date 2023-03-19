@@ -81,6 +81,8 @@
 </head>
 <body>
 <div class="container">
+        <img src="pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
+    <br>
     <br>
     <form action="communitywriteAf.do" id="frm" method="post" type="submit" enctype="multipart/form-data">
         <div class="form-group">

@@ -29,7 +29,6 @@ public class TripDto implements Serializable {
         this.readcount = readcount;
     }
 
-
     public int getSeq() {
         return seq;
     }
@@ -37,6 +36,7 @@ public class TripDto implements Serializable {
     public void setSeq(int seq) {
         this.seq = seq;
     }
+
 
     public String getId() {
         return id;

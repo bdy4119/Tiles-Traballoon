@@ -18,20 +18,14 @@
 </head>
 <body>
 
-
-
 <!-- header -->
 <tiles:insertAttribute name="header"/>
 
 <!-- content -->
-
 <tiles:insertAttribute name="content"/>
-
-
 
 <!-- footer -->
 <tiles:insertAttribute name="footer"/>
-
 
 </body>
 </html>

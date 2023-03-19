@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mul.cam.a.dao.ReviewDao;
+import mul.cam.a.dto.CommunityDto;
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
@@ -104,6 +105,14 @@ public class ReviewDaoImpl implements ReviewDao{
 	public List<ReviewComment> commentList(int seq) {
 		return session.selectList(ns + "commentList", seq);
 	}
+
+	
+	//커뮤니티 글 가져와보기
+	/*
+	 * @Override public List<CommunityDto> reviewCommunityList(CommunityDto dto) {
+	 * return session.selectList(ns + "reviewCommunityList", dto); }
+	 */
+	
 
 
 

@@ -95,10 +95,6 @@ if(bbsupdate != null && !bbsupdate.equals("")){
 	}	
 }
 
-
-
-
-
 String answer = (String)request.getAttribute("answer");
 if(answer != null && !answer.equals("")){
 	if(answer.equals("BBS_ANSWER_OK")){
@@ -118,11 +114,6 @@ if(answer != null && !answer.equals("")){
 		<%
 	}	
 }
-
-
-
-
-
 %>
 </body> 
 </html> 
