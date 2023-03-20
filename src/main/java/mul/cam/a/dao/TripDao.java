@@ -10,6 +10,8 @@ public interface TripDao {
     
     List<TripDto> triplist(String city);
 
+    List<TripDto> tripAllList();
+
     int writeTrip(TripDto dto);
 
     TripDto getTrip(int seq);

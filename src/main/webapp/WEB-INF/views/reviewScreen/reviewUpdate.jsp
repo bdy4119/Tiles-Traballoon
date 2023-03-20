@@ -5,127 +5,66 @@
 <!DOCTYPE html>
 <html>
 	<head>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SemiProject</title>
-
-    <%--BootStrap--%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    
-    <!-- ajax -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    
-   	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> 
-  	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-  	<script src=" https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>SemiProject</title>
 	
-	
-	<!-- 서머노트를 위해 추가해야할 부분 -->
-  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/summernote/summernote-lite.css">
-  	<script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.js"></script>
-  	<script src="${pageContext.request.contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
-  	<!--  -->
-  	
-  	
-    <style>
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-        
-        th{
-			background-color: #007bff;
-			color: white;
-		}
+	    <%--BootStrap--%>
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	    
+	    <!-- ajax -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	    
+		<!-- 서머노트를 위해 추가해야할 부분 -->
+	   	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> 
+	  	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	  	<script src=" https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>	
 		
-		pre{
-			white-space: pre-wrap;
-			word-break: break-all;
-			overflow: auto;
-		}
-        
-        /*  .main-crop {
-		    position: relative;
-		    width: 100%; // 자를 사이즈를 명시해준다.
-		    height: 20px;
-		    overflow: hidden;
-		
-		    .main-img {
-		      position: absolute; // 포지션을 주고,
-		      top: 100px; 		  // 보이기 원하는 위치를 지정
-		      left: 0;
-		      width: 300px; // 오리지널 사이즈
-		      height: 200px;
-		  } */
-    </style>
+	  	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/summernote/summernote-lite.css">
+	  	<script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.js"></script>
+	  	<script src="${pageContext.request.contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
+	  	<!--  -->
 	</head>
 	<body>
-		<%--container--%>
-		<div class="container">
-		<main>
-		        <%--공백--%>
-		<!-- <div class="b-example-divider"></div> -->
-		
-		<%--내용--%>
-		<br>
-		        
 		<%
 		ReviewDto dto = (ReviewDto)request.getAttribute("dto");
 		%>
-		<h2>수정</h2>
-		<div align="center">
-			<form action="reviewUpdateAf.do" id="frm" method="post">
-				<input type="hidden" name="seq" value="<%=dto.getSeq() %>"> <!-- seq보내기 -->
-				
-				<table border="1">
-				<col width="200"><col width="500">
-					<tr>
-						<th>아이디</th>
-						<td><%=dto.getId() %></td>
-					</tr>
-					<tr>
-						<th>제목</th>
-						<td>
-							<input type="text" name="title" size="50" value='<%=dto.getTitle()%>'>
-						</td>	
-					</tr>
-					<tr>
-						<td colspan="2">
-							<textarea rows="20" cols="50px" id="summernote" name="content" class="summernote">
-							<%
-							for(int i=1; i<=dto.getSeq(); i++) {
-								if(dto.getSeq() == i){
-							%>
-								<img src="images/review/<%=i%>.jpg" class="d-block w-100">
-								<br>
-								<%=dto.getContent()%>
-							<%
-								}
-							}
-							%>
-							</textarea>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<input type="submit" id="reviewUpdateAf" value="수정완료">
-						</td>
-					</tr>
-				</table>
-			</form>
+		<div class="container">
+		    <img src="images/beach.jpg" class="img-fluid" alt="Responsive image">
+		    <br>
+		    <br>
+		    <form action="reviewUpdateAf.do" id="frm" method="post" type="submit" enctype="multipart/form-data">
+		    <input type="hidden" name="seq" value="<%=dto.getSeq() %>" >
+		        <div class="form-group">
+		            <label>아이디</label>
+		            <input type="text" class="form-control" name="id" value="<%=dto.getId() %>" readonly="readonly">
+		        </div>
+		        <div class="form-group">
+		            <label for="title">제목</label>
+		            <input type="text" class="form-control" id="title" name="title" value='<%=dto.getTitle() %>'>
+		        </div>
+		        <label>내용</label>
+		        <textarea id="summernote" name="content" class="summernote">
+		        	<%
+					for(int i=1; i<=11; i++) {
+						if(dto.getSeq() == i){
+						%>
+						<img src="images/review/<%=i%>.jpg" class="d-block w-100">
+						<br>
+						<%
+						}
+					}
+					%>
+		        	<%=dto.getContent() %>
+		        </textarea>
+		        <div class="d-flex justify-content-center mt-4">
+		            <button id="reviewUpdateAf" type="submit" class="btn btn-secondary">수정 완료</button>
+		        </div>
+		    </form>
+		    <br>
 		</div>
-    </main>
-
-    <%--공백--%>
-	<!--     <div class="b-example-divider"></div> -->
-	
-	</div>
-	
+		
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#reviewUpdateAf").click(function(){

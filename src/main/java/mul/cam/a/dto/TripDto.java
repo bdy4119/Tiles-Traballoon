@@ -5,20 +5,25 @@ import java.io.Serializable;
 public class TripDto implements Serializable {
 
     private int seq;
+    private String id;
     private String city;
     private String spot;
     private String title;
+    private String image;
     private String content;
     private String wdate;
     private int readcount;
 
     public TripDto() {
     }
-    public TripDto(int seq, String city, String spot, String title, String content, String wdate, int readcount) {
+
+    public TripDto(int seq, String id, String city, String spot, String title, String image, String content, String wdate, int readcount) {
         this.seq = seq;
+        this.id = id;
         this.city = city;
         this.spot = spot;
         this.title = title;
+        this.image = image;
         this.content = content;
         this.wdate = wdate;
         this.readcount = readcount;
@@ -30,6 +35,15 @@ public class TripDto implements Serializable {
 
     public void setSeq(int seq) {
         this.seq = seq;
+    }
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCity() {
@@ -54,6 +68,14 @@ public class TripDto implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getContent() {

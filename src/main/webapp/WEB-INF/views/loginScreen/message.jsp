@@ -70,8 +70,8 @@
 	if (sessionOut != null && !sessionOut.equals("")) {
 	%>
 	<script type="text/javascript">
-		alert("로그인 해 주십시오");
-		location.href = "login.do";
+		alert("로그아웃 되었습니다");
+		location.href = "main.do";
 	</script>
 	<%
 	}

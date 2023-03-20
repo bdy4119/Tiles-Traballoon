@@ -11,10 +11,11 @@ public class HotelDto {
 	 private String content;
 	 private String map;
 	 private String book;
+	 private String brief;
 	 
-	  public HotelDto() {
+	 public HotelDto() {
+		    this.brief = "";
 		}
-
 	public int getSeq() {
 		return seq;
 	}
@@ -78,6 +79,16 @@ public class HotelDto {
 	public void setBook(String book) {
 		this.book = book;
 	}
+
+	public String getBrief() {
+		return brief;
+	}
+
+	public void setBrief(String brief) {
+		this.brief = brief;
+	}
+
+	
 }
 
 	

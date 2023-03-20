@@ -97,13 +97,12 @@
 <div class="container">
     <img src="pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
     <div class="board-header">
-        <div class="board-sort">
-            <select class="custom-select" id="sort" name="sort">
-                <option selected>최신순</option>
-                <option value="oldsort">오래된순</option>
-                <option value="reviewsort">조회순</option>
-                <option value="commentsort">댓글순</option>
-            </select>
+        <div class="board-sort" style="margin-bottom: -13px;">
+           <!-- 원하는 순서로 보기 -->
+			<button type="button" value="wdate" onclick="location.href='comWdateOrder.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">최신순</button>
+			<button type="button" value="longdate" onclick="location.href='comLongdateOrder.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">옛날순</button>
+			<button type="button" value="readcount" onclick="location.href='comReadcountOrder.do'" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">조회수</button>
+			<!-- 원하는 순서로 보기 END-->
         </div>
         <div class="search-container">
             <select class="custom-select" id="choice" name="choice">
@@ -124,9 +123,10 @@
             <thead style="background-color: #f8f9fa;">
             <tr>
                 <th scope="col" style="width: 8%; text-align: center;">번호</th>
-                <th scope="col" style="width: 60%">제목</th>
+                <th scope="col" style="width: 50%">제목</th>
                 <th scope="col" style="width: 16%; text-align: center;">조회수</th>
-                <th scope="col" style="width: 16%; text-align: center;">작성자명</th>
+                <th scope="col" style="width: 16%; text-align: center;">작성일</th>
+                <th scope="col" style="width: 16%; text-align: center;">작성자</th>
             </tr>
             </thead>
             <tbody>
@@ -167,6 +167,8 @@
 
                 <td style="text-align: center;"><%=dto.getReadcount() %>
                 </td>
+                <td style="text-align: center;"><%=dto.getWdate() %>
+                </td>
                 <td style="text-align: center;"><%=dto.getId() %>
                 </td>
 
@@ -186,8 +188,8 @@
             </nav>
         </div>
         <div class="write-button-container">
-            <div class="button-wrapper">
-                <a href="communitywrite.do" class="btn btn-secondary">글쓰기</a>
+            <div class="button-wrapper" style="margin-right: -50px;">
+                <a href="communitywrite.do" class="btn btn-secondary" style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">글쓰기</a>
             </div>
         </div>
     </div>
@@ -237,6 +239,5 @@
 </body>
 
 </html>
-
 
 

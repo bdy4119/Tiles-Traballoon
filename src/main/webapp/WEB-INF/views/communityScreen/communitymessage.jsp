@@ -27,15 +27,6 @@ if(communitywrite != null && !communitywrite.equals("")){
 	}
 }
 
-String sessionOut = (String)request.getAttribute("sessionOut");
-if(sessionOut != null && !sessionOut.equals("")){
-	%>
-		<script type="text/javascript">
-		alert("로그인 해 주십시오");
-		location.href = "login.do";
-		</script>
-	<%
-}
 
 String communityupdate = (String)request.getAttribute("communityupdate");
 if(communityupdate != null && !communityupdate.equals("")){
@@ -51,6 +42,28 @@ if(communityupdate != null && !communityupdate.equals("")){
 		%>
 		<script type="text/javascript">
 		alert("다시 작성해 주십시오");
+		location.href = "community.do";
+		</script>
+		<%
+	}
+}
+
+
+//글삭제
+String communitydelete = (String)request.getAttribute("communitydelete");
+if(communitydelete != null && !communitydelete.equals("")){
+	if(communitydelete.equals("COMMUNITY_DELETE_OK")){
+		%>
+		<script type="text/javascript">
+		alert("성공적으로 삭제되었습니다");
+		location.href = "community.do";
+		</script>
+		<%
+	}
+	else{
+		%>
+		<script type="text/javascript">
+		alert("삭제되지 않았습니다.");
 		location.href = "community.do";
 		</script>
 		<%
@@ -81,16 +94,20 @@ if(answer != null && !answer.equals("")){
 	}
 }
 
+//원래있던 delete 주석처리 해놨습니닷
+//주석처리가 잘 안되서,,따로 했어요ㅠㅠ
+/*
 String communitydelete = (String)request.getAttribute("communitydelete");
 if(communitydelete != null && !communitydelete.equals("")){
 	if(communitydelete.equals("COMMUNITY_DELETE_OK")){
-		%>
-		<script type="text/javascript">
+*/
+	%>
+<%-- 		<script type="text/javascript">
 		alert("성공적으로 삭제되었습니다");
 		location.href = "community?param=communitylist";
 		</script>
 		<%
-	}
+	} 
 	else{
 		%>
 		<script type="text/javascript">
@@ -100,8 +117,7 @@ if(communitydelete != null && !communitydelete.equals("")){
 		<%
 	}	
 }
-
-
+--%>
 
 %>
 </body> 
