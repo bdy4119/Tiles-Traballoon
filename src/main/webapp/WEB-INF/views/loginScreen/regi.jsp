@@ -5,6 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	 <link rel="stylesheet" href="css/login.css">
     <script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900" rel="stylesheet">
     <!-- BootStrap -->
@@ -20,7 +21,7 @@
 		body{
 			/* background:var(--body-background-color); */
 			/* 배경 꽉차게 */
-			background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)),
+			background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),
 							url('./pageimage/mainImage/image01.jpg')
 							no-repeat center fixed;
 			-webkit-background-size: cover;
@@ -50,17 +51,12 @@
 		    color: white;
 		    text-shadow: 0 2px 20px rgba(0,0,0,0);
 		}b 
-		
-		 #idChkBtn:visited{
-                margin-right: -50%;
-            }
 	</style>
-	 <link rel="stylesheet" href="css/login.css">
 	</head>
 	<body>
 	
 	<div class="main-container" id="container">
-		<header class="blog-header py-3" style="margin-top: -5%;">
+		<header class="blog-header py-3" style="margin-top: -8%;">
 	         <div class="col-4 text-center">
 	                <a class="blog-header-logo" href="main.do">Traballoon</a>
 	         </div>
@@ -75,14 +71,14 @@
 					<i class="fa fa-user" aria-hidden="true"></i>
 				</span>
 			    <input id="id" name="id" placeholder=" id" type="text" class="form-control">
+
+			    <!-- idcheck -->
+		    	<input type="button" class="btn btn-danger" value="중복확인" id="idChkBtn" />
 		    </div>
-		    
-		    <!-- idcheck 
-		    -->
-		    <div style="margin-left: -82%;">
-		    	<button type="button" class="btn btn-danger" id="idChkBtn">id check</button> 
-		    	<p id="idcheck" style="margin-left:10px;"></p> 
-		    </div>    
+		
+		    <div style="float:left;">
+		   		<p id="idcheck" style="margin-left:-60%;"></p>
+		    </div>
 		    	
 		    <!-- Fullname -->
 			<div class="input-group mb-3">
@@ -190,7 +186,7 @@
 	        <a href="login.do" class="forget-msg">Have an account?  Log In</a>
 	    </section>
 	    
-		 <footer style="margin-bottom: 10%;">
+		 <footer style="margin-bottom: 5%;">
 	        <div class="copyright-wrap">
 	            <span>Thank you for visiting Multicampus Team Four's website!</span>
 	        	<br>
