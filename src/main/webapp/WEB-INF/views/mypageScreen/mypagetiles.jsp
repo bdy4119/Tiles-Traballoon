@@ -23,11 +23,7 @@
 <div align="center">
 
 <!-- header -->
-<tiles:insertAttribute name="header"/>
-
-<!-- content -->
-<tiles:insertAttribute name="content"/>
-
+<tiles:insertAttribute name="header"/><br>
 <!-- mypageMenubar -->
 <tiles:insertAttribute name="mypageMenubar"/>
 <!-- mypageContent -->

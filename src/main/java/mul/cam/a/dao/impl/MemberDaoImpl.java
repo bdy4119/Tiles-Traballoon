@@ -50,7 +50,11 @@ public class MemberDaoImpl implements MemberDao {
 		return session.update(ns + "updateMember", dto);
 	}
 	
-	
+	@Override
+	public MemberDto info(String id) {
+		MemberDto info = session.selectOne(ns + "info", id);
+		return info;
+	}
 }
 
 

@@ -54,7 +54,10 @@ public class MemberServiceImpl implements MemberService {
 		int count = dao.updateMember(dto);
 		return count>0?true:false;
 	}
-	
+	@Override
+	public MemberDto info(String id) {
+		return dao.info(id);
+	}
 }
 
 

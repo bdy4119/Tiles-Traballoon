@@ -167,11 +167,28 @@
 		alert("수정이 완료되지 않았습니다");
 		location.href = "mypageAf.do";
 	</script>
-	}
 	<%
 	}
 	}
+	String refmsg = (String) request.getAttribute("refmsg"); //model 로 받은 짐 푼다
+	if (refmsg != null && message != ("")) {
+		if (refmsg == ("REF_ADD_YES")) {
 	%>
+	<script type="text/javascript">
+		alert("문의사항이 접수되었습니다");
+		location.href = "mypageAf.do";
+	</script>
+	<%
+	} else {
+	%>
+	<script type="text/javascript">
+		alert("문의사항이 접수되지않았습니다.다시 작성해 주십시오");
+		location.href = "mypageReference.do";
+	</script>
+	<%
+	}
+	}
+	 %>
 </body>
 </html>
 

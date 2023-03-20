@@ -62,6 +62,7 @@
 	         </div>
 	    </header>
 	
+
 		<h4 style="color:white">회원가입</h4>
 		
 		<form action="regiAf.do" method="post" class="login-input-section-wrap" style="margin-top: 0%;">

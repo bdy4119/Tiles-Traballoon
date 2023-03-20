@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="mul.cam.a.dto.MypageDto"%>
 <%@page import="mul.cam.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,7 +6,12 @@
 <%
 	MemberDto login = (MemberDto)session.getAttribute("login");
 	MemberDto dto = (MemberDto)session.getAttribute("dto");
+	
+	MemberDto info = (MemberDto)request.getAttribute("info");
+//	String info = (String)request.getAttribute("info");
+	System.out.println(info);
 	// 로그인 -> 세션에 로그인정보 저장 -> 로그인이후에 페이지변환 -> responsebody무쓸모
+	/* String i = session.getAttribute("nickname"); */
 %>
 
 <!DOCTYPE html>
@@ -16,49 +22,49 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
-	<div class="container border border-2">
+	<div class="container border border-2"><br><br>	
 		<!-- <div class="container2"> -->
 			<div class="mb-3 row">
-				<label for="staticEmail" class="col-sm-2 col-form-label">이름</label>
+				<label for="staticName" class="col-sm-2 col-form-label">이름</label>
 				<div class="col-sm-10">
 					<input type="text" readonly class="form-control-plaintext"
-						id="name" value="<%=login.getName()%>">	
+						id="name" value="<%=info.getName()%>">	
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label for="inputPassword" class="col-sm-2 col-form-label">별명</label>
+				<label for="inputNickname" class="col-sm-2 col-form-label">별명</label>
 				<div class="col-sm-5">
-					<input type=text class="form-control" id="nickname" value="<%=login.getNickname()%>">
+					<input type=text class="form-control" id="nickname" value="<%=info.getNickname()%>">
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label for="inputPassword" class="col-sm-2 col-form-label">이메일</label>
+				<label for="inputEmail" class="col-sm-2 col-form-label">이메일</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="email" value="<%=login.getEmail()%>">
+					<input type="text" class="form-control" id="email" value="<%=info.getEmail()%>">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
 				<div class="col-sm-5">
-					<input type="password" class="form-control" id="pwd" value="<%=login.getPwd()%>">
+					<input type="password" class="form-control" id="pwd" value="<%=info.getPwd()%>">
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label for="inputPassword" class="col-sm-2 col-form-label">연락처</label>
+				<label for="inputPhonenumber" class="col-sm-2 col-form-label">연락처</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="phonenumber" value="<%= session.getAttribute("phonenumber") %>">
+					<input type="text" class="form-control" id="phonenumber" value="<%=info.getPhonenumber()%>">
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label for="inputPassword" class="col-sm-2 col-form-label">주소</label>
+				<label for="inputAdress" class="col-sm-2 col-form-label">주소</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="address" value="<%= session.getAttribute("address") %>">
+					<input type="text" class="form-control" id="address" value="<%=info.getAddress()%>">
 				</div>
-			</div>
+			</div><br><br>
 
 			<div class="move-btn-wrap" align="center">
-				<button type="button" class="btn btn-outline-secondary" style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 1.1rem;">수정하기</button>
-				<button type="button" class="btn btn-outline-secondary" style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 2.2rem; --bs-btn-font-size: 1.1rem;">취소</button>
+				<button type="button" id="updateBtn" class="btn btn-outline-secondary" style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 1.1rem;">수정하기</button>
+				<button type="button" onclick="location.href='leave.jsp'" class="btn btn-outline-secondary" style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 2.2rem; --bs-btn-font-size: 1.1rem;">취소</button>
 			</div>
 			
 			<form action="updateMember.do" method="post" id="frm" >
@@ -68,9 +74,6 @@
 				<input type="hidden" name="phonenumber" id="phonenumber1">
 				<input type="hidden" name="address" id="address1">
 				<input type="hidden" name="id" id="id1">
-				<button type="button" id="updateBtn" class="btn btn-primary btn-block"> 수정  </button>
-											 <!-- 함수생성 -->
-				<button type="button" id="clBtn">a버튼</button>	
 			</form>
 		</div>
 	
@@ -99,7 +102,6 @@ $("#updateBtn").click(function(){
 	var pwd = $("#pwd").val();
 	var phonenumber = $("#phonenumber").val();
 	var address = $("#address").val();
-	alert(nickname);
 	/* get한 값으로 set한것  form태그안의 value에 타겟팅*/
 	/* 값을 보내줘야하기때문에 */
 	$("#nickname1").val(nickname);

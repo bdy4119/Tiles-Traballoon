@@ -21,16 +21,8 @@ public class MypageDaoImpl implements MypageDao{
 	@Autowired
 	SqlSession session;
 	
+	// namespace
 	String ns = "mypage.";
-	
-	@Override
-	public List<MypageDto> mypageCommunitylist(MypageParam community) {
-			return session.selectList(ns + "communitylist", community);
-	}
-	@Override
-	public int getAllmypageCommunity(MypageParam community) {		
-		return session.selectOne(ns + "getAllCommunity", community);
-	}
 	
 	@Override
 	public List<MypageDto> allMember() {
@@ -40,14 +32,34 @@ public class MypageDaoImpl implements MypageDao{
 	
 	// login 정보를 dto에 담는다 
 	// mem 은 세션에서 선택된 login + dto 정보를 담는다
-	@Override
-	public MypageDto info(MypageDto dto) {
-		MypageDto info = session.selectOne(ns + "info" + dto);
-		return info;
-	}
 	
 	@Override
 	public List<MypageDto> allWriteme(){
 		return session.selectList(ns + "allWriteme"); 
 	}
+	
+	@Override
+	public List<CommunityDto> communityList(CommunityParam community) {
+			return session.selectList("mypageCommunity." + "communitylist", community);
+	}
+	
+	@Override
+	public int getAllCommunity(CommunityParam community) {		
+		return session.selectOne("mypageCommunity." + "getAllCommunity", community);
+	}
+	
+	@Override
+	public List<ReviewDto> review(ReviewParam Param) {
+		return session.selectList("MypageReview." + "review", Param);
+	}
+
+	//페이지넘버
+	@Override
+	public int getAllReview(ReviewParam Param) {
+		return session.selectOne("MypageReview." + "getAllReview", Param);
+	}
+	public void communityList() {
+		System.out.println("MypageDaoImpl communityList");
+	}
+	
 }
