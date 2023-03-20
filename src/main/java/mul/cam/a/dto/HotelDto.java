@@ -14,8 +14,8 @@ public class HotelDto {
 	 private String brief;
 	 
 	 public HotelDto() {
-		    this.brief = "";
-		}
+}
+
 	public int getSeq() {
 		return seq;
 	}
@@ -51,7 +51,7 @@ public class HotelDto {
 	public Timestamp getWdate() {
 		return wdate;
 	}
-
+ 
 	public void setWdate(Timestamp wdate) {
 		this.wdate = wdate;
 	}
@@ -87,6 +87,7 @@ public class HotelDto {
 	public void setBrief(String brief) {
 		this.brief = brief;
 	}
+	 
 
 	
 }

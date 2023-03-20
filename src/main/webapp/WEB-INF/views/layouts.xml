@@ -12,6 +12,13 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
     
+     <definition name="maintraballoon" template="/WEB-INF/views/maintiles.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="maincontent" value="/WEB-INF/views/maincontent.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+      
+      
     <!-- 마이페이지 -->
 	<definition name="mypage" template="/WEB-INF/views/mypageScreen/mypagetiles.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
@@ -73,23 +80,17 @@
     <!-- 숙소추천 -->
     <definition name="hotel" template="/WEB-INF/views/hotelScreen/hoteltiles.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-      <!--   <put-attribute name="menu" value="/WEB-INF/views/hotelScreen/hotelmenu.jsp"/> -->
         <put-attribute name="content" value="/WEB-INF/views/hotelScreen/hotel.jsp"/>
-<!--         <put-attribute name="hotelcontent" value="/WEB-INF/views/hotelScreen/hotelcontent.jsp"/> -->
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
 
     <definition name="hoteldetail" template="/WEB-INF/views/hotelScreen/hoteltiles2.jsp">
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
-     <!-- 	<put-attribute name="menu" value="/WEB-INF/views/hotelScreen/hotelmenu.jsp"/> -->
         <put-attribute name="content" value="/WEB-INF/views/hotelScreen/hoteldetail.jsp"/> 
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>       
 
     </definition>  
     
-<!--     <definition name="hoteldetail" extends="hotel">
-     	<put-attribute name="hotelcontent" value="/WEB-INF/views/hotelScreen/hoteldetail.jsp"/> 
-    </definition> -->
 	<definition name="menu_sudo" extends="hotel">
      	<put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_sudo.jsp"/> 
     </definition> 

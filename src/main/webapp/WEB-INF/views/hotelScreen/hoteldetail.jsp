@@ -16,8 +16,9 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="./hoteldetail_font.css">
-	
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap" rel="stylesheet">
     <style type="text/css">
     
     /* 지도 가운데 정렬 */
@@ -45,8 +46,19 @@
 	 .cover {
  	 margin: 0 auto !important;
 	}
-
-	       
+	.name {
+	font-family: 'Noto Serif KR', serif; 
+	}
+	.readcount {
+	  margin-right: 40px;
+	  margin-left: -40px;
+	  text-align: right;
+	}
+	.readcount p {
+	  text-decoration: underline;
+	  display: inline;
+	  margin-left: 5px;
+	}
 
     </style>
     
@@ -79,7 +91,9 @@
 	// 텍스트 얻어오기
 		String hotelcontent = (String)request.getAttribute("hotelcontent");
 	// 조회수 얻어오기
-		String readcount = (String)request.getAttribute("readcount");
+		String readcount = String.valueOf(request.getAttribute("readcount"));
+	// 간단글 얻어오기
+		String brief = (String)request.getAttribute("brief");
    	%> 
    
 </head>
@@ -130,54 +144,75 @@
 <%--container--%>
 
 
-<!-- 1.  DB -> 예약할 주소 연결  -->  
-    <br><br>
-<div class="btn-group">
-    <!-- <a href="./hotel.do" class="btn btn-secondary active" aria-current="page">목록으로</a>  -->
-    <a href="<%=hotelbook %>" class="btn btn-secondary">예약</a>
-    <a href="#app" class="btn btn-light">후기</a>
+<!-- 1.  DB -> 예약할 주소 연결 + 커서 올리면 툴팁 실행 
+target="_blank : 새탭으로 이동 -->  
+ <br><br>
+<div class="btn-group">	
+    <a href="<%=hotelbook %>" class="btn btn-secondary" data-toggle="tooltip" title="호텔페이지로 이동!" target="_blank">예약</a>
+    <a href="#app" class="btn btn-light"data-toggle="tooltip" title="후기를 남겨주세요!">후기</a>
 </div> 
-	
+
+<!--조회수-->
+
+<div class="readcount">
+	<img src = "./hotelimage/balloon.png">	<!--  풍선 아이콘 -->
+	<p>조회수 : <%=readcount %></p>
+</div>
 
 
-
+<!-- 호텔 상세내용 묶어주는 div태그 -->
 <div class="detail-container" style="width: 80%; margin: 0 auto; text-align: center; color: gray;"> 
-    
-  <!--   <main> -->
+
+    <div class="border-top-gray" style="width: 62%; margin: 0 auto;"></div>
    
 <!-- 2. DB-> 호텔이름 연결 -->
 
 <br><br>
-  <div class="header">
+  <div class="name">
   	<h1><%=hotelname %></h1>
   </div>
   
+  
+<!-- 3. DB-> 간단소개 연결 -->
+<br>
+  <p><%=brief  %></p>
 
-<!-- 3.  DB -> 이미지 연결  -->   
+<!-- 4.  DB -> 이미지 연결  -->   
 
     <br><br>
    <div class="content">
         <div class="image">
             <img src=<%=photo%> style="width:50%;"> 
-        </div>
- <!-- 4.  DB -> 텍스트 연결 -->  
+   </div>
+   </div>
+
+   
+ <!-- 5.  DB -> 텍스트 연결 -->  
+ <br><br>
+         <div class="border-top-gray" style="width: 62%; margin: 0 auto;"></div>
 <br><br>
-        <div class="text">
+	<div style="width: 60%; margin: 0 auto;">
+		<div class = "hoteltext" style="text-align: left; ">
+			<img src="./hotelimage/detail1.png"> <br> 
+	 	</div>
+	 </div>
+    <div class="text">
             <pre><%=hotelcontent %></pre>
-        </div>
-    </div>        
+    </div>
+         
      
      <br>
     <!--  <div style="border-top: 1px solid #dcdcdc; width: 600px; margin: 0 auto;"></div> -->
     <div class="border-top-gray" style="width: 600px; margin: 0 auto;"></div>
-<!-- 5.  DB -> 카카오맵 연결 -->
+    
+    
+<!-- 6.  DB -> 카카오맵 연결 -->
 <br><br>
 	<div style="width: 60%; margin: 0 auto;">
 		<div class = "mapimage" style="text-align: left; ">
-		<img src="./hotelimage/map.png"> 
-		<br> 
+			<img src="./hotelimage/detail2.png"> <br> 
 	 	</div>
-	 </div>
+	 </div> 
 
 	<div id="map" style="width:550px;height:400px;"></div>
 <script>
@@ -201,11 +236,11 @@
 	 <div class="border-top-gray" style="width: 62%; margin: 0 auto;"></div>
 
    
-<!--  6. 공통 기능 : 품질보장 -->
+<!-- 7. 공통 기능 : 품질보장 -->
 <br><br>
 	<div style="width: 60%; margin: 0 auto;">
 		<div class = "cover" style="text-align: left; ">
-		<img src="./hotelimage/cover.png"> 
+		<img src="./hotelimage/detail3.png"> 
 		<br>
 	     <pre>  	모든 예약에는 호텔이 예약을 취소하거나 숙소 정보가 정확하지 않은 경우 또는 
     	체크인에 문제가 있는 상황에 대비한 무료 보호 프로그램이 포함됩니다.</pre>     
@@ -215,10 +250,10 @@
 	 
  </div> 
  
-  	 <!--  공백 추가하기 -->
-	<div style="height: 100px;"></div> 
+	<div style="height: 100px;"></div> 	 <!--  공백 추가 -->
 	
-    <!--  댓글 태그 시작 -->
+	
+ <!-- 8. 댓글 -->	
 	<div id="app" class="container"> <!--  부트스트랩 쓸 때 적용하는 코드 -->
 		
 	<form action="HotelcommentWriteAf.do" method="post">
@@ -228,23 +263,27 @@
 	<table>
 	<col width="1500px"><col width="150px">
 	<tr>
-		<td>후기</td>
-		<td style="padding-left: 30px">올리기</td>
+		<td>후기 <img src="./hotelimage/balloon.png"></td>
+		<td style="padding-left: 30px">올리기<img src ="./hotelimage/balloon2.png"></td>
 	</tr>
 	<tr>
 		<td>
 			<textarea rows="3" class="form-control" name="content" onclick="checkLogin()"></textarea>
 		</td> 
+		
 		<td style="padding-left: 30px">
-			<button type="submit" class="btn btn-secondary btn-block p-4">등록</button>
+			<button type="submit" class="btn btn-secondary btn-block p-4" onclick="checkLogin()">등록</button>
 		</td>
 	</tr>
 	</table>
 	</form>
 		
 	<br><br>
+
+
+
 		
-	<!--  ajax로 댓글 뿌리기 -->
+	<!-- ajax로 댓글 뿌리기 -->
 			
 	<table class="table-hover table table-sm">
 		<col width="500"><col width="500">
@@ -252,12 +291,8 @@
 	</table>
 		
 	</div>
+
 		
-<!-- 	</main> -->
-		
-		
-	<!-- 댓글 뿌릴 때 무조건 댓글 읽어오게 만들기 -->
-	
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$.ajax({

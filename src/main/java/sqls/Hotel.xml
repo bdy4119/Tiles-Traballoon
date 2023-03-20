@@ -12,7 +12,7 @@
 	
 		<!-- 서브쿼리 : hotels의 seq와 hotel_comment의 hotelseq가 동일한 댓글의 개수 반환 -->
 		select 
-			seq, hotel_name, readcount, thumbnail, wdate, content, map, book, 
+			seq, hotel_name, readcount, thumbnail, wdate, content, map, book, brief,
 		  	(SELECT COUNT(*) 
 		  	FROM hotel_comments B 
 		  	WHERE B.hotelseq = A.seq) AS COMMENT_COUNT		
@@ -43,7 +43,7 @@
 	<!-- seq 매개변수 값에 해당하는 게시글 조회 -->							
 	<select id="getHotel" parameterType="Integer" 
 						  resultType="mul.cam.a.dto.HotelDto">
-		select seq, hotel_name, readcount, thumbnail, wdate, content, map, book
+		select seq, hotel_name, readcount, thumbnail, wdate, content, map, book, brief
 		from hotels
 		where seq=#{seq}	<!--http://localhost:8090/hoteldetail.do?seq=1 ~18 을 찾기 위해  -->
 	</select> 

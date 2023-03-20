@@ -13,7 +13,7 @@ if(message != null && !message.equals("")){
 		%>
 		<script type="text/javascript">
 		alert("성공적으로 가입되었습니다");
-		location.href = "main.do";
+		location.href = "maintraballoon.do";
 		</script>
 		<%
 	}else{
@@ -70,7 +70,7 @@ if(sessionOut != null && !sessionOut.equals("")){
 	%>
 		<script type="text/javascript">
 		alert("로그아웃 되었습니다");
-		location.href = "main.do";
+		location.href = "maintraballoon.do";
 		</script>
 	<%
 }

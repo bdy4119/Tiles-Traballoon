@@ -10,77 +10,69 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
-      <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-
- <!-- 5버전 부트스트랩 -> 주석처리하고 hoteltiles 에서 4버전으로 설정해놓음--%>
-   
-		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-		     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-		    <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>  -->
-		
-		    
- <!-- pagination 추가하면 화면 안 나옴 -->
-		<!--<script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>  -->
     
-    
-    
-	<%-- 	<%
-		//DB의 thumbnail 뿌려주기(총 18개)
-		List<HotelDto> list = (List<HotelDto>)request.getAttribute("hotellist");
-		%>
-
-		<%
-		for(int i = 0; i< list.size(); i++){
-			HotelDto h = list.get(i);
-			String thumbnail = h.getThumbnail();
-			int seq = h.getSeq();	
-		%> 
-		<%
-        }
-   		%> --%>
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200&display=swap" rel="stylesheet">
 		
 
     <style>
-        p {
+        p{
             font-size: 12px;
-        }
-
-        h3 {
+        } 
+        h3{
             font-size: 15px;
-        }
-
-        .card-body {
-            height: 145px; /* 원하는 높이값 */
-        }
-
-        a {
+        } 
+        a{
             color: #333; /* 원하는 색상으로 변경 */
             text-decoration: none; /* 텍스트 밑줄 제거 */
-        }
-
-        a:hover {
+        } 
+         a:hover {
             text-decoration: none; /* 마우스 오버시 텍스트 밑줄 제거 */
             color: #333;
-        }
-
-        .image-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .card-img-top {
-            max-width: 100%;
-        }
-
+        } 
         .image-text h2 {
             font-size: 24px;
             color: #fff;
         }
+     
+        td {
+  		text-align: center;
+		}
+		
+		.hotelname {
+  		font-size: 20px;
+  		font-family: 'IBM Plex Sans KR', sans-serif;
+		}
+		.namebrief:hover {
+ 		 color: #C0C0C0	;
+		}
+		.brief{
+		 color: gray;
+		}
+
+		.thumbnail:hover {
+		 opacity: 0.8; /* 이미지 투명도 변경 */
+  		 filter: grayscale(50%); /* 이미지 회색 톤 효과 추가 */
+ 		 transform: scale(0.95); /* 이미지 크기 약간 축소 */
+ 		}
+ 		
+		/* dropdown 부모요소에 상대적인 위치 이동 기능 추가*/
+		.nav-item {
+		  position: relative;	
+		}
+		/* dropdown 왼쪽정렬 */
+		.dropdown {
+		  position: absolute; /* 절대적 위치 고정-다른요소에 영향 주지 않음) */
+		  right: 11cm;
+		}
+        .dropdown .btn-primary {
+      	   background-color: gray;
+        }
 		.pagination a, .pagination span {
-            color: #666; /* 글씨 색상 */
-            background-color: #fff; /* 버튼 색상 */
-            /* 버튼 테두리 색상 */
+         color: #666; /* 글씨 색상 */
+         background-color: #fff; /* 버튼 색상 */
         }
         .pagination a:hover, .pagination span:hover {
             color: #666; /* 호버 시 글씨 색상 */
@@ -97,19 +89,7 @@
             justify-content: center;
             align-items: flex-start;
             margin: 0px 50px;
-        }
-        .dropdown .btn-primary {
-      	   background-color: gray;
-        }
-        td {
-  		text-align: center;
-		}
-		
-		.hotelname {
-  		font-size: 15px;
-  		font-family: "Nanum Gothic", sans-serif;
-		}
-
+         } 
     </style>
 
 </head>
@@ -119,11 +99,13 @@
 <div class="nav-container" style="width:100%; margin: 0 auto;">
 	<ul class="nav nav-tabs">
 			  <li class="nav-item">
-			     <a class="nav-link active" href="./menu_sudo.do">수도권</a>
+			    <a class="nav-link active" href="./menu_sudo.do">수도권</a>
 			  </li>
 			  <li class="nav-item">
-			     <a class="nav-link" href="./menu_gwd.do">강원도</a>
+			    <a class="nav-link" href="./menu_gwd.do">강원도</a>
 			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="./menu_ccd.do">충청도</a>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link" href="./menu_gsd.do">경상도</a>
@@ -143,30 +125,18 @@
 	    </div>
 	  </li>
 	  
-<script>
-$(document).ready(function() {
-  $('.dropdown-item').click(function() {
-    var text = $(this).text();
-    $(this).parents('.dropdown').find('.dropdown-toggle').html(text);
-  });
-});
+	<script>  //정렬할 때 인기순, 후기순 글자 보이게하기
+	$(document).ready(function() {
+	  $('.dropdown-item').click(function() {
+	    var text = $(this).text();
+	    $(this).parents('.dropdown').find('.dropdown-toggle').html(text);
+	  });
+	});
 </script>
 	    
 	</ul>
 </div>
 
-
-<!-- 정렬 : 메뉴바로 옮김 -->
-<!-- 	<div class="dropdown" style="text-align: right; margin-right: 50px;">
-  		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-    정렬
-  	</button>
-  		<div class="dropdown-menu">
-    	 <a class="dropdown-item" href="hotel.do?orderBy=">지역순</a>
-    	 <a class="dropdown-item" href="hotel.do?orderBy=1">인기순</a>
-    	 <a class="dropdown-item" href="hotel.do?orderBy=2">후기순</a>
- 	    </div>
-	</div> -->
 	<br>
 	
 		<%
@@ -182,7 +152,7 @@ $(document).ready(function() {
 			String hotelname = h.getHotel_name();
 			String brief = h.getBrief();
 
-
+ 
 		
 			if(i%3==0){ 	// 0, 1, 2  /  0, 1, 2
 		%> 
@@ -190,15 +160,15 @@ $(document).ready(function() {
 		<% 	
 		}
 		%>
-
    			<td>
 				<a href="hoteldetail.do?seq=<%=seq %>">
-					<img src=<%=thumbnail%> style="width:350px; height:350px; border-radius:10px;"> 
+					<img class="thumbnail" src=<%=thumbnail%> style="width:350px; height:350px; border-radius:10px;">
+					<div class="namebrief">
+					<p class="hotelname"> <%=hotelname %></p> <!-- 호텔 이름 출력 -->
+					<pre class="brief"> <%=brief %> </pre> 	<!--  호텔 소개 --> 
+					</div>
 				</a>
-      			<p class="hotelname"> <%=hotelname %></p> <!-- 호텔 이름 출력 -->
- 				<%-- <p> <%=brief %> </p> --%>
 			</td>	 
-		
 		<% 	
 			if(i%3==2){
 			%> 

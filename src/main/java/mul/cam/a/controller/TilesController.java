@@ -21,7 +21,12 @@ public class TilesController {
 	 * 
 	 * return "bbslist"; }
 	 */
-	
+	@GetMapping(value = "maintraballoon.do")		
+	public String maintraballoon() {			//layouts.xml의 definition 안 main을 뜻함
+		System.out.println("TilesController main() " + new Date());
+		
+		return "maintraballoon";
+	}
 	
 	
 	
