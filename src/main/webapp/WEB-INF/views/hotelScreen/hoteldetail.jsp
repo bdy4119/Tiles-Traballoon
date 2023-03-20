@@ -59,6 +59,12 @@
 	  display: inline;
 	  margin-left: 5px;
 	}
+	.content img{
+
+ border-radius: 20px 0 20px 0;
+
+	}
+	
 
     </style>
     
@@ -69,6 +75,8 @@
 	//HotelDto 얻어오기
 		HotelDto hoteldto = (HotelDto)request.getAttribute("hoteldto");
 	//login정보 얻어오기
+		//처음에 login 정보는 dto가 아니라 session으로 불러온다. 
+		//로그인 안 한 상태에선 login이 null값인데 dto는 null값일때 형변환 할 수가 없음.
 		Object loginObject = session.getAttribute("login");
 		//login이 null일 경우 오류나므로 login 변수를 null이 아닌 MemberDto인스턴스로 초기화
 		MemberDto login = new MemberDto(); 
@@ -149,7 +157,7 @@ target="_blank : 새탭으로 이동 -->
  <br><br>
 <div class="btn-group">	
     <a href="<%=hotelbook %>" class="btn btn-secondary" data-toggle="tooltip" title="호텔페이지로 이동!" target="_blank">예약</a>
-    <a href="#app" class="btn btn-light"data-toggle="tooltip" title="후기를 남겨주세요!">후기</a>
+    <a href="#app" class="btn btn-light" data-toggle="tooltip" title="후기를 남겨주세요!">후기</a>
 </div> 
 
 <!--조회수-->
@@ -323,6 +331,7 @@ target="_blank : 새탭으로 이동 -->
 			}		
 		});	
 	}); 
+		//댓글 작성시 날짜 + 시간 + 분 (초 제외) 까지 보여주는 함수
 		function getFormattedDate(d){
 		    function pad(n) { return n<10 ? "0"+n : n }
 		    return d.getFullYear()+"-"+

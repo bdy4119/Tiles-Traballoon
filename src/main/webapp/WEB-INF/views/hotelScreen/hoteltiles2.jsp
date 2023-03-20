@@ -10,7 +10,17 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<style>
+	
+	    <!-- BootStrap v4.6.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+ 	<script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script> 
+ 	
+ 	
+	<style type="text/css">
 
 	</style>
 	</head>
@@ -30,12 +40,8 @@
 	
 <table style="width:100%">
 	<tr>	
-			
 		<td colspan="2" style="background-image:url('hotelimage/airback2.png'); height: 300px; background-size: 
-		100% auto; background-position: center center;">
-		<a href="./hotel.do" style="text-decoration:none;">
-
-			
+		100% auto; background-position: center center;">	
 		</td>
 	</tr>
 </table>	

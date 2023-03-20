@@ -65,7 +65,7 @@
 		/* dropdown 왼쪽정렬 */
 		.dropdown {
 		  position: absolute; /* 절대적 위치 고정-다른요소에 영향 주지 않음) */
-		  right: 11cm;
+		  right: 6cm;
 		}
         .dropdown .btn-primary {
       	   background-color: gray;
@@ -116,7 +116,7 @@
 			  <li class="nav-item">
 			    <a class="nav-link" href="./menu_jeju.do">제주도</a>
 			  </li>  
-	    <li class="nav-item dropdown">
+	   <li class="nav-item dropdown">
 	    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">정렬</a>
 	    <div class="dropdown-menu">
 			 <a class="dropdown-item" href="hotel.do?orderBy=">지역순</a>

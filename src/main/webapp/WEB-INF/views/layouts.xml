@@ -88,7 +88,6 @@
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
         <put-attribute name="content" value="/WEB-INF/views/hotelScreen/hoteldetail.jsp"/> 
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>       
-
     </definition>  
     
 	<definition name="menu_sudo" extends="hotel">

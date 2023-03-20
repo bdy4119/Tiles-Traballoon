@@ -9,7 +9,7 @@ public class HotelDto {
 	 private String thumbnail;
 	 private Timestamp wdate;
 	 private String content;
-	 private String map;
+	 private String hotelmap;
 	 private String book;
 	 private String brief;
 	 
@@ -64,12 +64,12 @@ public class HotelDto {
 		this.content = content;
 	}
 
-	public String getMap() {
-		return map;
+	public String getHotelMap() {
+		return hotelmap;
 	}
 
-	public void setMap(String map) {
-		this.map = map;
+	public void setMap(String hotelmap) {
+		this.hotelmap = hotelmap;
 	}
 
 	public String getBook() {
