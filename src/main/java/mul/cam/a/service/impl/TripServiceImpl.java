@@ -49,4 +49,15 @@ public class TripServiceImpl implements TripService {
         return n>0?true:false;
     }
 
+    @Override
+    public boolean tripdelete(int seq) {
+        int n = dao.tripdelete(seq);
+        return n>0?true:false;
+    }
+
+    @Override
+    public int tripReadcount(int seq) {
+        return dao.tripReadcount(seq);
+    }
+
 }

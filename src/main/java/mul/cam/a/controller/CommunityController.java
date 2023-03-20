@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -49,6 +50,7 @@ public class CommunityController {
 		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
 		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
 		model.addAttribute("search", param.getSearch());	// 검색어
+		model.addAttribute("sortType", "wdate");
 
 		return "community";
 	}
@@ -57,7 +59,7 @@ public class CommunityController {
 	//조회수순 정렬
 	@GetMapping(value = "comReadcountOrder.do")
 	public String comReadcountOrder(CommunityParam param, CommunityDto dto , Model model) {
-		
+
 		// 글의 시작과 끝
 		int pn = param.getPageNumber();  // 0 1 2 3 4
 		int start = 1 + (pn * 10);	// 1  11
@@ -85,7 +87,8 @@ public class CommunityController {
 		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
 		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
 		model.addAttribute("search", param.getSearch());	// 검색어
-		
+		model.addAttribute("sortType", "readcount");
+
 		return "community";
 	}
 
@@ -124,7 +127,7 @@ public class CommunityController {
 		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
 		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
 		model.addAttribute("search", param.getSearch());	// 검색어
-		
+		model.addAttribute("sortType", "wdate");
 		return "community";
 	}
 	
@@ -162,6 +165,7 @@ public class CommunityController {
 		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
 		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
 		model.addAttribute("search", param.getSearch());	// 검색어
+		model.addAttribute("sortType", "longdate");
 		
 		return "community";
 	}

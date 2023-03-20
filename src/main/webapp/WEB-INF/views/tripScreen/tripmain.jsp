@@ -15,12 +15,12 @@
             height: 145px; /* 원하는 높이값 */
         }
 
-        a {
+        .citycard {
             color: #333; /* 원하는 색상으로 변경 */
             text-decoration: none; /* 텍스트 밑줄 제거 */
         }
 
-        a:hover {
+        .citycard:hover {
             text-decoration: none; /* 마우스 오버시 텍스트 밑줄 제거 */
             color: #333;
         }
@@ -28,6 +28,7 @@
         .image-container {
             position: relative;
             display: inline-block;
+            padding: 15px;
         }
 
         .card-img-top {
@@ -43,10 +44,6 @@
 
 </head>
 <body>
-
-</body>
-</html>
-
 <div class="container">
 
     <br>
@@ -54,10 +51,10 @@
         <%--1--%>
         <div class="col-md-4">
             <div class="card">
-                <a href="tripcity.do?name=seoul">
+                <a class="citycard" href="tripcity.do?name=seoul">
                     <div class="image-container" style="position: relative;">
                         <img class="card-img-top" src="pageimage/tripImage/trip-seoul.png" alt="Card image cap">
-                        <span style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold; font-size: 30px">서울</span>
+                        <span style="position: absolute; top: 30px; left: 30px; color: white; font-weight: bold; font-size: 30px">서울</span>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">서울</h3>
@@ -70,10 +67,10 @@
         <%--2--%>
         <div class="col-md-4">
             <div class="card">
-                <a href="tripcity.do?name=gyeonggi">
+                <a class="citycard" href="tripcity.do?name=gyeonggi">
                     <div class="image-container" style="position: relative;">
                         <img class="card-img-top" src="pageimage/tripImage/trip-gyeonggi.png" alt="Card image cap">
-                        <span style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold; font-size: 30px">경기</span>
+                        <span style="position: absolute; top: 30px; left: 30px; color: white; font-weight: bold; font-size: 30px">경기</span>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">경기</h3>
@@ -85,10 +82,10 @@
         <%--3--%>
         <div class="col-md-4">
             <div class="card">
-                <a href="tripcity.do?name=gangwon">
+                <a class="citycard" href="tripcity.do?name=gangwon">
                     <div class="image-container" style="position: relative;">
                         <img class="card-img-top" src="pageimage/tripImage/trip-gangwon.png" alt="Card image cap">
-                        <span style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold; font-size: 30px">강원</span>
+                        <span style="position: absolute; top: 30px; left: 30px; color: white; font-weight: bold; font-size: 30px">강원</span>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">강원</h3>
@@ -103,10 +100,10 @@
         <%--4--%>
         <div class="col-md-4">
             <div class="card">
-                <a href="tripcity.do?name=chungcheong">
+                <a class="citycard" href="tripcity.do?name=chungcheong">
                     <div class="image-container" style="position: relative;">
                         <img class="card-img-top" src="pageimage/tripImage/trip-chungcheong.png" alt="Card image cap">
-                        <span style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold; font-size: 30px">충청</span>
+                        <span style="position: absolute; top: 30px; left: 30px; color: white; font-weight: bold; font-size: 30px">충청</span>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">충청</h3>
@@ -118,10 +115,10 @@
         <%--5--%>
         <div class="col-md-4">
             <div class="card">
-                <a href="tripcity.do?name=jeolla">
+                <a class="citycard" href="tripcity.do?name=jeolla">
                     <div class="image-container" style="position: relative;">
                         <img class="card-img-top" src="pageimage/tripImage/trip-jeolla.jpg" alt="Card image cap">
-                        <span style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold; font-size: 30px">전라</span>
+                        <span style="position: absolute; top: 30px; left: 30px; color: white; font-weight: bold; font-size: 30px">전라</span>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">전라</h3>
@@ -133,10 +130,10 @@
         <%--6--%>
         <div class="col-md-4">
             <div class="card">
-                <a href="tripcity.do?name=gyeongsang">
+                <a class="citycard" href="tripcity.do?name=gyeongsang">
                     <div class="image-container" style="position: relative;">
                         <img class="card-img-top" src="pageimage/tripImage/trip-gyeongsang.png" alt="Card image cap">
-                        <span style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold; font-size: 30px">경상</span>
+                        <span style="position: absolute; top: 30px; left: 30px; color: white; font-weight: bold; font-size: 30px">경상</span>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">경상</h3>
@@ -151,10 +148,10 @@
         <%--7--%>
         <div class="col-md-4">
             <div class="card">
-                <a href="tripcity.do?name=jeju">
+                <a class="citycard" href="tripcity.do?name=jeju">
                     <div class="image-container" style="position: relative;">
                         <img class="card-img-top" src="pageimage/tripImage/trip-jeju.png" alt="Card image cap">
-                        <span style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold; font-size: 30px">제주</span>
+                        <span style="position: absolute; top: 30px; left: 30px; color: white; font-weight: bold; font-size: 30px">제주</span>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">제주</h3>
@@ -166,10 +163,10 @@
         <%--8--%>
         <div class="col-md-4">
             <div class="card">
-                <a href="tripcity.do?name=incheon">
+                <a class="citycard" href="tripcity.do?name=incheon">
                     <div class="image-container" style="position: relative;">
                         <img class="card-img-top" src="pageimage/tripImage/trip-incheon.png" alt="Card image cap">
-                        <span style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold; font-size: 30px">인천</span>
+                        <span style="position: absolute; top: 30px; left: 30px; color: white; font-weight: bold; font-size: 30px">인천</span>
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">인천</h3>
@@ -180,3 +177,7 @@
         </div>
     </div>
 </div>
+<br>
+
+</body>
+</html>

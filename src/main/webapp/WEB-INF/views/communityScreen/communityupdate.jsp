@@ -107,10 +107,9 @@ System.out.println(dto.toString());
     <br>
 </div>
 
-
 <script type="text/javascript">
 $(document).ready(function() {	
-	$("button").click(function() {		
+	$("frmbtn").click(function() {
 		if($("#title").val().trim() == "" ){
 			alert("제목을 기입해 주십시오");
 			return;

@@ -1,4 +1,3 @@
-<%@page import="mul.cam.a.util.Utility" %>
 <%@page import="mul.cam.a.dto.TripDto" %>
 <%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,69 +14,54 @@
     <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
 
     <style>
-        .board-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            margin-top: 40px; /* 상단 간격 조정 */
-        }
-        .board-sort {
-            display: flex;
-            align-items: center;
-            padding-bottom: 15px;
-        }
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
-        .custom-select {
-            width: 100px;
-            margin-right: 10px;
-        }
-        .form-control {
-            flex: 1;
-            margin-right: 10px;
-        }
         .btn-secondary {
             width: 70px;
         }
+
         a {
             color: #666; /* 적용할 색상 */
             text-decoration: none; /* 밑줄 제거 */
         }
+
         td, th {
             color: #666;
         }
+
         table {
             font-size: 14px;
         }
+
         .pagination a, .pagination span {
             color: #666; /* 글씨 색상 */
             background-color: #fff; /* 버튼 색상 */
             /* 버튼 테두리 색상 */
         }
+
         .pagination a:hover, .pagination span:hover {
             color: #666; /* 호버 시 글씨 색상 */
             background-color: #eceef0; /* 호버 시 버튼 색상 */
             /* 호버 시 버튼 테두리 색상 */
         }
+
         .pagination .page-item.active .page-link {
             color: #666;
             background-color: #eceef0;
             border-color: #dee2e6;
         }
+
         .pagination-container {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin: 0px 50px;
         }
+
         .write-button-container {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
         }
+
         .button-wrapper .btn {
             width: 70px;
         }
@@ -93,21 +77,6 @@
 
 <div class="container">
     <img src="pageimage/mainImage/image01.jpg" class="img-fluid" alt="Responsive image">
-<%--    <div class="board-header">--%>
-<%--        <div class="search-container">--%>
-<%--            <select class="custom-select" id="choice" name="choice">--%>
-<%--                <option selected>검색</option>--%>
-<%--                <option value="title">제목</option>--%>
-<%--                <option value="content">내용</option>--%>
-<%--                <option value="writer">작성자</option>--%>
-<%--            </select>--%>
-<%--            <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()"--%>
-<%--                   placeholder="검색어"--%>
-<%--                   value="<%=search %>">--%>
-<%--            <button type="button" class="btn btn-secondary" onclick="searchBtn()">검색</button>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-
     <div class="table-responsive">
         <table class="table" style="border-collapse: collapse;">
             <thead style="background-color: #f8f9fa;">
@@ -145,7 +114,7 @@
                 </td>
 
                 <td>
-                    <a href="tripadmindetail.do?seq=<%=dto.getSeq() %>">
+                    <a href="tripupdate.do?seq=<%=dto.getSeq() %>">
                         <%=dto.getSpot() %>
                     </a>
                 </td>
@@ -153,7 +122,7 @@
                 <td style="text-align: center;"><%=dto.getWdate() %>
                 </td>
 
-<%--아이디 추가 예정--%>
+                <%--아이디 추가 예정--%>
                 <td style="text-align: center;">admin
                 </td>
             </tr>
@@ -173,16 +142,16 @@
         </div>
         <div class="write-button-container">
             <div class="button-wrapper">
-                <a href="tripwrite.do" class="btn btn-secondary">글쓰기</a>
+                <form action="tripwrite.do" method="POST">
+                    <input type="hidden" name="admin" value="admin">
+                    <button type="submit" class="btn btn-sm btn-outline-secondary">글쓰기</button>
+                </form>
             </div>
         </div>
     </div>
-
-
 </div>
 
 </body>
-
 </html>
 
 

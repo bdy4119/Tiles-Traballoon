@@ -7,7 +7,7 @@
     <select id="triplist" parameterType="String" resultType="mul.cam.a.dto.TripDto">
         select *
         from trip
-        where city=#{city}
+        where city=#{city} order by seq desc
     </select>
 
     <select id="tripAllList" resultType="mul.cam.a.dto.TripDto">
@@ -27,5 +27,21 @@
                #{title}, #{image}, #{content}, now(), 0)
     </insert>
 
+    <update id="updateTrip" parameterType="mul.cam.a.dto.TripDto">
+        update trip
+        set id=#{id}, city=#{city}, spot=#{spot},title=#{title},image=#{image}, content=#{content}, wdate=now()
+        where seq=#{seq}
+    </update>
+    
+    <delete id="tripdelete" parameterType="Integer">
+        delete from trip
+        where seq=#{seq}
+    </delete>
+
+    <update id="tripReadcount" parameterType="Integer">
+        update trip
+        set readcount=readcount+1
+        where seq=#{seq}
+    </update>
 
 </mapper>

@@ -140,7 +140,7 @@
     <definition name="communitydetail" extends="main">
         <put-attribute name="content" value="/WEB-INF/views/communityScreen/communitydetail.jsp"/>
     </definition>
-    <definition name="communityupdate" extends="main">
+    <definition name="communityupdate" extends="communitymain">
         <put-attribute name="content" value="/WEB-INF/views/communityScreen/communityupdate.jsp"/>
     </definition>
     <definition name="communitywrite" extends="communitymain">
@@ -164,11 +164,16 @@
     <definition name="tripadminlist" extends="trip">
         <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripadminlist.jsp"/>
     </definition>
-    <definition name="tripwrite" extends="trip">
+    <definition name="tripwrite" extends="communitymain">
         <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripwrite.jsp"/>
     </definition>
     <definition name="tripdetail" extends="trip">
         <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripdetail.jsp"/>
+    </definition>
+    <definition name="tripupdate" extends="communitymain">
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripupdate.jsp"/>
+    </definition>
+    <definition name="tripmessage" template="/WEB-INF/views/tripScreen/tripmessage.jsp">
     </definition>
 
     <!-- 마이페이지 -->

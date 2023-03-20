@@ -28,7 +28,7 @@ public class UploadImageCtr {
         JsonObject jsonObject = new JsonObject();
 
         // 내부경로로 저장
-        String rootPath = req.getServletContext().getRealPath("/testImage");
+        String rootPath = req.getServletContext().getRealPath("/uploadImage");
 
         String fileRoot = rootPath+File.separator; // File.separator 는 운영체제에 따라 간결하게 (/,\,.) 등으로 변환해준다.
 
@@ -44,7 +44,7 @@ public class UploadImageCtr {
         try {
             InputStream fileStream = multipartFile.getInputStream();
             FileUtils.copyInputStreamToFile(fileStream, targetFile);	  //파일 저장
-            jsonObject.addProperty("url", File.separator+"TraballoonTiles/testImage"+File.separator+savedFileName);  // 파일이 저장된 경로를 "URL" 이라는 이름으로 파일 경로를 넣습니다.
+            jsonObject.addProperty("url", File.separator+"TraballoonTiles/uploadImage"+File.separator+savedFileName);  // 파일이 저장된 경로를 "URL" 이라는 이름으로 파일 경로를 넣습니다.
             jsonObject.addProperty("responseCode", "success");            // 문제가 없으면 "responseCode"라는 이름으로 "success" 값을 넣습니다.
 
         } catch (IOException e) {

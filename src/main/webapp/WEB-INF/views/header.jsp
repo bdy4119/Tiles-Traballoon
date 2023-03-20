@@ -9,6 +9,7 @@
 <head>
 
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
     <style>
         .blog-header {
@@ -19,13 +20,6 @@
         .blog-header-logo {
             font-family: "Playfair Display", Georgia, "Times New Roman", serif;
             font-size: 2.25rem;
-        }b 
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
         }
 
         .nav-scroller .nav {
@@ -44,11 +38,16 @@
         a.mylink {
             color: #666;
             text-decoration: none;
+            font-size: 18px;
         }
 
         a.mylink:hover {
             text-decoration: none;
-            color: #666;
+            color: #444;
+        }
+
+        .my-icon {
+            cursor: pointer;
         }
 
     </style>
@@ -66,18 +65,12 @@
                     if (loginsession.getAttribute("id") != null) {
                 %>
                 <div id="user">
-                    <a href="mypage.do" class="mylink"><%= userId %>님 환영합니다</a>
-                    <%
-                        if (loginsession.getAttribute("id").equals("admin")) {
-                    %>
-                    <a class="btn btn-sm btn-outline-secondary" href="tripadmin.do">Admin</a>
-                    <%
-                        }
-                    %>
+                    <i id="user-icon" class="fa fa-user-circle my-icon fa-lg"></i>
+                    <a class="mylink" href="mypage.do"><%= userId %>님 환영합니다</a>
                 </div>
                 <%
                     }
-                    %>
+                %>
             </div>
 
 
@@ -119,6 +112,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    var userIcon = document.getElementById("user-icon");
+    userIcon.addEventListener("click", function() {
+        location.href = "mypage.do";
+    });
+</script>
 
 </body>
 </html>

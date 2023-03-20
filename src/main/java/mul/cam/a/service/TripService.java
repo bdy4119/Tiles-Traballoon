@@ -17,4 +17,7 @@ public interface TripService {
 
     boolean answerTrip(TripDto dto);
 
+    boolean tripdelete(int seq);
+
+    int tripReadcount(int seq);
 }

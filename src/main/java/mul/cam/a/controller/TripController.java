@@ -39,15 +39,15 @@ public class TripController {
         return "triplist";
     }
 
-    @GetMapping(value = "tripadmin.do")
-    public String tripadmin(Model model){
+    @PostMapping (value = "tripadmin.do")
+    public String tripadmin(@RequestParam("admin") String admin, Model model){
         List<TripDto> list = service.tripAllList();
         model.addAttribute("tripadminlist", list);
         return "tripadminlist";
     }
 
-    @GetMapping(value = "tripwrite.do")
-    public String tripwrite() {
+    @PostMapping(value = "tripwrite.do")
+    public String tripwrite(@RequestParam("admin") String admin) {
         return "tripwrite";
     }
 
@@ -72,9 +72,49 @@ public class TripController {
     @GetMapping (value = "tripdetail.do")
     public String tripdetail(Model model, int seq) {
         TripDto dto = service.getTrip(seq);
+        int tripReadcount = service.tripReadcount(seq);
+
         model.addAttribute("tripdto", dto);
+        model.addAttribute("readcount", tripReadcount);
 
         return "tripdetail";
+    }
+
+    @GetMapping(value = "tripupdate.do")
+    public String tripupdate(Model model, int seq) {
+        TripDto dto = service.getTrip(seq);
+        model.addAttribute("dto", dto);
+
+        return "tripupdate";
+    }
+
+
+    //글삭제
+    @GetMapping(value="tripdelete.do")
+    public String tripdelete(Model model, int seq) {
+        boolean b = service.tripdelete(seq);
+        String tripdelete = "TRIP_DELETE_OK";
+        if(b == false) {
+            tripdelete = "TRIP_DELETE_NO";
+        }
+        model.addAttribute("tripdelete", tripdelete);
+        return "tripmessage";
+    }
+
+
+    @GetMapping(value = "tripupdateAf.do")
+    public String tripupdateAf(Model model, TripDto dto) {
+        System.out.println(dto.toString());
+        boolean isS = service.updateTrip(dto);
+
+        String tripupdate = "TRIP_UPDATE_OK";
+        if(!isS) {
+            tripupdate = "TRIP_UPDATE_NG";
+        }
+        model.addAttribute("tripupdate", tripupdate);
+        model.addAttribute("seq", dto.getSeq());
+
+        return "tripmessage";
     }
 
 }

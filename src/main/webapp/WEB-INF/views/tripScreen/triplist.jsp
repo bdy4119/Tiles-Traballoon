@@ -1,10 +1,9 @@
-<%@page import="mul.cam.a.util.Utility" %>
 <%@page import="mul.cam.a.dto.TripDto" %>
 <%@page import="java.util.List" %>
-<%@ page import="org.springframework.ui.Model" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%
+    HttpSession loginsession = request.getSession();
+    String userId = (String) loginsession.getAttribute("id");
     TripDto dto;
 %>
 <html>
@@ -59,17 +58,9 @@
             max-width: 100%;
         }
 
-
     </style>
 </head>
 <body>
-
-
-
-
-
-
-
 <%
     String korName = "";
     String engName = "";
@@ -156,5 +147,19 @@
     </div>
 </main>
 <br>
+<div id="user">
+    <%
+        if (loginsession.getAttribute("id").equals("admin")) {
+    %>
+    <div class="d-flex justify-content-center mt-4">
+        <form action="tripadmin.do" method="POST">
+            <input type="hidden" name="admin" value="admin">
+            <button type="submit" class="btn btn-sm btn-outline-secondary">Admin</button>
+        </form>
+    </div>
+    <%
+        }
+    %>
+</div>
 </body>
 </html>

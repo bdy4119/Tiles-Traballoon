@@ -50,6 +50,18 @@ public class TripDaoImpl implements TripDao {
 	public int answerTripInsert(TripDto dto) {		
 		return session.insert(ns + "answerTripInsert", dto);
 	}
+
+	@Override
+	public int tripdelete(int seq) {
+		return session.update(ns + "tripdelete", seq);
+	}
+
+	@Override
+	public int tripReadcount(int seq) {
+		return session.update(ns + "tripReadcount", seq);
+	}
+
+
 }
 
 

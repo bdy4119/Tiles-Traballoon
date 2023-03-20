@@ -20,5 +20,8 @@ public interface TripDao {
 
     int answerTripUpdate(TripDto dto);
     int answerTripInsert(TripDto dto);
+    int tripdelete(int seq);
+
+    int tripReadcount(int seq);
     
 }
