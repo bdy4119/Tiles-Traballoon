@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- 맨처음 보이는 로그인 화면이라 main -->
+    <definition name="main" template="/WEB-INF/views/mainscreentiles.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/content.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    
+    <!-- 마이페이지 -->
+	<definition name="mypage" template="/WEB-INF/views/mypageScreen/mypagetiles.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/content.jsp"/>
+		<put-attribute name="mypageMenubar" value="/WEB-INF/views/mypageScreen/mypageMenubar.jsp"/>
+		<put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/mypageContent.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	
+    <definition name="mypageAf" extends="mypage">
+    	<put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/mypageAf.jsp"/>
+	</definition>
+	<definition name="mypageWishlist" extends="mypage">
+	    <put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/wish/mypageWishlist.jsp"/>
+	</definition>
+	<definition name="mypageOrder" extends="mypage">
+	    <put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/mypageOrder.jsp"/>
+	</definition>
+	<definition name="mypageRefence" extends="mypage">
+	    <put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/mypageReference.jsp"/>
+	</definition>
+	<definition name="mypageLeave" extends="mypage">
+	    <put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/mypageLeave.jsp"/>
+	</definition>
+	<definition name="mypageWriteme" extends="mypage">
+	    <put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/mypageWriteme.jsp"/>
+	</definition>
+    <definition name="mypageCommunityAf" extends="mypage">
+	    <put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/mypageCommunityAf.jsp"/>
+	</definition>
+	<definition name="mypageReviewAf" extends="mypage">
+	    <put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/mypageReviewAf.jsp"/>
+	</definition>
+	<definition name="mypageTrip" extends="mypage">
+	    <put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/wish/mypageTrip.jsp"/>
+	</definition>
+	<definition name="mypagehotel" extends="mypage">
+	    <put-attribute name="mypageContent" value="/WEB-INF/views/mypageScreen/wish/mypagehotel.jsp"/>
+	</definition>
+	
+    <!-- 지역별 여행 -->
+    <definition name="localtravel" template="/WEB-INF/views/localtravelScreen/localtraveltiles.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+      <put-attribute name="localmain" value="/WEB-INF/views/localtravelScreen/localmain.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+
+    <definition name="localtravel2" template="/WEB-INF/views/localtravelScreen/localtraveltiles2.jsp">
+      <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+      <put-attribute name="weather" value="/WEB-INF/views/localtravelScreen/weather.jsp"/>
+      <put-attribute name="contents" value="/WEB-INF/views/localtravelScreen/placelist.jsp"/>
+      <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+
+    <definition name="place" extends="localtravel2">
+      <put-attribute name="contents" value="/WEB-INF/views/localtravelScreen/placedetail.jsp"/>
+    </definition>
+
+    <!-- 숙소추천 -->
+    <definition name="hotel" template="/WEB-INF/views/hotelScreen/hoteltiles.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+      <!--   <put-attribute name="menu" value="/WEB-INF/views/hotelScreen/hotelmenu.jsp"/> -->
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/hotel.jsp"/>
+<!--         <put-attribute name="hotelcontent" value="/WEB-INF/views/hotelScreen/hotelcontent.jsp"/> -->
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+
+    <definition name="hoteldetail" template="/WEB-INF/views/hotelScreen/hoteltiles2.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+     <!-- 	<put-attribute name="menu" value="/WEB-INF/views/hotelScreen/hotelmenu.jsp"/> -->
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/hoteldetail.jsp"/> 
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>       
+
+    </definition>  
+    
+<!--     <definition name="hoteldetail" extends="hotel">
+     	<put-attribute name="hotelcontent" value="/WEB-INF/views/hotelScreen/hoteldetail.jsp"/> 
+    </definition> -->
+	<definition name="menu_sudo" extends="hotel">
+     	<put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_sudo.jsp"/> 
+    </definition> 
+    <definition name="menu_gwd" extends="hotel">
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_gwd.jsp"/> 
+    </definition>
+    <definition name="menu_ccd" extends="hotel">
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_ccd.jsp"/>        
+    </definition>    
+    <definition name="menu_gsd" extends="hotel">
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_gsd.jsp"/>     
+    </definition>   
+    <definition name="menu_jld" extends="hotel">
+        <put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_jld.jsp"/>       
+    </definition>
+    <definition name="menu_jeju" extends="hotel">
+		<put-attribute name="content" value="/WEB-INF/views/hotelScreen/menu_jeju.jsp"/> 
+    </definition>
+
+
+    <definition name="review" extends="main">
+      <put-attribute name="content" value="/WEB-INF/views/reviewScreen/review.jsp"/>
+    </definition>
+
+    <definition name="reviewdetail" extends="main">
+      <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewdetail.jsp"/>
+    </definition>
+  
+    <definition name="reviewwrite" extends="main">
+      <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewwrite.jsp"/>
+    </definition>
+
+    <definition name="reviewUpdate" extends="main">
+      <put-attribute name="content" value="/WEB-INF/views/reviewScreen/reviewUpdate.jsp"/>
+    </definition>
+
+ 
+    <!-- 커뮤니티 -->
+    <definition name="communitymain" template="/WEB-INF/views/communityScreen/communitytiles.jsp">
+    <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+    <put-attribute name="content" value="/WEB-INF/views/content.jsp"/>
+    <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+
+    <definition name="community" extends="main">
+        <put-attribute name="content" value="/WEB-INF/views/communityScreen/communitycontent.jsp"/>
+    </definition>
+    <definition name="communitydetail" extends="main">
+        <put-attribute name="content" value="/WEB-INF/views/communityScreen/communitydetail.jsp"/>
+    </definition>
+    <definition name="communityupdate" extends="main">
+        <put-attribute name="content" value="/WEB-INF/views/communityScreen/communityupdate.jsp"/>
+    </definition>
+    <definition name="communitywrite" extends="communitymain">
+        <put-attribute name="content" value="/WEB-INF/views/communityScreen/communitywrite.jsp"/>
+    </definition>
+
+    <definition name="communitymessage" template="/WEB-INF/views/communityScreen/communitymessage.jsp">
+    </definition>
+    <definition name="communityanswer" template="/WEB-INF/views/communityScreen/communityanswer.jsp">
+    </definition>
+
+    <!--trip-->
+    <definition name="trip" template="/WEB-INF/views/tripScreen/tripscreentiles.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripmain.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+    <definition name="triplist" extends="trip">
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/triplist.jsp"/>
+    </definition>
+    <definition name="tripadminlist" extends="trip">
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripadminlist.jsp"/>
+    </definition>
+    <definition name="tripwrite" extends="trip">
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripwrite.jsp"/>
+    </definition>
+    <definition name="tripdetail" extends="trip">
+        <put-attribute name="content" value="/WEB-INF/views/tripScreen/tripdetail.jsp"/>
+    </definition>
+
+    <!-- 마이페이지 -->
+    
+    
+	<!-- 마이페이지 -->
+
+
+    <!-- 로그인페이지 -->
+    <definition name="login" template="/WEB-INF/views/loginScreen/login.jsp">
+    </definition>
+    <definition name="regi" template="/WEB-INF/views/loginScreen/regi.jsp">
+    </definition>
+    <definition name="message" template="/WEB-INF/views/loginScreen/message.jsp">
+    </definition>
+
+
+</tiles-definitions>
