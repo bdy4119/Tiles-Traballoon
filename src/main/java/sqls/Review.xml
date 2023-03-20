@@ -161,7 +161,7 @@
 		resultType="mul.cam.a.dto.CommunityDto">
 		select *
 		from community
-		where id in (select id from member)
+		where id=#{id}
 	</select> -->
 	
 </mapper>

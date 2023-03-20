@@ -21,8 +21,24 @@
 
 <body>
 	<%
-	MemberDto login = (MemberDto) session.getAttribute("login");
 	ReviewDto dto = (ReviewDto) request.getAttribute("dto");
+	
+	Object loginObj = session.getAttribute("login");	//dto에 안담겨있을 수도 있으니 초기화
+	MemberDto login = new MemberDto(); //초기화해주기
+	
+	boolean isS = false;
+	if(loginObj == null){
+		%>
+		<script>
+			alert('로그인 해 주십시오');
+			location.href = "login.do";
+		</script>
+		<%
+		} else {
+			login = (MemberDto)session.getAttribute("login");
+			isS = true;
+		}
+		request.setAttribute("isS", isS);
 	%>
 
 
@@ -53,21 +69,54 @@
 						<%=dto.getContent()%>
 					</div>
 				</div>
-				
-				<br>
-				<!-- 수정, 삭제는 로그인한 본인한테만 보이게 -->
-				<%
-				if (dto.getId().equals(login.getId())) {
-				%>
-				<div class="d-flex justify-content-end">
-					<button type="submit" class="btn btn-secondary mr-3"
+			 <br>
+        </div>
+    </div>
+	<div class="row justify-content-center">
+        <div class="col-md-12">
+			<!-- 수정, 삭제는 로그인한 본인한테만 보이게 -->
+			<%
+			if (dto.getId().equals(login.getId())) {
+			%>
+			<div class="d-flex justify-content-end">
+				<button type="submit" class="btn btn-secondary mr-3"
 						onclick="reviewUpdate(<%=dto.getSeq()%>)">수정</button>
-					<button type="submit" class="btn btn-secondary"
+				<button type="submit" class="btn btn-secondary"
 						onclick="reviewDelete(<%=dto.getSeq()%>)">삭제</button>
-					<%
-					}
-					%>
-				</div>
+				<%
+				}
+				%>
+			 </div>
+            <br>
+        </div>
+    </div>
+
+	</div>
+	<div class="container">
+	    <div class="row justify-content-center">
+	        <div class="col-md-12">
+	            <form action="reviewCommentWrite.do" method="get">
+	                <!-- 	<input type="hidden" name="board_id" value="글번호"> -->
+	                <input type="hidden" name="seq" value="<%=dto.getSeq()%>">
+	                <input type="hidden" name="id" value="<%=login.getId()%>">
+	                <div class="form-group">
+							<textarea class="form-control" id="comment_content" name="content"
+	                                  rows="3"></textarea>
+	                </div>
+	                <button type="submit" class="btn btn-secondary">댓글 등록</button>
+	            </form>
+	            <br>
+	        </div>
+	    </div>
+	    <div class="row justify-content-center">
+	        <div class="col-md-12">
+				<!-- 댓글 정보 출력을 위한 템플릿 코드 -->
+	            <div id="li">
+	            
+	            </div>
+	        </div>
+	    </div>
+	</div>
 			<script type="text/javascript">
 				function reviewUpdate( seq ) {
 					location.href = "reviewUpdate.do?seq=" + seq;
@@ -75,84 +124,43 @@
 				function reviewDelete( seq ) {
 					location.href = "reviewDelete.do?seq=" + seq;  // update del=1
 				}
-			</script>
-
-
-
-
-				<br> <br> <br>
-				<form action="reviewCommentWrite.do" method="get">
-					<!-- 	<input type="hidden" name="board_id" value="글번호"> -->
-					<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
-					<input type="hidden" name="id" value="<%=login.getId()%>">
-					<div class="form-group">
-						<textarea class="form-control" id="comment_content" name="content"
-							rows="3"></textarea>
-					</div>
-					<button type="submit" class="btn btn-secondary">댓글 등록</button>
-				</form>
-
-
-			
-			<!-- 댓글 정보 출력을 위한 템플릿 코드 -->
-			<div id="li">
-			<!--<div class="card mt-3">
-				 	<div class="card-header">
-						작성자:
-					</div>
-					<div class="card-body">
-						<ul class="list-unstyled">
-							<li>
-								<div>comment.getWdate()</div>
-								<div>comment.getContent()</div>
-							</li>
-						</ul>
-					</div>
-				</div>-->
-			</div>
-			
-				<br>
-				<br>
-				<br>
-				<script type="text/javascript">
-					$(document).ready(function(){
-						$.ajax({
-							url:"./communitycommentList.do",
-							type:"get",
-							data:{ "seq":<%=dto.getSeq() %> },
-							success:function(list){
-								// alert('success');
-								// alert(JSON.stringify(list));
+		
+				//댓글뿌리기
+				$(document).ready(function(){
+					$.ajax({
+						url:"reviewCommentWrite.do",
+						type:"get",
+						data:{ "seq":<%=dto.getSeq() %> },
+						success:function(list){
+							// alert('success');
+							// alert(JSON.stringify(list));
 								
-								$("#li").html("");
+							$("#li").html("");
 								
-								$.each(list, function(index, item){
-									let str = 	"<div class='card mt-3'>"
-											+		"<div class='card-header'>" + item.id + "</div>"
-											+			"<div class='card-body'>"
-											+				"<ul class='list-unstyled'>"
-											+ 					"<li>" 
-											+						"<div>" + item.content + "</div>"
-											+						"<br>"
-											+						"<div>작성일: " + item.wdate + "</div>"
-											+ 					"</li>"
-											+				"</ul>"
-											+			"</div>"
-											+	"</div>"
-									$("#li").append(str);
+							$.each(list, function(index, item){
+								let str = "<div class='card mt-1'>"
+					                    + 		"<div class='card-header'>" + item.id + "</div>"
+					                    + 		"<div class='card-body'>"
+					                    + 			"<ul class='list-unstyled'>"
+					                    + 				"<li>"
+					                    + 					"<div>" + item.content + "</div>"
+					                    + 					"<br>"
+					                    + 					"<div>작성일: " + item.wdate + "</div>"
+					                    + 				"</li>"
+					                    + 			"</ul>"
+					                    + 		"</div>"
+					                    + 		"</div>"
+					                    + "<br>"
+								$("#li").append(str);
 									
 								});
 							},
 							error:function(){
 								alert('error');	
 							}		
-						});	
-					});
-				</script>
-			</div>
-			<br>
-
-		</div>
-	</div>
-</body>
+					});	
+				});
+			</script>
+	
+	</body>
 </html>
