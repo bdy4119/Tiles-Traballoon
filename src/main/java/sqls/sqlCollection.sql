@@ -377,10 +377,10 @@ create table hotels
     thumbnail  varchar(1000) not null,
     wdate	   timestamp    not null default now(),
     content	   varchar(1000) not null,
-    map		   varchar(100)	not null,
+    hotelmap		   varchar(100)	not null,
     book	   varchar(100)	not null	
 );
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '노보텔 앰배서더 서울 용산', './hotelimage/1.jpg', 
 '노보텔 스위트 앰배서더 서울 용산에 머무르며 서울의 모든 명소를 빠짐없이 방문해 보세요. 
 도심에 위치한 본 호텔에 숙박하면 서울 여행이 쉬워집니다. 
@@ -396,7 +396,7 @@ VALUES (0, '노보텔 앰배서더 서울 용산', './hotelimage/1.jpg',
 '대한민국 최고의 체험을 
 선사하는 숙박시설' );
 
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '쉐라톤 그랜드 인천', './hotelimage/2.jpg',
 '쉐라톤 그랜드 인천 호텔은 인천의 주목할 만한 숙소로 여행객을 위한 현명한 선택입니다. 
 본 호텔은 여행하기에 편리한 도시 명소 인근에 있습니다.
@@ -412,7 +412,7 @@ VALUES (0, '쉐라톤 그랜드 인천', './hotelimage/2.jpg',
 '37.39051405463347, 126.64531745341252 ','https://www.marriott.co.kr/hotels/travel/selgi-sheraton-grand-incheon-hotel/' 
 ,'현대적인 감각과 
 전통적인 멋이 공존하는 고급 호텔');
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '코트야드 메리어트 수원', './hotelimage/3.jpg',
 '수원 최초의 코트야드 바이 메리어트 호텔입니다. 
 광교중앙역에서 6분, 강남역에서 30분 거리에 있는 호텔로 수원컨벤션센터와 갤러리아백화점에 연결되어 있습니다. 
@@ -426,7 +426,7 @@ VALUES (0, '코트야드 메리어트 수원', './hotelimage/3.jpg',
 '37.28457969462797, 127.0575221715392 ','https://www.marriott.co.kr/hotels/travel/selcw-courtyard-suwon/' 
 ,'도심 속에서도 최상의 휴식을 
 제공하는 유럽풍 럭셔리 호텔');
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '세인트존스 강릉', './hotelimage/4.jpg',
 '다양한 엔터테인먼트와 휴양을 한 곳에서 즐길 수 있는 곳, 세인트존스 호텔
 
@@ -446,7 +446,7 @@ VALUES (0, '세인트존스 강릉', './hotelimage/4.jpg',
 '37.79131997686286, 128.92097870543614','https://new.stjohns.co.kr/',
 '취사선택 가능한 아늑한 룸에서 
 편안한 휴식을 취할 수 있는 호텔' );
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '스카이베이호텔 경포', './hotelimage/5.jpg',
 '강릉의 도심에서 단 몇 분 거리의 스카이베이 호텔 경포에 머물며 진정한 휴가의 의미가 무엇인지 알아보세요. 
 경포대에서 단 1.3km 거리에 위치한 스카이베이 호텔 경포에 머물며 
@@ -465,7 +465,7 @@ VALUES (0, '스카이베이호텔 경포', './hotelimage/5.jpg',
 '37.80429040800223, 128.90777555665903','http://www.skybay.co.kr'
 ,'산과 바다의 아름다운 
 풍경을 감상할 수 있는 곳' );
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '썬라이즈호텔 속초', './hotelimage/6.jpg',
 '썬라이즈 호텔 속초에서 누릴 수 있는 모든 것을 만끽해 보세요.
  머무시는 동안 이용 가능한 무료 Wi-Fi를 통해 쉽게 연락을 지속하세요. 
@@ -481,7 +481,7 @@ VALUES (0, '썬라이즈호텔 속초', './hotelimage/6.jpg',
 '38.201796835742385, 128.58889773594242','http://www.sunrisehotel.co.kr/'
 ,'현대적이고 세련된 분위기가 
 돋보이는 럭셔리 호텔' );
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '소노벨 천안	', './hotelimage/7.jpg',
 '소노벨 천안에서 최적의 서비스와 편의 시설을 이용해 보세요. 
 제공되는 무료 인터넷으로 머무시는 동안 편리함을 배가시켜 보세요.
@@ -498,7 +498,7 @@ VALUES (0, '소노벨 천안	', './hotelimage/7.jpg',
 ,'빈티지한 분위기가 물씬 풍기는 
 충청도의 오아시스');
 
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '토모노야 료칸 대천', './hotelimage/8.jpg',
 '토모노야 호텔 앤 료칸 대천의 우수한 서비스와 편의 시설은 잊을 수 없는 추억을 만들어 줄 것입니다. 
 호텔의 무료 Wi-Fi로 쉽고 편리하게 커뮤니케이션을 지속하세요. 
@@ -513,7 +513,7 @@ VALUES (0, '토모노야 료칸 대천', './hotelimage/8.jpg',
 '36.3486602320251, 126.55612075489536','https://www.tomonoya.co.kr/'
 , '인테리어와 자연경관이 
 잘 어우러지는 럭셔리 호텔');
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '청풍리조트 제천', './hotelimage/9.jpg',
 '청풍 리조트의 훌륭한 서비스와 편의 시설을 통해 잊을 수 없는 힐링 타임을 만끽해 보세요. 
 머무시는 동안 이용 가능한 무료 Wi-Fi를 통해 쉽게 연락을 지속하세요. 
@@ -532,7 +532,7 @@ VALUES (0, '청풍리조트 제천', './hotelimage/9.jpg',
 ,'편안한 휴식을 위한 펜트하우스 
 룸 타입을 제공하는 호텔');
 
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '힐튼호텔 경주', './hotelimage/10.jpg',
 '힐튼 경주에 머물며 경주의 다양한 관광 명소를 모두 방문해 보세요.
 힐튼 경주에서 이용 가능한 것과 함께 멋지고 행복한 시간을 만들어 보세요. 
@@ -548,7 +548,7 @@ VALUES (0, '힐튼호텔 경주', './hotelimage/10.jpg',
 '35.8400176004314, 129.2857586571236','http://www.skybay.co.kr' 
 ,'도시와 자연이 공존하는 
 아름답고 특별한 숙소');
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '롯데 시티 호텔 울산', './hotelimage/11.jpg',
 '롯데시티호텔울산에서 휴가를 보내며 울산의 매력에 푹 빠져보세요.
 롯데시티호텔울산에서 제공하는 다양한 서비스와 편의 시설을 이용해 한층 편하게 머물러 보세요. 
@@ -565,7 +565,7 @@ VALUES (0, '롯데 시티 호텔 울산', './hotelimage/11.jpg',
 '35.537465715047155, 129.32962985761236','https://www.lottehotel.com/ulsan-city/ko.html' 
 ,'지친 일상에서 벗어나 힐링을 
 추구하는 고객을 위한 호텔');
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '호텔 리베라 거제', './hotelimage/12.jpg',
 '호텔 리베라 거제의 우수한 서비스와 편의 시설은 잊을 수 없는 추억을 만들어 줄 것입니다. 
 호텔의 무료 Wi-Fi로 쉽고 편리하게 커뮤니케이션을 지속하세요. 호텔 투숙객의 경우 무료 주차를 하실 수 있습니다. 
@@ -582,7 +582,7 @@ VALUES (0, '호텔 리베라 거제', './hotelimage/12.jpg',
 ,'오션뷰를 자랑하는 객실과
 편안한 휴식을 제공하는 호텔');
 
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '베스트웨스턴 군산', './hotelimage/13.jpg',
 '베스트웨스턴 군산 호텔은 여행과 출장 모두를 위한 군산 방문에 탁월한 숙소입니다. 
 본 숙소에서 투숙객은 활기찬 도시의 모든 명소까지 쉽게 접근할 수 있습니다.
@@ -599,7 +599,7 @@ VALUES (0, '베스트웨스턴 군산', './hotelimage/13.jpg',
 ,'조용하고 한적한 환경의
 힐링을 위한 특별한 공간');
 
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '라마다 프라자 여수', './hotelimage/14.jpg',
 '라마다 프라자 바이 윈덤 돌산 여수에서 최적의 서비스와 편의 시설을 이용해 보세요. 
 제공되는 무료 인터넷으로 머무시는 동안 편리함을 배가시켜 보세요.
@@ -615,7 +615,7 @@ VALUES (0, '라마다 프라자 여수', './hotelimage/14.jpg',
 '34.716832969698245, 127.74817040946805','http://www.ramadaplazadolsanyeosu.com'
 ,'여행지에서 조용함을 
 추구하는 고객을 위한 호텔' );
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '샹그리아비치 목포', './hotelimage/15.jpg',
 '샹그리아 비치 관광 호텔에서 제공하는 다양한 서비스와 편의 시설을 이용해 한층 편하게 머물러 보세요. 
 호텔 내에서 제공되는 무료 인터넷으로 편리함과 만족감을 느껴보세요. 
@@ -632,7 +632,7 @@ VALUES (0, '샹그리아비치 목포', './hotelimage/15.jpg',
 '34.797077773339, 126.43342503757879','http://www.shangriahotel.co.kr/' 
 ,'아름다운 전망을 감상할 수 있는
 바다가 보이는 오션뷰 호텔');
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '파르나스 호텔 제주', './hotelimage/16.jpg',
 '파르나스 호텔 제주의 편의 시설/서비스를 통해 편안하고 안락한 시간을 보낼 수 있습니다. 
 호텔의 무료 Wi-Fi 인터넷을 이용해 원하실 때마다 사진을 게시하고 이메일에 답장해 보세요. 
@@ -652,7 +652,7 @@ VALUES (0, '파르나스 호텔 제주', './hotelimage/16.jpg',
 ,'제주의 자연과 조화로운 디자인, 
 다양한 편의시설과 개성 넘치는 객실');
 
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '메종 글래드 제주', './hotelimage/17.jpg',
 '메종 글래드 제주의 객실을 예약해 제주 도심 속 휴식을 최대한 즐겨보세요. 
 도심 한가운데 있는 메종 글래드 제주에서는 최고의 지역 중심지에서 하루를 시작할 수 있어 
@@ -673,7 +673,7 @@ VALUES (0, '메종 글래드 제주', './hotelimage/17.jpg',
 ,'제주의 느긋한 바다와 섬의 조망을 
 한눈에 볼 수 있는 고급 호텔');
 
-INSERT INTO hotels (readcount, hotel_name, thumbnail, content, map, book, brief)
+INSERT INTO hotels (readcount, hotel_name, thumbnail, content, hotelmap, book, brief)
 VALUES (0, '서귀포칼호텔', './hotelimage/18.jpg',
 '서귀포 칼 호텔에 머무르며 제주의 모든 명소를 빠짐없이 방문해 보세요. 
 도심에 위치한 본 호텔에 숙박하면 제주 여행이 쉬워집니다.
