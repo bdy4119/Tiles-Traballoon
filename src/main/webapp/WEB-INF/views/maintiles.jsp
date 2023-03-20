@@ -2,27 +2,33 @@
          pageEncoding="UTF-8" %>
 
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<!--  타일즈 레이아웃 구성 페이지1 -->
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
-     
+
     <!-- BootStrap v4.6.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Rashi+Hebrew:wght@600&display=swap" rel="stylesheet">
 
- 	<script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script> 
-   
+<style>
+	h1 {
+	font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+	color : white;
+	}
+	
 
-<style type="text/css">
 </style>
+
 </head>
-
-
 <body>
 	
 	<div align="center" class="container">
@@ -30,7 +36,7 @@
 	<table style="width: 100%; height: 100%; border-color: gray;" >
 	
 <!-- header -->
-
+ 
 	<tr align="center">
 		<td colspan="3" style="height: 10%">
 			<tiles:insertAttribute name="header"/>
@@ -39,17 +45,17 @@
 	
 <table style="width:100%">
 	<tr>				
-		<td colspan="2" style="background-image:url('hotelimage/airback.png'); height: 300px; background-size: 
-		100% auto; background-position: center center;">
+		<td colspan="2" style="background-image:url('pageimage/mainimage/bgocean.png'); height: 550px; 
+			background-size : contain; background-position: center center; background-repeat: no-repeat;">
+			<div style="text-align: center; ">
+				<h1>FLY ON THE TRABALLOON</h1>
+		
+			</div>
 		</td>
 	</tr>
 </table>
-    
-  
 <!-- content -->
-		<td style="height: 400px; width: 80%;">
-			<tiles:insertAttribute name="content"/>
-		</td>
+<tiles:insertAttribute name="maincontent"/>
 
 
 

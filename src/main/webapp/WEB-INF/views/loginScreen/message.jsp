@@ -34,7 +34,7 @@
 	%>
 	<script type="text/javascript">
 		alert("로그인되었습니다");
-		location.href = "main.do";
+		location.href = "maintraballoon.do";
 	</script>
 	<%
 	} else {
@@ -71,7 +71,7 @@
 	%>
 	<script type="text/javascript">
 		alert("로그아웃 되었습니다");
-		location.href = "main.do";
+		location.href = "maintraballoon.do";
 	</script>
 	<%
 	}
@@ -139,7 +139,7 @@
 	%>
 	<script type="text/javascript">
 		alert("회원님의 정보가 삭제되었습니다");
-		location.href = "main.do";
+		location.href = "maintraballoon.do";
 	</script>
 	<%
 	}else{

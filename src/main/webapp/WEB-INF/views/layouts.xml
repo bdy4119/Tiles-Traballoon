@@ -12,6 +12,13 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
     
+     <definition name="maintraballoon" template="/WEB-INF/views/maintiles.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="maincontent" value="/WEB-INF/views/maincontent.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+    </definition>
+      
+      
     <!-- 마이페이지 -->
 	<definition name="mypage" template="/WEB-INF/views/mypageScreen/mypagetiles.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>

@@ -82,7 +82,7 @@
 
 
             <div class="col-4 text-center">
-                <a class="blog-header-logo text-dark" href="main.do">Traballoon</a>
+                <a class="blog-header-logo text-dark" href="maintraballoon.do">Traballoon</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
 
