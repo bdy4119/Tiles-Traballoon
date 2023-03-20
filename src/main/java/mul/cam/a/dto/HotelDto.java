@@ -9,11 +9,12 @@ public class HotelDto {
 	 private String thumbnail;
 	 private Timestamp wdate;
 	 private String content;
-	 private String map;
+	 private String hotelmap;
 	 private String book;
+	 private String brief;
 	 
-	  public HotelDto() {
-		}
+	 public HotelDto() {
+}
 
 	public int getSeq() {
 		return seq;
@@ -50,7 +51,7 @@ public class HotelDto {
 	public Timestamp getWdate() {
 		return wdate;
 	}
-
+ 
 	public void setWdate(Timestamp wdate) {
 		this.wdate = wdate;
 	}
@@ -63,12 +64,12 @@ public class HotelDto {
 		this.content = content;
 	}
 
-	public String getMap() {
-		return map;
+	public String getHotelMap() {
+		return hotelmap;
 	}
 
-	public void setMap(String map) {
-		this.map = map;
+	public void setMap(String hotelmap) {
+		this.hotelmap = hotelmap;
 	}
 
 	public String getBook() {
@@ -78,6 +79,17 @@ public class HotelDto {
 	public void setBook(String book) {
 		this.book = book;
 	}
+
+	public String getBrief() {
+		return brief;
+	}
+
+	public void setBrief(String brief) {
+		this.brief = brief;
+	}
+	 
+
+	
 }
 
 	

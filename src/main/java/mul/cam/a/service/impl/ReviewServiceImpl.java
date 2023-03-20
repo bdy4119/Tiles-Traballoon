@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mul.cam.a.dao.ReviewDao;
+import mul.cam.a.dto.CommunityDto;
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
@@ -49,8 +50,7 @@ public class ReviewServiceImpl implements ReviewService{
 	//longdateOrder
 	@Override
 	public List<ReviewDto> longdateOrder(ReviewDto dto) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.longdateOrder(dto);
 	}
 	
 	
@@ -62,7 +62,7 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.getReview(seq);
 	}
 	
-	
+	//readcount
 	@Override
 	public int readcount(int seq) {
 		int readcount = dao.readcount(seq);
@@ -115,6 +115,14 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewComment> commentList(int seq) {
 		return dao.commentList(seq);
 	}
+
+	
+	
+	//커뮤니티 글 가져오기 테스트
+	/*
+	 * @Override public List<CommunityDto> reviewCommunityList(CommunityDto dto) {
+	 * return dao.reviewCommunityList(dto); }
+	 */
 	
 	
 	

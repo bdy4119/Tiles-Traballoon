@@ -10,26 +10,24 @@ import mul.cam.a.dto.HotelPagingDto;
 public interface HotelService {
 	
 /* 1페이지(호텔페이지)   */
-	List<HotelDto> hotellist(String orderBy);
 	
-	List<HotelDto> getHotelsPaging(HotelPagingDto param);
+	//호텔list 모두 가져오기 + orderby정렬 + 페이징
+	//hotellist를 HotelDto 객체의 리스트(List<HotelDto>)로 반환
+	List<HotelDto> hotellist(HotelPagingDto pagingDto);
 
-	int getHotelTotalCount();
-	
-	//조회수 증가
+	//조회수 증가 (정렬에 활용)
 	void updateReadCount(int seq);
 	
+	//데이터 총수 가져오기 ( 페이징에 활용 )
+	int getHotelTotalCount();
 	
 /* 2페이지(호텔 상세페이지)   */
-	//seq에 맞는 hoteldto가져오기
+	//seq에 해당하는 데이터(hoteldto)가져오기
 	HotelDto getHotel(int seq);
 	
-	//댓글 등록
+	//댓글 등록하기
 	boolean HotelcommentWrite(HotelCommentDto com); //리턴값 boolean으로 변경
 	
-	//댓글 목록 가져오기	
-	List<HotelCommentDto> HotelcommentList(int seq);
-
-	
-	
+	//seq에 맞는 등록 댓글 목록 가져오기 (댓글 화면에 뿌려주기 위해)
+	List<HotelCommentDto> HotelcommentList(int hotelseq);	
 }

@@ -23,10 +23,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
 
+import mul.cam.a.dto.CommunityDto;
+import mul.cam.a.dto.CommunityParam;
 import mul.cam.a.dto.MemberDto;
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
+import mul.cam.a.service.CommunityService;
 import mul.cam.a.service.ReviewService;
 
 @Controller
@@ -34,7 +37,7 @@ public class ReviewController {
 
 	@Autowired
 	ReviewService service;
-	
+	CommunityService Comservice;
 	
 	@GetMapping(value="review.do")
 	public String review(ReviewParam param, Model model) {
@@ -65,19 +68,19 @@ public class ReviewController {
 	//		param.setChoiceOrder("");
 		}
 		
-		                   //review라는 이름으로 list를 뷰에서 사용해라
-//		model.addAttribute("dto", dto);
+        //review라는 이름으로 list를 뷰에서 사용해라
+		//model.addAttribute("dto", dto);
 		model.addAttribute("review", list);	// 게시판 리스트
 		model.addAttribute("pageBbs", pageBbs);	// 총 페이지수
 		model.addAttribute("pageNumber", param.getPageNumber()); // 현재 페이지
 		model.addAttribute("choice", param.getChoice());	// 검색 카테고리
-//		model.addAttribute("choiceOrder", param.getChoiceOrder());	// order 카테고리
+		//model.addAttribute("choiceOrder", param.getChoiceOrder());	// order 카테고리
 		model.addAttribute("search", param.getSearch());	// 검색어	
 		
 		return "review";
-	}
-	
-
+		}
+		
+		
 	
 	//reviewdetail
 	@GetMapping("reviewdetail.do")
@@ -272,7 +275,7 @@ public class ReviewController {
 		
 		param.setStart(start);
 		param.setEnd(end);
-		List<ReviewDto> longdateOrder = service.wdateOrder(dto);
+		List<ReviewDto> longdateOrder = service.longdateOrder(dto);
 		
 		int len = service.getAllReview(param);
 		

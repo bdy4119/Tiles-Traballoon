@@ -20,7 +20,7 @@
 </head>
 
 <body>
-
+<br>
 <footer class="blog-footer">
     <p>Thank you for visiting Multicampus Team Four's website!</p>
     <p>Designed and developed by | 권하나, 김동민, 김영권, 백다연, 심재훈 | © 2023 All Rights Reserved</p>

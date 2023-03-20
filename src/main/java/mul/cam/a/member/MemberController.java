@@ -137,7 +137,10 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "sessionOut.do", method = RequestMethod.GET)
-	public String sessionOut(Model model) {
+	public String sessionOut(Model model, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.invalidate();
+
 		String sessionOut = "logout";
 		
 		model.addAttribute("sessionOut", sessionOut);

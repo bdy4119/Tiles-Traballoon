@@ -27,16 +27,6 @@ if(communitywrite != null && !communitywrite.equals("")){
 	}
 }
 
-String sessionOut = (String)request.getAttribute("sessionOut");
-if(sessionOut != null && !sessionOut.equals("")){
-	%>
-		<script type="text/javascript">
-		alert("로그인 해 주십시오");
-		location.href = "login.do";
-		</script>
-	<%
-}
-
 String communityupdate = (String)request.getAttribute("communityupdate");
 if(communityupdate != null && !communityupdate.equals("")){
 	if(communityupdate.equals("COMMUNITY_UPDATE_OK")){
@@ -57,9 +47,26 @@ if(communityupdate != null && !communityupdate.equals("")){
 	}
 }
 
-
-
-
+//글삭제
+String communitydelete = (String)request.getAttribute("communitydelete");
+if(communitydelete != null && !communitydelete.equals("")){
+	if(communitydelete.equals("COMMUNITY_DELETE_OK")){
+		%>
+		<script type="text/javascript">
+		alert("성공적으로 삭제되었습니다");
+		location.href = "community.do";
+		</script>
+		<%
+	}
+	else{
+		%>
+		<script type="text/javascript">
+		alert("삭제되지 않았습니다.");
+		location.href = "community.do";
+		</script>
+		<%
+	}
+}
 
 String answer = (String)request.getAttribute("answer");
 if(answer != null && !answer.equals("")){
@@ -80,30 +87,8 @@ if(answer != null && !answer.equals("")){
 		<%
 	}
 }
+	%>
 
-String communitydelete = (String)request.getAttribute("communitydelete");
-if(communitydelete != null && !communitydelete.equals("")){
-	if(communitydelete.equals("COMMUNITY_DELETE_OK")){
-		%>
-		<script type="text/javascript">
-		alert("성공적으로 삭제되었습니다");
-		location.href = "community?param=communitylist";
-		</script>
-		<%
-	}
-	else{
-		%>
-		<script type="text/javascript">
-		alert("삭제되지 않았습니다");
-		location.href = "community?param=communitylist";
-		</script>
-		<%
-	}	
-}
-
-
-
-%>
 </body> 
 </html> 
 

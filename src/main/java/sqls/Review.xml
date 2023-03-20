@@ -55,7 +55,6 @@
 		order by readcount desc
 	</select>
 	
-	
 	<!-- 최신순 -->
 	<select id="wdateOrder" parameterType="mul.cam.a.dto.ReviewDto"
 		resultType="mul.cam.a.dto.ReviewDto">
@@ -111,7 +110,7 @@
 	</delete>
 	
 	
-	<!-- 조회수 -->
+	<!-- 조회수 증가 -->
 	<update id="readcount" parameterType="Integer">
 		update review
 		set readcount=readcount+1
@@ -157,6 +156,12 @@
 	</select>
 	
 	
-	
+	<!-- 불러오기 테스트 -->
+	<!-- <select id="reviewCommunityList" parameterType="mul.cam.a.dto.CommunityDto"
+		resultType="mul.cam.a.dto.CommunityDto">
+		select *
+		from community
+		where id=#{id}
+	</select> -->
 	
 </mapper>

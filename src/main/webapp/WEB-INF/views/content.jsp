@@ -1,20 +1,19 @@
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page import="mul.cam.a.dto.MemberDto" %>
-<%
-    MemberDto login = (MemberDto)session.getAttribute("login");
-%>
 <html>
 
 <head>
     <title>Title</title>
-
 </head>
 
 <body>
 <div class="container">
-    <img src="pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
+    <img src="pageimage/mainImage/image01.jpg" class="img-fluid" alt="Responsive image">
+</div>
+<div class="container">
+    <img src="pageimage/mainImage/content-01.JPG" class="img-fluid" alt="Responsive image">
+</div>
+<div class="container">
+    <img src="pageimage/mainImage/content-02.JPG" class="img-fluid" alt="Responsive image">
 </div>
 
 </body>

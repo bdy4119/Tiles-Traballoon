@@ -1,10 +1,9 @@
-<%@page import="mul.cam.a.util.Utility" %>
 <%@page import="mul.cam.a.dto.TripDto" %>
 <%@page import="java.util.List" %>
-<%@ page import="org.springframework.ui.Model" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%
+    HttpSession loginsession = request.getSession();
+    String userId = (String) loginsession.getAttribute("id");
     TripDto dto;
 %>
 <html>
@@ -50,17 +49,18 @@
             color: #333;
         }
 
+        .card-body {
+            overflow: hidden;
+            height: auto;
+        }
+
+        .card-body img {
+            max-width: 100%;
+        }
 
     </style>
 </head>
 <body>
-
-
-
-
-
-
-
 <%
     String korName = "";
     String engName = "";
@@ -121,12 +121,13 @@
                     dto = list.get(i);
             %>
             <hr>
-            <a href="tripcity.do?name=seoul">
+            <a href="tripdetail.do?seq=<%=dto.getSeq() %>">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-4">
-                            <img class="card-img-top" src="https://via.placeholder.com/500x500.png?text=Image+1"
-                                 alt="Card image cap">
+                            <div class="card-body">
+                                <%=dto.getImage() %>
+                            </div>
                         </div>
                         <div class="col-8">
                             <div class="card-body">
@@ -146,5 +147,19 @@
     </div>
 </main>
 <br>
+<div id="user">
+    <%
+        if (loginsession.getAttribute("id").equals("admin")) {
+    %>
+    <div class="d-flex justify-content-center mt-4">
+        <form action="tripadmin.do" method="POST">
+            <input type="hidden" name="admin" value="admin">
+            <button type="submit" class="btn btn-sm btn-outline-secondary">Admin</button>
+        </form>
+    </div>
+    <%
+        }
+    %>
+</div>
 </body>
 </html>

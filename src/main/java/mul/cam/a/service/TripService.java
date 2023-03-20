@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface TripService {
     List<TripDto> triplist(String city);
+
+    List<TripDto> tripAllList();
+
     boolean writeTrip(TripDto dto);
 
     TripDto getTrip(int seq);
@@ -14,4 +17,7 @@ public interface TripService {
 
     boolean answerTrip(TripDto dto);
 
+    boolean tripdelete(int seq);
+
+    int tripReadcount(int seq);
 }

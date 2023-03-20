@@ -4,8 +4,8 @@
 	--body-background-color: #f5f6f7;
 	--font-color: white;
 	--border-gray-color : #dadada;
-	--green-color: rgb(136, 240, 215);
-	--green-border-color: rgb(136, 240, 215);
+	--green-color:#c0c0c0;
+	--green-border-color: #c0c0c0;
 }
 
 
@@ -14,19 +14,6 @@
 	margin:0;
 	padding:0;
 }
-
-body{
-	/* background:var(--body-background-color); */
-	/* 배경 꽉차게 */
-	background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),
-					url('TraballoonTiles/images/maldives-g2060b9077_1920.jpg')
-					no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-
 
 
 .main-container{
@@ -78,7 +65,7 @@ body{
 	width: 465px;
 	height :48px;
 	border: solid 1px var(	--border-gray-color );
-	background: white;
+	background: rgba(255,255,255);
 }
 .password-wrap{
 	margin-top: 13px;
@@ -91,6 +78,7 @@ body{
 	margin-left: 10px;
 	height:30px;
 }
+
 .login-button-wrap {
 	padding-top: 13px;
 }
@@ -166,17 +154,11 @@ body{
 
 }
 footer{
-   
-	padding-top: 95px;
-	padding-bottom: 15px;
-
+	margin-top: 6%;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
 	width:768px;
-
-
-
 }
 .copyright-wrap{
 

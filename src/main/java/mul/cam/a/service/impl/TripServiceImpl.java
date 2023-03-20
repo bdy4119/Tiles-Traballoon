@@ -20,6 +20,12 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
+
+    public List<TripDto> tripAllList() {
+        return dao.tripAllList();
+    }
+
+    @Override
     public boolean writeTrip(TripDto dto) {
         int n = dao.writeTrip(dto);
         return n>0?true:false;
@@ -41,6 +47,17 @@ public class TripServiceImpl implements TripService {
         dao.answerTripUpdate(dto);
         int n = dao.answerTripInsert(dto);
         return n>0?true:false;
+    }
+
+    @Override
+    public boolean tripdelete(int seq) {
+        int n = dao.tripdelete(seq);
+        return n>0?true:false;
+    }
+
+    @Override
+    public int tripReadcount(int seq) {
+        return dao.tripReadcount(seq);
     }
 
 }

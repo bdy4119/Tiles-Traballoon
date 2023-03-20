@@ -22,66 +22,82 @@
             padding: 10px;
             margin-top: 40px; /* 상단 간격 조정 */
         }
+
         .board-sort {
             display: flex;
             align-items: center;
             padding-bottom: 15px;
         }
+
         .search-container {
             display: flex;
             align-items: center;
         }
+
         .custom-select {
             width: 100px;
             margin-right: 10px;
         }
+
         .form-control {
             flex: 1;
             margin-right: 10px;
         }
+
         .btn-secondary {
             width: 70px;
         }
+
         a {
             color: #666; /* 적용할 색상 */
             text-decoration: none; /* 밑줄 제거 */
         }
+
         td, th {
             color: #666;
         }
+
         table {
             font-size: 14px;
         }
+
         .pagination a, .pagination span {
             color: #666; /* 글씨 색상 */
             background-color: #fff; /* 버튼 색상 */
             /* 버튼 테두리 색상 */
         }
+
         .pagination a:hover, .pagination span:hover {
             color: #666; /* 호버 시 글씨 색상 */
             background-color: #eceef0; /* 호버 시 버튼 색상 */
             /* 호버 시 버튼 테두리 색상 */
         }
+
         .pagination .page-item.active .page-link {
             color: #666;
             background-color: #eceef0;
             border-color: #dee2e6;
         }
+
         .pagination-container {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin: 0px 50px;
         }
+
         .write-button-container {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
         }
+
         .button-wrapper .btn {
             width: 70px;
         }
     </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -92,26 +108,31 @@
     int pageNumber = (Integer) request.getAttribute("pageNumber");
     String choice = (String) request.getAttribute("choice");
     String search = (String) request.getAttribute("search");
+
+    String sortType = (String) request.getAttribute("sortType");
 %>
 
 <div class="container">
     <img src="pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
     <div class="board-header">
-        <div class="board-sort">
-            <select class="custom-select" id="sort" name="sort">
-                <option selected>최신순</option>
-                <option value="oldsort">오래된순</option>
-                <option value="reviewsort">조회순</option>
-                <option value="commentsort">댓글순</option>
+        <div class="board-sort" style="margin-bottom: -13px;">
+            <!-- 원하는 순서로 보기 -->
+            <select class="custom-select" id="sort" name="sort" onchange="sortTable()">
+                <option value="wdate" <% if (sortType.equals("wdate")) { %>selected<% } %>>최신순</option>
+                <option value="longdate" <% if (sortType.equals("longdate")) { %>selected<% } %>>옛날순</option>
+                <option value="readcount" <% if (sortType.equals("readcount")) { %>selected<% } %>>조회수순</option>
             </select>
+            <!-- 원하는 순서로 보기 END-->
         </div>
         <div class="search-container">
             <select class="custom-select" id="choice" name="choice">
-                <option selected>검색</option>
-                <option value="title">제목</option>
+                <%--                <option selected>제목</option>--%>
+                <option selected value="title">제목</option>
                 <option value="content">내용</option>
                 <option value="writer">작성자</option>
             </select>
+
+
             <input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()"
                    placeholder="검색어"
                    value="<%=search %>">
@@ -124,9 +145,10 @@
             <thead style="background-color: #f8f9fa;">
             <tr>
                 <th scope="col" style="width: 8%; text-align: center;">번호</th>
-                <th scope="col" style="width: 60%">제목</th>
+                <th scope="col" style="width: 50%">제목</th>
                 <th scope="col" style="width: 16%; text-align: center;">조회수</th>
-                <th scope="col" style="width: 16%; text-align: center;">작성자명</th>
+                <th scope="col" style="width: 16%; text-align: center;">작성일</th>
+                <th scope="col" style="width: 16%; text-align: center;">작성자</th>
             </tr>
             </thead>
             <tbody>
@@ -167,6 +189,8 @@
 
                 <td style="text-align: center;"><%=dto.getReadcount() %>
                 </td>
+                <td style="text-align: center;"><%=dto.getWdate() %>
+                </td>
                 <td style="text-align: center;"><%=dto.getId() %>
                 </td>
 
@@ -186,8 +210,9 @@
             </nav>
         </div>
         <div class="write-button-container">
-            <div class="button-wrapper">
-                <a href="communitywrite.do" class="btn btn-secondary">글쓰기</a>
+            <div class="button-wrapper" style="margin-right: -50px;">
+                <a href="communitywrite.do" class="btn btn-secondary"
+                   style="margin-right: 5px; padding-left: 10px; padding-right: 10px;">글쓰기</a>
             </div>
         </div>
     </div>
@@ -232,11 +257,23 @@
             }
         });
     </script>
+
+    <script>
+        function sortTable() {
+            var value = document.getElementById("sort").value;
+            if (value === "wdate") {
+                window.location.href = 'comWdateOrder.do';
+            } else if (value === "longdate") {
+                window.location.href = 'comLongdateOrder.do';
+            } else if (value === "readcount") {
+                window.location.href = 'comReadcountOrder.do';
+            }
+        }
+    </script>
 </div>
 
 </body>
 
 </html>
-
 
 
