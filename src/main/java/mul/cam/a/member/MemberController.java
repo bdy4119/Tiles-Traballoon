@@ -2,6 +2,7 @@ package mul.cam.a.member;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -33,7 +34,28 @@ public class MemberController {
 
 		return "login";
 	}
+	@GetMapping(value = "mypageReference.do")
+	public String mypageReference(HttpSession session, Model model) {
+		 System.out.println("MypageController mypageAf " + new Date());
+		
+		String id = (String) session.getAttribute("id");
+		model.addAttribute("id", id);
+		
+		return "mypageReference";
+	}
+	@GetMapping(value = "mypageAf.do")
+	public MemberDto mypageAf(HttpSession session, Model model) {
+		// System.out.println("MypageController mypageAf " + new Date());
+		
+		String id = (String) session.getAttribute("id");
+		MemberDto info = service.info(id);
+		
 
+		model.addAttribute("info", info);
+		model.addAttribute("id", id);
+		return info;
+	}
+	
 	@RequestMapping(value = "regi.do", method = RequestMethod.GET)
 	public String regi() {
 		//	System.out.println("MemberController regi " + new Date());
@@ -80,7 +102,7 @@ public class MemberController {
 		// isS 가 데이터의 변동으로 인해서 0보다 커졌느냐 를 묻고 (service에서)
 		// 0보다 커지면 true이기때문에 
 		boolean isS = service.deleteMember(id);
-		System.out.println(id);
+		
 		String deleteMember="";
 		
 		if(isS) {	// true일때 delmem 에 DELETE_MEMBER_OK를 담아주
@@ -131,12 +153,13 @@ public class MemberController {
 		boolean isS = service.updateMember(dto);
 		// 수정된 db의 세션값을 다시 가져온 것 
 		MemberDto login = service.login(dto);
+		System.out.println(login);
+				
 		session.setAttribute("nickname", dto.getNickname());
 		session.setAttribute("phonenumber", dto.getPhonenumber());
 		session.setAttribute("address", dto.getAddress());
 		session.setAttribute("email", dto.getEmail());
 		session.setAttribute("pwd", dto.getPwd());
-		
 		
 		// isS가 판단된 이후에 model로 포장해서 받을 컨테이너 생성
 		String updateMember = "";
@@ -167,7 +190,7 @@ public class MemberController {
 		// 모델에 List를 넣어서 보냄
 		model.addAttribute("list", list);
 		
-		return "mypage"; // 짐싸서 보낸다 행선지를 정하는것은 return;
+		return "mypageAf"; // 짐싸서 보낸다 행선지를 정하는것은 return;
 	}
 	
 	// getmapping 으로 보내기로했는데 약속이 깨진다. 
@@ -176,10 +199,10 @@ public class MemberController {
 //	@GetMapping(value = "allMember.do")
 //	public List<MemberDto> allMember(String id) {
 //		List<MemberDto> list = service.allMember();
-////		return list;	// 모델에 List를 넣어서 보냄
-//		return service.allMember(); // service.allMember()가 필요한 곳에서 호출한다
+//		return list;	// 모델에 List를 넣어서 보냄
+////		return service.allMember(); // service.allMember()가 필요한 곳에서 호출한다
 //	}	// 어떤 view에서든 allMember.do 를 호출하면 여기로옴
-//		// view에서 호출하면 리턴값을 준다 . 
+		// view에서 호출하면 리턴값을 준다 . 
 	
 	
 //	@GetMapping(value = "NewFile.do")

@@ -305,11 +305,13 @@ add foreign key(id) references mypage(id);
 alter table review
 add foreign key(id) references mypage(id);
 
--- db에서 데이터 뿌리기리한 쿼리
+-- db에서 데이터 뿌리기한 쿼리
 insert into mypage
 values (1, 'abc', '제목', '내용', now(), 0, 0);
+
 select *
-from mypage;
+from member;
+
 create table mypage
 (
 	seq int auto_increment primary key,
@@ -346,4 +348,18 @@ create table mypagecommunityAf
 );
 insert into mypagecommunity
 VALUES (2, 'abc','길떵이', 1, 0, 0, 1, 'abc', 'abc', CURRENT_TIMESTAMP, 0, 0);
+
+drop table reference;
+
+create table reference
+(
+	seq int auto_increment primary key,
+	id varchar(50) not null,
+    reftext varchar(4000) not null,
+    refwdate timestamp not null,
+    del decimal(1) not null,
+    auth decimal(8) not null
+);
+select * from reference;
+use travel;
 -- 동민 DB-------------------------------------------------------------------------------------------

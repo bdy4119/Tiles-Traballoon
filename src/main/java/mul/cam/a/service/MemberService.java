@@ -20,6 +20,8 @@ public interface MemberService {
 	boolean deleteMember(String id);
 	
 	boolean updateMember(MemberDto dto);
+	
+	MemberDto info(String id);
 	// 추 수 삭은 인트
 	// addmem을 불린
 }

@@ -10,15 +10,16 @@ import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
 
 public interface MypageService {
-
-	List<MypageDto> mypageCommunitylist(MypageParam community);	
-	int getAllmypageCommunity(MypageParam community);
 	
+	// 멤버 리스트로 뿌리기
 	List<MypageDto> allMember();
-	
-	MypageDto info(MypageDto dto);
 	
 	List<MypageDto> allWriteme();
 	
+	List<CommunityDto> communityList(CommunityParam community);	
+	int getAllCommunity(CommunityParam community);
 	
+	//리스트 뿌리기
+	List<ReviewDto> review(ReviewParam Param);
+	int getAllReview(ReviewParam Param);
 }

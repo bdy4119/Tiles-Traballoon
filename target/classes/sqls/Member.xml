@@ -27,6 +27,7 @@
 	where id=#{id} and pwd=#{pwd}
 </select>
 
+
 <!-- 멤버테이블에서 삭제 -->
 <delete id="deleteMember" parameterType="String">
 	delete 
@@ -43,6 +44,12 @@
 	<!-- key값은 id -->
 	where id=#{id}
 </update>
+
+<select id="info" parameterType="String" resultType="mul.cam.a.dto.MemberDto">
+	select *
+	from member
+	where id=#{id}
+</select>
 
 </mapper>
 

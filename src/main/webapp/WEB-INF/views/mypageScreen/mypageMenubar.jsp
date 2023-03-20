@@ -1,12 +1,19 @@
+<%@page import="mul.cam.a.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+MemberDto login = (MemberDto)session.getAttribute("login");
+%>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container">
+    <img src="pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
+</div><br><br>
 	<div class="container">
 		<div id="mypage-nav" class="hidden-md-down">
 			<div class="row row-0 top">
@@ -26,15 +33,15 @@
 				</div>
 
 				<div class="col-4 ">
-					<a href="mypageWriteme.do"> <img
-						src="images/9165605_pencil_write_icon (1).png"> <span
+					<a href="mypageReviewAf.do?choice=검색&search=<%=login.getId()%>"> <img
+						src="images/9165605_pencil_write_icon (1).png"><span
 						class="txt-h4 ls-04">내가 쓴 게시글</span>
 					</a>
 				</div>
 			</div>
 			<div class="row row-0 bottom">
 				<div class="col-6">
-					<a href="mypageRefence.do"> <img
+					<a href="mypageReference.do"> <img
 						src="images/5355695_chat_comment_email_letter_mail_icon.png">
 						<span class="txt-h4 ls-04">문의하기</span>
 					</a>
@@ -47,6 +54,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><br><br>
 </body>
 </html>
