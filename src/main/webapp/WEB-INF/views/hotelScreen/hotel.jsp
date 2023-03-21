@@ -16,7 +16,14 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200&display=swap" rel="stylesheet">
 		
-
+	<%
+			int page2 = (int) request.getAttribute("page");
+			int totalCount = (int) request.getAttribute("totalCount");
+			String orderBy = request.getAttribute("orderBy").toString();	//orderBy 받아오기
+			int countPage = 9; // 페이지 당 노출 개수 (9개씩 보여주기)
+			int totalPage = totalCount / countPage;	//전체 페이지 (데이터 총 개수를 한페이지에 보여줄 개수로 나누기)
+	    
+	%>
     <style>
         p{
             font-size: 12px;
@@ -90,12 +97,18 @@
             align-items: flex-start;
             margin: 0px 50px;
          } 
+         .orderBy select {
+	 		border: none;
+	  		cursor: pointer;
+	  		color : gray;
+		}
+  
     </style>
 
 </head>
 <body>
 <br>
-<!--  상단nav : 부트스트랩 4버전으로 변경 -->
+<!--  상단nav -->
 <div class="nav-container" style="width:100%; margin: 0 auto;">
 	<ul class="nav nav-tabs">
 			  <li class="nav-item">
@@ -116,26 +129,17 @@
 			  <li class="nav-item">
 			    <a class="nav-link" href="./menu_jeju.do">제주도</a>
 			  </li>  
-	   <li class="nav-item dropdown">
-	    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">정렬</a>
-	    <div class="dropdown-menu">
-			 <a class="dropdown-item" href="hotel.do?orderBy=">지역순</a>
-	    	 <a class="dropdown-item" href="hotel.do?orderBy=1">인기순</a>
-	    	 <a class="dropdown-item" href="hotel.do?orderBy=2">후기순</a>
-	    </div>
-	  </li>
-	  
-	<script>  //정렬할 때 인기순, 후기순 글자 보이게하기
-	$(document).ready(function() {
-	  $('.dropdown-item').click(function() {
-	    var text = $(this).text();
-	    $(this).parents('.dropdown').find('.dropdown-toggle').html(text);
-	  });
-	});
-</script>
-	    
-	</ul>
+
+
+<div class ="orderBy" style="text-align: right; margin-left: auto;">
+	<select onchange="location.href='./hotel.do?orderBy='+this.value;" style="display: inline-block; margin-right: 2cm;">
+	    <option value="" <%= ("".equals(orderBy)) ? "selected" : "" %>>지역순</option>
+	    <option value="1" <%= ("1".equals(orderBy)) ? "selected" : "" %>>인기순</option>
+	    <option value="2" <%= ("2".equals(orderBy)) ? "selected" : "" %>>후기순</option>
+	</select>
 </div>
+</div>	
+
 
 	<br>
 	
@@ -198,14 +202,7 @@
 	
   <script type="text/javascript">
 
-	    <%
-			int page2 = (int) request.getAttribute("page");
-			int totalCount = (int) request.getAttribute("totalCount");
-			String orderBy = request.getAttribute("orderBy").toString();	//orderBy 받아오기
-			int countPage = 9; // 페이지 당 노출 개수 (9개씩 보여주기)
-			int totalPage = totalCount / countPage;	//전체 페이지 (데이터 총 개수를 한페이지에 보여줄 개수로 나누기)
-	    
-	    %>
+
 	    
 	    
 	    $('#pagination').twbsPagination({
@@ -231,5 +228,3 @@
 
 </body>
 </html>
-	    
-	    
