@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mul.cam.a.dao.ReviewDao;
+import mul.cam.a.dto.CommunityDto;
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
@@ -30,6 +31,30 @@ public class ReviewServiceImpl implements ReviewService{
 	public int getAllReview(ReviewParam Param) {
 		return dao.getAllReview(Param);
 	}
+	
+
+	//readcountOrder
+	@Override
+	public List<ReviewDto> readcountOrder(ReviewDto dto) {
+		return dao.readcountOrder(dto);
+	}
+	
+	
+	//wdateOrder
+	@Override
+	public List<ReviewDto> wdateOrder(ReviewDto dto) {
+		return dao.wdateOrder(dto);
+	}
+	
+	
+	//longdateOrder
+	@Override
+	public List<ReviewDto> longdateOrder(ReviewDto dto) {
+		return dao.longdateOrder(dto);
+	}
+	
+	
+	
 
 	//detail
 	@Override
@@ -37,7 +62,7 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.getReview(seq);
 	}
 	
-	
+	//readcount
 	@Override
 	public int readcount(int seq) {
 		int readcount = dao.readcount(seq);
@@ -47,8 +72,24 @@ public class ReviewServiceImpl implements ReviewService{
 	
 	//reviewwrite
 	@Override
-	public boolean writeReview(ReviewDto dto) {
-		int n = dao.writeReview(dto);
+	public boolean writeReviewAf(ReviewDto dto) {
+		int n = dao.writeReviewAf(dto);
+		return n>0?true:false;
+	}
+	
+	
+	//글수정
+	@Override
+	public boolean reviewUpdate(ReviewDto dto) {
+		int n = dao.reviewUpdate(dto);
+		return n>0?true:false;
+	}
+	
+	
+	//글삭제
+	@Override
+	public boolean reviewDelete(int seq) {
+		int n = dao.reviewDelete(seq);
 		return n>0?true:false;
 	}
 
@@ -74,8 +115,14 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewComment> commentList(int seq) {
 		return dao.commentList(seq);
 	}
+
 	
 	
+	//커뮤니티 글 가져오기 테스트
+	/*
+	 * @Override public List<CommunityDto> reviewCommunityList(CommunityDto dto) {
+	 * return dao.reviewCommunityList(dto); }
+	 */
 	
 	
 	

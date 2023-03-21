@@ -9,4 +9,11 @@
 	from member
 </select>
 
+<select id="allWriteme" parameterType="mul.cam.a.dto.MypageDto"
+	resultType="mul.cam.a.dto.MypageDto">
+	select *
+	from mypage
+	where seq={#seq}, id={#id}
+</select>
+
 </mapper>

@@ -1,58 +1,127 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="mul.cam.a.dto.MemberDto"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!doctype html>
-<html lang="en">
+<%
+    HttpSession loginsession = request.getSession();
+    String userId = (String) loginsession.getAttribute("id");
+    
+   	MemberDto login = (MemberDto)session.getAttribute("login");
+%>
+
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SemiProject</title>
 
-    <%--BootStrap--%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
     <style>
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        .blog-header {
+            line-height: 1;
+            border-bottom: 1px solid #e5e5e5;
         }
+
+        .blog-header-logo {
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-size: 2.25rem;
+        }
+
+        .nav-scroller .nav {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        a.mylink {
+            color: #666;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        a.mylink:hover {
+            text-decoration: none;
+            color: #444;
+        }
+
+        .my-icon {
+            cursor: pointer;
+        }
+
     </style>
 
 </head>
 
 <body>
-<%--container--%>
-<div class="container-fluid" >
 
-        <%--헤더--%>
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a href="main.do" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                <img src="images/logo.png">
-            </a>
-
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="localtravel.do" class="nav-link px-2 link-dark">지역별 여행</a></li>
-                <li><a href="hotel.do" class="nav-link px-2 link-dark">숙소 추천</a></li>
-                <li><a href="review.do" class="nav-link px-2 link-dark">여행 리뷰</a></li>
-                <li><a href="community.do" class="nav-link px-2 link-dark">커뮤니티</a></li>
-            </ul>
-
-            <div class="col-md-3 text-end">
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="mypage.do" class="nav-link px-2 link-dark">마이페이지</a></li>
-                    <li>
-                        <a class="btn btn-outline-primary me-2" href="login.do" role="button">Login</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-primary" href="regi.do" role="button">Sign-up</a>
-                    </li>
-                </ul>
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1">
+                <a class="text-muted"></a>
+                <%
+                    if (loginsession.getAttribute("id") != null) {
+                %>
+                <div id="user">
+                    <i id="user-icon" class="fa fa-user-circle my-icon fa-lg"></i>
+                    <a class="mylink" href="mypage.do"><%= login.getNickname() %>님 환영합니다</a>
+                </div>
+                <%
+                    }
+                %>
             </div>
-        </header>
-        <%--헤더--%>
 
+
+            <div class="col-4 text-center">
+                <a class="blog-header-logo text-dark" href="main.do">Traballoon</a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+
+
+                <%
+                    if (loginsession.getAttribute("id") == null) {
+                %>
+                <div id="login">
+                    <a class="btn btn-sm btn-outline-secondary" href="login.do">Login</a>
+                </div>
+                <%
+                } else {
+                %>
+                <div>
+                    <a class="btn btn-sm btn-outline-secondary" href="sessionOut.do">Log out</a>
+                </div>
+                <%
+                    }
+                %>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="d-flex justify-content-center">
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+                <a href="trip.do" class="p-2 text-muted" style="margin-right: 50px;">지역별 여행</a>
+                <a href="hotel.do" class="p-2 text-muted" style="margin-right: 50px;">숙소 추천</a>
+                <a href="review.do" class="p-2 text-muted" style="margin-right: 50px;">여행 리뷰</a>
+                <a href="community.do" class="p-2 text-muted" style="margin-right: 50px;">커뮤니티</a>
+
+            </nav>
+        </div>
+    </div>
 </div>
+
+<script>
+    var userIcon = document.getElementById("user-icon");
+    userIcon.addEventListener("click", function() {
+        location.href = "mypage.do";
+    });
+</script>
+
+</body>
+</html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import mul.cam.a.dao.ReviewDao;
+import mul.cam.a.dto.CommunityDto;
 import mul.cam.a.dto.ReviewComment;
 import mul.cam.a.dto.ReviewDto;
 import mul.cam.a.dto.ReviewParam;
@@ -30,7 +31,27 @@ public class ReviewDaoImpl implements ReviewDao{
 	public int getAllReview(ReviewParam Param) {
 		return session.selectOne(ns + "getAllReview", Param);
 	}
+	
+	
+	//readcountOrder
+	@Override
+	public List<ReviewDto> readcountOrder(ReviewDto dto) {
+		return session.selectList(ns + "readcountOrder", dto);
+	}
 
+	
+	//wdateOrder
+	@Override
+	public List<ReviewDto> wdateOrder(ReviewDto dto) {
+		return session.selectList(ns + "wdateOrder", dto);
+	}
+	
+	//longdateOrder
+	@Override
+	public List<ReviewDto> longdateOrder(ReviewDto dto) {
+		return session.selectList(ns + "longdateOrder", dto);
+	}
+	
 	
 	//reviewdetail
 	@Override
@@ -45,9 +66,22 @@ public class ReviewDaoImpl implements ReviewDao{
 	
 	//reviewwrite
 	@Override
-	public int writeReview(ReviewDto dto) {
-		return session.insert(ns + "writeReview", dto);
+	public int writeReviewAf(ReviewDto dto) {
+		return session.insert(ns + "writeReviewAf", dto);
 	}
+	
+	//글수정
+	@Override
+	public int reviewUpdate(ReviewDto dto) {
+		return session.update(ns + "reviewUpdate", dto);
+	}
+	
+	//글삭제
+	@Override
+	public int reviewDelete(int seq) {
+		return session.update(ns + "reviewDelete", seq);
+	}
+	
 	
 	//답글 수정
 	@Override
@@ -71,6 +105,16 @@ public class ReviewDaoImpl implements ReviewDao{
 	public List<ReviewComment> commentList(int seq) {
 		return session.selectList(ns + "commentList", seq);
 	}
+
+	
+	//커뮤니티 글 가져와보기
+	/*
+	 * @Override public List<CommunityDto> reviewCommunityList(CommunityDto dto) {
+	 * return session.selectList(ns + "reviewCommunityList", dto); }
+	 */
+	
+
+
 
 
 	
