@@ -49,7 +49,7 @@
 
 
 <div class="container">
-    <img src="pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
+    <img src="images/pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <br>

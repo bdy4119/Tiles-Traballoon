@@ -121,7 +121,7 @@
 <body> 
 <br><br>
 <div class = "maintitle">
-	<img src="./pageimage/mainimage/tralogo.png">
+	<img src="./images/pageimage/mainimage/tralogo.png">
 </div>
 
 <br>
@@ -134,7 +134,7 @@
 	
 	<td>
 	<a href="trip.do">
-		<img src = "./pageimage/mainimage/mainlocal.png">
+		<img src = "./images/pageimage/mainimage/mainlocal.png">
 		<p> 지역별여행</p>
 		<pre>우리나라, 어디까지 가봤니?
 아름다운 여행지를
@@ -144,7 +144,7 @@
 	
 	<td>
 	<a href="hotel.do">
-	<img src = "pageimage/mainimage/mainhotels.png">
+	<img src = "./images/pageimage/mainimage/mainhotels.png">
 		<p>숙소추천</p>
 	<pre>감성숙소부터 안락한 호텔까지!
 여행 중 지친 몸과 마음,
@@ -155,7 +155,7 @@
 	
 	<td>
 	<a href="review.do"> 
-	<img src = "./pageimage/mainimage/mainreview.png">
+	<img src = "./images/pageimage/mainimage/mainreview.png">
 		<p>여행리뷰</p>
 	<pre>나만의 국내 추천 코스를
 많은 사람들에게 공유해주세요!
@@ -165,7 +165,7 @@
 	 
 	<td>
 	<a href="community.do"?>
-	<img src = "./pageimage/mainimage/maincommunity.png">
+	<img src = "./images/pageimage/mainimage/maincommunity.png">
 		<p>커뮤니티</p>
 	<pre>다양한 정보를 공유할 수 있어요.
 여행과 관련된 나의 생각을
@@ -183,46 +183,46 @@
 
 <br><br>
 <div class="popular"> 
-	<img src = "./pageimage/mainimage/recent.png">
+	<img src = "./images/pageimage/mainimage/recent.png">
 </div>
 
 <br><br>
 <div class="flex-container">
-	<div style="background-image: url('./pageimage/tripImage/trip-seoul.png');" onclick="location.href='./tripcity.do?name=seoul';">
+	<div style="background-image: url('./images/pageimage/tripImage/trip-seoul.png');" onclick="location.href='./tripcity.do?name=seoul';">
 		<h3>SEOUL</h3>
 	</div>	
 	<div style="background-image: url();">		
 	</div>
 	
-	<div style="background-image: url('./pageimage/tripImage/trip-jeju.png');" onclick="location.href='./tripcity.do?name=jeju';">
+	<div style="background-image: url('./images/pageimage/tripImage/trip-jeju.png');" onclick="location.href='./tripcity.do?name=jeju';">
 		<h3>JEJU</h3>
 	</div>
 	
 	<div style="background-image: url();">
 	</div>
 	
-	<div style="background-image: url('./pageimage/tripImage/trip-chungcheong.png');" onclick="location.href='./tripcity.do?name=chungcheong';">
+	<div style="background-image: url('./images/pageimage/tripImage/trip-chungcheong.png');" onclick="location.href='./tripcity.do?name=chungcheong';">
 		<h3>CHUNGCHEONG</h3>
 	</div>
 	
 	<div style="background-image: url();">
 	</div>
 	
-	<div style="background-image: url('./pageimage/tripImage/trip-gangwon.png');" onclick="location.href='./tripcity.do?name=gangwon';">
+	<div style="background-image: url('./images/pageimage/tripImage/trip-gangwon.png');" onclick="location.href='./tripcity.do?name=gangwon';">
 		<h3>GANGWON</h3>
 	</div>
 	
 	<div style="background-image: url();">
 	</div>
 	
-	<div style="background-image: url('./pageimage/tripImage/trip-gyeongsang.png');" onclick="location.href='./tripcity.do?name=gyeongsang';">
+	<div style="background-image: url('./images/pageimage/tripImage/trip-gyeongsang.png');" onclick="location.href='./tripcity.do?name=gyeongsang';">
 		<h3>GYEONGSANG</h3>
 	</div>
 	
 	<div style="background-image: url();">
 	</div>
 	
-	<div style="background-image: url('./pageimage/mainimage/trip_jeolla.png');" onclick="location.href='./tripcity.do?name=jeolla';">
+	<div style="background-image: url('./images/pageimage/mainimage/trip_jeolla.png');" onclick="location.href='./tripcity.do?name=jeolla';">
 		<h3>JEOLLA</h3>
 	</div>
 	

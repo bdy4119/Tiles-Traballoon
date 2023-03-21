@@ -55,7 +55,7 @@
 %>
 
 <div class="container">
-    <img src="images/beach.jpg" class="img-fluid" alt="Responsive image">
+    <img src="images/review/beach.jpg" class="img-fluid" alt="Responsive image">
     <br>
     <br>
     <form action="writeReviewAf.do" id="frm" method="post" type="submit" enctype="multipart/form-data">

@@ -22,7 +22,7 @@
 			/* background:var(--body-background-color); */
 			/* 배경 꽉차게 */
 			background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),
-							url('./pageimage/image01.jpg')
+							url('./images/pageimage/image01.jpg')
 							no-repeat center fixed;
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
@@ -58,7 +58,7 @@
 	<div class="main-container" id="container">
 		<header class="blog-header py-3" style="margin-top: -8%;">
 	         <div class="col-4 text-center">
-	                <a class="blog-header-logo" href="main.do">Traballoon</a>
+	                <a class="blog-header-logo" href="maintraballoon.do">Traballoon</a>
 	         </div>
 	    </header>
 	

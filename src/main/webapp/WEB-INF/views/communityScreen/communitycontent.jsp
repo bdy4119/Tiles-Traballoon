@@ -113,7 +113,7 @@
 %>
 
 <div class="container">
-    <img src="pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
+    <img src="images/pageimage/image01.jpg" class="img-fluid" alt="Responsive image">
     <div class="board-header">
         <div class="board-sort" style="margin-bottom: -13px;">
             <!-- 원하는 순서로 보기 -->

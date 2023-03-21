@@ -45,7 +45,7 @@
 	
 <table style="width:100%">
 	<tr>				
-		<td colspan="2" style="background-image:url('pageimage/mainimage/bgocean.png'); height: 550px; 
+		<td colspan="2" style="background-image:url('images/pageimage/mainimage/bgocean.png'); height: 550px; 
 			background-size : contain; background-position: center center; background-repeat: no-repeat;">
 			<div style="text-align: center; ">
 				<h1>FLY ON THE TRABALLOON</h1>

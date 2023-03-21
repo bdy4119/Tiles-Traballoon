@@ -76,7 +76,7 @@
 %>
 
 <div class="container">
-    <img src="pageimage/mainImage/image01.jpg" class="img-fluid" alt="Responsive image">
+    <img src="images/pageimage/mainImage/image01.jpg" class="img-fluid" alt="Responsive image">
     <div class="table-responsive">
         <table class="table" style="border-collapse: collapse;">
             <thead style="background-color: #f8f9fa;">
