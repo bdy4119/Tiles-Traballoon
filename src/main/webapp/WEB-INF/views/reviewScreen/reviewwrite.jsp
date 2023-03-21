@@ -72,11 +72,11 @@
 					"content" : $("content").val()},
 				success: function(str) {
 					if(str == "REVIEW_ADD_OK") {
-						alert("글이 등록되었습니다.");
+						/* alert("글이 등록되었습니다."); */
 						location.href="review.do";
 					}
 				}, error: function() {
-					alert("글을 등록하지 못했습니다.");
+					/* alert("글을 등록하지 못했습니다."); */
 					location.href="review.do";
 				}
 			})
