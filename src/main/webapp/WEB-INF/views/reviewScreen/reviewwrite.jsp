@@ -33,8 +33,25 @@
 <body>
 
 <%
-	MemberDto login = (MemberDto)session.getAttribute("login");
-	ReviewDto dto = (ReviewDto)request.getAttribute("dto");
+    ReviewDto dto = (ReviewDto) request.getAttribute("dto");
+    
+	
+	Object loginObj = session.getAttribute("login");	//dto에 안담겨있을 수도 있으므로
+	MemberDto login = new MemberDto(); //초기화해주기
+	
+	boolean isS = false;
+	if(loginObj == null){
+		%>
+		<script>
+			alert('로그인 해 주십시오');
+			location.href = "login.do";
+		</script>
+		<%
+		} else {
+			login = (MemberDto)session.getAttribute("login");
+			isS = true;
+		}
+		request.setAttribute("isS", isS);
 %>
 
 <div class="container">
@@ -74,11 +91,14 @@
 					if(str == "REVIEW_ADD_OK") {
 						alert("글이 등록되었습니다.");
 						location.href="review.do";
+					} else {
+						alert("글을 등록하지 못했습니다.");
+						location.href="review.do";
 					}
-				}, error: function() {
+				}/* , error: function() {
 					alert("글을 등록하지 못했습니다.");
 					location.href="review.do";
-				}
+				} */
 			})
 		})
 	});
