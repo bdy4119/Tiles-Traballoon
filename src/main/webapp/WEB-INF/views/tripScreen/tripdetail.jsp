@@ -34,6 +34,19 @@
 
     </style>
 
+    <%
+        //login정보 얻어오기
+        Object loginObject = session.getAttribute("login");
+        //login이 null일 경우 오류나므로 login 변수를 null이 아닌 MemberDto인스턴스로 초기화
+        MemberDto login = new MemberDto();
+        boolean isLogin = false;	//isLogin 의 초기값은 false
+        if (loginObject != null) {	//로그인이 되고나서야
+            login = (MemberDto)session.getAttribute("login");	// 로그인 값을 얻어올 수 있다.
+            isLogin = true;	//로그인이 되면 isLogin은 true로 바뀐다.
+        }
+        request.setAttribute("isLogin", isLogin);	//jsp에서 사용 가능하도록 isLogin 값 request객체에 저장
+    %>
+
 </head>
 <body>
 

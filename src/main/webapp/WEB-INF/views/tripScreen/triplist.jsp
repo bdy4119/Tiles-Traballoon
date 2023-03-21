@@ -152,10 +152,7 @@
         if (loginsession.getAttribute("id").equals("admin")) {
     %>
     <div class="d-flex justify-content-center mt-4">
-        <form action="tripadmin.do" method="POST">
-            <input type="hidden" name="admin" value="admin">
-            <button type="submit" class="btn btn-sm btn-outline-secondary">Admin</button>
-        </form>
+        <a class="btn btn-sm btn-outline-secondary" href="tripadmin.do">Admin</a>
     </div>
     <%
         }

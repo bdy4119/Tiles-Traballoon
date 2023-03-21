@@ -27,7 +27,6 @@ public class TripController {
     }
 
     @GetMapping(value = "tripcity.do")
-
     public String tripcity(HttpServletRequest req, Model model, HttpSession session){
         String name = req.getParameter("name");
         List<TripDto> list = service.triplist(name);
@@ -39,15 +38,15 @@ public class TripController {
         return "triplist";
     }
 
-    @PostMapping (value = "tripadmin.do")
-    public String tripadmin(@RequestParam("admin") String admin, Model model){
+    @GetMapping (value = "tripadmin.do")
+    public String tripadmin(Model model){
         List<TripDto> list = service.tripAllList();
         model.addAttribute("tripadminlist", list);
         return "tripadminlist";
     }
 
-    @PostMapping(value = "tripwrite.do")
-    public String tripwrite(@RequestParam("admin") String admin) {
+    @GetMapping(value = "tripwrite.do")
+    public String tripwrite() {
         return "tripwrite";
     }
 

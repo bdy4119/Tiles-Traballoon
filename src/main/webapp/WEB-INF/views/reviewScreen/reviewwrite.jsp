@@ -76,7 +76,6 @@
 						location.href="review.do";
 					}
 				}, error: function() {
-					alert("글을 등록하지 못했습니다.");
 					location.href="review.do";
 				}
 			})
