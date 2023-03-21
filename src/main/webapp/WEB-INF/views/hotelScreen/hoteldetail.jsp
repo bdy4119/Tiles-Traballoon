@@ -2,7 +2,6 @@
 <%@page import="mul.cam.a.dto.HotelDto"%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -158,7 +157,10 @@ target="_blank : 새탭으로 이동 -->
 <div class="btn-group">	
     <a href="<%=hotelbook %>" class="btn btn-secondary" data-toggle="tooltip" title="호텔페이지로 이동!" target="_blank">예약</a>
     <a href="#app" class="btn btn-light" data-toggle="tooltip" title="후기를 남겨주세요!">후기</a>
-</div> 
+</div>
+	<div>    
+    	
+ 	</div>
 
 <!--조회수-->
 
@@ -348,6 +350,8 @@ target="_blank : 새탭으로 이동 -->
 				window.location.href = 'login.do';
 			}
 		}
+ 		
+ 			
 		</script>
       	
    

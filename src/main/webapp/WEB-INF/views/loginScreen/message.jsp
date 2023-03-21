@@ -34,7 +34,7 @@
 	%>
 	<script type="text/javascript">
 		alert("로그인되었습니다");
-		location.href = "maintraballoon.do";
+		location.href = "main.do";
 	</script>
 	<%
 	} else {
@@ -71,7 +71,7 @@
 	%>
 	<script type="text/javascript">
 		alert("로그아웃 되었습니다");
-		location.href = "maintraballoon.do";
+		location.href = "main.do";
 	</script>
 	<%
 	}
@@ -139,7 +139,7 @@
 	%>
 	<script type="text/javascript">
 		alert("회원님의 정보가 삭제되었습니다");
-		location.href = "maintraballoon.do";
+		location.href = "sessionLeaveOut.do";
 	</script>
 	<%
 	}else{
@@ -158,7 +158,7 @@
 	%>
 	<script type="text/javascript">
 		alert("회원님의 정보 수정이 완료되었습니다");
-		location.href = "mypageAf.do";
+		location.href = "main.do";
 	</script>
 	<%
 	}else{
@@ -171,7 +171,7 @@
 	}
 	}
 	String refmsg = (String) request.getAttribute("refmsg"); //model 로 받은 짐 푼다
-	if (refmsg != null && message != ("")) {
+	if (refmsg != null && refmsg != ("")) {
 		if (refmsg == ("REF_ADD_YES")) {
 	%>
 	<script type="text/javascript">
@@ -188,7 +188,15 @@
 	<%
 	}
 	}
-	 %>
+	String sessionLeaveOut = (String) request.getAttribute("sessionLeaveOut");
+	if (sessionLeaveOut != null && !sessionLeaveOut.equals("")) {
+	%>
+	<script type="text/javascript">
+		location.href = "main.do";
+	</script>
+	<%
+	}
+	%>
 </body>
 </html>
 

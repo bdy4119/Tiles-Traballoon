@@ -99,6 +99,7 @@
 	                <!-- 	<input type="hidden" name="board_id" value="글번호"> -->
 	                <input type="hidden" name="seq" value="<%=dto.getSeq()%>">
 	                <input type="hidden" name="id" value="<%=login.getId()%>">
+	                <input type="hidden" name="content" value=content>
 	                <div class="form-group">
 							<textarea class="form-control" id="comment_content" name="content"
 	                                  rows="3"></textarea>
@@ -130,7 +131,7 @@
 					$.ajax({
 						url:"reviewCommentWrite.do",
 						type:"get",
-						data:{ "seq":<%=dto.getSeq() %> },
+						data:{ "seq":<%=dto.getSeq() %>,"content":<%=dto.getContent() %> },
 						success:function(list){
 							// alert('success');
 							// alert(JSON.stringify(list));
@@ -156,7 +157,7 @@
 								});
 							},
 							error:function(){
-								alert('error');	
+								alert('error')
 							}		
 					});	
 				});

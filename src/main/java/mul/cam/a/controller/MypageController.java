@@ -3,6 +3,7 @@ package mul.cam.a.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,18 @@ public class MypageController {
 		System.out.println("MypageController mypageAf " + new Date());
 		return "mypage";
 	}
-	
+	@RequestMapping(value = "sessionLeaveOut.do", method = RequestMethod.GET)
+	public String sessionLeaveOut(Model model, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.invalidate();
+
+		String sessionLeaveOut = "logout";
+		
+		model.addAttribute("sessionLeaveOut", sessionLeaveOut);
+		// web-inf/views/message.jsp
+		return "message";
+		
+	}
 	@GetMapping(value = "mypageWriteme.do")
 	public String mypageWriteme() {
 		

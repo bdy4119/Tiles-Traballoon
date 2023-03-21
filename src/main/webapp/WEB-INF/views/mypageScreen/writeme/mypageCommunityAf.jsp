@@ -24,6 +24,11 @@ String search = (String) request.getAttribute("search");
 <script type="text/javascript" src="./jquery/jquery.twbsPagination.min.js"></script>
 
 <style>
+.container1 a{
+	font-weight : bold;
+	color : gray;
+	font-family: Arial, sans-serif;
+}
 .board-header {
 	display: flex;
 	justify-content: space-between;
@@ -66,27 +71,20 @@ String search = (String) request.getAttribute("search");
             <a class="nav-link font-nt " href="mypageReviewAf.do?choice=검색&search=<%=login.getId()%>">여행 리뷰</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link font-nt active" href="mypageCommunityAf.do?choice=검색&search=<%=login.getId()%>">커뮤니티</a>
+            <a class="nav-link font-nt " href="mypageCommunityAf.do?choice=작성자&search=<%=login.getId()%>">커뮤니티</a>
         </li>
     </ul>
 </div>
 <div class="container">
 	<div class="board-header">
-		<div class="board-sort">
-			<select class="custom-select" id="sort" name="sort">
-				<option selected>최신순</option>
-				<option value="oldsort">오래된순</option>
-				<option value="reviewsort">조회순</option>
-				<option value="commentsort">댓글순</option>
-			</select>
-		</div>
+		<div class="board-sort"></div>
 		<div class="search-container">
 			<select class="custom-select" id="choice" name="choice">
-				<option selected>검색</option>
-				<option value="title">제목</option>
-				<option value="content">내용</option>
-				<option value="writer">작성자</option>
-			</select> 
+                <option selected>검색</option>
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+                <option value="writer">작성자</option>
+            </select>
 			<input type="text" class="form-control" id="search" name="search" onkeyup="enterKeyEvent()" 
 				placeholder="검색어" 
 				value="<%=search%>">
@@ -101,7 +99,7 @@ String search = (String) request.getAttribute("search");
 					<th scope="col" style="width: 8%; text-align: center;">번호</th>
 					<th scope="col" style="width: 60%">제목</th>
 					<th scope="col" style="width: 16%; text-align: center;">조회수</th>
-					<th scope="col" style="width: 16%; text-align: center;">작성자명</th>
+					<th scope="col" style="width: 40%%; text-align: center;">작성일자</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -139,7 +137,7 @@ String search = (String) request.getAttribute("search");
 					</td>
 
 					<td style="text-align: center;"><%=dto.getReadcount()%></td>
-					<td style="text-align: center;"><%=dto.getId()%></td>
+					<td style="text-align: center;"><%=dto.getWdate()%></td>
 
 				</tr>
 				<%

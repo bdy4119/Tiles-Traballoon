@@ -27,7 +27,14 @@ public class MemberController {
 	// service 접근(생성)
 	@Autowired
 	MemberService service;
-
+	
+	@GetMapping(value = "main.do")		
+	public String main() {			//layouts.xml의 definition 안 main을 뜻함
+		System.out.println("TilesController main() " + new Date());
+		
+		return "main";
+	}
+	
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String login() {
 		//	System.out.println("MemberController login " + new Date());
@@ -43,6 +50,7 @@ public class MemberController {
 		
 		return "mypageReference";
 	}
+	
 	@GetMapping(value = "mypageAf.do")
 	public MemberDto mypageAf(HttpSession session, Model model) {
 		// System.out.println("MypageController mypageAf " + new Date());

@@ -56,25 +56,20 @@ String search = (String) request.getAttribute("search");
 </style>
 </head>
 <body>
-<div class="container">
+<div class="container" >
     <ul class="nav nav-pills nav-justified">
         <li class="nav-item">
-            <a class="nav-link font-nt" href="mypageReviewAf.do?choice=검색&search=<%=login.getId()%>">여행 리뷰</a>
+            <a class="nav-link font-nt " href="mypageReviewAf.do?choice=검색&search=<%=login.getId()%>">여행 리뷰</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link font-nt active" href="mypageCommunityAf.do?choice=검색&search=<%=login.getId()%>">커뮤니티</a>
+        <li class="nav-item" class="border border-1">
+            <a class="nav-link font-nt " href="mypageCommunityAf.do?choice=검색&search=<%=login.getId()%>">커뮤니티</a>
         </li>
     </ul>
 </div>
 	<div class="container">
 		<div class="board-header">
 			<div class="board-sort">
-				<select class="custom-select" id="sort" name="sort">
-					<option selected>최신순</option>
-					<option value="oldsort">오래된순</option>
-					<option value="reviewsort">조회순</option>
-					<option value="commentsort">댓글순</option>
-				</select>
+				
 			</div>
 			<div class="search-container">
 				<select class="custom-select" id="choice" name="choice">

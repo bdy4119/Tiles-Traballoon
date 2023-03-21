@@ -4,7 +4,7 @@
     
      
 <%
-	response.sendRedirect("maintraballoon.do");
+	response.sendRedirect("main.do");
 %> 
 
 

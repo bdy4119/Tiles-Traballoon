@@ -805,4 +805,13 @@ create table reference
 );
 select * from reference;
 use travel;
+
+create table wishtrip
+(
+	id varchar(20) not null ,
+    city varchar(50) not null,
+    title varchar(200) not null,
+    content text not null,
+    wish int auto_increment not null
+);
 -- 동민 DB-------------------------------------------------------------------------------------------

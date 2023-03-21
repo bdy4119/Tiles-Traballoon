@@ -9,7 +9,6 @@
 	
 	MemberDto info = (MemberDto)request.getAttribute("info");
 //	String info = (String)request.getAttribute("info");
-	System.out.println(info);
 	// 로그인 -> 세션에 로그인정보 저장 -> 로그인이후에 페이지변환 -> responsebody무쓸모
 	/* String i = session.getAttribute("nickname"); */
 %>
@@ -64,7 +63,7 @@
 
 			<div class="move-btn-wrap" align="center">
 				<button type="button" id="updateBtn" class="btn btn-outline-secondary" style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: 1.1rem;">수정하기</button>
-				<button type="button" onclick="location.href='leave.jsp'" class="btn btn-outline-secondary" style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 2.2rem; --bs-btn-font-size: 1.1rem;">취소</button>
+				<button type="button" onclick="location.href='mypageAf.do'" class="btn btn-outline-secondary" style="--bs-btn-padding-y: 1rem; --bs-btn-padding-x: 2.2rem; --bs-btn-font-size: 1.1rem;">취소</button>
 			</div>
 			
 			<form action="updateMember.do" method="post" id="frm" >
@@ -76,14 +75,12 @@
 				<input type="hidden" name="id" id="id1">
 			</form>
 		</div>
-	
-
 
 <script type="text/javascript">
 // 접근방식 자바스크립트 정식
 
 
-// 자바스크립트 함수선언 */
+// 자바스크립트 함수선언 
 // $("#clBtn").click(function(){
 	/* var nickname = document.getElementById("nickname").value;      자바스크립트 정통 함수 활용*/
 //	$("#nickname").val('test입니다');		// val() 안에 내가원하는값을 넣은것 set					/* jquery  함수 활용*/

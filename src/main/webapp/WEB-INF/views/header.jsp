@@ -1,8 +1,11 @@
+<%@page import="mul.cam.a.dto.MemberDto"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
     HttpSession loginsession = request.getSession();
     String userId = (String) loginsession.getAttribute("id");
+    
+   	MemberDto login = (MemberDto)session.getAttribute("login");
 %>
 
 <html>
@@ -66,7 +69,7 @@
                 %>
                 <div id="user">
                     <i id="user-icon" class="fa fa-user-circle my-icon fa-lg"></i>
-                    <a class="mylink" href="mypage.do"><%= userId %>님 환영합니다</a>
+                    <a class="mylink" href="mypage.do"><%= login.getNickname() %>님 환영합니다</a>
                 </div>
                 <%
                     }
@@ -75,7 +78,7 @@
 
 
             <div class="col-4 text-center">
-                <a class="blog-header-logo text-dark" href="maintraballoon.do">Traballoon</a>
+                <a class="blog-header-logo text-dark" href="main.do">Traballoon</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
 

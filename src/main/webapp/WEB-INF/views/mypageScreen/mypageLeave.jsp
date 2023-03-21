@@ -11,8 +11,8 @@ String id = login.getId();
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script	 src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 </head>
 <body>
 	<div class="container">
@@ -45,28 +45,53 @@ String id = login.getId();
 	<div class="container">
 		<form action="deleteMember.do" method="post" id="frm">
 			<input type="hidden" name="id" id="id1" value="<%=login.getId()%>">
-			<button type="button" id="delBtn" class="btn btn-outline-secondary"
-				style="-bs-btn-padding-y: 1rem; - -bs-btn-padding-x: 2.2rem; - -bs-btn-font-size: 1.1rem;">탈퇴하기</button>
-
-			<button type="button" id="ccBtn" class="btn btn-outline-secondary"
-				style="-bs-btn-padding-y: 3rem; - -bs-btn-padding-x: 3.3rem; - -bs-btn-font-size: 1.1rem;">취소</button>
+			<button type="button" class="btn btn-outline-secondary" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="-bs-btn-padding-y: 1rem; - -bs-btn-padding-x: 2.2rem; - -bs-btn-font-size: 1.1rem;">탈퇴하기</button>
+			<button type="button" onclick="location.href='mypageLeave.do'" class="btn btn-outline-secondary" style="-bs-btn-padding-y: 3rem; - -bs-btn-padding-x: 3.3rem; - -bs-btn-font-size: 1.1rem;">취소</button>
+			<!-- <button type="button" id="delBtn" class="btn btn-primary">탈퇴하기</button> -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">회원 탈퇴</h5>
+				        <button type="button"  class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				       	정말 탈퇴하시겠습니까?
+				      </div>
+				      <div class="modal-footer">
+				      	<button type="button" id="delBtn" class="btn btn-primary">탈퇴하기</button>
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 		</form>
 	</div>
-	<script type="text/javascript">
 
+<!-- Modal -->
+
+<script type="text/javascript">
+// 모달 버튼에 이벤트를 건다.
+$('#openModalBtn').on('click', function(){
+	$('#modalBox').modal('show');
+});
+		  // 모달 안의 취소 버튼에 이벤트를 건다.
+$('#closeModalBtn').on('click', function(){
+	$('#modalBox').modal('hide');
+});
 $("#delBtn").click(function(){
 	var id = $("#id1").val();		// getter
-	alert(id);
-	
-	$("#id1").val('<%=login.getId()%>');
+$("#id1").val('<%=login.getId()%>');
+	$("#frm").submit();
+});
 
-			$("#frm").submit();
-		});
-		$("#ccBtn").click(function() {
-			location.href = "mypageLeave.do";
-		});
-	</script>
+$("#ccBtn").click(function() {
+	location.href = "mypageLeave.do";
+});
 
+</script>
 
 </body>
 </html>

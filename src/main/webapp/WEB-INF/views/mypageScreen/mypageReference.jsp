@@ -25,7 +25,7 @@ MemberDto login = (MemberDto) session.getAttribute("login");
 </head>
 <body>
 	<div class="container">
-		<div class="board-sort">
+		<div class="board-sort" >
 			<select class="custom-select" id="sort" name="sort">
 				<option selected>지역별 여행</option>
 				<option value="Hotel">숙소 추천</option>
