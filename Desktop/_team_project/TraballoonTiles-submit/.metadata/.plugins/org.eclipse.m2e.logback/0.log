@@ -1,0 +1,19 @@
+2023-03-26 15:15:12,792 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-03-26 15:15:54,538 [Worker-11: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: TraballoonTiles:TraballoonTiles:0.0.1-SNAPSHOT @ C:\Users\PC\Desktop\_team_project\TraballoonTiles-submit\TraballoonTiles\pom.xml.
+2023-03-26 15:15:58,286 [Worker-11: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-03-26 15:15:58,288 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\PC\Desktop\_team_project\TraballoonTiles-submit\TraballoonTiles\src\main\resources
+2023-03-26 15:15:58,294 [Worker-11: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-03-26 15:15:58,296 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\PC\Desktop\_team_project\TraballoonTiles-submit\TraballoonTiles\src\test\resources
+2023-03-26 15:16:11,147 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-03-26 15:16:11,150 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\PC\Desktop\_team_project\TraballoonTiles-submit\TraballoonTiles\src\main\resources
+2023-03-26 15:16:11,156 [Worker-2: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-03-26 15:16:11,158 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\PC\Desktop\_team_project\TraballoonTiles-submit\TraballoonTiles\src\test\resources
+2023-03-26 15:16:35,765 [Worker-8: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-03-26 15:16:35,767 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\PC\Desktop\_team_project\TraballoonTiles-submit\TraballoonTiles\src\main\resources
+2023-03-26 15:16:35,771 [Worker-8: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-03-26 15:16:35,773 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\PC\Desktop\_team_project\TraballoonTiles-submit\TraballoonTiles\src\test\resources
+2023-03-26 15:20:04,047 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-03-26 15:20:07,782 [Worker-11: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-03-26 15:20:07,788 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\PC\Desktop\_team_project\TraballoonTiles-submit\TraballoonTiles\src\main\resources
+2023-03-26 15:20:07,795 [Worker-11: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-03-26 15:20:07,797 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\PC\Desktop\_team_project\TraballoonTiles-submit\TraballoonTiles\src\test\resources
